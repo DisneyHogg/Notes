@@ -39,7 +39,7 @@ A brief overview of some key ideas concepts and facts that I find useful in revi
 \begin{definition}[ideal]
 An \bam{ideal} is a subalgebra $\mf{h} \leq \mf{g}$ s.t.
 \[
-\forall X\in\mf{g}, \forall Y\in\mf{h} \comm[X]{Y}\in\mf{h}
+\forall X\in\mf{g}, \; \forall Y\in\mf{h} \quad  \comm[X]{Y}\in\mf{h}
 \]
 \end{definition}
 
@@ -103,6 +103,17 @@ Two representations $R_1$, $R_2$ of a Lie algbera $\mf{g}$ are \bam{isomorphic},
 \[
 \forall X\in\mf{g} \quad R_2\left(X\right)=S R_1\left(X\right) S^{-1}
 \]
+\end{definition}
+
+\begin{definition}[Invariant Subspace]
+Given a representation $R$ of Lie algebra $\mf{g}$ with representation space $V$, an \bam{invariant subspace} is $U\leq V$ such that
+\[
+\forall X\in\mf{g}, \; \forall u\in U \quad R\left(X\right)u\in U
+\]
+\end{definition}
+
+\begin{definition}[Irreducible Representation]
+A representation is \bam{irreducible} if it has no invariant subspaces. 
 \end{definition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
