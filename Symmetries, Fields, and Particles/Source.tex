@@ -15,7 +15,7 @@
 \DeclareMathOperator{\spn}{Span}
 \DeclareMathOperator{\tr}{Tr}
 
-\newcommand{\bam}[1]{\underline{\bf{#1}}}
+\newcommand{\bam}[1]{\textbf{#1}}
 \newcommand{\mf}[1]{\mathfrak{#1}}
 \newcommand{\mbb}[1]{\mathbb{#1}}
 \newcommand{\comm}[2][]{\left[ #1, #2 \right]}
@@ -100,6 +100,18 @@ d:\mf{g} \to \mf{gl}\left(V\right)
 
 \begin{definition}[Dimension]
 The \bam{dimension} of a representation is the dimension of the representation space.
+\end{definition}
+
+\begin{definition}[Trivial Representation] 
+The \bam{trivial representation} is the unique one dimensional representation that sends every element to the identity. 
+\end{definition}
+
+\begin{definition}[Fundamental Representation]
+For a matrix Lie group $G\leq GL(V)$ the \bam{fundamental representation} is the identity map $R=id_V$. Note $dim\left(R\right)=dim\left(V\right)$
+\end{definition}
+
+\begin{definition}[Adjoint Representation]
+Given a Lie algebra $\mf{g}$ the \bam{adjoint representation} is $d_{adj}:\mf{g}\to\mf{g}$, $d_{adj}\left(X\right)=ad_X $
 \end{definition}
 
 \begin{definition}[Faithful Representation]
