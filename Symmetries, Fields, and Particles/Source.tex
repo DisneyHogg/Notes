@@ -12,10 +12,10 @@
 \newtheorem{definition}{Definition}[section]
 \newtheorem*{fact}{Fact}
 
-\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\spn}{Span}
 \DeclareMathOperator{\tr}{Tr}
 
-\newcommand{\bam}[1]{\underline{\textbf{#1}}}
+\newcommand{\bam}[1]{\underline{\bf{#1}}}
 \newcommand{\mf}[1]{\mathfrak{#1}}
 \newcommand{\mbb}[1]{\mathbb{#1}}
 \newcommand{\comm}[2][]{\left[ #1, #2 \right]}
@@ -32,7 +32,9 @@
 \section{Introduction}
 A brief overview of some key ideas concepts and facts that I find useful in revising SFP. 
 
-\section{Definitions surrounding Lie Algebras}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Definitions - Lie Algebras}
 
 \begin{definition}[ideal]
 An \bam{ideal} is a subalgebra $\mf{h} \leq \mf{g}$ s.t.
@@ -79,6 +81,31 @@ is $\mf{g}_\mathbb{C}\equiv\spn_{\mathbb{C}}\lbrace T^a : a=1, \dots, D \rbrace$
 \begin{definition}[Cartan Subalgebra]
 A \bam{Cartan subalgebra} is a maximal abelian subalgebra containing only ad-diagonalisable elements.  
 \end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Definitions - Representations}
+
+\begin{definition}[Representations]
+A \bam{representation} of a Lie group $G$ is a smooth group homomorphism 
+\[
+D:G\to GL\left(V\right)
+\]
+where $V$ is a $n$-dimensional vector space called the \bam{representation space}.
+In analogy a representation of a Lie algebra is a Lie algebra homomorphism 
+\[
+d:\mf{g} \to \mf{gl}\left(V\right)
+\]
+\end{definition}
+
+\begin{definition}[Isomorphic Representations]
+Two representations $R_1$, $R_2$ of a Lie algbera $\mf{g}$ are \bam{isomorphic}, written $R_1 \cong R_2$ if $\exists S$ an invertible matrix such that 
+\[
+\forall X\in\mf{g} \quad R_2\left(X\right)=S R_1\left(X\right) S^{-1}
+\]
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Cartan Classification}
 \subsection{Root Geometry}
