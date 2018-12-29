@@ -10,15 +10,20 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem*{remark}{Remark}
 \newtheorem{definition}{Definition}[section]
-\newtheorem*{fact}{Fact}
+\newtheorem{fact}{Fact}[section]
+\newtheorem{idea}{Idea}[definition]
 
 \DeclareMathOperator{\spn}{Span}
 \DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\SU}{SU}
 
 \newcommand{\bam}[1]{\textbf{#1}}
 \newcommand{\mf}[1]{\mathfrak{#1}}
 \newcommand{\mbb}[1]{\mathbb{#1}}
 \newcommand{\comm}[2][]{\left[ #1, #2 \right]}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\set}[1]{\lbrace #1 \rbrace}
 
 \title{Symmetries Fields and Particles Revision Notes}
 \author{Linden Disney-Hogg}
@@ -34,6 +39,35 @@ A brief overview of some key ideas concepts and facts that I find useful in revi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Lie Groups and Algebras}
+
+\begin{definition}[Lie Group]
+A \bam{Lie group} is a group that has a smooth manifold structure such that the group operations are smooth functions on the manifold. 
+\end{definition}
+
+\begin{idea}
+Lie groups are introduced here to give a foundation to the idea of a continuous symmetry group, which will act in some way. It is a consequence of the Peter-Weyl theorem that every compact Lie groups is isomorphic to a subgroup of $GL(n,\mbb{C})$ for some $n$ so often one can restrict their thought process to matrix Lie groups. 
+\end{idea}
+
+\begin{definition}[Lie Algebra]
+A \bam{Lie algebra} is a vector space that is equipped with a bracket that 
+\begin{itemize}
+    \item is bilinear
+    \item is antisymmetric
+    \item obeys the Jacobi identity
+\end{itemize}
+\end{definition}
+
+\begin{idea}
+Given a matrix Lie group $G$, it has a natural associated Lie algebra $\mf{g}=T_{I}G$ with bracket given by the matrix commutator. This will be the prototypical Lie algebra to think of. The Lie algebra corresponding to a Lie group is useful to work with as we can take a basis, which will commute under addition, rather than work with a difficult presentation of the group. 
+\end{idea}
+
+\begin{fact}
+The dimension of the tangent space to a manifold is equal to the dimension of the manifold. Hence, a Lie group and its associated Lie algebra have the same dimension
+\end{fact}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Definitions - Lie Algebras}
 
 \begin{definition}[ideal]
@@ -43,16 +77,30 @@ An \bam{ideal} is a subalgebra $\mf{h} \leq \mf{g}$ s.t.
 \]
 \end{definition}
 
+\begin{definition}[Derived Algebra]
+The \bam{derived algebra} of a Lie algebra $\mf{g}$ is 
+\[
+i(\mf{g})=\set{\comm[X]{Y} : X,Y\in\mf{g}}
+\]
+\end{definition}
+
+\begin{definition}[Centre]
+The \bam{centre} of a Lie algebra $\mf{g}$ is 
+\[
+\zeta(\mf{g})=\set{X\in\mf{g} : \forall Y\in\mf{g} \; \comm[X]{Y}=0}
+\]
+\end{definition}
+
 \begin{definition}[Simple Lie Algebra]
 A Lie Algebra is \bam{simple} if it contains no non-trivial ideals.
 \end{definition}
 
+\begin{idea}
+An ideal is to a Lie algebra what a normal subgroup is to a Lie group. Hence simple Lie algebras are the analogy of simple Lie groups.  
+\end{idea}
+
 \begin{definition}[Semi-Simple Lie Algebra]
 A Lie Algebra is \bam{semi-simple} if it contains no non-trivial abelian ideals. 
-\end{definition}
-
-\begin{definition}[Compact Type]
-A real Lie algebra $\mf{g}_\mathbb{R}$ is of \bam{compact type} if $\exists$ a basis in which $\kappa^{ij}=-K\delta^{ij}$ for some $K\in\mathbb{R}^{+}$.
 \end{definition}
 
 \begin{definition}[Adjoint Map]
@@ -71,6 +119,10 @@ The \bam{killing form} is a map $\kappa:\mf{g}\times\mf{g}\to\mbb{C}$ defined su
 \[
 \kappa\left(X,Y\right)=\tr\left(ad_X \circ ad_Y\right)
 \]
+\end{definition}
+
+\begin{definition}[Compact Type]
+A real Lie algebra $\mf{g}_\mathbb{R}$ is of \bam{compact type} if $\exists$ a basis in which $\kappa^{ij}=-K\delta^{ij}$ for some $K\in\mathbb{R}^{+}$.
 \end{definition}
 
 \begin{definition}[Complexification and Real Form]
@@ -138,10 +190,42 @@ A representation is \bam{irreducible} if it has no invariant subspaces.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Pauli Matrices}
+
+\begin{definition}[Pauli Matrices]
+The \bam{Pauli matrices} are
+
+\begin{align*}
+\sigma_1 &= \begin{pmatrix} 0 & 1 \\ 1 & 0\end{pmatrix}  \\
+\sigma_2 &= \begin{pmatrix} 0 & -i \\ i & 0\end{pmatrix}  \\
+\sigma_3 &= \begin{pmatrix} 1 & 0 \\ 0 & -1\end{pmatrix}  
+\end{align*}
+
+Note they are all Hermitian and traceless.
+\end{definition}
+
+\begin{fact}
+\be
+\sigma_i \sigma_j = \delta_{ij}I +i\epsilon_{ijk}\sigma_k
+\ee
+\end{fact}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{SU(2)}
-We define the \bam{special unitary group} of dimension $n$ 
+\begin{definition}[SU($n$)]
+The \bam{special unitary group} of dimension $n$ is
 \[
-SU\left(n\right)=\lbrace U\in GL\left(n,\mbb{C}\right) : U^\dagger U=I, \det{U}=1 \rbrace
+\SU\left(n\right)=\lbrace U\in GL\left(n,\mbb{C}\right) : U^\dagger U=I, \det{U}=1 \rbrace
+\]
+\end{definition}
+\noindent SU($n$) is a Lie group The corresponding Lie algebra is 
+\[
+\mf{su}\left(n\right)=\lbrace Z\in GL\left(n,\mbb{C}\right) : Z^\dagger+Z=0, \tr{Z}=0 \rbrace
+\]
+The real dimension is
+\[
+\underbrace{2\times\frac{1}{2}(n-1)n}_{\text{off diagonal elements}}+\underbrace{n}_{\text{diagonal elements}}-\underbrace{1}_{\text{trace constraint}}=n^2-1
 \]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -163,7 +247,5 @@ S_{\alpha, \beta}=\lbrace \beta+\rho\alpha\in\Phi : \rho\in\mbb{Z} \rbrace
 \begin{fact}
 Every complex semi-simple Lie algebra of finite dimension has a real form of compact type.
 \end{fact}
-
-
 
 \end{document}
