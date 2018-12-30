@@ -1,17 +1,24 @@
 \documentclass{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Packages
+
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{hyperref}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Definitions
+
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem*{remark}{Remark}
-\newtheorem{definition}{Definition}[section]
-\newtheorem{fact}{Fact}[section]
-\newtheorem{idea}{Idea}[definition]
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{fact}{Fact}[subsection]
+\newtheorem*{idea}{Idea}
 
 \DeclareMathOperator{\spn}{Span}
 \DeclareMathOperator{\tr}{Tr}
@@ -25,22 +32,27 @@
 \newcommand{\ee}{\end{equation}}
 \newcommand{\set}[1]{\lbrace #1 \rbrace}
 
-\title{Symmetries Fields and Particles Revision Notes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Preamble
+
+\title{Symmetries, Fields, and Particles Revision Notes}
 \author{Linden Disney-Hogg}
 \date{December 2018}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
 \maketitle
 \tableofcontents
 
 \section{Introduction}
-A brief overview of some key ideas concepts and facts that I find useful in revising SFP. 
+A brief overview of some key ideas, concepts, and facts that I find useful in revising SFP. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Lie Groups and Algebras}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Lie Groups}
+\subsection{Basics}
 \begin{definition}[Lie Group]
 A \bam{Lie group} is a group that has a smooth manifold structure such that the group operations are smooth functions on the manifold. 
 \end{definition}
@@ -49,8 +61,20 @@ A \bam{Lie group} is a group that has a smooth manifold structure such that the 
 Lie groups are introduced here to give a foundation to the idea of a continuous symmetry group, which will act in some way. It is a consequence of the Peter-Weyl theorem that every compact Lie groups is isomorphic to a subgroup of $GL(n,\mbb{C})$ for some $n$ so often one can restrict their thought process to matrix Lie groups. 
 \end{idea}
 
-\begin{definition}[Lie Algebra]
-A \bam{Lie algebra} is a vector space that is equipped with a bracket that 
+\begin{idea}
+When showing that something is a structure is a Lie group, typically the hardest step is showing that it is a manifold. One approach is to find an explicit parametrisation of the manifold, often a good approach if the group has very obvious parameters upon which it depends (e.g. the Heisenberg group). Alternatively, one can use the preimage theorem, useful if the group is defined by some constraints (e.g. the orthogonal group). 
+\end{idea}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Lie Algebras}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Basics}
+
+\begin{definition}[Lie Algebra] 
+
+A \bam{Lie algebra} is a vector space, equipped with a bracket that:
 \begin{itemize}
     \item is bilinear
     \item is antisymmetric
@@ -59,7 +83,8 @@ A \bam{Lie algebra} is a vector space that is equipped with a bracket that
 \end{definition}
 
 \begin{idea}
-Given a matrix Lie group $G$, it has a natural associated Lie algebra $\mf{g}=T_{I}G$ with bracket given by the matrix commutator. This will be the prototypical Lie algebra to think of. The Lie algebra corresponding to a Lie group is useful to work with as we can take a basis, which will commute under addition, rather than work with a difficult presentation of the group. 
+Given a matrix Lie group $G$, it has a natural associated Lie algebra $\mf{g}=T_{I}G$ with bracket given by the matrix commutator. This will be the prototypical Lie algebra to think of. The Lie algebra corresponding to a Lie group is useful to work with as we can take a basis, which will commute under addition, rather than work with a difficult presentation of the group.
+Using the exponential map, we can map back into the original Lie group. This is not generally injective or surjective, but map injectively onto the connected component containing the identity. 
 \end{idea}
 
 \begin{fact}
@@ -67,8 +92,7 @@ The dimension of the tangent space to a manifold is equal to the dimension of th
 \end{fact}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Definitions - Lie Algebras}
+\subsection{Ideals and Simplicity}
 
 \begin{definition}[ideal]
 An \bam{ideal} is a subalgebra $\mf{h} \leq \mf{g}$ s.t.
@@ -103,6 +127,9 @@ An ideal is to a Lie algebra what a normal subgroup is to a Lie group. Hence sim
 A Lie Algebra is \bam{semi-simple} if it contains no non-trivial abelian ideals. 
 \end{definition}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Adjoint Map}
+
 \begin{definition}[Adjoint Map]
 The \bam{adjoint map} of an element $X\in\mf{g}$ is $ad_{X}:\mf{g}\to\mf{g}$ defined such that for $Y\in\mf{g}$
 \[
@@ -115,12 +142,36 @@ An element $X\in\mf{g}$ is \bam{ad-diagonalisable} if the linear map $ad_X$ is d
 \end{definition}
 
 \begin{definition}[Killing Form]
-The \bam{killing form} is a map $\kappa:\mf{g}\times\mf{g}\to\mbb{C}$ defined such that for $X,Y\in\mf{g}$
+The \bam{Killing form} is a map $\kappa:\mf{g}\times\mf{g}\to\mbb{C}$ defined such that for $X,Y\in\mf{g}$
 \[
 \kappa\left(X,Y\right)=\tr\left(ad_X \circ ad_Y\right)
 \]
+It is symmetric and bilinear 
 \end{definition}
 
+\begin{theorem}
+Let $\mf{g}$ be a Lie algebra and $\kappa$ the Killing form. Then
+\[
+\forall X,Y,Z\in\mf{g} \quad \kappa\left(\comm[Z]{X},Y\right)+\kappa\left(X,\comm[Z]{Y}\right)=0
+\]
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cartan Subalgebras}
+
+\begin{definition}[Cartan Subalgebra]
+A \bam{Cartan subalgebra} $\mf{h}\leq\mf{g}$ is a maximal abelian subalgebra containing only ad-diagonalisable elements. It is typically written as $\mf{h}=\spn$
+\end{definition}
+
+\begin{fact}
+All Cartan subalgebras of a given Lie algebra have the same dimension. Though Cartan subgalgebras are not unique, they are all conjugate. 
+\end{fact}
+
+\begin{idea}
+It is a fact that Cartan subalgebras correspond to maximal toral subgroups of the corresponding Lie group. This gives a route to visualisation of what the subalgebra might be. 
+\end{idea}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{definition}[Compact Type]
 A real Lie algebra $\mf{g}_\mathbb{R}$ is of \bam{compact type} if $\exists$ a basis in which $\kappa^{ij}=-K\delta^{ij}$ for some $K\in\mathbb{R}^{+}$.
 \end{definition}
@@ -130,13 +181,12 @@ Given a  real Lie algebra $\mf{g}_\mathbb{R}\equiv\spn_{\mathbb{R}}\lbrace T^a :
 is $\mf{g}_\mathbb{C}\equiv\spn_{\mathbb{C}}\lbrace T^a : a=1, \dots, D \rbrace$. Conversely, given such a $\mf{g}_\mathbb{C}$, $\mf{g}_\mathbb{R}$ is called a \bam{real form}.  
 \end{definition}
 
-\begin{definition}[Cartan Subalgebra]
-A \bam{Cartan subalgebra} is a maximal abelian subalgebra containing only ad-diagonalisable elements.  
-\end{definition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Representations}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Definitions - Representations}
+\subsection{Basics}
 
 \begin{definition}[Representations]
 A \bam{representation} of a Lie group $G$ is a smooth group homomorphism 
@@ -189,7 +239,7 @@ A representation is \bam{irreducible} if it has no invariant subspaces.
 \end{definition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Pauli Matrices}
 
 \begin{definition}[Pauli Matrices]
@@ -211,7 +261,7 @@ Note they are all Hermitian and traceless.
 \end{fact}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{SU(2)}
 \begin{definition}[SU($n$)]
 The \bam{special unitary group} of dimension $n$ is
@@ -229,7 +279,7 @@ The real dimension is
 \]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Cartan Classification}
 \subsection{Root Geometry}
 
