@@ -206,6 +206,16 @@ d:\mf{g} \to \mf{gl}\left(V\right)
 \]
 \end{definition}
 
+\begin{theorem}
+A representation $D$ of a Lie group $G$ induces a representation on the the corresponding Lie algebra $\mf{g}$ as such: For $X\in\mf{g}$ let $g:(-\epsilon, \epsilon)\to G$ be a curve in $G$ defined such that $g(0)=e$ the identity of $G$ and $g'(0)=X$. This curve necessarily exists for some $\epsilon>0$. Then define $d$ by \[
+d(X)\equiv\frac{d}{dt} D\left(g(t)\right) \vert_{t=0}
+\]
+Conversely, a representation of a Lie algebra $\mf{g}$ induces a representation in some neighbourhood of $e$ in $G$ given by 
+\[
+D(\exp{X})\equiv\exp{d(X)}
+\]
+\end{theorem}
+
 \begin{definition}[Dimension]
 The \bam{dimension} of a representation is the dimension of the representation space.
 \end{definition}
@@ -233,6 +243,8 @@ Two representations $R_1$, $R_2$ of a Lie algebra $\mf{g}$ are \bam{isomorphic},
 \]
 \end{definition}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Reducibility}
 \begin{definition}[Invariant Subspace]
 Given a representation $R$ of Lie algebra $\mf{g}$ with representation space $V$, an \bam{invariant subspace} is $U\leq V$ such that
 \[
@@ -246,7 +258,32 @@ A representation is \bam{irreducible} if it has no invariant subspaces.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Pauli Matrices}
+\section{Useful Facts}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Miscellaneous}
+\begin{theorem}
+If $X$ is a complex square matrix then 
+\[
+\det{e^X}=e^{\tr{X}}
+\]
+\end{theorem}
+
+\begin{theorem}[Baker-Campbell-Hausdorff Formula]
+Let $\mf{g}$ be a Lie algebra, and $X,Y\in\mf{g}$. Then under sufficient existence conditions $e^X e^Y=e^Z$ where
+\[
+Z=X+Y+\frac{1}{2}\comm[X]{Y}+\frac{1}{12}\left(\comm[X]{\comm[X]{Y}}+\comm[Y]{\comm[Y]{X}}\right)
+\]
+\end{theorem}
+
+\begin{corollary}[Lie Product Formula]
+For $X,Y\in\mf{g}$, a Lie algebra
+\[
+e^{X+Y}=\lim_{N\to\infty}\left( e^{\frac{X}{N}} e^{\frac{Y}{N}} \right)^N
+\]
+\end{corollary}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Pauli Matrices}
 
 \begin{definition}[Pauli Matrices]
 The \bam{Pauli matrices} are
