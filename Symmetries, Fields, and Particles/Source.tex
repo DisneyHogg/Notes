@@ -209,16 +209,6 @@ d:\mf{g} \to \mf{gl}\left(V\right)
 \]
 \end{definition}
 
-\begin{theorem}
-A representation $D$ of a Lie group $G$ induces a representation on the the corresponding Lie algebra $\mf{g}$ as such: For $X\in\mf{g}$ let $g:(-\epsilon, \epsilon)\to G$ be a curve in $G$ defined such that $g(0)=e$ the identity of $G$ and $g'(0)=X$. This curve necessarily exists for some $\epsilon>0$. Then define $d$ by \[
-d(X)\equiv\frac{d}{dt} D\left(g(t)\right) \vert_{t=0}
-\]
-Conversely, a representation of a Lie algebra $\mf{g}$ induces a representation in some neighbourhood of $e$ in $G$ given by 
-\[
-D(\exp{X})\equiv\exp{d(X)}
-\]
-\end{theorem}
-
 \begin{definition}[Dimension]
 The \bam{dimension} of a representation is the dimension of the representation space.
 \end{definition}
@@ -245,7 +235,32 @@ Two representations $R_1$, $R_2$ of a Lie algebra $\mf{g}$ are \bam{isomorphic},
 \forall X\in\mf{g} \quad R_2\left(X\right)=S R_1\left(X\right) S^{-1}
 \]
 \end{definition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Constructing representations}
 
+\begin{theorem}
+A representation $D$ of a Lie group $G$ induces a representation on the the corresponding Lie algebra $\mf{g}$ as such: For $X\in\mf{g}$ let $g:(-\epsilon, \epsilon)\to G$ be a curve in $G$ defined such that $g(0)=e$ the identity of $G$ and $g'(0)=X$. This curve necessarily exists for some $\epsilon>0$. Then define $d$ by \[
+d(X)\equiv\frac{d}{dt} D\left(g(t)\right) \vert_{t=0}
+\]
+Conversely, a representation of a Lie algebra $\mf{g}$ induces a representation in some neighbourhood of $e$ in $G$ given by 
+\[
+D(\exp{X})\equiv\exp{d(X)}
+\]
+\end{theorem}
+
+\begin{definition}[Direct Sum Representation]
+Given representations $R_1, R_2$ with representation spaces $V_1, V_2$ the \bam{direct sum representation} is $R_1 \oplus R_2$ with representation space $V_1 \oplus V_2$ acting by 
+\[
+(R_1 \oplus R_2)(X)(v_1 \oplus v_2)=(R_1(X)v_1)\oplus(R_2(X)v_2)
+\]
+\end{definition}
+
+\begin{definition}[Tensor Product Representation]
+Given representations $R_1, R_2$ with representation spaces $V_1, V_2$ the \bam{tensor product representation} is $R_1 \otimes R_2$ with representation space $V_1 \otimes V_2$ with
+\[
+(R_1 \otimes R_2)(X)=R_1(X)\otimes I_{V_2}+I_{V_1}\otimes R_2(X)
+\]
+\end{definition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Reducibility}
 \begin{definition}[Invariant Subspace]
@@ -259,6 +274,23 @@ Given a representation $R$ of Lie algebra $\mf{g}$ with representation space $V$
 A representation is \bam{irreducible} if it has no invariant subspaces. 
 \end{definition}
 
+\begin{definition}[Full Reducible]
+A representation is \bam{fully reducible} if it can be expressed as the direct sum of irreducible representations. 
+\end{definition}
+
+\begin{fact}
+If $R_i$ are finite dimensional irreducible representations of a simple Lie algebra for $i=1,\dots,m$ then
+\[
+R_1 \otimes R_2 \otimes \dots \otimes R_m
+\]
+is fully reducible. 
+\end{fact}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Weights and lattices}
+\begin{definition}[Weights]
+
+\end{definition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Useful Facts}
@@ -348,12 +380,17 @@ where $\bm{a}=(a_1, a_2, a_3)$, $\bm{\sigma}=(\sigma_1, \sigma_2, \sigma_3)$, an
 \subsection{Representations}
 
 \begin{definition}[Cartan-Weyl basis of $\mf{su}_\mbb{C}(2)$]
-$\lbrace H, E_\pm \rbrace$, where $H=\sigma_3$ and $E_\pm=\frac{1}{2}(\sigma_1\pm i\sigma_2 )$, is the \bam{Cartan-Weyl basis} for $\mf{su}_\mbb{C}(2)$. 
+$\lbrace H, E_\pm \rbrace$, where $H=\sigma_3$ and $E_\pm=\frac{1}{2}(\sigma_1\pm i\sigma_2 )$, is the \bam{Cartan-Weyl basis} for $\mf{su}_\mbb{C}(2)$. The elements satisfy the commutation relations 
+\begin{align*}
+\comm[H]{E_\pm} &= \pm 2E_\pm \\
+\comm[E_+]{E_-} &= H
+\end{align*}
 \end{definition} 
 
 \begin{fact}
 $H$ spans a Cartan subalgebra of $\mf{su}_\mbb{C}(2)$, ad-diagonalisable w.r.t the Cartan Weyl basis, with eigenvalues $0, \pm 2$ respectively. 
 \end{fact}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
