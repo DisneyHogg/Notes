@@ -8,6 +8,7 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{hyperref}
+\usepackage{bm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Definitions
@@ -97,6 +98,11 @@ Given a basis $\lbrace T^a \rbrace$ of a Lie algebra, the \bam{structure constan
 \comm[T^a]{T^b}=f^{ab}_c T^c
 \]
 \end{definition}
+
+\begin{definition}[Complexification and Real Form]
+Given a  real Lie algebra $\mf{g}_\mathbb{R}\equiv\spn_{\mathbb{R}}\lbrace T^a : a=1, \dots, D \rbrace$ the \bam{complexification}
+is $\mf{g}_\mathbb{C}\equiv\spn_{\mathbb{C}}\lbrace T^a : a=1, \dots, D \rbrace$. Conversely, given such a $\mf{g}_\mathbb{C}$, $\mf{g}_\mathbb{R}$ is called a \bam{real form}.  
+\end{definition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Ideals and Simplicity}
 
@@ -166,7 +172,7 @@ Let $\mf{g}$ be a Lie algebra and $\kappa$ the Killing form. Then
 \subsection{Cartan Subalgebras}
 
 \begin{definition}[Cartan Subalgebra]
-A \bam{Cartan subalgebra} $\mf{h}\leq\mf{g}$ is a maximal abelian subalgebra containing only ad-diagonalisable elements. It is typically written as $\mf{h}=\spn$
+A \bam{Cartan subalgebra} $\mf{h}\leq\mf{g}$ is a maximal abelian subalgebra containing only ad-diagonalisable elements. It is typically written as $\mf{h}=\spn\lbrace H^i \rbrace$
 \end{definition}
 
 \begin{fact}
@@ -174,7 +180,7 @@ All Cartan subalgebras of a given Lie algebra have the same dimension. Though Ca
 \end{fact}
 
 \begin{idea}
-It is a fact that Cartan subalgebras correspond to maximal toral subgroups of the corresponding Lie group. This gives a route to visualisation of what the subalgebra might be. 
+It is a fact that Cartan subalgebras correspond to maximal toral subgroups of the corresponding Lie group. This gives a route to visualisation of what the subalgebra might be. A Cartan subalgebra is defined such that adjoint maps corresponding to the basis $\lbrace H^i \rbrace$ are simultaneously diagonalisable. 
 \end{idea}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -182,10 +188,7 @@ It is a fact that Cartan subalgebras correspond to maximal toral subgroups of th
 A real Lie algebra $\mf{g}_\mathbb{R}$ is of \bam{compact type} if $\exists$ a basis in which $\kappa^{ij}=-K\delta^{ij}$ for some $K\in\mathbb{R}^{+}$.
 \end{definition}
 
-\begin{definition}[Complexification and Real Form]
-Given a  real Lie algebra $\mf{g}_\mathbb{R}\equiv\spn_{\mathbb{R}}\lbrace T^a : a=1, \dots, D \rbrace$ the \bam{complexification}
-is $\mf{g}_\mathbb{C}\equiv\spn_{\mathbb{C}}\lbrace T^a : a=1, \dots, D \rbrace$. Conversely, given such a $\mf{g}_\mathbb{C}$, $\mf{g}_\mathbb{R}$ is called a \bam{real form}.  
-\end{definition}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -272,7 +275,7 @@ If $X$ is a complex square matrix then
 \begin{theorem}[Baker-Campbell-Hausdorff Formula]
 Let $\mf{g}$ be a Lie algebra, and $X,Y\in\mf{g}$. Then under sufficient existence conditions $e^X e^Y=e^Z$ where
 \[
-Z=X+Y+\frac{1}{2}\comm[X]{Y}+\frac{1}{12}\left(\comm[X]{\comm[X]{Y}}+\comm[Y]{\comm[Y]{X}}\right)
+Z=X+Y+\frac{1}{2}\comm[X]{Y}+\frac{1}{12}\left(\comm[X]{\comm[X]{Y}}+\comm[Y]{\comm[Y]{X}}\right)+\dots
 \]
 \end{theorem}
 
@@ -306,10 +309,21 @@ Note they are all Hermitian and traceless.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{SU(2)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Basics}
+
+\begin{definition}[U($n$)]
+The \bam{unitary group} of dimension $n$ is 
+\[
+U\left(n\right)=\lbrace U\in GL\left(n,\mbb{C}\right) : U^\dagger U=I \rbrace
+\]
+It is path connected, and compact.
+\end{definition}
+
 \begin{definition}[SU($n$)]
 The \bam{special unitary group} of dimension $n$ is
 \[
-\SU\left(n\right)=\lbrace U\in GL\left(n,\mbb{C}\right) : U^\dagger U=I, \det{U}=1 \rbrace
+SU\left(n\right)=\lbrace U\in U(n) : \det{U}=1 \rbrace
 \]
 \end{definition}
 \noindent SU($n$) is a Lie group The corresponding Lie algebra is 
@@ -320,6 +334,27 @@ The real dimension is
 \[
 \underbrace{2\times\frac{1}{2}(n-1)n}_{\text{off diagonal elements}}+\underbrace{n}_{\text{diagonal elements}}-\underbrace{1}_{\text{trace constraint}}=n^2-1
 \]
+In the case $n=2$ we have 
+\[
+SU(2)=\lbrace   \begin{pmatrix} \alpha & -\overline{\beta} \\ \beta & \overline{\alpha} \end{pmatrix}  : \alpha,\beta\in\mathbb{C} , |\alpha|^2+|\beta|^2=1  \rbrace
+\]
+This can be expressed as, for $A\in SU(2)$
+\[
+A=a_0 I +i\bm{a}\cdot\bm{\sigma}
+\]
+where $\bm{a}=(a_1, a_2, a_3)$, $\bm{\sigma}=(\sigma_1, \sigma_2, \sigma_3)$, and $a_0^2+|\bm{a}|^2=1$. Hence $SU(2)\cong S^3$. In addition, by parametrising $SU(2)$ by the $a_i$, it can be seen that $\lbrace i\sigma_i\rbrace$ forms a basis of $\mf{su}(2)$. It is typical to normalise this basis to $\lbrace T^a=-\frac{1}{2} i\sigma_a \rbrace$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Representations}
+
+\begin{definition}[Cartan-Weyl basis of $\mf{su}_\mbb{C}(2)$]
+$\lbrace H, E_\pm \rbrace$, where $H=\sigma_3$ and $E_\pm=\frac{1}{2}(\sigma_1\pm i\sigma_2 )$, is the \bam{Cartan-Weyl basis} for $\mf{su}_\mbb{C}(2)$. 
+\end{definition} 
+
+\begin{fact}
+$H$ spans a Cartan subalgebra of $\mf{su}_\mbb{C}(2)$, ad-diagonalisable w.r.t the Cartan Weyl basis, with eigenvalues $0, \pm 2$ respectively. 
+\end{fact}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
