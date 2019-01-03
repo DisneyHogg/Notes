@@ -13,7 +13,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Definitions
 
-\newtheorem{theorem}{Theorem}[section]
+\newtheorem{theorem}{Theorem}[subsection]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem*{remark}{Remark}
@@ -184,6 +184,13 @@ It is a fact that Cartan subalgebras correspond to maximal toral subgroups of th
 \end{idea}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{definition}[$\kappa^{ij}$]
+Given a basis of a Cartan subalgebra $\lbrace H^i \rbrace$ and Killing form $\kappa$ we define 
+\[
+\kappa^{ij}=\kappa(H^i, H^j)
+\]
+\end{definition}
+
 \begin{definition}[Compact Type]
 A real Lie algebra $\mf{g}_\mathbb{R}$ is of \bam{compact type} if $\exists$ a basis in which $\kappa^{ij}=-K\delta^{ij}$ for some $K\in\mathbb{R}^{+}$.
 \end{definition}
@@ -236,7 +243,7 @@ Two representations $R_1$, $R_2$ of a Lie algebra $\mf{g}$ are \bam{isomorphic},
 \]
 \end{definition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Constructing representations}
+\subsection{Constructing Representations}
 
 \begin{theorem}
 A representation $D$ of a Lie group $G$ induces a representation on the the corresponding Lie algebra $\mf{g}$ as such: For $X\in\mf{g}$ let $g:(-\epsilon, \epsilon)\to G$ be a curve in $G$ defined such that $g(0)=e$ the identity of $G$ and $g'(0)=X$. This curve necessarily exists for some $\epsilon>0$. Then define $d$ by \[
@@ -289,7 +296,7 @@ is fully reducible.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Weights and lattices}
 \begin{definition}[Weights]
-
+Given a representation $R$ of a Lie algebra with Cartan subalgebra $\mf{h}=\spn\lbrace H^i \rbrace$ the \bam{weights} of the representation are the eigenvalues of $R(H^i)$
 \end{definition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -391,7 +398,23 @@ $\lbrace H, E_\pm \rbrace$, where $H=\sigma_3$ and $E_\pm=\frac{1}{2}(\sigma_1\p
 $H$ spans a Cartan subalgebra of $\mf{su}_\mbb{C}(2)$, ad-diagonalisable w.r.t the Cartan Weyl basis, with eigenvalues $0, \pm 2$ respectively. 
 \end{fact}
 
-
+\begin{theorem}
+Finite dimensional irreducible representations of $\mf{su}_\mbb{C}(2)$ with $R(H)$ diagonalisable are determined by the highest weight $\Lambda\in\mbb{N}_0$. Such a representation is called $R_\Lambda$. It has weight set 
+\[
+S_{R_\Lambda}=\lbrace \Lambda-2n : n=0,\dots,\Lambda \rbrace
+\]
+The eigenvectors of $R_\Lambda(H)$ are $v_{\Lambda-2n}$ defined such that 
+\begin{align*}
+R_\Lambda(H) v_\lambda &= \lambda v_\lambda \\
+R_\Lambda(E_+) v_\Lambda &= 0 \\
+ \left(R_\Lambda(E_-)\right)^n v_{\Lambda} &= v_{\Lambda-2n} \\
+ R_\Lambda(E_+) v_{\Lambda-2n} &= r_n v_{\Lambda-2n}
+\end{align*}
+with 
+\[
+r_n=(\Lambda+1-n)n
+\]
+\end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
