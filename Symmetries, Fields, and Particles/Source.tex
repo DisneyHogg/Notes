@@ -446,7 +446,7 @@ $H$ spans a Cartan subalgebra of $\mf{su}_\mbb{C}(2)$, ad-diagonalisable w.r.t t
 \begin{theorem}
 Finite dimensional irreducible representations of $\mf{su}_\mbb{C}(2)$ with $R(H)$ diagonalisable are determined by the highest weight $\Lambda\in\mbb{N}_0$. Such a representation is called $R_\Lambda$. It has weight set 
 \[
-S_{R_\Lambda}=\lbrace \Lambda-2n : n=0,\dots,\Lambda \rbrace
+S_\Lambda=\lbrace \Lambda-2n : n=0,\dots,\Lambda \rbrace
 \]
 The eigenvectors of $R_\Lambda(H)$ are $v_{\Lambda-2n}$ defined such that 
 \begin{align*}
@@ -565,8 +565,14 @@ yields the algebra
     0 & \text{otherwise}
     \end{array} \right.\\
 \end{align*}
-Note for each $\alpha\in\Phi$ there is a $\mf{su}_\mbb{C}(2)$ subalgebra spanned by $\lbrace h^\alpha, e^{\pm\alpha}\rbrace$. 
 \end{theorem}
+
+\begin{definition}[$sl(2)_\alpha$]
+For $\alpha\in\Phi$ there is a $\mf{su}_\mbb{C}(2)$ subalgebra 
+\[
+sl(2)_\alpha=\spn\lbrace h^\alpha, e^{\pm\alpha}\rbrace
+\]
+\end{definition}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -577,6 +583,25 @@ The \bam{$\alpha$-string through $\beta$} is
 \[
 S_{\alpha, \beta}=\lbrace \beta+\rho\alpha\in\Phi : \rho\in\mbb{Z} \rbrace
 \]
+The corresponding subspace of $\mf{g}$ is 
+\[
+V_{\alpha, \beta}=\left\{ e^{\beta+\rho\alpha} : \beta+\rho\alpha\in S_{\alpha, \beta} \right\}
+\]
 \end{definition}
+\begin{fact}
+$V_{\alpha, \beta}$ is a representation space of the adjoint representation $R=d_{adj}$of $sl(2)_\alpha$. The non-degeneracy of the roots ensures that the weight set 
+\begin{align*}
+    S_R &= \left\{ \frac{2(\alpha,\beta)}{(\alpha,\alpha)}+2\rho : \beta+\rho\alpha\in S_{\alpha, \beta} \right\} \\
+     &= \lbrace -\Lambda,-\Lambda+2,\dots,\Lambda\rbrace=S_\Lambda \\
+\end{align*}
+Hence $\frac{2(\alpha,\beta)}{(\alpha,\alpha)} \in\mbb{Z}$
+\end{fact}
+
+\begin{fact}
+Under the assumption that $ad_{H^i}, ad_{H^j}$ are simultaneously diagonalisable $\forall i,j$ the Killing form, scaled by a factor $\frac{1}{N}$, is given by 
+\[
+\kappa^{ij}=\frac{1}{N} \sum_{\delta\in\Phi} \delta^i\delta^j
+\]
+\end{fact}
 
 \end{document}
