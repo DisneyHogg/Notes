@@ -24,6 +24,7 @@
 \DeclareMathOperator{\spn}{Span}
 \DeclareMathOperator{\tr}{Tr}
 \DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\dim}{dim}
 
 \newcommand{\bam}[1]{\textbf{#1}}
 \newcommand{\mf}[1]{\mathfrak{#1}}
@@ -158,6 +159,11 @@ The \bam{Killing form} is a map $\kappa:\mf{g}\times\mf{g}\to\mbb{C}$ defined su
 \[
 \kappa\left(X,Y\right)=\tr\left(ad_X \circ ad_Y\right)
 \]
+In components 
+\begin{align*}
+    \kappa(X,Y) &= \kappa^{ab}X_a Y_b \\
+    \kappa^{ab} &= f^{ac}_d f^{bd}_c
+\end{align*}
 It is symmetric and bilinear 
 \end{definition}
 
@@ -165,6 +171,13 @@ It is symmetric and bilinear
 Let $\mf{g}$ be a Lie algebra and $\kappa$ the Killing form. Then
 \[
 \forall X,Y,Z\in\mf{g} \quad \kappa\left(\comm[Z]{X},Y\right)+\kappa\left(X,\comm[Z]{Y}\right)=0
+\]
+\end{theorem}
+
+\begin{theorem}[Cartan]
+Let $\mf{g}$ be a Lie algebra with Killing form $\kappa$. Then 
+\[
+\kappa \, \text{non-degenerate} \Leftrightarrow \mf{g} \, \text{semi-simple}
 \]
 \end{theorem}
 
@@ -195,7 +208,9 @@ Given a basis of a Cartan subalgebra $\lbrace H^i \rbrace$ and Killing form $\ka
 A real Lie algebra $\mf{g}_\mathbb{R}$ is of \bam{compact type} if $\exists$ a basis in which $\kappa^{ij}=-K\delta^{ij}$ for some $K\in\mathbb{R}^{+}$.
 \end{definition}
 
-
+\begin{fact}
+Every complex semi-simple Lie algebra of finite dimension has a real form of compact type.
+\end{fact}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -229,7 +244,7 @@ For a matrix Lie group $G\leq GL(V)$ the \bam{fundamental representation} is the
 \end{definition}
 
 \begin{definition}[Adjoint Representation]
-Given a Lie algebra $\mf{g}$ the \bam{adjoint representation} is $d_{adj}:\mf{g}\to\mf{g}$, $d_{adj}\left(X\right)=ad_X $. Note $dim\left(d_{adj}\right)=dim\left(\mf{g}\right)$
+Given a Lie algebra $\mf{g}$ the \bam{adjoint representation} is $d_{adj}:\mf{g}\to\mf{gl}(\mf{g})$, $d_{adj}\left(X\right)=ad_X $. Note $dim\left(d_{adj}\right)=dim\left(\mf{g}\right)$
 \end{definition}
 
 \begin{definition}[Faithful Representation]
@@ -263,11 +278,16 @@ Given representations $R_1, R_2$ with representation spaces $V_1, V_2$ the \bam{
 \end{definition}
 
 \begin{definition}[Tensor Product Representation]
-Given representations $R_1, R_2$ with representation spaces $V_1, V_2$ the \bam{tensor product representation} is $R_1 \otimes R_2$ with representation space $V_1 \otimes V_2$ with
+Given representations $R_1$, $R_2$ with representation spaces $V_1, V_2$ the \bam{tensor product representation} is $R_1 \otimes R_2$ with representation space $V_1 \otimes V_2$ with
 \[
 (R_1 \otimes R_2)(X)=R_1(X)\otimes I_{V_2}+I_{V_1}\otimes R_2(X)
 \]
 \end{definition}
+
+\begin{idea}
+Considering a representation as a visualisation of the action of the algebra induced by a  group on a representation space, then $R_1 \oplus R_2$ can be viewed as two non-interacting systems, whereas $R_1 \otimes R_2$ can be viewed as two entangled systems.
+\end{idea}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Reducibility}
 \begin{definition}[Invariant Subspace]
@@ -415,15 +435,43 @@ with
 r_n=(\Lambda+1-n)n
 \]
 \end{theorem}
-
+Note that $\dim(R_\Lambda)=\Lambda+1$, so 
+\begin{itemize}
+    \item $R_0$ is the trivial representation $d_0$.
+    \item $R_1$ is the fundamental representation.
+    \item $R_2$ is the adjoint representation. 
+\end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Cartan Classification}
 \subsection{Root Geometry}
 
-\begin{definition}[Roots]
-The roots of a Lie Algebra are $\alpha\in\Phi$, vectors with components $\alpha^i$ eigenvalues of $ad_{H^i}$.
+\begin{definition}[Cartan-Weyl Basis]
+Given a Lie algebra $\mf{g}$, with Cartan subalgebra $\mf{h}=\spn\lbrace H^i : i=1,\dots,r\rbrace$, let $\lbrace E^\alpha : \alpha\in\Phi \rbrace$ be the simultaneous eigenvectors of $ad_{H^i}$ s.t. 
+\[
+ad_{H^i}\left(E^\alpha \right)=\alpha^i E^\alpha
+\]
+Then 
+\[
+B=\lbrace H^i : i=1,\dots,r\rbrace \cup \lbrace E^\alpha : \alpha\in\Phi \rbrace
+\]
+is the \bam{Cartan-Weyl basis} for $\mf{g}$.
 \end{definition}
+
+\begin{definition}[Roots]
+The \bam{roots} of a Lie Algebra are $\alpha\in\Phi$. They can be viewed as laying in $\mf{h}^\ast$ where 
+\[
+\alpha:\mf{h}\to\mbb{C}, \; \alpha: e_i H^i \mapsto e_i \alpha^i
+\]
+\end{definition}
+
+\begin{fact}
+The roots are all non-degenerate i.e. the eigenspace is 1 dimensional. 
+\end{fact}
+
+\begin{fact}
+Given $\alpha\in\Phi$, $\lbrace \lambda : \lambda\alpha\in\Phi \rbrace = \lbrace \pm1 \rbrace$.
+\end{fact}
 
 \begin{definition}[$\alpha$-string through $\beta$]
 The \bam{$\alpha$-string through $\beta$} is 
@@ -431,9 +479,5 @@ The \bam{$\alpha$-string through $\beta$} is
 S_{\alpha, \beta}=\lbrace \beta+\rho\alpha\in\Phi : \rho\in\mbb{Z} \rbrace
 \]
 \end{definition}
-
-\begin{fact}
-Every complex semi-simple Lie algebra of finite dimension has a real form of compact type.
-\end{fact}
 
 \end{document}
