@@ -525,7 +525,11 @@ Note that it is immediate that the bracket is symmetric and bilinear. Positive d
 \end{definition}
 
 \begin{theorem}[Cartan-Weyl Basis Algebra]
-The algebra of the Cartan-Weyl basis is 
+Defining 
+\[
+    H^\alpha = \frac{\comm[E^\alpha]{E^{-\alpha}}}{\kappa\left(E^\alpha,E^{-\alpha}\right)}
+\]
+the algebra of the Cartan-Weyl basis is 
 \begin{align*}
     \comm[H^i]{H^j} &= 0 \\
     \comm[H^i]{E^\alpha} &= 0 \\
@@ -534,15 +538,34 @@ The algebra of the Cartan-Weyl basis is
     0 & \text{otherwise}
     \end{array} \right. \\
 \end{align*}
-Defining 
-\[
-    H^\alpha = \frac{\comm[E^\alpha]{E^{-\alpha}}}{\kappa\left(E^\alpha,E^{-\alpha}\right)}
-\]
-Now letting 
+\end{theorem}
+
+\begin{fact}
+$\forall H\in\mf{h}$, $\alpha,\beta\in\Phi$
+\begin{itemize}
+    \item $\kappa\left(H^\alpha,H\right)=\alpha(H)$
+    \item $\kappa\left(H^\alpha,E^\beta\right)=0$
+    \item $\comm[H^\alpha]{H}=0$
+    \item $\comm[H^\alpha]{E^\beta}=(\alpha,\beta)E^\beta$
+\end{itemize}
+\end{fact}
+
+\begin{theorem}
+Letting 
 \begin{align*}
     e^\alpha &= \sqrt{\frac{2}{(\alpha,\alpha)\kappa\left(E^\alpha,E^{-\alpha}\right)}}E^\alpha \\
     h^\alpha &= \frac{2}{(\alpha,\alpha)}H^\alpha
 \end{align*}
+yields the algebra
+\begin{align*}
+    \comm[h^\alpha]{h^\beta} &= 0 \\
+    \comm[h^\alpha]{e^\beta} &= \frac{2(\alpha,\beta)}{(\alpha,\alpha)}e^\beta \\
+    \comm[e^\alpha]{e^\beta} &= \left\{ \begin{array}{lc} n_{\alpha,\beta}e^{\alpha+\beta} & \alpha+\beta\in\Phi \\
+    h^\alpha & \alpha+\beta=0 \\
+    0 & \text{otherwise}
+    \end{array} \right.\\
+\end{align*}
+Note for each $\alpha\in\Phi$ there is a $\mf{su}_\mbb{C}(2)$ subalgebra spanned by $\lbrace h^\alpha, e^{\pm\alpha}\rbrace$. 
 \end{theorem}
 
 
