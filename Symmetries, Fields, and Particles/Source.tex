@@ -7,8 +7,9 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
-\usepackage{hyperref}
-\usepackage{bm}
+\usepackage{hyperref} % Used for refernces and links. 
+\usepackage{bm} % Used to bold vectors. 
+\usepackage{faktor} % Used to write quotients nicely.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Definitions
@@ -24,7 +25,7 @@
 \DeclareMathOperator{\spn}{Span}
 \DeclareMathOperator{\tr}{Tr}
 \DeclareMathOperator{\SU}{SU}
-\DeclareMathOperator{\dim}{dim}
+%\DeclareMathOperator{\dim}{dim}
 
 \newcommand{\bam}[1]{\textbf{#1}}
 \newcommand{\mf}[1]{\mathfrak{#1}}
@@ -60,12 +61,16 @@ A \bam{Lie group} is a group that has a smooth manifold structure such that the 
 \end{definition}
 
 \begin{idea}
-Lie groups are introduced here to give a foundation to the idea of a continuous symmetry group, which will act in some way. It is a consequence of the Peter-Weyl theorem that every compact Lie groups is isomorphic to a subgroup of $GL(n,\mbb{C})$ for some $n$ so often one can restrict their thought process to matrix Lie groups. 
+Lie groups are introduced here to give a foundation to the idea of a continuous symmetry group, which will act in some way. It is a consequence of the Peter-Weyl theorem that every compact Lie groups is isomorphic to a subgroup of $GL(n,\mbb{C})$ for some $n$ so often one can restrict their thought process to matrix Lie groups.
 \end{idea}
 
 \begin{idea}
-When showing that something is a structure is a Lie group, typically the hardest step is showing that it is a manifold. One approach is to find an explicit parametrisation of the manifold, often a good approach if the group has very obvious parameters upon which it depends (e.g. the Heisenberg group). Alternatively, one can use the preimage theorem, useful if the group is defined by some constraints (e.g. the orthogonal group). 
+When showing that something is a structure is a Lie group, typically the hardest step is showing that it is a manifold. One approach is to find an explicit parametrisation of the manifold, often a good approach if the group has very obvious parameters upon which it depends (e.g. the Heisenberg group). Alternatively, one can use the preimage theorem, useful if the group is defined by some constraints (e.g. the orthogonal group).
 \end{idea}
+
+\begin{theorem}[Closed Subgroup Theorem]
+If $G$ is a Lie group and $H\leq G$ is closed, then $H$ is an embedded Lie group with the subspace topology. 
+\end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -198,7 +203,7 @@ It is a fact that Cartan subalgebras correspond to maximal toral subgroups of th
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{definition}[$\kappa^{ij}$]
-Given a basis of a Cartan subalgebra $\lbrace H^i \rbrace$ and Killing form $\kappa$ we define 
+Given a Cartan subalgebra $\mf{h}=\spn\lbrace H^i \rbrace$ and Killing form $\kappa$ the notation will be used $\kappa^{ij}$ for the matrix elements of $\kappa |_{\mf{h}\times\mf{h}}$,
 \[
 \kappa^{ij}=\kappa(H^i, H^j)
 \]
@@ -369,14 +374,14 @@ Note they are all Hermitian and traceless.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{SU(2)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Basics}
+\subsection{Definition and Basic Properties}
 
 \begin{definition}[U($n$)]
 The \bam{unitary group} of dimension $n$ is 
 \[
 U\left(n\right)=\lbrace U\in GL\left(n,\mbb{C}\right) : U^\dagger U=I \rbrace
 \]
-It is path connected, and compact.
+It is a path connected, compact, Lie group.
 \end{definition}
 
 \begin{definition}[SU($n$)]
@@ -385,7 +390,7 @@ The \bam{special unitary group} of dimension $n$ is
 SU\left(n\right)=\lbrace U\in U(n) : \det{U}=1 \rbrace
 \]
 \end{definition}
-\noindent SU($n$) is a Lie group The corresponding Lie algebra is 
+\noindent Through the $\det$ homomorphism, it can be seen $SU(n)$ is a closed subgroup of $U(n)$, hence also a Lie group.  The corresponding Lie algebra is 
 \[
 \mf{su}\left(n\right)=\lbrace Z\in GL\left(n,\mbb{C}\right) : Z^\dagger+Z=0, \tr{Z}=0 \rbrace
 \]
@@ -402,6 +407,26 @@ This can be expressed as, for $A\in SU(2)$
 A=a_0 I +i\bm{a}\cdot\bm{\sigma}
 \]
 where $\bm{a}=(a_1, a_2, a_3)$, $\bm{\sigma}=(\sigma_1, \sigma_2, \sigma_3)$, and $a_0^2+|\bm{a}|^2=1$. Hence $SU(2)\cong S^3$. In addition, by parametrising $SU(2)$ by the $a_i$, it can be seen that $\lbrace i\sigma_i\rbrace$ forms a basis of $\mf{su}(2)$. It is typical to normalise this basis to $\lbrace T^a=-\frac{1}{2} i\sigma_a \rbrace$. 
+
+\begin{fact}
+The structure constants in this basis $\lbrace T^a \rbrace$ are 
+\[
+f^{ab}_c=\epsilon_{abc}
+\]
+\end{fact}
+
+\begin{fact}
+The function 
+\begin{align*}
+     & R : SU(2) \to SO(3) \\
+     & R(A)_{ij} = \frac{1}{2}\tr\left( \sigma_i A \sigma_j A^\dagger \right)
+\end{align*}
+Is a double cover of $SO(3)$, with $R(A)=R(-A)$, and inverse given by 
+\[
+A=\pm \frac{I+\sigma_i R(A)_{ij} \sigma_j}{2\sqrt{1+\tr R(A)}}
+\]
+Hence $SO(3)\cong\faktor{SU(2)}{\mbb{Z}_2}$
+\end{fact}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Representations}
@@ -444,7 +469,10 @@ Note that $\dim(R_\Lambda)=\Lambda+1$, so
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Cartan Classification}
-\subsection{Root Geometry}
+\'Elie Cartan classified finite dimensional, simple, complex Lie algebras in 1894. This sections will therefore restrict to treatment of such Lie algebras. Note that $\mf{su}_\mbb{C}(2)$ will be a prototypical such Lie algebra. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cartan-Weyl Basis}
 
 \begin{definition}[Cartan-Weyl Basis]
 Given a Lie algebra $\mf{g}$, with Cartan subalgebra $\mf{h}=\spn\lbrace H^i : i=1,\dots,r\rbrace$, let $\lbrace E^\alpha : \alpha\in\Phi \rbrace$ be the simultaneous eigenvectors of $ad_{H^i}$ s.t. 
@@ -460,18 +488,66 @@ is the \bam{Cartan-Weyl basis} for $\mf{g}$.
 
 \begin{definition}[Roots]
 The \bam{roots} of a Lie Algebra are $\alpha\in\Phi$. They can be viewed as laying in $\mf{h}^\ast$ where 
-\[
-\alpha:\mf{h}\to\mbb{C}, \; \alpha: e_i H^i \mapsto e_i \alpha^i
-\]
+\begin{align*}
+\alpha &:\mf{h}\to\mbb{C} \\
+\alpha &: e_i H^i \mapsto e_i \alpha^i
+\end{align*}
 \end{definition}
 
 \begin{fact}
 The roots are all non-degenerate i.e. the eigenspace is 1 dimensional. 
 \end{fact}
 
+\begin{theorem}
+Let $\kappa$ be the Killing form on $\mf{g}$. Then, 
+\begin{itemize}
+    \item $\forall H\in\mf{h}, \forall\alpha\in\Phi, \; \kappa\left(H,E^\alpha\right)=0 $
+    \item $\forall\alpha,\beta\in\Phi, \alpha+\beta\neq0, \; \kappa\left(E^\alpha,E^\beta\right)=0$
+    \item $\forall H\in\mf{h}, \exists H^\prime\in\mf{h}, \; \kappa\left(H,H^\prime\right)\neq0$
+    \item $\alpha\in\Phi \Rightarrow -\alpha\in\Phi \text{ and } \kappa\left(E^\alpha,E^{-\alpha}\right)\neq0$
+\end{itemize}
+Hence $\kappa|_{\mf{h}\times\mf{h}}$ is non-degenerate, so invertible. 
+\end{theorem}
+
 \begin{fact}
-Given $\alpha\in\Phi$, $\lbrace \lambda : \lambda\alpha\in\Phi \rbrace = \lbrace \pm1 \rbrace$.
+Given $\alpha\in\Phi$, $\lbrace \lambda : \lambda\alpha\in\Phi \rbrace = \lbrace \pm1 \rbrace$. Note one direction of this inclusion follows from the previous result. 
 \end{fact}
+
+\begin{definition}[Dual Space Inner Product]
+The Killing form gives the dual space $\mf{h}^\ast$ a natural inner product $(\cdot,\cdot):\mf{h}^\ast \times \mf{h}^\ast \to \mbb{C}$ defined by 
+\[
+(\alpha, \beta) = \left(\kappa^{-1}\right)_{ij} \alpha^i \beta^j
+\]
+Note that it is immediate that the bracket is symmetric and bilinear. Positive definiteness follows from the fact
+\[
+(\alpha, \alpha)=\sum_{\delta\in\Phi} (\alpha, \delta)^2
+\]
+\end{definition}
+
+\begin{theorem}[Cartan-Weyl Basis Algebra]
+The algebra of the Cartan-Weyl basis is 
+\begin{align*}
+    \comm[H^i]{H^j} &= 0 \\
+    \comm[H^i]{E^\alpha} &= 0 \\
+    \comm[E^\alpha]{E^\beta} &= \left\{ \begin{array}{lc} N_{\alpha,\beta}E^{\alpha+\beta} & \alpha+\beta\in\Phi \\
+    \kappa\left(E^\alpha,E^{-\alpha}\right)H^\alpha & \alpha+\beta=0 \\
+    0 & \text{otherwise}
+    \end{array} \right. \\
+\end{align*}
+Defining 
+\[
+    H^\alpha = \frac{\comm[E^\alpha]{E^{-\alpha}}}{\kappa\left(E^\alpha,E^{-\alpha}\right)}
+\]
+Now letting 
+\begin{align*}
+    e^\alpha &= \sqrt{\frac{2}{(\alpha,\alpha)\kappa\left(E^\alpha,E^{-\alpha}\right)}}E^\alpha \\
+    h^\alpha &= \frac{2}{(\alpha,\alpha)}H^\alpha
+\end{align*}
+\end{theorem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Root Geometry}
 
 \begin{definition}[$\alpha$-string through $\beta$]
 The \bam{$\alpha$-string through $\beta$} is 
