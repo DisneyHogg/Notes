@@ -516,9 +516,9 @@ Given $\alpha\in\Phi$, $\lbrace \lambda : \lambda\alpha\in\Phi \rbrace = \lbrace
 \begin{definition}[Dual Space Inner Product]
 The Killing form gives the dual space $\mf{h}^\ast$ a natural inner product $(\cdot,\cdot):\mf{h}^\ast \times \mf{h}^\ast \to \mbb{C}$ defined by 
 \[
-(\alpha, \beta) = \left(\kappa^{-1}\right)_{ij} \alpha^i \beta^j
+(\alpha, \beta) = \left(\kappa^{-1}\right)_{ij} \alpha^i \beta^j = k^{ij} \alpha_i \beta_j
 \]
-Note that it is immediate that the bracket is symmetric and bilinear. Positive definiteness follows from the fact
+Defining $\alpha_i=\left( \kappa^{-1} \right)_{ij} \alpha^j$. Note that it is immediate that the bracket is symmetric and bilinear. Positive definiteness follows from the fact
 \[
 (\alpha, \alpha)=\sum_{\delta\in\Phi} (\alpha, \delta)^2
 \]
@@ -594,7 +594,7 @@ $V_{\alpha, \beta}$ is a representation space of the adjoint representation $R=d
     S_R &= \left\{ \frac{2(\alpha,\beta)}{(\alpha,\alpha)}+2\rho : \beta+\rho\alpha\in S_{\alpha, \beta} \right\} \\
      &= \lbrace -\Lambda,-\Lambda+2,\dots,\Lambda\rbrace=S_\Lambda \\
 \end{align*}
-Hence $\frac{2(\alpha,\beta)}{(\alpha,\alpha)} \in\mbb{Z}$
+Hence $R_{\alpha,\beta}=\frac{2(\alpha,\beta)}{(\alpha,\alpha)} \in\mbb{Z}$
 \end{fact}
 
 \begin{fact}
@@ -602,6 +602,54 @@ Under the assumption that $ad_{H^i}, ad_{H^j}$ are simultaneously diagonalisable
 \[
 \kappa^{ij}=\frac{1}{N} \sum_{\delta\in\Phi} \delta^i\delta^j
 \]
+Hence 
+\[
+(\alpha, \beta)= \frac{1}{N}\sum_{\delta\in\Phi} (\alpha, \delta) (\beta, \delta)
+\]
 \end{fact}
+
+\begin{fact}
+\[
+\forall \alpha, \beta\in\Phi (\alpha, \beta)\in\mbb{R}
+\]
+\end{fact}
+
+\begin{theorem}
+$\mf{h}^\ast=\spn_\mbb{C}\lbrace \alpha\in\Phi \rbrace$. Hence $r$ roots may be chosen to form a basis $\lbrace \alpha_{(i)} : i=1,\dots,r \rbrace$
+\end{theorem}
+
+\begin{definition}[$\mf{h}^\ast_\mbb{R}$]
+Given a basis of roots $\lbrace \alpha_{(i)} : i=1,\dots,r \rbrace$, $\mf{h}^\ast_\mbb{R}$ is defined as 
+\[
+\mf{h}^\ast_\mbb{R} = \spn_\mbb{R} \lbrace \alpha_{(i)} : i=1,\dots,r \rbrace
+\]
+\end{definition}
+
+\begin{fact}
+$\Phi\subset\mf{h}^\ast_\mbb{R}$
+\end{fact}
+
+\begin{theorem}
+$(\dot,\dot): \mf{h}^\ast_\mbb{R} \times \mf{h}^\ast_\mbb{R} \to \mbb{R}$ is a Euclidean inner product. 
+\end{theorem}
+
+\begin{definition}[Length and angle between roots]
+Given $\alpha\in\Phi$ the \bam{length} of $\alpha$ is defined as 
+\[
+|\alpha|=(\alpha,\alpha)^\frac{1}{2}
+\]
+Given also $\beta\in\Phi$, the \bam{angle} between $\alpha$ and $\beta$ is $\phi$ defined such that 
+\[
+(\alpha, \beta) = |\alpha||\beta|\cos{\phi}
+\]
+\end{definition}
+
+\begin{definition}[Positive roots]
+Given a hyperplane $H\leq\mf{h}^\ast$ s.t. $H\cap\Phi=\emptysett$ and $\mf{h}^\ast$ separated into $\mf{h}^\ast_\pm$ let 
+\[
+\Phi_\pm=\Phi\cap\mf{h}^\ast_\pm
+\]
+Define the \bam{positive roots} to be $\alpha\in\Phi_+$
+\end{definition}
 
 \end{document}
