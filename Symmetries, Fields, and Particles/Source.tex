@@ -26,6 +26,7 @@
 \DeclareMathOperator{\tr}{Tr}
 \DeclareMathOperator{\SU}{SU}
 %\DeclareMathOperator{\dim}{dim}
+\DeclareMathOperator{\rank}{rank}
 
 \newcommand{\bam}[1]{\textbf{#1}}
 \newcommand{\mf}[1]{\mathfrak{#1}}
@@ -190,7 +191,7 @@ Let $\mf{g}$ be a Lie algebra with Killing form $\kappa$. Then
 \subsection{Cartan Subalgebras}
 
 \begin{definition}[Cartan Subalgebra]
-A \bam{Cartan subalgebra} $\mf{h}\leq\mf{g}$ is a maximal abelian subalgebra containing only ad-diagonalisable elements. It is typically written as $\mf{h}=\spn\lbrace H^i \rbrace$
+A \bam{Cartan subalgebra} $\mf{h}\leq\mf{g}$ is a maximal abelian subalgebra containing only ad-diagonalisable elements. It is typically written as $\mf{h}=\spn\lbrace H^i \rbrace$. Write $\dim{\mf{h}}=\rank{\mf{g}}=r$
 \end{definition}
 
 \begin{fact}
@@ -198,7 +199,7 @@ All Cartan subalgebras of a given Lie algebra have the same dimension. Though Ca
 \end{fact}
 
 \begin{idea}
-It is a fact that Cartan subalgebras correspond to maximal toral subgroups of the corresponding Lie group. This gives a route to visualisation of what the subalgebra might be. A Cartan subalgebra is defined such that adjoint maps corresponding to the basis $\lbrace H^i \rbrace$ are simultaneously diagonalisable. 
+It is a fact that Cartan subalgebras correspond to maximal toral subgroups of the corresponding Lie group. This gives a route to visualisation of what the subalgebra might be. A Cartan subalgebra is defined such that representations of the basis $\lbrace H^i \rbrace$ are simultaneously diagonalisable. 
 \end{idea}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -587,6 +588,10 @@ The corresponding subspace of $\mf{g}$ is
 \[
 V_{\alpha, \beta}=\left\{ e^{\beta+\rho\alpha} : \beta+\rho\alpha\in S_{\alpha, \beta} \right\}
 \]
+The \bam{length} of the string is 
+\[
+l_{\alpha,\beta}=|S_{\alpha,\beta}|
+\]
 \end{definition}
 \begin{fact}
 $V_{\alpha, \beta}$ is a representation space of the adjoint representation $R=d_{adj}$of $sl(2)_\alpha$. The non-degeneracy of the roots ensures that the weight set 
@@ -610,7 +615,7 @@ Hence
 
 \begin{fact}
 \[
-\forall \alpha, \beta\in\Phi (\alpha, \beta)\in\mbb{R}
+\forall \alpha, \beta\in\Phi \; (\alpha, \beta)\in\mbb{R}
 \]
 \end{fact}
 
@@ -630,7 +635,7 @@ $\Phi\subset\mf{h}^\ast_\mbb{R}$
 \end{fact}
 
 \begin{theorem}
-$(\dot,\dot): \mf{h}^\ast_\mbb{R} \times \mf{h}^\ast_\mbb{R} \to \mbb{R}$ is a Euclidean inner product. 
+$(\cdot,\cdot) : \mf{h}^\ast_\mbb{R} \times \mf{h}^\ast_\mbb{R} \to \mbb{R}$ is a Euclidean inner product. 
 \end{theorem}
 
 \begin{definition}[Length and angle between roots]
@@ -645,11 +650,89 @@ Given also $\beta\in\Phi$, the \bam{angle} between $\alpha$ and $\beta$ is $\phi
 \end{definition}
 
 \begin{definition}[Positive roots]
-Given a hyperplane $H\leq\mf{h}^\ast$ s.t. $H\cap\Phi=\emptysett$ and $\mf{h}^\ast$ separated into $\mf{h}^\ast_\pm$ let 
+Given a hyperplane $H\leq\mf{h}^\ast$ s.t. $H\cap\Phi=\emptyset$ and $\mf{h}^\ast$ separated into $\mf{h}^\ast_\pm$ let 
 \[
 \Phi_\pm=\Phi\cap\mf{h}^\ast_\pm
 \]
 Define the \bam{positive roots} to be $\alpha\in\Phi_+$
 \end{definition}
+
+\begin{fact} Let $\Phi_\pm$ be as defined.
+\begin{itemize}
+    \item $\alpha\in\Phi_\pm \Rightarrow -\alpha\in\Phi_\mp$
+    \item $\alpha,\beta\in\Phi_\pm,\, \alpha+\beta\in\Phi \Rightarrow \alpha+\beta\in\Phi_\pm$
+\end{itemize}
+\end{fact}
+
+\begin{definition}[Simple Roots]
+A roots $\delta$ is \bam{simple} if 
+\begin{itemize}
+\item $\delta\in\Phi_+$
+\item $\nexists \alpha,\beta\in\Phi_+ \, s.t. \, \delta=\alpha+\beta$
+\end{itemize}
+The set of simple roots is $\Phi_S$
+\end{definition}
+
+\begin{theorem}[Properties of simple roots]
+Let $\alpha,\beta\in\Phi_S$, $\alpha\neq\beta$. Then
+\begin{itemize}
+    \item $\alpha-\beta\notin\Phi$
+    \item $l_{\alpha,\beta}=1-\frac{2(\alpha,\beta)}{(\alpha,\alpha)}$
+    \item $(\alpha,\beta)\leq0$
+    \item $\Phi_+\subset\spn_{\mbb{N}_0}\Phi_S$
+    \item Simple roots are linearly independent.
+    \item $|\Phi_S|=r$
+\end{itemize}
+Hence $\Phi_S=\lbrace \alpha_{(i)} : i=1,\dots,r \rbrace$ is a basis for $\mf{h}^\ast_\mbb{R}$
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cartan Matrix and Dynkin Diagrams}
+
+\begin{definition}[Cartan Matrix]
+The \bam{Cartan matrix} $A$ is an $r \times r$ matrix with elements 
+\[
+A^{ij}=\frac{2(\alpha_{(i)},\alpha_{(j)})}{(\alpha_{(j)},\alpha_{(j)})}\in\mbb{Z}
+\]
+\end{definition}
+
+\begin{definition}[Chevalley Basis]
+For each $\alpha_{(i)}\in\Phi_S$ the basis of $sl(2)_{\alpha_{(i)}}$
+\[
+\left\{ h^i=h^{\alpha_{(i)}}, e^i_\pm=e^{\pm\alpha_{(i)}} \right\}
+\]
+is the \bam{Chevalley basis}
+\end{definition}
+
+\begin{theorem}
+In the Chevalley basis
+\begin{itemize}
+    \item $\comm[h^i]{h^j}=0$
+    \item $\comm[h^i]{e^j_\pm}=\pm A^{ji} e^j_\pm$
+    \item $\comm[e^i_+]{e^j_-}=\delta_{ij} h^i$
+\end{itemize}
+\end{theorem}
+
+\begin{theorem}[Serre Relation]
+The \bam{Serre relation} is 
+\[
+\left( ad_{e^i_\pm}\right)^{1-A^{ji}} e^j_\pm=0
+\]
+\end{theorem}
+
+\begin{idea}
+The previous two results show that the Cartan Matrix completely determinies a finite dimensional, simple, complex Lie algebra. 
+\end{idea}
+
+\begin{theorem}[Properties of the Cartan Matrix]
+The Cartan matrix satisfies
+\begin{itemize}
+    \item $\forall i \, A^{ii}=2$
+    \item $A^{ij}=0 \Rightarrow A^{ji}=0$
+    \item $A^{ij}\in\mbb{N}_0$
+    \item $\det{A}>0$
+    \item $A$ irreducible (for simple Lie algebras)
+\end{itemize}
+\end{theorem}
 
 \end{document}
