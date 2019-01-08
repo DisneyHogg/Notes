@@ -811,7 +811,12 @@ The Cartan matrix satisfies
 \end{theorem}
 
 \begin{definition}[Dynkin Diagrams]
-
+The \bam{Dynkin diagrams} are constructed from the Cartan matrix as follows:
+\begin{itemize}
+    \item Draw a node for each simple root.
+    \item Connect the $i^{\text{th}}$ and $j^\text{th}$ root with $\max\lbrace |A^{ij}|, |A^{ji}| \rbrace$ lines. 
+    \item If the roots have different length, draw an arrow from the longer root to the shorter. 
+\end{itemize}
 \end{definition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -876,13 +881,33 @@ where $A^{ij}$ is the Cartan matrix.
 \begin{definition}[Highest Weight]
 Given a finite dimensional representation, the \bam{highest weight} is $\Lambda$ such that 
 \[
-\forall v_\Lambda\in V_\Lambda, \, \forall \alpha\in\Phi_+ R(E^\alpha)v-\Lambda=0
+\forall v_\Lambda\in V_\Lambda, \, \forall \alpha\in\Phi_+ \quad R(E^\alpha)v_\Lambda=0
 \]
-If the representation is irreducible, all other weight are generate as product of $R(E^{-\alpha})$ for $\alpha\in\Phi_+$. 
+If the representation is irreducible, all other weight are generated as product of $R(E^{-\alpha})$ for $\alpha\in\Phi_+$. 
 \end{definition}
 
 \begin{theorem}[Theorem of the Highest Weight]
 Every finite dimension, irreducible, representation has a highest weight. Moreover, if two such representation have the same highest weight, they are isomorphic. Call the representation $R_\Lambda$. 
 \end{theorem}
+
+\begin{fact}
+Given a representation R, for $v\in V_\lambda$, 
+\[
+\lambda+\alpha\in S_R \Rightarrow R(E^\alpha)v \in V_{\lambda+\alpha}
+\]
+Hence if $R=R_\Lambda$ all weights are of the form 
+\[
+\lambda=\Lambda=\mu
+\]
+for $\mu=\sum_{i=1}^r \mu_i \alpha_{(i)}$, $\mu_i\in\mbb{N}_0$. Hence writing 
+\[
+\lambda=\sum_{i=1}^r \lambda^i \omega_{(i)}
+\]
+gives that
+\[
+\forall m_{(i)}\in\mbb{Z}, \, 0\leq m_{(i)}\leq \lambda^i, \quad \lambda-m_{(i)}\alpha_{(i)}\in S_R
+\]
+\end{fact}
+
 
 \end{document}
