@@ -320,10 +320,34 @@ is fully reducible.
 \end{fact}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Weights and lattices}
+\subsection{Weights}
 \begin{definition}[Weights]
-Given a representation $R$ of a Lie algebra with Cartan subalgebra $\mf{h}=\spn\lbrace H^i \rbrace$ the \bam{weights} of the representation are the eigenvalues of $R(H^i)$
+Given a representation $R$ of a Lie algebra with Cartan subalgebra $\mf{h}=\spn\lbrace H^i \rbrace$ the \bam{weights} of the representation are the eigenvalues $S_R=\lbrace \lambda : \exists v\in V \, R(H^i)v=\lambda^i v\rbrace$
 \end{definition}
+
+\begin{fact}
+Weights can be viewed as maps in $\mf{h}^\ast$ given by 
+\begin{align*}
+\lambda &:\mf{h}\to\mbb{C} \\
+\lambda &: e_i H^i \mapsto e_i \lambda^i
+\end{align*}
+Thus 
+\[
+R(H)v=\lambda(H)v
+\]
+\end{fact}
+
+\begin{idea}
+This idea is made more explicit in the concept of roots, which are the weights of the adjoint representation. 
+\end{idea}
+
+\begin{fact}
+Given weights set $S_R$
+\[
+V=\bigoplus_{\lambda\in S_R} V_\lambda
+\]
+where $V_\lambda=\lbrace v\in V : R(H^i)v=\lambda^i v\rbrace$
+\end{fact}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Useful Facts}
@@ -488,11 +512,8 @@ is the \bam{Cartan-Weyl basis} for $\mf{g}$.
 \end{definition}
 
 \begin{definition}[Roots]
-The \bam{roots} of a Lie Algebra are $\alpha\in\Phi$. They can be viewed as laying in $\mf{h}^\ast$ where 
-\begin{align*}
-\alpha &:\mf{h}\to\mbb{C} \\
-\alpha &: e_i H^i \mapsto e_i \alpha^i
-\end{align*}
+The \bam{roots} of a Lie Algebra are $\alpha\in\Phi$.
+These are the weights corresponding to the adjoint representation. 
 \end{definition}
 
 \begin{fact}
@@ -525,12 +546,27 @@ Defining $\alpha_i=\left( \kappa^{-1} \right)_{ij} \alpha^j$. Note that it is im
 \]
 \end{definition}
 
-\begin{theorem}[Cartan-Weyl Basis Algebra]
-Defining 
+\begin{definition}[Coroots]
+Given a root $\alpha\in\Phi$ the \bam{coroot} is 
+\[
+\alpha^\vee=\frac{2}{(\alpha,\alpha)}\alpha
+\]
+Note $\left( \alpha^\vee \right)^\vee=\alpha$
+\end{definition}
+
+\begin{definition}[$H^\alpha$]
+Define 
 \[
     H^\alpha = \frac{\comm[E^\alpha]{E^{-\alpha}}}{\kappa\left(E^\alpha,E^{-\alpha}\right)}
 \]
-the algebra of the Cartan-Weyl basis is 
+In components
+\[
+H^\alpha = \left( \kappa^{-1}\right)_{ij} \alpha^j H^i
+\]
+\end{definition}
+
+\begin{theorem}[Cartan-Weyl Basis Algebra]
+The algebra of the Cartan-Weyl basis is 
 \begin{align*}
     \comm[H^i]{H^j} &= 0 \\
     \comm[H^i]{E^\alpha} &= 0 \\
@@ -603,6 +639,37 @@ Hence $R_{\alpha,\beta}=\frac{2(\alpha,\beta)}{(\alpha,\alpha)} \in\mbb{Z}$
 \end{fact}
 
 \begin{fact}
+Writing
+\[
+S_{\alpha, \beta}=\lbrace \beta+\rho\alpha\in\Phi : n_- \leq \rho \leq n_+ \rbrace
+\]
+with $n_+ \geq 0$ and $n_- \leq 0$ yields
+\begin{itemize}
+    \item $l_{\alpha,\beta}=n_+-n_-+1$
+    \item $R_{\alpha,\beta}=\frac{2(\alpha,\beta)}{(\alpha,\alpha)} = -(n_+ + n_-) \in\mbb{Z}$
+\end{itemize}
+\end{fact}
+
+\begin{definition}[Weyl Reflections and Group]
+For $\alpha\in\Phi$, the \bam{Weyl reflection} in the hyperplane orthogonal to $\alpha$ is 
+\begin{align*}
+    & w_\alpha : \mf{h}^\ast \to \mf{h}^\ast \\
+    & w_\alpha (x) = x - \frac{2(\alpha,x)}{(\alpha,\alpha)}\alpha
+\end{align*}
+Noting 
+\begin{itemize}
+    \item $(w_\alpha)^2=id$
+    \item $w_\alpha (\alpha) = -\alpha$
+    \item $(\alpha,x)=0 \Rightarrow w_\alpha (x) = x$
+\end{itemize}
+It can be seen $w_\alpha$ is indeed a reflection in the hyperplane orthogonal to $\alpha$, and hence is an isometry. The \bam{Weyl group} is 
+\[
+W=\lbrace w_\alpha : \alpha\in\Phi \rbrace
+\]
+with composition as the group operation. Using the previous fact it can be seen $w_\alpha$ restricts to an isometry on $\Phi$. Hence $W$ acts via permutation on $\Phi$, and so $W\leq S_\Phi$
+\end{definition}
+
+\begin{fact}
 Under the assumption that $ad_{H^i}, ad_{H^j}$ are simultaneously diagonalisable $\forall i,j$ the Killing form, scaled by a factor $\frac{1}{N}$, is given by 
 \[
 \kappa^{ij}=\frac{1}{N} \sum_{\delta\in\Phi} \delta^i\delta^j
@@ -649,6 +716,13 @@ Given also $\beta\in\Phi$, the \bam{angle} between $\alpha$ and $\beta$ is $\phi
 \]
 \end{definition}
 
+\begin{theorem}
+\[
+\cos\phi=\pm\frac{\sqrt{n}}{2}
+\]
+for $n\in\lbrace 0,1,2,3,4 \rbrace$
+\end{theorem}
+
 \begin{definition}[Positive roots]
 Given a hyperplane $H\leq\mf{h}^\ast$ s.t. $H\cap\Phi=\emptyset$ and $\mf{h}^\ast$ separated into $\mf{h}^\ast_\pm$ let 
 \[
@@ -680,7 +754,7 @@ Let $\alpha,\beta\in\Phi_S$, $\alpha\neq\beta$. Then
     \item $l_{\alpha,\beta}=1-\frac{2(\alpha,\beta)}{(\alpha,\alpha)}$
     \item $(\alpha,\beta)\leq0$
     \item $\Phi_+\subset\spn_{\mbb{N}_0}\Phi_S$
-    \item Simple roots are linearly independent.
+    \item The simple roots are linearly independent.
     \item $|\Phi_S|=r$
 \end{itemize}
 Hence $\Phi_S=\lbrace \alpha_{(i)} : i=1,\dots,r \rbrace$ is a basis for $\mf{h}^\ast_\mbb{R}$
@@ -692,7 +766,7 @@ Hence $\Phi_S=\lbrace \alpha_{(i)} : i=1,\dots,r \rbrace$ is a basis for $\mf{h}
 \begin{definition}[Cartan Matrix]
 The \bam{Cartan matrix} $A$ is an $r \times r$ matrix with elements 
 \[
-A^{ij}=\frac{2(\alpha_{(i)},\alpha_{(j)})}{(\alpha_{(j)},\alpha_{(j)})}\in\mbb{Z}
+A^{ij}=\frac{2(\alpha_{(i)},\alpha_{(j)})}{(\alpha_{(j)},\alpha_{(j)})}
 \]
 \end{definition}
 
@@ -721,7 +795,7 @@ The \bam{Serre relation} is
 \end{theorem}
 
 \begin{idea}
-The previous two results show that the Cartan Matrix completely determinies a finite dimensional, simple, complex Lie algebra. 
+The previous two results show that the Cartan Matrix completely determines a finite dimensional, simple, complex Lie algebra. 
 \end{idea}
 
 \begin{theorem}[Properties of the Cartan Matrix]
@@ -729,10 +803,86 @@ The Cartan matrix satisfies
 \begin{itemize}
     \item $\forall i \, A^{ii}=2$
     \item $A^{ij}=0 \Rightarrow A^{ji}=0$
-    \item $A^{ij}\in\mbb{N}_0$
+    \item for $i \neq j \; A^{ij}\in\mbb{Z}_{\leq0}$
+    \item $|A^{ij}|\leq4$
     \item $\det{A}>0$
     \item $A$ irreducible (for simple Lie algebras)
 \end{itemize}
+\end{theorem}
+
+\begin{definition}[Dynkin Diagrams]
+
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Lattices}
+
+\begin{definition}[Root Lattice]
+Given a Lie algebra $\mf{g}$ with simple roots $\Phi_S=\lbrace \alpha_{(i)} : i=1,\dots,r \rbrace$ the \bam{root lattice} is 
+\[
+\mathcal{L} [\mf{g}] = \left\{ \sum_{i=1}^r m_i \alpha_{(i)} : m_i \in\mbb{Z} \right\}
+\]
+\end{definition}
+
+\begin{definition}[Coroot Lattice]
+The \bam{coroot lattice} is given by 
+\[
+\mathcal{L}^{\bigvee} [\mf{g}] =\left\{ \sum_{i=1}^r m_i \alpha^\vee_{(i)} : m_i \in\mbb{Z} \right\}
+\]
+\end{definition}
+
+\begin{definition}[Quantisation Condition]
+Given a representation $R$ of the $sl(2)_\alpha$ subalgbera, and $v\in V_\lambda$ for $\lambda$ a weight of the representation,
+\[
+R(h^\alpha)v=\frac{2(\alpha,\lambda)}{(\alpha,\alpha)}v
+\]
+Hence as the weights of $sl(2)_\alpha$ are integers
+\[
+\frac{2(\alpha,\lambda)}{(\alpha,\alpha)} \in \mbb{Z}
+\]
+\end{definition}
+
+\begin{definition}[Weight Lattice]
+The \bam{weight lattice}, $\mathcal{L}_W [\mf{g}]$, is the dual of the coroot lattice, defined as 
+\[
+\mathcal{L}_W [\mf{g}] = \left( \mathcal{L}^{\bigvee} [\mf{g}] \right)^\ast = \left\{ \lambda\in\mf{h}^\ast_\mbb{R} : \forall \mu\in\mathcal{L}^{\bigvee} [\mf{g}] \, (\lambda, \mu) \in \mbb{Z} \right\}
+\]
+\end{definition}
+
+\begin{theorem}
+Note 
+\[
+(\lambda, \alpha^\vee_{(i)})=\frac{2(\alpha_{(i)},\lambda)}{(\alpha_{(i)},\alpha_{(i)})} \in \mbb{Z}
+\]
+Hence all weights Lie in the weight lattice. 
+\end{theorem}
+
+\begin{definition}[Fundamental Weights]
+The dual to the coroot basis, i.e. the weights $\omega_{(i)}$ such that 
+\[
+(\alpha_{(i)}, \omega_{(j)})=\delta_{ij}
+\]
+are the \bam{fundamental weights}
+\end{definition}
+
+\begin{fact}
+Writing $\omega_{(i)}=\sum_{j=1}^r B^{ij} \alpha_{(j)}$ yields $\delta_{ij}=A^{ki}B_{jk}$. Hence 
+\[
+\alpha_{(i)}=\sum_{j=1}^r A^{ij} \omega_{(j)}
+\]
+where $A^{ij}$ is the Cartan matrix. 
+\end{fact}
+
+\begin{definition}[Highest Weight]
+Given a finite dimensional representation, the \bam{highest weight} is $\Lambda$ such that 
+\[
+\forall v_\Lambda\in V_\Lambda, \, \forall \alpha\in\Phi_+ R(E^\alpha)v-\Lambda=0
+\]
+If the representation is irreducible, all other weight are generate as product of $R(E^{-\alpha})$ for $\alpha\in\Phi_+$. 
+\end{definition}
+
+\begin{theorem}[Theorem of the Highest Weight]
+Every finite dimension, irreducible, representation has a highest weight. Moreover, if two such representation have the same highest weight, they are isomorphic. Call the representation $R_\Lambda$. 
 \end{theorem}
 
 \end{document}
