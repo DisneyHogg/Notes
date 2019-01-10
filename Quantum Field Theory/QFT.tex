@@ -1,0 +1,132 @@
+\documentclass{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Packages
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref} % Used for refernces and links. 
+\usepackage{bm} % Used to bold vectors. 
+\usepackage{faktor} % Used to write quotients nicely.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Definitions
+
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{remark}{Remark}
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{fact}{Fact}[subsection]
+\newtheorem*{idea}{Idea}
+
+\DeclareMathOperator{\spn}{Span}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\SU}{SU}
+%\DeclareMathOperator{\dim}{dim}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\eps}{\epsilon}
+
+\newcommand{\bam}[1]{\textbf{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mbb}[1]{\mathbb{#1}}
+\newcommand{\comm}[2][]{\left[ #1, #2 \right]}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\set}[1]{\lbrace #1 \rbrace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Preamble
+
+\title{Quantum Field Theory Revision Notes}
+\author{Linden Disney-Hogg}
+\date{January 2019}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Introduction}
+A brief overview of some key ideas, concepts, and facts that I find useful in revising QFT. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Field Theories}
+\begin{definition}[Free Theory]
+A \bam{free field theory} is one that contains no interaction terms, and so there are no terms containing multiple different fields. 
+\end{definition}
+
+\begin{definition}[Natural Units]
+In QFT, \bam{natural units} are used where
+\[
+c=1=\hbar
+\]
+$[c]=LT^{-1}$, $[\hbar]=L^2 M T^{-1}$, so in natural units
+\[
+L=T=M^{-1}
+\]
+Units are therefore given in \bam{mass dimension}, e.g. if $[x]=M^d$, write $[x]=d$.
+\end{definition}
+
+\begin{fact}
+A table of common values and their mass dimension is given below. 
+\begin{center}$
+\begin{array}{ccc}
+    \text{Quantity} & \text{Symbol} & \text{Mass Dimension} \\
+    \hline
+    \hline
+    \text{Energy} & E & 1 \\
+     
+\end{array}
+$\end{center}
+\end{fact}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quantisation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Perturbation Theory}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fermions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Clifford Algebra}
+
+\begin{theorem}
+Let $\Lambda^\mu_\nu$ be a Lorentz transform with infinitesimal expansion 
+\[
+\Lambda^\mu_\nu=\delta^\mu_\nu+\eps \omega^\mu_\nu +\mathcal{O}(\eps^2) 
+\]
+Then 
+\[
+\Lambda^\mu_\rho \Lambda^\nu_\sigma \eta^{\rho\sigma}=\eta^{\mu\nu} \Rightarrow \omega^{\mu\nu}+\omega^{\nu\mu}=0
+\]
+\end{theorem}
+
+\begin{definition}
+Define the matrix $M^{\rho\sigma}$ by 
+\[
+\left( M^{\rho\sigma} \right)^{\mu\nu} = \eta^{\rho\mu}\eta^{\sigma\nu}-\eta^{\sigma\mu}\eta^{\rho\nu}
+\]
+These matrices for generate all antisymmetric tensors by \[
+\omega^{\mu\nu}=\frac{1}{2}\left(\Omega_{\rho\sigma}M^{\rho\sigma}\right)^{\mu\nu}
+\]
+summation convention used. Hence $\set{M^{\rho\sigms}}$ is a generating set for the Lorentz transforms. 
+\end{definition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quantum Electrodynamics (QED)}
+
+
+\end{document}

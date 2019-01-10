@@ -100,15 +100,15 @@ The dimension of the tangent space to a manifold is equal to the dimension of th
 \end{fact}
 
 \begin{definition}[Structure Constants]
-Given a basis $\lbrace T^a \rbrace$ of a Lie algebra, the \bam{structure constants} $f^{ab}_c$ are defined such that 
+Given a basis $\set{T^a}$ of a Lie algebra, the \bam{structure constants} $f^{ab}_c$ are defined such that 
 \[
 \comm[T^a]{T^b}=f^{ab}_c T^c
 \]
 \end{definition}
 
 \begin{definition}[Complexification and Real Form]
-Given a  real Lie algebra $\mf{g}_\mathbb{R}\equiv\spn_{\mathbb{R}}\lbrace T^a : a=1, \dots, D \rbrace$ the \bam{complexification}
-is $\mf{g}_\mathbb{C}\equiv\spn_{\mathbb{C}}\lbrace T^a : a=1, \dots, D \rbrace$. Conversely, given such a $\mf{g}_\mathbb{C}$, $\mf{g}_\mathbb{R}$ is called a \bam{real form}.  
+Given a  real Lie algebra $\mf{g}_\mathbb{R}\equiv\spn_{\mathbb{R}}\set{ T^a : a=1, \dots, D }$ the \bam{complexification}
+is $\mf{g}_\mathbb{C}\equiv\spn_{\mathbb{C}}\set{ T^a : a=1, \dots, D }$. Conversely, given such a $\mf{g}_\mathbb{C}$, $\mf{g}_\mathbb{R}$ is called a \bam{real form}.  
 \end{definition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Ideals and Simplicity}
@@ -191,7 +191,7 @@ Let $\mf{g}$ be a Lie algebra with Killing form $\kappa$. Then
 \subsection{Cartan Subalgebras}
 
 \begin{definition}[Cartan Subalgebra]
-A \bam{Cartan subalgebra} $\mf{h}\leq\mf{g}$ is a maximal abelian subalgebra containing only ad-diagonalisable elements. It is typically written as $\mf{h}=\spn\lbrace H^i \rbrace$. Write $\dim{\mf{h}}=\rank{\mf{g}}=r$
+A \bam{Cartan subalgebra} $\mf{h}\leq\mf{g}$ is a maximal abelian subalgebra containing only ad-diagonalisable elements. It is typically written as $\mf{h}=\spn\set{ H^i }$. Write $\dim{\mf{h}}=\rank{\mf{g}}=r$
 \end{definition}
 
 \begin{fact}
@@ -199,12 +199,12 @@ All Cartan subalgebras of a given Lie algebra have the same dimension. Though Ca
 \end{fact}
 
 \begin{idea}
-It is a fact that Cartan subalgebras correspond to maximal toral subgroups of the corresponding Lie group. This gives a route to visualisation of what the subalgebra might be. A Cartan subalgebra is defined such that representations of the basis $\lbrace H^i \rbrace$ are simultaneously diagonalisable. 
+It is a fact that Cartan subalgebras correspond to maximal toral subgroups of the corresponding Lie group. This gives a route to visualisation of what the subalgebra might be. A Cartan subalgebra is defined such that representations of the basis $\set{ H^i }$ are simultaneously diagonalisable. 
 \end{idea}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{definition}[$\kappa^{ij}$]
-Given a Cartan subalgebra $\mf{h}=\spn\lbrace H^i \rbrace$ and Killing form $\kappa$ the notation will be used $\kappa^{ij}$ for the matrix elements of $\kappa |_{\mf{h}\times\mf{h}}$,
+Given a Cartan subalgebra $\mf{h}=\spn\set{ H^i }$ and Killing form $\kappa$ the notation will be used $\kappa^{ij}$ for the matrix elements of $\kappa |_{\mf{h}\times\mf{h}}$,
 \[
 \kappa^{ij}=\kappa(H^i, H^j)
 \]
@@ -322,7 +322,7 @@ is fully reducible.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Weights}
 \begin{definition}[Weights]
-Given a representation $R$ of a Lie algebra with Cartan subalgebra $\mf{h}=\spn\lbrace H^i \rbrace$ the \bam{weights} of the representation are the eigenvalues $S_R=\lbrace \lambda : \exists v\in V \, R(H^i)v=\lambda^i v\rbrace$
+Given a representation $R$ of a Lie algebra with Cartan subalgebra $\mf{h}=\spn\set{ H^i }$ the \bam{weights} of the representation are the eigenvalues $S_R=\set{ \lambda : \exists v\in V \, R(H^i)v=\lambda^i v}$
 \end{definition}
 
 \begin{fact}
@@ -346,7 +346,7 @@ Given weights set $S_R$
 \[
 V=\bigoplus_{\lambda\in S_R} V_\lambda
 \]
-where $V_\lambda=\lbrace v\in V : R(H^i)v=\lambda^i v\rbrace$
+where $V_\lambda=\set{ v\in V : R(H^i)v=\lambda^i v}$
 \end{fact}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -500,7 +500,7 @@ Note that $\dim(R_\Lambda)=\Lambda+1$, so
 \subsection{Cartan-Weyl Basis}
 
 \begin{definition}[Cartan-Weyl Basis]
-Given a Lie algebra $\mf{g}$, with Cartan subalgebra $\mf{h}=\spn\lbrace H^i : i=1,\dots,r\rbrace$, let $\lbrace E^\alpha : \alpha\in\Phi \rbrace$ be the simultaneous eigenvectors of $ad_{H^i}$ s.t. 
+Given a Lie algebra $\mf{g}$, with Cartan subalgebra $\mf{h}=\spn\set{ H^i : i=1,\dots,r }$, let $\set{  E^\alpha : \alpha\in\Phi  }$ be the simultaneous eigenvectors of $ad_{H^i}$ s.t. 
 \[
 ad_{H^i}\left(E^\alpha \right)=\alpha^i E^\alpha
 \]
@@ -607,7 +607,7 @@ yields the algebra
 \begin{definition}[$sl(2)_\alpha$]
 For $\alpha\in\Phi$ there is a $\mf{su}_\mbb{C}(2)$ subalgebra 
 \[
-sl(2)_\alpha=\spn\lbrace h^\alpha, e^{\pm\alpha}\rbrace
+sl(2)_\alpha=\spn\set{  h^\alpha, e^{\pm\alpha} }
 \]
 \end{definition}
 
@@ -618,7 +618,7 @@ sl(2)_\alpha=\spn\lbrace h^\alpha, e^{\pm\alpha}\rbrace
 \begin{definition}[$\alpha$-string through $\beta$]
 The \bam{$\alpha$-string through $\beta$} is 
 \[
-S_{\alpha, \beta}=\lbrace \beta+\rho\alpha\in\Phi : \rho\in\mbb{Z} \rbrace
+S_{\alpha, \beta}=\set{  \beta+\rho\alpha\in\Phi : \rho\in\mbb{Z}  }
 \]
 The corresponding subspace of $\mf{g}$ is 
 \[
@@ -633,7 +633,7 @@ l_{\alpha,\beta}=|S_{\alpha,\beta}|
 $V_{\alpha, \beta}$ is a representation space of the adjoint representation $R=d_{adj}$of $sl(2)_\alpha$. The non-degeneracy of the roots ensures that the weight set 
 \begin{align*}
     S_R &= \left\{ \frac{2(\alpha,\beta)}{(\alpha,\alpha)}+2\rho : \beta+\rho\alpha\in S_{\alpha, \beta} \right\} \\
-     &= \lbrace -\Lambda,-\Lambda+2,\dots,\Lambda\rbrace=S_\Lambda \\
+     &= \set{  -\Lambda,-\Lambda+2,\dots,\Lambda }=S_\Lambda \\
 \end{align*}
 Hence $R_{\alpha,\beta}=\frac{2(\alpha,\beta)}{(\alpha,\alpha)} \in\mbb{Z}$
 \end{fact}
@@ -641,7 +641,7 @@ Hence $R_{\alpha,\beta}=\frac{2(\alpha,\beta)}{(\alpha,\alpha)} \in\mbb{Z}$
 \begin{fact}
 Writing
 \[
-S_{\alpha, \beta}=\lbrace \beta+\rho\alpha\in\Phi : n_- \leq \rho \leq n_+ \rbrace
+S_{\alpha, \beta}=\set{  \beta+\rho\alpha\in\Phi : n_- \leq \rho \leq n_+  }
 \]
 with $n_+ \geq 0$ and $n_- \leq 0$ yields
 \begin{itemize}
@@ -664,7 +664,7 @@ Noting
 \end{itemize}
 It can be seen $w_\alpha$ is indeed a reflection in the hyperplane orthogonal to $\alpha$, and hence is an isometry. The \bam{Weyl group} is 
 \[
-W=\lbrace w_\alpha : \alpha\in\Phi \rbrace
+W=\set{  w_\alpha : \alpha\in\Phi  }
 \]
 with composition as the group operation. Using the previous fact it can be seen $w_\alpha$ restricts to an isometry on $\Phi$. Hence $W$ acts via permutation on $\Phi$, and so $W\leq S_\Phi$
 \end{definition}
@@ -691,9 +691,9 @@ $\mf{h}^\ast=\spn_\mbb{C}\lbrace \alpha\in\Phi \rbrace$. Hence $r$ roots may be 
 \end{theorem}
 
 \begin{definition}[$\mf{h}^\ast_\mbb{R}$]
-Given a basis of roots $\lbrace \alpha_{(i)} : i=1,\dots,r \rbrace$, $\mf{h}^\ast_\mbb{R}$ is defined as 
+Given a basis of roots $\set{  \alpha_{(i)} : i=1,\dots,r  }$, $\mf{h}^\ast_\mbb{R}$ is defined as 
 \[
-\mf{h}^\ast_\mbb{R} = \spn_\mbb{R} \lbrace \alpha_{(i)} : i=1,\dots,r \rbrace
+\mf{h}^\ast_\mbb{R} = \spn_\mbb{R} \set{  \alpha_{(i)} : i=1,\dots,r  }
 \]
 \end{definition}
 
@@ -720,7 +720,7 @@ Given also $\beta\in\Phi$, the \bam{angle} between $\alpha$ and $\beta$ is $\phi
 \[
 \cos\phi=\pm\frac{\sqrt{n}}{2}
 \]
-for $n\in\lbrace 0,1,2,3,4 \rbrace$
+for $n\in\set{  0,1,2,3,4  }$
 \end{theorem}
 
 \begin{definition}[Positive roots]
@@ -757,7 +757,7 @@ Let $\alpha,\beta\in\Phi_S$, $\alpha\neq\beta$. Then
     \item The simple roots are linearly independent.
     \item $|\Phi_S|=r$
 \end{itemize}
-Hence $\Phi_S=\lbrace \alpha_{(i)} : i=1,\dots,r \rbrace$ is a basis for $\mf{h}^\ast_\mbb{R}$
+Hence $\Phi_S=\set{  \alpha_{(i)} : i=1,\dots,r  }$ is a basis for $\mf{h}^\ast_\mbb{R}$
 \end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -814,7 +814,7 @@ The Cartan matrix satisfies
 The \bam{Dynkin diagrams} are constructed from the Cartan matrix as follows:
 \begin{itemize}
     \item Draw a node for each simple root.
-    \item Connect the $i^{\text{th}}$ and $j^\text{th}$ root with $\max\lbrace |A^{ij}|, |A^{ji}| \rbrace$ lines. 
+    \item Connect the $i^{\text{th}}$ and $j^\text{th}$ root with $\max\set{  |A^{ij}|, |A^{ji}|  }$ lines. 
     \item If the roots have different length, draw an arrow from the longer root to the shorter. 
 \end{itemize}
 \end{definition}
@@ -823,7 +823,7 @@ The \bam{Dynkin diagrams} are constructed from the Cartan matrix as follows:
 \subsection{Lattices}
 
 \begin{definition}[Root Lattice]
-Given a Lie algebra $\mf{g}$ with simple roots $\Phi_S=\lbrace \alpha_{(i)} : i=1,\dots,r \rbrace$ the \bam{root lattice} is 
+Given a Lie algebra $\mf{g}$ with simple roots $\Phi_S=\set{  \alpha_{(i)} : i=1,\dots,r  }$ the \bam{root lattice} is 
 \[
 \mathcal{L} [\mf{g}] = \left\{ \sum_{i=1}^r m_i \alpha_{(i)} : m_i \in\mbb{Z} \right\}
 \]
