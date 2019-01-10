@@ -14,6 +14,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Definitions
 
+%Environments
 \newtheorem{theorem}{Theorem}[subsection]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -22,20 +23,37 @@
 \newtheorem{fact}{Fact}[subsection]
 \newtheorem*{idea}{Idea}
 
+%Text math operators.
 \DeclareMathOperator{\spn}{Span}
 \DeclareMathOperator{\tr}{Tr}
 \DeclareMathOperator{\SU}{SU}
 %\DeclareMathOperator{\dim}{dim}
 \DeclareMathOperator{\rank}{rank}
-\DeclareMathOperator{\eps}{\epsilon}
+\DeclareMathOperator{\diag}{diag}
 
+%Symbolic shortcuts 
+\newcommand{\eps}{\epsilon}
+\newcommand{\curl}{\bm{\nabla}\times}
+\newcommand{\divergence}{\bm{\nabla}\cdot}
+\newcommand{\grad}{\bm{\nabla}}
+\newcommand{\del}{\partial}
+
+%Text type shortcuts
 \newcommand{\bam}[1]{\textbf{#1}}
 \newcommand{\mf}[1]{\mathfrak{#1}}
 \newcommand{\mbb}[1]{\mathbb{#1}}
-\newcommand{\comm}[2][]{\left[ #1, #2 \right]}
-\newcommand{\be}{\begin{equation}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+
+%Functions shortcuts.
+\newcommand{\comm}[2][]{\left[ #1, #2 \right]} %Commutator .
+\newcommand{\acomm}[2][]{\left\{ #1, #2 \right\}} %Anticommutator .
+\newcommand{\pd}[2][]{\frac{\partial#1}{\partial#2}} %Partial derivative. 
+\newcommand{\pds}[2][]{\frac{\partial^2 #1}{\partial #2^2}} %Second partial derivative.
+\newcommand{\set}[1]{\lbrace #1 \rbrace} 
+
+
+\newcommand{\be}{\begin{equation}} %Used like \[ \] but with tags. 
 \newcommand{\ee}{\end{equation}}
-\newcommand{\set}[1]{\lbrace #1 \rbrace}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Preamble
@@ -56,9 +74,24 @@ A brief overview of some key ideas, concepts, and facts that I find useful in re
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Field Theories}
-\begin{definition}[Free Theory]
-A \bam{free field theory} is one that contains no interaction terms, and so there are no terms containing multiple different fields. 
+\section{Preliminaries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Miscellaneous}
+
+\begin{definition}
+In these notes attention will only be paid to $3+1$ dimension spacetime. As such greek indicies (e.g $\mu$, $\nu$) will run from $0$ to $3$, while latin indices (e.g. $i$, $j$) will run from $1$ to $3$. 
+\end{definition}
+
+\begin{definition}[Field]
+In these notes a \bam{field} will be a function of spacetime $\phi=\phi(x)$ where $x=(t,\bm{x})$. 
+\end{definition}
+
+\begin{definition}[Minkowski Metric]
+In these notes the mostly-minus metric convention will be adopted, so the \bam{Minkowski metric} is 
+\[
+\eta^{\mu\nu}=\diag(1, -1, -1, -1)
+\]
 \end{definition}
 
 \begin{definition}[Natural Units]
@@ -70,7 +103,7 @@ $[c]=LT^{-1}$, $[\hbar]=L^2 M T^{-1}$, so in natural units
 \[
 L=T=M^{-1}
 \]
-Units are therefore given in \bam{mass dimension}, e.g. if $[x]=M^d$, write $[x]=d$.
+Units are therefore given in \bam{mass dimension}, e.g. if $[f]=M^d$, write $[f]=d$.
 \end{definition}
 
 \begin{fact}
@@ -87,21 +120,31 @@ $\end{center}
 \end{fact}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Quantisation}
+\subsection{Lorentz Transformations}
 
+\begin{definition}[Lorentz Group]
+The \bam{Lorentz Group} is $O(1,3)$, the group of transormations that preserve the Minkowski metric, i.e.
+\[
+\forall \Lambda\in O(1,3) \quad \Lambda^\mu_\rho \Lambda^\nu_\sigma \eta^{\rho\sigma}=\eta^{\mu\nu}
+\]
+The \bam{proper orthochronous Lorentz group} is the connected component containing the identity $SO^+(1,3)$. These preserve orientation and the direction of time. 
+\end{definition}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Perturbation Theory}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Fermions}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Clifford Algebra}
+\begin{theorem}
+Under a Lorentz transformation $\Lambda$, $x\to x^\prime=\Lambda x$, a scalar field $\phi=\phi(x)$ transforms as 
+\[
+\phi\to\phi^\prime, \quad \phi^\prime(x^\prime)=\phi(x)
+\]
+Vector fields $A^\mu(x)$ transform as 
+\[
+A\to A^\prime, \quad \left(A^\prime\right)^\mu(x^\prime)=\Lambda^\mu_\nu A^\nu (x)
+\]
+In general a field transforms as 
+\[
+\phi\to\phi^\prime, \quad (\phi^\prime)^\mu(x^\prime)=D(\Lambda)^\mu_\nu \phi^\nu(x)
+\]
+where $D$ is some representation of the Lorentz group. 
+\end{theorem}
 
 \begin{theorem}
 Let $\Lambda^\mu_\nu$ be a Lorentz transform with infinitesimal expansion 
@@ -110,7 +153,7 @@ Let $\Lambda^\mu_\nu$ be a Lorentz transform with infinitesimal expansion
 \]
 Then 
 \[
-\Lambda^\mu_\rho \Lambda^\nu_\sigma \eta^{\rho\sigma}=\eta^{\mu\nu} \Rightarrow \omega^{\mu\nu}+\omega^{\nu\mu}=0
+\omega^{\mu\nu}+\omega^{\nu\mu}=0
 \]
 \end{theorem}
 
@@ -122,7 +165,201 @@ Define the matrix $M^{\rho\sigma}$ by
 These matrices for generate all antisymmetric tensors by \[
 \omega^{\mu\nu}=\frac{1}{2}\left(\Omega_{\rho\sigma}M^{\rho\sigma}\right)^{\mu\nu}
 \]
-summation convention used. Hence $\set{M^{\rho\sigms}}$ is a generating set for the Lorentz transforms. 
+summation convention used. Hence $\set{M^{\rho\sigma}}$ is a generating set for the Lorentz transforms. 
+\end{definition}
+
+\begin{definition}[Lorentz Algebra]
+The matrices $m^{\rho\sigma}$ satisfy the \bam{Lorentz algebra}
+\[
+\comm[M^{\rho\sigma}]{M^{\mu\nu}}=\eta^{\sigma\mu}M^{\rho\nu}-\eta^{\rho\mu}M^{\sigma\nu}-\eta^{\sigma\nu}M^{\rho\mu}+\eta^{\rho\nu}M^{\sigma\mu}
+\]
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Pauli Matrices}
+
+\begin{definition}[Pauli Matrices]
+The \bam{Pauli matrices} are
+
+\begin{align*}
+\sigma_1 &= \begin{pmatrix} 0 & 1 \\ 1 & 0\end{pmatrix}  \\
+\sigma_2 &= \begin{pmatrix} 0 & -i \\ i & 0\end{pmatrix}  \\
+\sigma_3 &= \begin{pmatrix} 1 & 0 \\ 0 & -1\end{pmatrix}  
+\end{align*}
+
+Note they are all Hermitian and traceless.
+\end{definition}
+
+\begin{fact}
+\be
+\sigma_i \sigma_j = \delta_{ij}I +i\epsilon_{ijk}\sigma_k
+\ee
+\end{fact}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Field Theories}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Basics}
+
+\begin{definition}[Free Theory]
+A \bam{free field theory} is one that contains no interaction terms, and so there are no terms containing multiple different fields. 
+\end{definition}
+
+\begin{definition}[Klein-Gordon Field]
+The \bam{Klein-Gordon field} is the real field $\phi$ with Lagrangian density
+\[
+\mc{L}=\frac{1}{2}\eta^{\mu\nu} \del_\mu\phi \del_\nu\phi-\frac{1}{2}m^2\phi^2=0
+\]
+It is a free field theory, and will the prototypical field theory.
+\end{definition}
+
+\begin{definition}[Lorentz Invariance]
+A field theory is \bam{Lorentz invariant} if the action is unchanged by a Lorentz transformation. 
+\end{definition}
+
+\begin{definition}[Euler-Lagrange Equations]
+Given a Lagrangian density $\mathcal{L}=\mathcal{L}(\phi_a,\del_\mu \phi_a)$ the \bam{Euler-Lagrane equations} are 
+\[
+\del_\mu \pd[\mc{L}]{(\del_\mu \phi_a)}-\pd[\mc{L}]{\phi_a}=0
+\]
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Conserved Quantities}
+
+\begin{theorem}[Noether's Theorem]
+Every continuous symmetry of the action of the form $\phi\to\phi+\alpha\Delta\phi$, that induces the transform on the Lagrangian density 
+\[
+\mc{L} \to \mc{L}+\alpha \del_\mu X^\mu
+\]
+gives rise to a conserved current $j^\mu$ s.t. $\del_\mu j^\mu = 0$, given by
+\[
+j^\mu = \pd[\mc{L}]{(\del_\mu \phi)}\Delta\phi-X^\mu
+\]
+and a corresponding conserved charge
+\[
+Q=\int_{\mbb{R}^3} j^0 \, d^3x
+\]
+\end{theorem}
+
+\begin{definition}[Energy-Momentum Tensor]
+For a given Lagrangian density the \bam{energy momentum tensor} is defined as  
+\[
+T^{\mu\nu}=\pd[\mc{L}]{(\del_\mu \phi)} \del^\nu \phi - \eta^{\mu\nu}\mc{L}
+\]
+\end{definition}
+
+\begin{theorem}
+If the Lagrangian density depends only on $x$ implicitly, then translation $x^\mu \to x^\mu-\alpha\eps^\mu$ is a continuous symmetry, and hence for each $\nu$, $T^{\mu\nu}$ is a conserved current. 
+\end{theorem}
+
+\begin{definition}[Energy and Momentum]
+The energy $E$ is defined as 
+\[
+E=\int_{\mbb{R}^3} T^{00} \, d^3x
+\]
+and the momentum $\bm{P}$ is defined with components 
+\[
+P^i = \int_{\mbb{R}^3} T^{0i} \, d^3
+\]
+
+
+\end{definition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quantisation}
+
+\begin{definition}[Conjugate Momentum]
+The \bam{conjugate momentum} to a field $\phi$ is defined as 
+\[
+\pi = \pd[\mc{L}]{(\del_0\phi)} = \pd[\mc{L}]{\dot{\phi}}
+\]
+\end{definition}
+
+\begin{definition}[Hamiltonian Density]
+Given a Lagrangian density $\mc{L}$, the corresponding \bam{Hamiltonian density} is defined as 
+\[
+\mc{H}=\pi \dot{\phi}-\mc{L}
+\]
+where $\mc{H}$ is a function of $\pi$ instead of $\dot{\phi}$
+\end{definition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Perturbation Theory}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fermions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Clifford Algebra}
+The \bam{Clifford algebra} is $\set{ \gamma^\mu }$ with the anticommutation relation 
+\[
+\acomm[\gamma^\mu]{\gamma^\nu} = 2\eta^{\mu\nu}
+\]
+
+\begin{definition}[$\gamma^5$]
+Define
+\[
+\gamma^5 = i \gamma^0 \gamma^1 \gamma^2 \gamma^3
+\]
+\end{definition}
+
+\begin{theorem}
+The following are properties of $\gamma^\mu$:
+\begin{itemize}
+    \item $\forall p\in\mbb{N}_0, \; \tr \left( \prod _ { i = 1 } ^ { 2 p + 1 } \gamma ^ { \mu _ { i } } \right)$
+    \item $\comm[\gamma^\mu\gamma^\nu]{\gamma^\rho\gamma^\sigma}=2\eta^{\nu\rho}\gamma^\mu\gamma^\sigma-2\eta^{\mu\rho}\gamma^\nu\gamma^\sigma+2\eta^{\nu\sigma}\gamma^\rho\gamma^\mu-2\eta^{\mu\sigma}\gamma^\rho\gamma^\nu$
+\end{itemize}
+\end{theorem}
+
+
+
+
+\begin{definition}[Chiral Representation]
+The \bam{chiral} or \bam{Weyl representation} of the Clifford Algebra is the 4 dimensional representation
+\begin{align*}
+    \gamma^0 &= \begin{pmatrix} 0 & I_2 \\ I_2 & 0 \end{pmatrix} \\
+    \gamma^i &= \begin{pmatrix} 0 & \sigma_i \\ -\sigma_i & 0 \end{pmatrix} \\ 
+\end{align*}
+In this representation 
+\[
+\gamma^5=\begin{pmatrix} -I_2 & 0 \\ 0 & I_2 \end{pmatrix}
+\]
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Spinors}
+
+\begin{definition}[$S^{\mu\nu}$]
+Define
+\[
+S^{\mu\nu}=\frac{1}{4}\comm[\gamma^\mu]{\gamma^\nu}=\frac{1}{2}\left( \gamma^\mu \gamma^\nu -\eta^{\mu\nu} \right)
+\]
+\end{definition}
+
+\begin{theorem}
+$S^{\mu\nu}$ satisfies the commutation relation
+\[
+\comm[S^{\rho\sigma}]{S^{\mu\nu}}=\eta^{\sigma\mu}S^{\rho\nu}-\eta^{\rho\mu}S^{\sigma\nu}-\eta^{\sigma\nu}S^{\rho\mu}+\eta^{\rho\nu}S^{\sigma\mu}
+\]
+\end{theorem}
+
+\begin{definition}[Spinor]
+A \bam{Dirac spinor} is a 4-component vecotr $\psi_\alpha$ that transforms under a Lorentz transform 
+\[
+\Lambda=\exp\left(\frac{1}{2}\Omega_{\rho\sigma}M^{\rho\sigma}\right)
+\]
+as 
+\[
+\psi^{\alpha}(x)\to S[\Lambda]_{\beta}^{\alpha}\psi^{\beta}\left(\Lambda^{-1}x\right)
+\]
+where
+\[
+S[\Lambda]=\exp\left(\frac{1}{2}\Omega_{\rho\sigma}S^{\rho\sigma}\right)
+\]
 \end{definition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

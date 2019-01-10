@@ -404,7 +404,7 @@ Note they are all Hermitian and traceless.
 \begin{definition}[U($n$)]
 The \bam{unitary group} of dimension $n$ is 
 \[
-U\left(n\right)=\lbrace U\in GL\left(n,\mbb{C}\right) : U^\dagger U=I \rbrace
+U\left(n\right)=\set{  U\in GL\left(n,\mbb{C}\right) : U^\dagger U=I  }
 \]
 It is a path connected, compact, Lie group.
 \end{definition}
@@ -412,12 +412,12 @@ It is a path connected, compact, Lie group.
 \begin{definition}[SU($n$)]
 The \bam{special unitary group} of dimension $n$ is
 \[
-SU\left(n\right)=\lbrace U\in U(n) : \det{U}=1 \rbrace
+SU\left(n\right)=\set{  U\in U(n) : \det{U}=1  }
 \]
 \end{definition}
 \noindent Through the $\det$ homomorphism, it can be seen $SU(n)$ is a closed subgroup of $U(n)$, hence also a Lie group.  The corresponding Lie algebra is 
 \[
-\mf{su}\left(n\right)=\lbrace Z\in GL\left(n,\mbb{C}\right) : Z^\dagger+Z=0, \tr{Z}=0 \rbrace
+\mf{su}\left(n\right)=\set{  Z\in GL\left(n,\mbb{C}\right) : Z^\dagger+Z=0, \tr{Z}=0  }
 \]
 The real dimension is
 \[
@@ -425,16 +425,16 @@ The real dimension is
 \]
 In the case $n=2$ we have 
 \[
-SU(2)=\lbrace   \begin{pmatrix} \alpha & -\overline{\beta} \\ \beta & \overline{\alpha} \end{pmatrix}  : \alpha,\beta\in\mathbb{C} , |\alpha|^2+|\beta|^2=1  \rbrace
+SU(2)=\set{    \begin{pmatrix} \alpha & -\overline{\beta} \\ \beta & \overline{\alpha} \end{pmatrix}  : \alpha,\beta\in\mathbb{C} , |\alpha|^2+|\beta|^2=1   }
 \]
 This can be expressed as, for $A\in SU(2)$
 \[
 A=a_0 I +i\bm{a}\cdot\bm{\sigma}
 \]
-where $\bm{a}=(a_1, a_2, a_3)$, $\bm{\sigma}=(\sigma_1, \sigma_2, \sigma_3)$, and $a_0^2+|\bm{a}|^2=1$. Hence $SU(2)\cong S^3$. In addition, by parametrising $SU(2)$ by the $a_i$, it can be seen that $\lbrace i\sigma_i\rbrace$ forms a basis of $\mf{su}(2)$. It is typical to normalise this basis to $\lbrace T^a=-\frac{1}{2} i\sigma_a \rbrace$. 
+where $\bm{a}=(a_1, a_2, a_3)$, $\bm{\sigma}=(\sigma_1, \sigma_2, \sigma_3)$, and $a_0^2+|\bm{a}|^2=1$. Hence $SU(2)\cong S^3$. In addition, by parametrising $SU(2)$ by the $a_i$, it can be seen that $\set{  i\sigma_i }$ forms a basis of $\mf{su}(2)$. It is typical to normalise this basis to $\set{  T^a=-\frac{1}{2} i\sigma_a  }$. 
 
 \begin{fact}
-The structure constants in this basis $\lbrace T^a \rbrace$ are 
+The structure constants in this basis $\set{  T^a  }$ are 
 \[
 f^{ab}_c=\epsilon_{abc}
 \]
@@ -457,7 +457,7 @@ Hence $SO(3)\cong\faktor{SU(2)}{\mbb{Z}_2}$
 \subsection{Representations}
 
 \begin{definition}[Cartan-Weyl basis of $\mf{su}_\mbb{C}(2)$]
-$\lbrace H, E_\pm \rbrace$, where $H=\sigma_3$ and $E_\pm=\frac{1}{2}(\sigma_1\pm i\sigma_2 )$, is the \bam{Cartan-Weyl basis} for $\mf{su}_\mbb{C}(2)$. The elements satisfy the commutation relations 
+$\set{  H, E_\pm  }$, where $H=\sigma_3$ and $E_\pm=\frac{1}{2}(\sigma_1\pm i\sigma_2 )$, is the \bam{Cartan-Weyl basis} for $\mf{su}_\mbb{C}(2)$. The elements satisfy the commutation relations 
 \begin{align*}
 \comm[H]{E_\pm} &= \pm 2E_\pm \\
 \comm[E_+]{E_-} &= H
@@ -471,7 +471,7 @@ $H$ spans a Cartan subalgebra of $\mf{su}_\mbb{C}(2)$, ad-diagonalisable w.r.t t
 \begin{theorem}
 Finite dimensional irreducible representations of $\mf{su}_\mbb{C}(2)$ with $R(H)$ diagonalisable are determined by the highest weight $\Lambda\in\mbb{N}_0$. Such a representation is called $R_\Lambda$. It has weight set 
 \[
-S_\Lambda=\lbrace \Lambda-2n : n=0,\dots,\Lambda \rbrace
+S_\Lambda=\set{  \Lambda-2n : n=0,\dots,\Lambda  }
 \]
 The eigenvectors of $R_\Lambda(H)$ are $v_{\Lambda-2n}$ defined such that 
 \begin{align*}
@@ -506,7 +506,7 @@ ad_{H^i}\left(E^\alpha \right)=\alpha^i E^\alpha
 \]
 Then 
 \[
-B=\lbrace H^i : i=1,\dots,r\rbrace \cup \lbrace E^\alpha : \alpha\in\Phi \rbrace
+B=\set{  H^i : i=1,\dots,r } \cup \set{  E^\alpha : \alpha\in\Phi  }
 \]
 is the \bam{Cartan-Weyl basis} for $\mf{g}$.
 \end{definition}
@@ -532,7 +532,7 @@ Hence $\kappa|_{\mf{h}\times\mf{h}}$ is non-degenerate, so invertible.
 \end{theorem}
 
 \begin{fact}
-Given $\alpha\in\Phi$, $\lbrace \lambda : \lambda\alpha\in\Phi \rbrace = \lbrace \pm1 \rbrace$. Note one direction of this inclusion follows from the previous result. 
+Given $\alpha\in\Phi$, $\set{  \lambda : \lambda\alpha\in\Phi  } = \set{  \pm1  }$. Note one direction of this inclusion follows from the previous result. 
 \end{fact}
 
 \begin{definition}[Dual Space Inner Product]
@@ -687,7 +687,7 @@ Hence
 \end{fact}
 
 \begin{theorem}
-$\mf{h}^\ast=\spn_\mbb{C}\lbrace \alpha\in\Phi \rbrace$. Hence $r$ roots may be chosen to form a basis $\lbrace \alpha_{(i)} : i=1,\dots,r \rbrace$
+$\mf{h}^\ast=\spn_\mbb{C}\set{  \alpha\in\Phi  }$. Hence $r$ roots may be chosen to form a basis $\set{  \alpha_{(i)} : i=1,\dots,r  }$
 \end{theorem}
 
 \begin{definition}[$\mf{h}^\ast_\mbb{R}$]
