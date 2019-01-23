@@ -1,0 +1,369 @@
+\documentclass{article}
+
+\usepackage{header}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Preamble
+
+\title{String Theory Notes}
+\author{Linden Disney-Hogg}
+\date{January 2019}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Book Keeping}
+Suggested books on the material are the "easier" books 
+\begin{itemize}
+    \item Schomerus (CUP) 'Primer in string theory'
+    \item Becker, Becker, and Schwarz (CUP) 'String theory and M theory'
+\end{itemize}
+and the "harder" books 
+\begin{itemize}
+    \item Polchinski, Vol 1 (CUP) 
+    \item Lust and Thiesen (Springer) 
+    \item Green, Schwarz, and Witten (CUP)
+\end{itemize}
+
+\section{Introduction}
+\subsection{Material}
+The course will follow 
+\begin{itemize}
+    \item Classical theory + canonical quantisation 
+    \item Path integral quantisation
+    \item Conformal Field Theory (CFT) + BRST quantisation
+    \item Scattering amplitudes 
+    \item Advanced topics...
+\end{itemize}
+
+\subsection{Expectation Management}
+The need for a new theory can be explained by 
+\begin{itemize}
+    \item What sets the parameters for the standard model? 
+    \item What fixed the cosmological constant? 
+    \item Failure of perturbative General Relativity (GR).
+    \item Black Hole (BH) information paradox. 
+    \item How do you quantise a theory in the absence of an existing causal structure? 
+\end{itemize}
+
+\subsection{What is String Theory}
+ST "seems" to be perturbation theory around classical solutions to a unique quantum theory. We imagine replacing particles with strings. Harmonics of the strings the correspond to different particles, including the graviton. We assume we are close to some well understood solution with metric $\eta^{\mu\nu}$ and take \[
+g_{\mu\nu}(x) = \eta_{\mu\nu}+h_{\mu\nu}(x)+\dots
+\]
+\subsection{Interactions}
+We will consider 
+\begin{itemize}
+    \item Propagators 
+    \item Interactions vertices
+\end{itemize}
+which can be combined in analogue to Feynmann diagrams. Consider the Lagrangian density 
+\[
+\mc{L} = -\frac{1}{4}F^2 - \bar{\psi} (\slashed{D}-m)\psi
+\]
+then in QFT it is known how to convert this into Feynmann diagrams. In string theory it is not known where the "Feynmann diagrams" come from. In a "particle limit" this may look like a field theory. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Classical Theory}
+In quantum mechanics we have the important parameter time $t$ and position $\hat{\bm{X}}$ is an operator. In quantum field theory we take $\hat{\phi}(t,\bm{x})$ as operators where $(t,\bm{x})$ are parameters.  \\
+Alternatively, we could look for a formalism in which $\hat{X}^\mu=(\hat{T},\hat{\bm{X}})$ are operators. 
+
+\begin{example}[Worldline Formalism]
+Imagine we have a massive particle propagating on a flat spacetime with metric $\eta_{\mu\nu}$. A suitable action for this theory is 
+\[
+S[X] = - m\int_{s_1}^{s_2} \, ds
+\]
+Note that working with $\hbar=c=1$ requires that we have a parameter with mass dimensions outside the integral to make the action dimensionless. \\
+We can parametrise the worldline such that 
+\be \label{eq:1}
+S[X] = -m \int_{s_1}^{s_2} d\tau \, \sqrt{-\eta_{\mu\nu} \dot{X}^\mu \dot{X}^\nu}
+\ee
+The conjugate momentum is 
+\[
+P_\mu (\tau) = \frac{-m\dot{X}_\mu}{\sqrt{-\dot{X}^2}} \Rightarrow p^2+m^2 = 0
+\]
+so this is an "on-shell" formalism. We can vary with respect to $X^\mu$ to find the e.o.m. \\
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Alternative Perspective}
+An alternative action for this theory is 
+\[
+S[X,e]=\frac{1}{2} \int d\tau (e^{-1} \eta_{\mu\nu} \dot{X}^\mu \dot{X}^\nu - em^2 )
+\]
+where $e$ is an auxiliary field. The $X^\mu$ e.o.m. is 
+\[
+\frac{d}{d\tau}(e^{-1} \dot{X}^\mu ) = 0 
+\]
+and the $e$ e.o.m is 
+\[
+\dot{X}^2 + e^2m^2=0
+\]
+Note $e(\tau)$ appears only algebraically, and so we can substitute back into the action to recover the previous formulation, equation \ref{eq:1}. \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Symmetries}
+Consider the local symmetry $\tau \to \tau + \xi(\tau)$. Then 
+\begin{align}
+    \delta X^\mu &= \xi \dot{X}^\mu \\
+    \delta e &= \frac{d}{d\tau}(\xi e) 
+\end{align}
+We can use the one arbitrary degree of freedom to gauge fix $e(\tau)$ to a convenient value. 
+
+\begin{definition}[Rigid Symmetry]
+The rigid symmetry map is 
+\[
+X^\mu \to \Lambda^\mu_\nu X^\nu + a^\mu
+\]
+This is Poincare invariance in the background spacetime. \end{definition}
+For a massless particle we can write the action as 
+\[
+S[X,e] = \frac{1}{2} \int_L d\tau \, e^{-1} g_{\mu\nu} \dot{X}^\mu \dot{X}^\nu
+\]
+and then the classical equations of motion reproduce the geodesic equation 
+\[
+\ddot{X}^\mu + \Gamma^{\mu}_{\nu\lambda} \dot{X}^\nu \dot{X}^\lambda = 0
+\]
+and the $e$ equations of motion give constraints. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Strings}
+As a string moves through some spacetime $\mc{M}$ with metric $\eta_{\mu\nu}$ it sweeps out a \bam{worldsheet} $\Sigma$. Assume the string is closed, i.e. $\sigma \sim \sigma+2n\pi$ for $n\in\mbb{Z}$ ($\sigma$ is the 'angle' parameter of the string). The embedding of the worldsheet is given by the specification 
+\[
+X^\mu (\sigma,\tau)
+\]
+We will call the $X^\mu$ "embedding fields. 
+\[
+X : \Sigma \to \mc{M}
+\]
+The area of $\Sigma$ may be given by 
+\[
+A = -\frac{1}{2\pi \cst} \int d\tau d\sigma \sqrt{-\det{\eta_{\mu\nu}\del_a X^\mu \del_b X^\nu}}
+\]
+where $\del_a = \pd{\sigma^a}$, $\sigma^a = (\tau, \sigma)$. , and $\cst$ is a free parameter. \\
+We often refer to the \bam{string length} 
+\[
+l_s = 2 \pi \sqrt{\cst}
+\]
+or the \bam{Tension} 
+\[
+T = \frac{1}{2\pi \cst}
+\]
+The object 
+\[
+G_{ab} = \eta_{\mu\nu}\del_a X^\mu \del_b X^\nu
+\]
+is an induced metric on $\Sigma$. $S[X]$ is called the \bam{Nambu-Goto action}.
+
+\subsection{Polyakov Action}
+Consider instead the action 
+\[
+S[X,h] = -\frac{1}{4\pi \cst} \int_\Sigma d^2\sigma \sqrt{-h} h^{ab} \eta_{\mu\nu} \del_a X^\mu \del_b X^\nu
+\]
+\begin{idea}
+This looks like free Klein Gordon field theory in two dimensions.
+\end{idea}
+This action is classically equivalent to the Nambu-Goto action. The $h_{ab}$ equations of motion are given by
+\[
+-\frac{2\pi}{\sqrt{-h}} \frac{\delta S}{\delta h^{ab}} = 0
+\]
+These e.o.m give the vanishing of the \bam{stress tensor} 
+\[
+T_{ab}= 0 
+\]
+where
+\[
+T_{ab} = -\frac{1}{\cst} \left( \del_a X^\mu \del_b X_\mu - \frac{1}{2}h_{ab} \del_c X^\mu \del_d X_\mu h^{cd} \right) 
+\]
+Note
+\begin{itemize}
+    \item In two dimensions $T_{ab}h^{ab}=0$, i.e. $T$ is traceless.
+    \item The $X^\mu$ e.o.m are $\frac{1}{\sqrt{-h}} ( \del_a \sqrt{-h} h^{ab} \del_b X^\mu ) =0 $, i.e. $\square X^\mu = 0$.
+\end{itemize}
+
+\subsection{Symmetries}
+The Polyakov action has the following symmetries: 
+
+\begin{definition}[Rigid Symmetry]
+\[
+X^\mu \to \Lambda^\mu_\nu X^\nu + a^\mu
+\]
+i.e the actions has Poincare invariance. 
+\end{definition}
+
+The action also has reparametrisation invariance i.e. $\sigma^a \to {\sigma^\prime}^a$. Under such a transform the embedding fields transform 
+\[
+{X^\prime}^\mu(\sigma^\prime,\tau^\prime) = {X}^\mu(\sigma,\tau)
+\]
+\[
+h_{ab}(\sigma,\tau) = \pd[{\sigma^\prime}^c]{\sigma^a} \pd[{\sigma^\prime}^d]{\sigma^b} h^\prime_{cd} (\sigma^\prime, \tau^\prime)
+\]
+So infinitseimally $\sigma^a \to \sigma^a - \xi^a$
+\begin{align*}
+    \delta X^\mu = \xi^a \del_a X^\mu \\
+    \delta h_{ab} = \xi^c \del_c h_{ab} + \del_a \xi^c h_{cb} + \del_b \xi^c h_{ca} = \nabla_a\xi_b + \nabla_b \xi_a \\
+    \delta \sqrt{-h} = \del_a(\xi^a \sqrt{-h})
+\end{align*}
+
+\begin{definition}
+\[
+X^\mu \to X^\mu
+\]
+\[
+h^\prime_{ab}(\sigma,\tau) = e^{2\Lambda(\sigma,\tau)} h_{ab}(\sigma,\tau)
+\]
+i.e. 
+\begin{align*}
+    \delta x^\mu = 0 \\
+    \delta h_{ab} = 2\Lambda h_{ab}
+\end{align*}
+\end{definition}
+
+We now have three arbitrary degrees of freedom in $(\xi^a,\Lambda)$, and we can use them to fix the three d.o.f in $h_{ab}$. 
+
+\subsection{Classical solutions}
+Let us use reparametrisation invariance to fix 
+\begin{align*}
+    h_{ab} = e^{2\phi} \eta_{ab} \\
+    \eta_{ab} = \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix}
+\end{align*}
+The action becomes 
+\[
+S[X] = -\frac{1}{4\pi\cst} \int_\Sigma d^2\sigma ( -\dot{X}^2 + {X^\prime}^2 ) 
+\]
+where $\dot{X}^mu = \pd[X^\mu]{\tau}$ and ${X^\prime}^\mu = \pd[X^\mu]{\sigma}$. \\
+The $X^\mu$ e.o.m becomes the wave equation in 2D, so the solutions are of the form 
+\[
+X^\mu(\sigma,\tau) = X^\mu_R(\tau-\sigma) + X^\mu_L(\tau+\sigma)
+\]
+It is useful to introduce modes $\alpha^\mu_n, \bar{\alpha}^\mu_n$. Then 
+\[
+X^\mu_R(\tau-\sigma) = \frac{1}{2} x^\mu + \frac{\cst}{2} p^\mu (\tau-\sigma) + i\sqrt{\frac{\cst}{2}} \sum_{n\neq0} \frac{1}{n} \alpha^\mu_n e^{-in(\tau-\sigma)}
+\]
+\[
+X^\mu_L(\tau+\sigma) = \frac{1}{2} x^\mu + \frac{\cst}{2} p^\mu (\tau+\sigma) + i\sqrt{\frac{\cst}{2}} \sum_{n\neq0} \frac{1}{n} \bar{\alpha}^\mu_n e^{-in(\tau+\sigma)}
+\]
+where $x^\mu, p^\mu$ are constants independent of $\tau$ and $\sigma$. Set 
+\[
+\alpha^\mu_0 = \bar{\alpha}^\mu_0 = \sqrt{\frac{\cst}{2}} p^\mu
+\]
+Let us call 
+\[
+G_{ab} = \del_a X^\mu \del_b X_\mu
+\]
+Then 
+\[
+T_{ab}=0 \Rightarrow G_{ab}=\frac{1}{2} h_{ab} (h^{cd}G_{cd})
+\]
+so 
+\[
+\det G_{ab} = \left(\frac{1}{2}h^{cd}G_{cd} \right)^2 \det h_{ab} = \frac{1}{4}(h^{cd}G_{cd})^2 h
+\]
+so 
+\[
+2\sqrt{-\det G_{ab}} = (h^{cd}G_{cd}) \sqrt{-h} = \sqrt{-h} h^{ab} \del_a X^\mu \del_b X_\mu
+\]\footnote{Here it was pointed out that spacetime indices will be raised and lowered with $h$, whereas Lorentz indices will be raised and lowered with $\eta$}
+Substituting back into the action yields 
+\[
+S[X] = \frac{1}{2\pi\cst}\int d^2\sigma \sqrt{-\det G_{ab}}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Stress Tensor}
+Recall that the conjugate momentum to $X^\mu$ is 
+\[
+P_\mu = \frac{1}{2\pi\cst} \dot{X}_\mu
+\]
+We can define a Hamiltonian density 
+\[
+H = P_\mu \dot{X}^\mu - L = \frac{1}{4\pi\cst}(\dot{X}^2 + {X^\prime}^2)
+\]
+We shall introduce Poisson brackets $\pb[]{}$. Given $F,G$ defined on the phase space we have 
+\[
+\pb[F]{G} = \int_0^{2\pi} d\sigma \left( \frac{\delta F}{\delta X^\mu(\sigma)} \frac{\delta G}{\delta P_\mu(\sigma)} - \frac{\delta F}{\delta P_\mu(\sigma)}\frac{\delta G}{\delta X^\mu(\sigma)} \right) 
+\]
+In particular $\pb[X^\mu(\tau,\sigma)]{P_\nu(\tau,\sigma^\prime}=\delta^\mu_\nu \delta(\sigma-\sigma^\prime)$.\\
+We introduced a mode expansion 
+\[
+X^\mu(\sigma,\tau) = X^\mu_R(\tau-\sigma) + X^\mu_L(\tau+\sigma)
+\]
+\[
+X^\mu_R(\tau-\sigma) = \frac{1}{2} x^\mu + \frac{\cst}{2} p^\mu (\tau-\sigma) + i\sqrt{\frac{\cst}{2}} \sum_{n\neq0} \frac{1}{n} \alpha^\mu_n e^{-in(\tau-\sigma)}
+\]
+\[
+X^\mu_L(\tau+\sigma) = \frac{1}{2} x^\mu + \frac{\cst}{2} p^\mu (\tau+\sigma) + i\sqrt{\frac{\cst}{2}} \sum_{n\neq0} \frac{1}{n} \bar{\alpha}^\mu_n e^{-in(\tau+\sigma)}
+\]
+The Poisson bracket, acting on the modes $\alpha^\mu_n, \bar{\alpha}^\mu_n$ are 
+\begin{align} \label{eq:2}
+\pb[\alpha^\mu_m]{\alpha^\nu_n} &= -im \delta_{m,-n} \eta^{\mu\nu} = \pb[\bar{\alpha}^\mu_m]{\bar{\alpha}^\nu_n} \\
+\pb[\alpha^\mu_m]{\bar{\alpha}^\nu_n} &= 0
+\end{align}
+for $n,m\neq0$. If we define $\alpha^\mu_0=\bar{\alpha}^\mu_0 = \sqrt{\frac{\cst}{2}}p^\mu$, $\pb[x^\mu]{p_\nu}=\delta^\mu_\nu$
+Let's see why this might be reasonable. Set $\tau=0$ wlog. 
+\begin{align*}
+X^\mu(\sigma) &= x^\mu + i\sqrt{\frac{\cst}{2}} \sum_{n\neq0} \frac{1}{n} \left( \alpha^\mu_n e^{in\sigma} + \bar{\alpha}^\mu_n e^{-in\sigma} \right) \\ 
+P^\mu(\sigma^\prime) &= \frac{p^\mu}{2\pi} + \frac{1}{2\pi}\sqrt{\frac{1}{2\cst}} \sum_{m\neq0} \left( \alpha^\mu_n e^{in\sigma^\prime} + \bar{\alpha}^\mu_n e^{-im\sigma^\prime} \right)
+\end{align*}
+So 
+\[
+\pb[X^\mu(\sigma)]{P_\nu(\sigma^\prime)} = \frac{1}{2\pi} \pb[x^\mu]{p^\nu} - \frac{1}{4\pi} \sum_{n,m\neq0} \frac{1}{m} \left( \pb[\alpha^\mu_m]{\alpha^\nu_n} e^{i(m\sigma+n\sigma^\prime}+\pb[\bar{\alpha}^\mu_m]{\bar{\alpha}^\nu_n}e^{-i(m\sigma+n\sigma^\prime)} \right)
+\]
+using \ref{eq:2} and also the periodic delta function 
+\[
+\delta(\sigma-\sigma^\prime)=\frac{1}{2\pi} \sum_{m=-\infty}^{m=\infty} e^{im(\sigma-\sigma^\prime)} \quad \text{("Dirac Comb")}
+\]
+one can show that 
+\[
+\pb[X^\mu(\sigma)]{P_\nu(\sigma^\prime)} = \eta^{\mu\nu} \delta(\sigma-\sigma^\prime)
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Wit Algebra}
+It will be useful to use light-cone coordinates
+\[
+\sigma^\pm=\tau\pm\sigma
+\]
+so 
+\[
+ds^2=-d\tau^2 + d\sigma^2 = (d\sigma^+, d\sigma^-)\begin{pmatrix} 0 & -\frac{1}{2} \\ -\frac{1}{2} & 0 \end{pmatrix} \begin{pmatrix} d\sigma^+ \\ d\sigma^- \end{pmatrix}
+\]
+Also $\del_\pm=\pd{\sigma^\pm}=\frac{1}{2}\left( \del_\tau \pm \del_\sigma \right)$. The action and e.o.m become 
+\[
+S[X] = -\frac{1}{2\pi\cst} \int_\Sigma d\sigma^+ d\sigma^- \del_+ X^\mu \del_- X_\mu
+\]
+\[
+\del_+ \del_- X^\mu =0
+\]
+The stress tensor becomes 
+\begin{align*}
+T_{++} &= -\frac{1}{\cst} \del_+ X^\mu \del_+ X_\mu \\
+T_{--} &= -\frac{1}{\cst} \del_- X^\mu \del_- X_\mu
+\end{align*} 
+$T_{+-}=0$ as this is nothing more than the trace of $T_{ab}$. We can also introduce modes for the stress tensor $l_m,\bar{l}_m$
+\begin{align*}
+    l_m &= -\frac{1}{2\pi} \in_0^{2\pi} d\sigma T_{--}e^{-im\sigma} \\
+    \bar{l}_m &= -\frac{1}{2\pi} \in_0^{2\pi} d\sigma T_{++}e^{im\sigma}
+\end{align*}
+Using the fact that 
+\[
+\del_- X^\mu = \sqrt{\frac{\cst}{2}} \sum_n \alpha^\mu_n e^{-in\sigma}
+\]
+where $\alpha^\mu_0 = \sqrt{\frac{\cst}{2}} p^\mu$
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

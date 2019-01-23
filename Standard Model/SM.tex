@@ -1,0 +1,257 @@
+\documentclass{article}
+\usepackage{header}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Preamble
+
+\title{Standard Model Notes}
+\author{Linden Disney-Hogg}
+\date{January 2019}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Introduction}
+The Standard Model (SM) describes three fundamental forces (EM, weak, and strong). The forces are mediated by gauge bosons (spin $=1$).
+\begin{itemize}
+    \item EM (QED) : photon $\gamma$, (massless)
+    \item Weak : $W$ and $Z$ bosons
+    \item Strong : gluons $g$ (massless)
+\end{itemize}
+Matter content (spin $-\frac{1}{2}$ fermions) comes in three generations 
+\begin{itemize}
+    \item Neutrinos  $\nu_e, \nu_\mu \nu_\tau$ weak 
+    \item Charged leptons $e, \mu, \tau$ weak and EM
+    \item Quarks $u,d c,s,t,b$, weak, EM, and strong. 
+\end{itemize}
+There is also the Higgs boson $H$ (scalar, spin 0), responsible for generating the mass of W and Z bosons. 
+
+Gauge bosons are manifestations of local symmetries. In SM the gauge group is 
+\[
+\underbrace{SU(3)_c}_{\text{color}} \times \underbrace{SU(2)_L}_{\text{chiral left}} \times \underbrace{U(1)_\gamma}_{\text{hypercharge}}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Chiral and Gauge symmetries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Chiral symmetry}
+
+Spin 1/2 particles are Dirac fermions with spinor field $\psi$ that satisfy the Dirac equation $(i\slashed{\del}-m)\psi=0$. The Dirac adjoint $\bar{\psi} = \psi^\dagger \gamma^0$ satisfies $\bar{\psi}(i\slashed{\del}^\leftarrow - m)=0$ where $\slashed{\del}^\leftarrow$ acts to the left. Dirac matrices satisfy 
+\[
+\acomm[\gamma^\mu]{\gamma^\nu}=2g^{\mu\nu}I
+\]
+where $g^{\mu\nu}=\diag(1,-1,-1,-1)$. Also define 
+\[
+\gamma^5 = i \gamma^0 \gamma^1 \gamma^2 \gamma^3
+\]
+which satisfies $(\gamma^5)^2=I$ and $\acomm[\gamma^\mu]{\gamma^5}=0$. In general the \emph{Chiral} or \emph{Weyl} basis is used, where 
+\begin{align*}
+    \gamma^0 &= \begin{pmatrix} 0 & I_2 \\ I_2 & 0 \end{pmatrix} \\
+    \gamma^i &= \begin{pmatrix} 0 & \sigma_i \\ -\sigma_i & 0 \end{pmatrix} \\ 
+\end{align*}
+In this representation 
+\[
+\gamma^5=\begin{pmatrix} -I_2 & 0 \\ 0 & I_2 \end{pmatrix}
+\]
+Consider the massless limit of the Dirac equation
+\[
+\slashed{\del}\psi = 0 \Rightarrow \slashed{\del} ( \gamma^5\psi) = 0. 
+\]
+Define $P_{R,L}=\frac{1}{2} (1 \pm \gamma^5)$, projection operators. Then correspondingly let $\psi_{R,L} = P_{R,L} \psi$. Then $\gamma^5 \psi_{R,L} = \pm \psi_{R,L}$, so the projections are eigenstates of chirality. In the chiral basis, $\psi_{R,L}$ only contain lower/upper 2-component spinor degrees of freedom (d.o.f). As a result $\psi_{R,L}$ annihilates left/right handed chiral particles respectively. In addition 
+\[
+\bar{\psi}_{R,L} = (P_{R,L} \psi)^\dagger \gamma^0 = \psi^\dagger \frac{1}{2} (1\pm\gamma^5)\gamma^0=\bar{\psi} P_{L,R}
+\]
+A massless Dirac fermion has a \emph{global} $U(1)_L \times U(1)_R$ chiral symmetry. Under $U(1)_{R,L}$, $\psi_{R,L} \mapsto e^{i\alpha_{R,L}} \psi_{R,L}$, as can be seen from the Dirac Lagrangian 
+\[
+\mc{L}_D = \bar{\psi}(i\slashed{\del}-m)\psi = \bar{\psi}_L i \slashed{\del} \psi_L + \bar{\psi}_R i \slashed{\del} \psi_R - m(\bar{\psi}_R\psi_L + \bar{\psi}_L \psi_R) 
+\]
+The mass term explicitly breaks the chiral symmetry to a remaining vector symmetry where $\alpha_L = \alpha_R = \alpha$, so $\psi \mapsto e^{i\alpha} \psi$, $U(1)_L \times U(1)_R \to U(1)_V$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Review of Dirac Field}
+Quantise 
+\[
+\psi(x) = \sum_{p,s} \left[ b^s(p) u^s(p) e^{-ip\cdot c} + {d^s}^\dagger v^s(p) e^{ip\cdot x} \right]
+\]
+$s=\pm\frac{1}{2}$, and $\sum_p = \int \LImeas$, $\braket{p|q} = (2\pi)^2 (2E_p)\delta^3(\bm{p}-\bm{q})$ with $\ket{p} = b^\dagger(p) \ket{0}$. $u$ and $v$ are solutions of 
+\[
+(\slashed{p}-m)u=0 , \quad (\slashed{p}+m)v=0
+\]
+In the chiral basis these become 
+\begin{align*}
+    u^s(p) &= \begin{pmatrix} \sqrt{p\cdot \sigma} \xi^s \\ \sqrt{p\cdot\bar{\sigma}} \xi^s \end{pmatrix} \\ 
+    v^s(p) &= \begin{pmatrix} \sqrt{p\cdot \sigma} \xi^s \\ -\sqrt{p\cdot\bar{\sigma}} \xi^s \end{pmatrix}
+\end{align*}
+with $\sigma^\mu = (1, \bm{\sigma})$, $\bar{\sigma}^\mu = (1, -\bm{\sigma})$. 
+
+\begin{definition}[Helicity]
+\bam{Helicity} is defined as the projection of angular momentum onto the linear momentum direction. 
+\[
+h = \bm{J} \cdot \hat{\bm{p}} = \bm{s} \cdot \hat{\bm{p}}
+\]
+as $\bm{J} = \bm{r}\times\bm{p} + \bm{s}$, and 
+\[
+s_i = \frac{i}{4}\eps_{ijk} \gamma^i \gamma^j = \frac{1}{2} \begin{pmatrix} \sigma_i & 0 \\ 0 & \sigma_i \end{pmatrix}
+\]
+\end{definition}
+A massless spinor satisfies $\slashed{p}u=0$
+so 
+\[
+hu(p) = \frac{\gamma^5}{2} u(p) 
+\]
+\[
+\Rightarrow hu_{R,L} = \frac{\gamma^5}{2} u_{R,L} = \pm \frac{1}{2} u_{R,L}
+\]
+Note
+\begin{itemize}
+     \item Chiral states are only eigenstates of the Dirac equation when $m=0$
+     \item Helicity is defined for $m=0$ and $m\neq0$, but it's not Lorentz Invariant when $m\neq 0$. 
+     \item There is only a 1-1 correspondence between helicity and chirality when $m=0$. 
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Gauge Symmetry}
+Promoting $\alpha$ to a function of $x$, $\alpha(x)$, i.e. gauging the symmetry $\psi \to e^{i\alpha(x)} \psi$, the kinetic term is no longer invariant. 
+\[
+\bar{\psi} i \slashed{\del} \psi \to \bar{\psi} i \slashed{\del} \psi - (\bar{\psi}\gamma^mu \psi)(\del_\mu \alpha(x))
+\]
+Introduce a gauge covariant derivative $D_\mu$ such that
+\[
+D_\mu \psi(x) \to e^{i\alpha(x)} D_\mu \psi(x)
+\]
+To do this introduce a gauge field $A_\mu(x)$ so 
+\[
+D_\mu \psi = (\del_\mu + igA_\mu) \psi
+\]
+where $A_\mu \to A_\mu-\frac{1}{g} \del_\mu \alpha$ so $\bar{\psi} i \slashed{D} \psi$ is invariant. \\
+Introduce a kinetic term for the gauge fields 
+\begin{align*}
+\mc{L}_{gauge} &= -\frac{1}{4} F_{\mu\nu} F^{\mu\nu} \\
+F_{\mu\nu} &= \del_\mu A_\nu - \del_\nu A_\mu \\
+ig F_{\mu\nu} &= \comm[D_\mu]{D_\nu}
+\end{align*}
+QED has a $U(1)$ gauge symmetry that treats LH and RH fields equivalently. The weak gauge bosons only couple to LH fields, but $U(1)$ is not the appropriate symmetry, we need $SU(2)$. (We will review non-abelian gauge symmetries later.) 
+
+\subsection{Types of Symmetry}
+Symmetries may manifest themselves in a variety of ways: 
+\begin{itemize}
+    \item Symmetry is intact e.g. $U(1)_{EM}$, and $SU(3)_c$ gauge symmetries. 
+    \item Symmetry of $\mc{L}$ is broken by an \bam{anomaly} (holds classically but is broken by quantum loop effects). Not actually a true symmetry. E.g. global axial $U(1)$ symmetry in the SM.
+    \item Symmetries can hold for some terms in $\mc{L}$ but not others. This is called "broken explicitly". It may be an approximate symmetry if the breaking terms are small. E.g. global 'isospin' symmetry relating $u$ and $d$ quarks in QCD.
+    \item Hidden symmetries - respected by $\mc{L}$ but \emph{not} the vacuum. These can be: a) \bam{spontaneously broken symmetries}, vacuum expectation value from one or more scalar fields non-zero, e.g $SU(2)_L \times U(1)_\gamma \to U(1)_{EM}$, or b) Even without scalar fields get \bam{dynamical breaking} from quantum effects. e.g. $SU(2)_L \times SU(2)_R$ global symmetry in QCD (massless quarks). 
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discrete Symmetries}
+The discrete symmetries are 
+\begin{itemize}
+    \item Parity $P : (t,\bm{x}) \to (t,-\bm{x})$
+    \item Time reversal $T : (t,\bm{x}) \to (-t,\bm{x})$
+    \item Charge conjugation $C : \text{particles} \leftrightarrow \text{antiparticles} $
+\end{itemize}
+Parity and Time reversal are spacetime symmetries. These have properties such as 
+\begin{itemize}
+    \item $\bar{\psi}\gamma^\mu \psi$ couplings between gauge bosons and fermions,  e.g. QED and QCD, are invariant under $P$ and $C$ separately.  
+    \item $\bar{\psi}\gamma^\mu (1-\gamma^5) \psi$ couplings to fermions, e.g. weak interactions, are not.
+    \item Weak interaction violates $CP$, which leads to $T$ violation from the $CPT$ theorem. 
+\end{itemize}
+We will first investigate the consequences of $C,P,T$ symmetries in order to understand the above statements. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Symmetry Operators} 
+
+\begin{theorem}[Winger]
+If physics is invariant under $\Psi \to \Psi^\prime$ (where $\Psi, \Psi^\prime \in \mc{H}$ some Hilbert space), then $\exists W$ an operator such that $\Psi^\prime = W\Psi$ where either W i) linear and unitary or ii) antilinear and antiunitary. 
+\end{theorem}
+\begin{proof}
+Consider a Poincare transform 
+\[
+x^\mu \to \Lambda^\mu_\nu x^\nu + a^\mu
+\]
+Then for a parity transform 
+\[
+\Lambda^\mu_\nu = \mbb{P}^\mu_\nu = \diag(1,-1,-1,-1)
+\]
+and for time reversal
+\[
+\mbb{T}^\mu_\nu = \diag(-1,1,1,1)
+\]
+The corresponding operator can be expanded as 
+\[
+W(\Lambda,a) = W(1+1,\eps) = 1+\frac{i}{2} w_{\mu\nu} J^{\mu\nu} - i\eps_\mu p^\mu
+\]
+where the $J$ are the generators of boosts and rotations, and $p$ the generators of translation i.e $p^0=H=$Hamiltonian and $p^i=$momentum. Then
+\begin{align*}
+    \hat{P} &= W(\mbb{P},0) \\
+    \hat{T} &= W(\mbb{T},0)
+\end{align*}
+Now from general composition rules 
+\[
+\hat{P} W(\Lambda,a) \hat{P}^{-1} = W(\mbb{P}\Lambda\mbb{P}^{-1},\mbb{P}a)
+\]
+Insert expansion of $W$ and compare coefficients of $-\eps_0$ to get 
+\[
+\hat{P} iH \hat{P}^{-1} = iH
+\]
+and doing likewise for $\hat{T}$ gives 
+\be
+\hat{T} iH \hat{T}^{-1} = -iH \label{eq:1}
+\ee
+Suppose $\Psi$ is an energy eigenstate
+\[
+(\Psi, iH\Psi) = (\Psi, iE\Psi) = iE
+\]
+If $\hat{P},\hat{T}$ are symmetries then $\hat{P}\Psi,\hat{T}\Psi$ should also be energy eigenstates with the same energy. 
+Suppose $\hat{P}$ is linear. Then
+\begin{align*}
+(\hat{P}\Psi,iH\hat{P}\Psi) &= (\hat{P}\Psi,\hat{P} iH\Psi) \text{ from \ref{eq:1}} \\ 
+&= (\hat{P}\Psi,\hat{P} iE\Psi) \\
+&= iE(\hat{P}\Psi,\hat{P}\Psi) \text{ as $\hat{P}$ linear} \\
+&= iE 
+\end{align*}
+
+Now suppose $\hat{T}$ linear and complete as above giving
+\[
+(\hat{T}\Psi,iH\hat{T }\Psi) = -iE(\hat{T}\Psi,\hat{T}\Psi)
+\]
+Contradiction. 
+Supposing instead $\hat{T}$ antilinear gives 
+\[
+(\hat{T}\Psi,iH\hat{T }\Psi) = iE(\hat{T}\Psi,\hat{T}\Psi)
+\]
+Hence must have $\hat{P}$ linear and unitary, whereas $\hat{T}$ antilinear and antiunitary. 
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Parity}
+
+\begin{definition}[Scalar fields]
+A complex scalar field is 
+\[
+\phi(x) = \sum_p \left[ a(p) e^{-ip\cdot x} + c^\dagger(p) e^{ip\cdot x} \right]
+\]
+\end{definition}
+$\hat{P}: \ket{p} \to {\eta^a}^\ast \ket{p_P}$ where $p_P = (p^0,-\bm{p})$ and ${\eta^a}^\ast$ is a complex phase. For later define in analogy $x_P = (x^0, -\bm{x})$
+\[
+\Rightarrow \hat{P} a^\dagger (p) \ket{0} = {\eta^a}^\ast a^\dagger (p_P) \ket{0}
+\]
+since $\hat{P}\hat{P}^{-1}=I$ and assuming $\hat{P}\ket{0}=\ket{0}$
+\[
+\hat{P} a^\dagger (p) \hat{P}^{-1} = {\eta^a}^\ast a^\dagger (p_P)
+\]
+To conserve normalisation, $\hat{P} a(p) \hat{P}^{-1} = \eta^{a} a(p_P)$. Similarly $\hat{P} c^\dagger(p) \hat{P}^{-1} = {\eta^c}^\ast c^\dagger(p_P)$. Thus 
+\begin{align*}
+\hat{P} \phi(x) \hat{P}^{-1} &= \sum_p \left[ \hat{P} a(p) \hat{P}^{-1} e^{-ip.x} + \hat{P} c^\dagger(p) \hat{P}^{-1} e^{ip\cdot x} \right] \\ 
+&= \sum_p \left[ \eta^a a(p_P) e^{-ip\cdot x} + {\eta^c}^\ast c^\dagger(p_P) e^{ip\cdot x} \right] \\
+\text{Relabelling $p \leftrightarrow p_P$ } &= \sum_{p_P} \left[ \eta^a a(p) e^{-ip_P\cdot x} + {\eta^c}^\ast c^\dagger(p) e^{ip_P \cdot x} \right] \\
+[p_P \cdot x = p\cdot x_P] \Rightarrow &= \sum_{p_P} \left[ \eta^a a(p) e^{-ip\cdot x_P} + {\eta^c}^\ast c^\dagger(p) e^{ip \cdot x_P} \right]  \\
+[\sum_p = \sum_{p_P}] \Rightarrow &= \sum_{p} \left[ \eta^a a(p) e^{-ip\cdot x_P} + {\eta^c}^\ast c^\dagger(p) e^{ip \cdot x_P} \right] 
+\end{align*}
+This does not look like $\phi(x_P)$ unless $\eta^a = {\eta^c}^\ast \equiv \eta_p$ and otherwise would note in general find $\comm[\phi(x)]{\hat{P}\phi^\dagger(y) \hat{P}^{-1}}$ vanishes for spacelike $x-y_p$. 
+
+ \end{document} 

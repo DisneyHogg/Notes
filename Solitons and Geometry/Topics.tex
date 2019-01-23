@@ -1,0 +1,170 @@
+\documentclass{article}
+
+\usepackage{header}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Preamble
+
+\title{Topics in Geometry Notes}
+\author{Linden Disney-Hogg}
+\date{January 2019}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+The following notes are a collection of topics in both geometry and soliton theory. They are intended to provide a sufficient understanding on the underlying geometry present in lots of mathematical physics. Where possible geometric meaning will be promoted to avoid the tendency to immediately work in coordinates.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Differential Forms}
+This section will largely follow the treatment by Arnold in 'Mathematical Methods of Classical Mechanics'. Consider a finite dimensional vector space $V$ over a field $\mbb{F}$ of dimension $n$. Then $V$ is isomorphic to $\mbb{F}^n$. These notes will thus work with $\mbb{R}^n$ for simplicity sake. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Exterior forms}
+
+\begin{definition}[k-form]
+An \bam{exterior form of degree k} or \bam{k-form} is a map 
+\[
+\omega : \underbrace{\mbb{R}^n \times \dots \times \mbb{R}^n}_{k\text{ times}} \to \mbb{R}
+\]
+that is linear, and totally antisymmetric.
+\end{definition}
+
+\begin{theorem}
+The space of k-forms on $\mbb{R}^n$ forms a vector space of dimension $\binom{n}{k}$
+\end{theorem}
+
+\begin{definition}[Exterior Product]
+The \bam{exterior product} of a k-form $\omega^k$ and a l-form $\omega^l$ is the $k+l$-form $\omega^k \wedge \omega^l$ defined by 
+\[
+(\omega^k\wedge\omega^l)(v_1,\dots,v_{k+l}) = \sum_{\sigma \in S_{k+l}} (-1)^{sgn(\sigma)} \omega^k(v_{\sigma(1)},\dots,v_{\sigma(k)}) \omega^l(v_{\sigma(k+1)},\dots,v_{\sigma(k+l)})
+\]
+It is 
+\begin{itemize}
+    \item Skew commutative $\omega^k \wedge \omega^l = (-1)^{kl} \omega^l \wedge \omega^k$
+    \item distributive
+    \item associative 
+\end{itemize}
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Differential Forms}
+
+\begin{definition}[Differential]
+The \bam{differential} of a function on a manifold $f:\mc{M}\to\mbb{R}$ is 
+\begin{align*}
+    df : T\mc{M} \to \mbb{R} \\
+    df(x,v) = df_x(v) = \left. \frac{d}{dt} \right\rvert_{t=0} f(\gamma(t))
+\end{align*}
+where $\gamma:I\to\mc{M}$, $\gamma(0)=x, \dot{\gamma}(0)=v$ is a curve on the manifold. Note that $\forall x\in\mc{M}$, $df_x$ is a 1-form on $T_x \mc{M}$.
+\end{definition}
+
+\begin{definition}[Differential k-form]
+A \bam{differential k-form} at a point $x\in\mc{M}$ some manifold is an exterior k-form on the tangent space $T_x\mc{M}$. If given such $\omega^k\rvert_x$ is given $\forall x\in \mc{M}$ and the corresponding map on $\mc{M}$ is differentiable, then
+\begin{align*}
+    \omega^k : T\mc{M} \to \mbb{R}
+\end{align*}
+is a k-form on $\mc{M}$
+\end{definition}
+
+\begin{remark}
+Note the double use of the term k-form. In not considered properly, this can cause confusion, but the use should be clear from context. 
+\end{remark}
+
+\begin{theorem}
+Given coordinates $\set{x^i}_{i=1}^n$ on $\mc{M}$ and differential k-form can be written as 
+\[
+\omega^k = \sum_{i_1<\dots<i_k} a_{i_1 \dots i_k}(x) dx^{i_1} \wedge \dots \wedge dx^{i_k}
+\]
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Manifolds}
+
+\subsection{Basics}
+
+
+\subsection{Fibre Bundles}
+
+\begin{definition}[Fibre Bundle]
+A \bam{fibre bundle} is a collection $(P,\pi,\mc{M},F,G)$ where
+\begin{itemize}
+    \item $P$ is a differentiable manifold called the \bam{total space}.
+    \item $\mc{M}$ is a differentiable manifold called the \bam{base space}.
+    \item $F$ is a differentiable manifold called the \bam{standard fibre}.
+    \item $G$ is a Lie group, called the \bam{structure group} that acts on the standard fibre.
+    \item $\pi:P\to\mc{M}$ is a surjective map called the \bam{projection}. If $\dim\mc{M} = m$, $\dim F = n$, then $\dim P = m+n$ and \[
+    \forall p\in P, \; F_p = \pi^{-1}(p) \cong F
+    \]
+    is called the \bam{Fibre at the point $p$}.
+    \item $\mc{M}$ has an open cover $\set{U_\alpha}$ with homermorphisms
+    \[
+    \phi_\alpha^{-1}: U_\alpha \times F \to \pi^{-1}(U_\alpha)
+    \]
+    such that 
+    \[
+    \forall p\in U_\alpha, \, \forall f \in F, \; \pi\cdot\phi_\alpha^{-1}(p,f) = p
+    \]
+    $\phi_\alpha^{-1}$ is called the \bam{local trivialisation} of the bundle.
+    \item The map $\phi_{\alpha,p}^{-1} : F\to F_p$ given by $\phi_{\alpha,p}^{-1}(f) = \phi_\alpha^{-1}(p,f)$ is a homeomorphism, and the function 
+    \[
+    t_{\alpha,\beta}(p) = \phi_{\alpha,p} \cdot \phi_{\beta,p}^{-1} : F \to F
+    \]
+    is an element of the structure group $t_{\alpha,beta}(p)\in G$ called the \bam{transition function}. This realises a map 
+    \[
+    t_{\alpha,\beta} : U_\alpha \cap U_\beta \to G 
+    \]
+    This map satisfies 
+    \[
+    \phi_\beta^{-1}(p,f) = \phi_\alpha^{-1} (p, t_{\alpha,\beta}(p) \cdot f )
+    \]
+    \end{itemize}
+\end{definition}
+
+\begin{definition}[Smooth Section]
+A \bam{section} of a bundle is a map $\sigma:\mc{M}\to P$ such that $\pi\circ\sigma=id$
+\end{definition}
+
+\begin{example}
+A good example of a fibre bundle is the tangent bundle
+\[
+T\mc{M} = \bigcup_{x\in\mc{M}} T_x \mc{M}
+\]
+Given an atlas $\set{\mc{U}_\alpha, \phi_\alpha}$ for $\mc{M}$, then the tangent bundle has the natural atlas $\set{\bar{\mc{U}}_\alpha, \bar{\phi}_\alpha}$ given by 
+\begin{align*}
+\bar{\mc{U}}_\alpha = \pi^{-1}(\mc{U}_\alpha) \\
+\bar{\phi}_\alpha : a^i \pd{x^i} \rvert_p \to \phi_\alpha(p) \times (a^1,\dots,a^n)
+\end{align*}
+where $x^i$ are coordinates on $\mc{M}$ and $n=\dim\mc{M}$. Then a vector field is a section of the tangent bundle
+\end{example}
+
+\begin{definition}[Principle Bundle]
+A \bam{principle G-bundle} is one where $G=F$ and acts on itself via multiplication. 
+\end{definition}
+
+\begin{definition}[Associated Bundle]
+An \bam{associated bundle} is one where $F=V$, some vector space, and the action of $G$ on $F$ is via a representation of $G$ with representation space $V$. If a structure group is not specified, then this is just a \bam{vector bundle}. 
+\end{definition}
+
+\subsection{Dual Bundles}
+
+\begin{idea}
+Given a vector space 
+\end{idea}
+
+\subsection{Connection}
+
+\begin{idea}
+The idea behind a connection is to give some way of moving between fibres of a bundle. This can be thought of as parallel transport, wherein 
+\end{idea}
+
+
+
+\end{document}

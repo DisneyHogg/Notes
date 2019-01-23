@@ -1,0 +1,335 @@
+\documentclass{article}
+
+\usepackage{header}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Preamble
+
+\title{Black Holes Notes}
+\author{Linden Disney-Hogg}
+\date{January 2019}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Introduction}
+\subsection{Conventions}
+\[
+c = G = 1
+\]
+The signature used it $(-,+,+,+)$. \\
+Greek indices will be used for coordinate dependent expressions \\
+Latin indices will be used for coordinate invariant expressions (e.g $R=g^{ab}R_{ab}$.\\ 
+The Riemann tensor is fixed by 
+\[
+R(X,Y) = \grad_X \grad_Y Z - \grad_Y \grad_X Z - \grad_{\comm[X]{Y}} Z
+\]
+\subsection{Notes}
+\begin{itemize}
+    \item Harvey Reall's notes on BH and GR 
+    \item Wald's "General Relativity"
+    \item Witten's review "Light rays, singularities, and all that"
+\end{itemize}
+
+\section{Spherical Stars}
+The \bam{Pauli exclusion principle} gives the \bam{degeneracy pressure}. If the degeneracy pressure of electrons is enough to balance the gravitational collapse (possible for mass  $<1.4 \msolar$ then a \bam{white dwarf} forms.\\
+If $1.4 \msolar < M < 3 \msolar$ then neutron degeneracy pressure is required and a \bam{neutron star} forms. Above this mass a \bam{black hole} forms. 
+
+\subsection{Spherical Symmetry}
+A round sphere is invariant under rotations in $SO(3)$. 
+
+\begin{definition}[Line element of sphere]
+the \bam{line element} on the sphere is 
+\[
+d\Omega_2^2 = d\theta^2 + \sin^2\theta d\phi^2
+\]
+Also invariant under $\theta \to \pi-\theta$, so the sphere has $O(3)$ symmetry. 
+\end{definition}
+
+\begin{definition}[Spherically Symmetric Spacetime]
+A spacetime manifold $(\mc{M},g)$ is \bam{spherically symmetric} is it posses the same symmetries as a round 2-sphere. 
+\end{definition}
+
+\begin{idea}
+Note that the symmetry group of the sphere is bigger than $O(3)$, so just possessing an $O(3)$ symmetry group is not sufficient. In practice if a factor of $d\Omega^2$ appears in the line element then it will be sphericall symmetric (under some conditions.)
+\end{idea}
+
+\begin{definition}[Radius]
+In a spherically symmetric spacetime
+\[
+r : \mc{M} \to \mbb{R}^+
+\]
+is defined by 
+\[
+r(p) = \sqrt{\frac{A(p)}{4\pi}}
+\]
+$r$ is the \bam{radius}. 
+\end{definition}
+
+\subsection{Time Independence}
+
+\begin{definition}[Stationary]
+ A spacetime $(\mc{M},g)$ is \bam{stationary} if it admits a Killing vector field $K^a$ that is everywhere timelike. i.e 
+ \[
+  K^a K^b g_{ab} < 0 
+ \]
+\end{definition}
+Pick a hypersurface $\Sigma$ nowhere tangent to $K$. Pick coordinate $x^i$ on $\Sigma$, and assign coordinates $(t,x^i)$ on $\mc{M}$ to the point a parameter distance $t$ along the integral curve of $K$ through the point $x^i$ on $\Sigma$. Then in these coordinate 
+\[
+K^a = \left( \pd{t} \right)^a
+\]
+Recall the Killing equation $\mc{L}_K g = 0$ This implication of this is then that $g$ is time independent. Hence
+\[
+ds^2 = g_{tt}(x^k) dt^2 + 2g_{ti}(x^k) dt dx^i + g_{ij}(x^k) dx^i dx^j 
+\]
+The assumption of stationarity gives 
+\[
+g_{tt}(x^k) < 0
+\]
+
+\begin{lemma}
+Take $\Sigma=\set{x: f(x)=0}$ for some $f:\mc{M} \to \mbb{R}$ with $df \neq 0$. Then $df$ is orthogonal to $\Sigma$.  
+\end{lemma}
+\begin{proof}
+Take $Z^a$ to be tangent to be $\Sigma$. Then 
+\[
+df(Z) = Z(f) = Z^\mu \del_\mu f = 0
+\]
+on $\Sigma$.
+\end{proof}
+
+Now take a general 1-form normal to $\Sigma$. 
+\[
+m = g df + f m^\prime
+\]
+$m^\prime$ an arbitrary smooth vector, $g$ an arbitrary smooth function. Then 
+\[
+dm = dg \wedge df + df \wedge m^\prime + f \wedge dm^\prime \\
+\Rightarrow dm \rvert_\Sigma = (dg-m^\prime) \wedge df 
+\]
+Hence
+\[
+m\rvert_\Sigma = g df \Rightarrow (m \wedge dm) \rvert_\Sigma =0
+\]
+So, if $\Sigma$ is hypersurface-orthogonal, $(m\wedge dm)_\Sigma = 0$
+
+\begin{theorem}[Frobenius]
+If $m$ is a non zero form such that $(m\wedge dm) = 0$ everywhere then $\exists g$ such that $m = g df$
+\end{theorem}
+
+\begin{definition}[Static]
+A spacetime is \bam{static} if it admits a hypersurface- orthogonal timelike Killing vector field. 
+\end{definition}
+
+\begin{idea}
+In a static spacetime we know that $K$ is hypersurface-orthogonal, so when defining coordinates we choose $\Sigma$ to be orthogonal to $K$. Hence in the 'nice' coordintate $\Sigma$ is the surface $t=0$ Hence $K \propto (1,\bm{0}) \Rightarrow K_i = 0$. Now as $K^a = \left( \pd{t} \right)^a \Rightarrow g_{ti} = K_i = 0$.
+\end{idea}
+
+\subsection{Static and spherically symmetric}
+Certainly $\exists K = (\pd{t})^a$ an orthogonal Killing vector field. Now for a point $p$ on the orthogonal hypersurface $\Sigma_t$, consider the $S^2$ closed orbit of $p$ ensures by spherical symmetry, and take coordinates $(\theta,\phi)$. Then giving points on that sphere coordinates $(\theta,\phi,R(p))$ gives $\Sigma_t$ the line element 
+\[
+ds^2_{\Sigma_t} = e^{2\psi(r)}dr^2 + r^2 d\Omega_2^2
+\]
+The entire line element is then 
+\[
+ds^2 = e^{2\Phi(r)}dt^2 + ds^2_{\Sigma_t}
+\]
+For fluids
+\[
+T_{ab} = (\rho + p)u_a u_b + pg_{ab}
+\]
+where $\rho(r)$ is the energy density and $p(r)$ the pressure. Take $u^a u_a = -1 \Rightarrow u_t^2 g^{tt}=-1 \Rightarrow u^a = e^{-\Phi}(\pd{t})^a$. Impose that $\rho,p >0$. Finally, as a star has finite extent
+\[
+\exists R \; s.t. \; \forall r > R \; \rho(r) = p(r) =0.
+\]
+Recall further energy momentum conservation give 
+\[
+\nabla^a T_{ab}
+\]
+Now the Einstein equation is 
+\[
+R_{ab} - \frac{1}{2}R g_{ab} = 8 \pi T_{ab}
+\]
+As the divergence of the LHS is 0, the equations of motion for the fluid are entirely captured by the einstein equations, so they must give the equations for fluid motion. 
+
+\begin{example}
+Take 
+\[
+G_{tt} = \frac{e^{2(\Phi-\psi)}}{r^2} \left[ e^{2\psi} + 2r\psi^\prime-1 \right]
+\]
+where $\phantom{\psi}^\prime = \pd{r}$. We need also the $rr$ and $\theta\theta$ terms, but then the $\phi\phi$ term is given from the $\theta\theta$ by spherical symmetry. 
+\begin{definition}[m(r)]
+Define 
+\[
+e^{2\psi} = \left[ 1- \frac{2m(r)}{r} \right]^{-1}
+\]
+\end{definition}
+\begin{align*}
+    tt &: m^\prime = 4\pi r^2 \rho \\ 
+    rr &: \Phi^\prime = \frac{m+4\pi r^3 p}{r[r-2m]} \\
+    \theta\theta &: p^\prime = -(\rho+p) \frac{m+4\pi r^3 p}{r[r-2m]}
+\end{align*}
+\begin{definition}[Equation of state]
+For a cold system, the equation of state $p(\rho,T)$ gives $p=p(\rho)$
+\end{definition}
+Now outside the star $\rho=p=0$. So $m^\prime = 0 \Rightarrow m(r) = M$
+\[
+\Rightarrow \psi(r) = -\frac{1}{2}\log(1-\frac{2M}{r}) = -\Phi(r)
+\]
+Then this gives the line element 
+\[
+ds^2 = -(1-\frac{2M}{r}) dt^2 + (1-\frac{2M}{r})^{-1}dr^2 + r^2 d\Omega_2^2
+\]
+The mass of the system is $M$, given by perturbation about flat space. Due to the singularity in the metric, we see physical stars need radius $R>2m$. For our sun $2\msolar = 3km$, $R\approx 700000 km$. \\
+Inside the star 
+\[
+m(r) = 4\pi \int_0^r \rho(\tilde{r}) \tilde{r}^2 d\tilde{r} + m_\ast
+\]
+where $m_\ast$ is an integration constant. Regularity demands $m_\ast = 0$. At the surface of the start, the metric must be continuous. Hence 
+\[
+M = 4\pi \int_0^R \rho(r) r^2 dr
+\]
+The energy that the stress energy tensor generates is 
+\[
+E = \int_{Vol_R} \rho r^2 \sin\theta e^\psi > M 
+\]
+Now imputting units into the radius bound we see 
+\[
+\frac{GM}{c^2 R} < \frac{1}{2}
+\]
+Note that there is no Newtonian analogue of this bound. 
+\end{example}
+Now for reasonable matter 
+\[
+\frac{dp}{d\rho} > 0
+\]
+and 
+\[
+\frac{dp}{dr}\leq 0 \Rightarrow \frac{d\rho}{dr} \leq 0
+\]
+Hence we may bound the $\theta\theta$ component of the Einstein equation  to get 
+\[
+\frac{m(r)}{r} < \frac{2}{9} \left[ 1 - 6\pi r^2 p + (1 + 6\pi r^2 p)^\frac{1}{2} \right]
+\]
+Evaluating this at $r=R$ gives 
+\[
+R > \frac{9}{4} M \quad \text{(Buchdal bound)}
+\]
+
+\begin{theorem}
+The solutions for a 1 parameter group. 
+\end{theorem}
+\begin{proof}
+Consider the equations 
+\begin{align*}
+    m^\prime = 4\pi r^2 \rho \\
+    p^\prime = -(\rho + p) \frac{m+4\pi r^3 p}{r[r-2m]}
+\end{align*}
+These are a system of first order equations in $\rho$ and $m$. The solutions are determined by two constants, but we know $m(0)=0$ so the solution is determined by $\rho(0)$. We can integrate out to the surface of the star, so we know $R$ is determined by when $\rho(R) = 0$ so $R=R(\rho(0))$. Then at the surface we have also defined $M=M(\rho(0))$. All other functions are then determined by integrating backward. Hence done. 
+\end{proof}
+
+Now to determine these solutions, equations of state should be known, but we do not understand these correctly at high densities. Say for some region $0<r<r_0$ we do not know the equation of state, but for $r_0 <r < R$ (the envelope) we do know the equation of state. \\
+At $\rho=\rho_0$, $m_0 \geq \frac{4\pi}{3} r_0^3 \rho_0$ (seen by looking at the $m^\prime$ equation). Now using the Buchdal bound we get 
+\[
+\frac{m_0}{r_0} < \frac{4}{9}
+\]
+If $\rho_0$ is atomic nuclei density, then we combine the bounds to get $m_0 < 5 \msolar$. It is a numerical fact that $m_0 \approx M $ to within $5\%$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Schwarzschild Black Hole}
+In Schwarzschild coordinates $(t,r,\theta,\phi)$, we required $r>2M$ and had 
+\[
+ds^2 = -(1-\frac{2M}{r}) dt^2 + (1-\frac{2M}{r})^{-1} dr^2 + r^2 d\Omega_2^2.
+\]
+The radius $r=2M$ is called the \bam{Schwarzschild radius}. 
+\begin{theorem}[Birkhoff]
+Any spherically symmetric solution of the vacuum Einstein equations is isometric to Schwarzschild. 
+\end{theorem}
+\begin{proof}
+\[
+ds^2 = -f(t,r)[dt + \chi(t,r)dr]^2 + \frac{dr^2}{g(t,r)} + r^2 d\Omega^2_2
+\]
+We have freed to transform $t \to E(t,R)$, so we may set $\chi=0$. Hence 
+\[
+ds^2 = -f(t,r)dt^2 + \frac{dr^2}{g(t,r)} + r^2 d\Omega^2_2
+\]
+We now only have the freedom $t \to p(t)$. Now from the $tr$ component of the Einstein equation
+\[
+0 = R_{tr}- \frac{1}{2} R g_{tr} \Rightarrow \del_t g = 0 \Rightarrow g=g(r)
+\]
+From the $tt$ component
+\[
+1-g-rr^\prime = 0 \Rightarrow g(r) = 1-\frac{2M}{r}
+\]
+From the $rr$ component 
+\[
+1-\frac{1}{g} + r\frac{f^\prime}{f} = 0 \Rightarrow f(t,r) = C(t)(1-\frac{2M}{r})
+\]
+We may then redefine $t$ so $C(t)=1$
+\end{proof}
+
+
+\subsection{Gravitational Redshift}
+Consider two observers Alice and Bob at radii $r_A,r_B>@M$ respectively sharing angles. Let us assume Alice sends signals to Bob and that they are separated by a Schwarzschild coordinate time $\Delta t$. The proper time between photons emitted by A/B and measured by A/B is 
+\[
+\Delta\tau_{A/B} = \sqrt{1-\frac{2M}{r_{A/B}}}
+\]
+And thus 
+\[
+\frac{\Delta \tau_B}{\Delta\tau_A}=\sqrt{\frac{1-\frac{2M}{r_B}}{1-\frac{2M}{r_A}}}>1 \text{ for } r_B > r_A
+\]
+The interval is a proxy for wavelength $\lambda_b > \lambda_A$. If B is really far i.e. $r_B \gg 1$
+\[
+1+z = \frac{\lambda_B}{\lambda_A} = \frac{1}{\sqrt{1-\frac{2M}{r_A}}}
+\]
+
+\subsection{Geodesics of Schwarzschild}
+Let $x^\mu(\lambda)$ be an affinely parametrised geodesic with tangent vector $u^\mu = \frac{dx^\mu}{d\lambda}$. Since $K=\pd{t}$ and $m=\pd{\phi}$ are Killing vectors. Then
+\begin{align*}
+    E &= -K\cdot u = (1-\frac{2m}{r}) \frac{dt}{d\tau} \\
+    h &- m\cdot u = r^2 \sin^2\theta \frac{d\phi}{d\tau}. 
+\end{align*}
+are constant as, suppose $u^a \nabla_a u^b=0$ and $\nabla_a k_b + \nabla_b k_a = 0$, then 
+\[
+u^c \nabla_c (u^a k_a) = (u^c \nabla_c u^a)k_a + u^a u^c \nabla_c k_a = 0 
+\]
+For timelike particles if $\tau$ is proper time, then $E$ has the interpretation of energy and $h$ is angular momentum per unit mass. For null geodesics, only $b = \left\lvert \frac{h}{E} \right\rvert$ is physical, and has the interpretation of the impact factor\footnote{As a result, when working with calculation of null geodesics, where proper time has no interpretation, the answer should only depend on the impact factor}.
+We also have $u^a u_a = \pm1,0$. \\
+Now consider the action 
+\[
+S = \int d\tau \dot{x}^a \dot{x}^b g_{ab}
+\]
+Taking Euler Lagrange equations 
+\[
+\frac{d}{d\tau} \left( \pd[L]{\dot{\theta}} \right) - \pd[L]{\theta} = 0 \Rightarrow r^2 \frac{d}{d\tau}(r^2 \dot{\theta}) - \frac{\cos\theta}{\sin^3\theta} h^2
+\] 
+Now wlog we can ensure $\theta(0)=\frac{\pi}{2}$ and $\dot{\theta}(0)=0 \Rightarrow \ddot{\theta}(0)=0$. Then as the e.o.m is second order we know $\theta=\frac{\pi}{2}$ for all time. 
+Hence substituting
+\begin{align*}
+g_{\mu\nu}\dot{x}^\mu \dot{x}^\nu = -\sigma \Rightarrow \frac{1}{2}\dot{r}^2 + V(r) = \frac{1}{2}E^2 \\
+V(r) = \frac{1}{2} \left( \sigma +\frac{h^2}{r^2} \right) \left( 1-\frac{2M}{r} \right)
+\end{align*}
+
+
+\subsection{Eddington Finkelstein Coordinates}
+Take $h=0$ and $E=1 \Rightarrow \dot{t} = (1-\frac{2M}{r})^{-1}, \dot{r} = \pm1$. For ther upper sign 
+\[
+\frac{\dot{t}}{\dot{r}} > 0, r>2M (outgoing)
+\]
+and for the lower 
+\[
+\frac{\dot{t}}{\dot{r}} < 0, r>2M (ingoing)
+\]
+From $\dot{r}=-1$, we can reach $r=2M$ without a problem. In Schwarzschild coordinates 
+\[
+\frac{dt}{dr} = \pm (1-\frac{2m}{r} )^{-1}
+\]
+We define Reggie-Wheeler (tortoise) coordinates
+\[
+dr_\ast = (1-\frac{2m}{r} )^{-1} dr \Rightarrow r_\ast = r+2M\log \left\lvert \frac{r}{2M} -1 \right\rvert
+\]
+\end{document}

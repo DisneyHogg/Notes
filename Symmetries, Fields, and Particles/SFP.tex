@@ -1,41 +1,6 @@
 \documentclass{article}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Packages
-
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{amssymb}
-\usepackage{hyperref} % References and links. 
-\usepackage{bm} % Bold vectors. 
-\usepackage{faktor} % Write quotients nicely.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Definitions
-
-\newtheorem{theorem}{Theorem}[subsection]
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem*{remark}{Remark}
-\newtheorem{definition}{Definition}[subsection]
-\newtheorem{fact}{Fact}[subsection]
-\newtheorem*{idea}{Idea}
-
-\DeclareMathOperator{\spn}{Span}
-\DeclareMathOperator{\tr}{Tr}
-\DeclareMathOperator{\SU}{SU}
-%\DeclareMathOperator{\dim}{dim}
-\DeclareMathOperator{\rank}{rank}
-
-\newcommand{\bam}[1]{\textbf{#1}}
-\newcommand{\mf}[1]{\mathfrak{#1}}
-\newcommand{\mbb}[1]{\mathbb{#1}}
-\newcommand{\comm}[2][]{\left[ #1, #2 \right]}
-\newcommand{\be}{\begin{equation}}
-\newcommand{\ee}{\end{equation}}
-\newcommand{\set}[1]{\lbrace #1 \rbrace}
-
+\usepackage{header}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Preamble
 

@@ -1,0 +1,74 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Packages
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{braket} %Bras, kets, sets, caps or not. 
+\usepackage{hyperref} %References and links. 
+\usepackage{bm} %Bold vectors. 
+\usepackage{faktor} %Write quotients nicely.
+\usepackage{xfrac} %Slanted fractions with \sfrac
+\usepackage{slashed} %Dirac slash notation
+\usepackage{mathtools} %Contraction notation \overbracket. 
+\usepackage{xcolor} % \highlight to color math input.
+\usepackage{tensor} %Raised and lowered indices with \indices.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Definitions
+
+%Environments
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{remark}{Remark}
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{fact}{Fact}[subsection]
+\newtheorem*{idea}{Idea}
+\newtheorem{example}{Example}[subsection]
+
+%Text math operators.
+\DeclareMathOperator{\spn}{Span}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\SU}{SU}
+%\DeclareMathOperator{\dim}{dim}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+
+%Symbolic shortcuts 
+\newcommand{\eps}{\epsilon}
+\newcommand{\curl}{\bm{\nabla}\times}
+\newcommand{\divergence}{\bm{\nabla}\cdot}
+\newcommand{\grad}{\bm{\nabla}}
+\newcommand{\del}{\partial}
+\newcommand{\tmeas}{\frac{d^3\bm{p}}{(2\pi)^3}}
+%Momentum measure in 3 dimensions 
+\newcommand{\fmeas}{\frac{d^4p}{(2\pi)^4}} %Momentum measure in 4 dimensions
+\newcommand{\LImeas}{\frac{d^3\bm{p}}{(2\pi)^32E_{\bm{p}}}}
+%Normalised LI measure.
+\newcommand{\cst}{\alpha^\prime} % String constant. 
+
+%Text type shortcuts
+\newcommand{\bam}[1]{\textbf{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mbb}[1]{\mathbb{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\highlight}[1]{%
+  \colorbox{red!50}{$\displaystyle#1$}}
+
+%Functions shortcuts.
+\newcommand{\comm}[2][]{\left[ #1, #2 \right]} %Commutator .
+\newcommand{\acomm}[2][]{\left\{ #1, #2 \right\}} %Anticommutator .
+\newcommand{\pd}[2][]{\frac{\partial#1}{\partial#2}} %Partial derivative. 
+\newcommand{\pds}[2][]{\frac{\partial^2 #1}{\partial #2^2}} %Second partial derivative.
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert} %absolute value. 
+\newcommand{\pb}[2][]{\left\{ #1, #2 \right\}_{PB}} %Poisson bracket, different from acomm
+
+
+\newcommand{\be}{\begin{equation}}  
+\newcommand{\ee}{\end{equation}}
+%Used like \[ \] but with tags.
+
+\numberwithin{equation}{subsection}

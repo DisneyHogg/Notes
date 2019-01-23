@@ -1,74 +1,6 @@
 \documentclass{article}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Packages
-
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{amssymb}
-\usepackage{braket} %Bras, kets, sets, caps or not. 
-\usepackage{hyperref} %References and links. 
-\usepackage{bm} %Bold vectors. 
-\usepackage{faktor} %Write quotients nicely.
-\usepackage{xfrac} %Slanted fractions with \sfrac
-\usepackage{slashed} %Dirac slash notation
-\usepackage{mathtools} %Contraction notation \overbracket. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Definitions
-
-%Environments
-\newtheorem{theorem}{Theorem}[subsection]
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem*{remark}{Remark}
-\newtheorem{definition}{Definition}[subsection]
-\newtheorem{fact}{Fact}[subsection]
-\newtheorem*{idea}{Idea}
-\newtheorem{example}{Example}[subsection]
-
-%Text math operators.
-\DeclareMathOperator{\spn}{Span}
-\DeclareMathOperator{\tr}{Tr}
-\DeclareMathOperator{\SU}{SU}
-%\DeclareMathOperator{\dim}{dim}
-\DeclareMathOperator{\rank}{rank}
-\DeclareMathOperator{\diag}{diag}
-
-%Symbolic shortcuts 
-\newcommand{\eps}{\epsilon}
-\newcommand{\curl}{\bm{\nabla}\times}
-\newcommand{\divergence}{\bm{\nabla}\cdot}
-\newcommand{\grad}{\bm{\nabla}}
-\newcommand{\del}{\partial}
-\newcommand{\tmeas}{\frac{d^3\bm{p}}{(2\pi)^3}}
-%Momentum measure in 3 dimensions 
-\newcommand{\fmeas}{\frac{d^4p}{(2\pi)^4}} %Momentum measure in 4 dimensions
-\newcommand{\LImeas}{\frac{d^3\bm{p}}{(2\pi)^32E_{\bm{p}}}}
-%Normalised LI measure.
-
-%Text type shortcuts
-\newcommand{\bam}[1]{\textbf{#1}}
-\newcommand{\mf}[1]{\mathfrak{#1}}
-\newcommand{\mbb}[1]{\mathbb{#1}}
-\newcommand{\mc}[1]{\mathcal{#1}}
-
-%Functions shortcuts.
-\newcommand{\comm}[2][]{\left[ #1, #2 \right]} %Commutator .
-\newcommand{\acomm}[2][]{\left\{ #1, #2 \right\}} %Anticommutator .
-\newcommand{\pd}[2][]{\frac{\partial#1}{\partial#2}} %Partial derivative. 
-\newcommand{\pds}[2][]{\frac{\partial^2 #1}{\partial #2^2}} %Second partial derivative.
-
-\newcommand{\be}{\begin{equation}}  
-\newcommand{\ee}{\end{equation}}
-%Used like \[ \] but with tags.
-
-%Small matrix used in text.
-%\newenvironment{psmallmatrix}
-%  {\left(\begin{smallmatrix}}
-%  {\end{smallmatrix}\right)}
-
+\usepackage{header}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Preamble
 
@@ -784,11 +716,11 @@ Given the above quantisation of a real scalar quantum field, the following commu
 \end{theorem}
 
 \begin{definition}[Normal Ordering]
-Given a product of a string of operator $\phi_1(\bm{x}_1)\dots\phi_n(\bm{x}_n)$ the \bam{normal ordering} of the product is denoted as 
+Given a product of a string of scalar fields $\phi_1(\bm{x}_1)\dots\phi_n(\bm{x}_n)$ the \bam{normal ordering} of the product is denoted as 
 \[
 :\phi_1(\bm{x}_1)\dots\phi_n(\bm{x}_n):
 \]
-and is defined by moving all the annihilation operators to the right of the product, and all the creation operators to the left 
+and is defined by moving all the annihilation operators to the right of the product, and all the creation operators to the left. For spinor fields, the definition is analogous, but with a factor of $-1$ included for each interchange, in order to have the result consistent with the anticommutation relations. 
 \end{definition}
 
 \begin{theorem}
@@ -1284,6 +1216,23 @@ The m-point correlation function can be written as
 \begin{idea}
 The above theorem allows the calculation of the correlation function in terms of powers of the interaction Hamiltonian. This will turn out to be an easier calculation (up to a certain order) via Feynmann diagrams. 
 \end{idea}
+
+\begin{definition}[Mandelstam Variables]
+Given $2$-$2$ scattering, with initial momenta $p_1,p_2$ and final momenta $p_1^\prime, p_2^\prime$, the \bam{Mandelstam variables} are defined as 
+\begin{align*}
+    s &= (p_1 + p_2)^2 \\ 
+    t &= (p_1 - p_1^\prime)^2 \\
+    u &= (p_1 - p_2^\prime)^2 
+\end{align*}
+\end{definition}
+
+\begin{theorem}
+The Mandelstam variables are not all independent, as 
+\[
+s+t+u = m_1^2 + m_2^2 + {m_1^\prime}^2 +{m_2^\prime}^2
+\]
+Moreover, in the centre of mas frame, $\bm{p}_1 = -\bm{p}_2$ so $s=(E_1+E_2)^2$. If $m_1 = m_2$, $E_1=E_2 = \frac{\sqrt{s}}{2}$
+\end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Feynmann Diagrams}

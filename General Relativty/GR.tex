@@ -1,0 +1,132 @@
+\documentclass{article}
+
+\usepackage{header}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Preamble
+
+\title{General Relativity Revision Notes}
+\author{Linden Disney-Hogg}
+\date{January 2019}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Connections}
+
+\begin{definition}[Vierbein Fields]
+The \bam{veirbein fields} are defined as $e^\mu_a$ such that, given a metric $g_{ab}$
+\[
+g_ab = e^\mu_a e^\nu_b \eta_{\mu\nu}
+\]
+\end{definition}
+
+\begin{definition}[Lorentz and Spacetime indices]
+Let Greek indices represent \bam{Lorentz indices} and Latin indices represent \bam{spacetime indices}. These are converted between via 
+\[
+V^\mu = e^\mu_a V^a \Leftrightarrow V^a = e^a_\mu V^\mu
+\]
+where 
+\[
+e^a_\mu=g^{ab} \eta_{\mu\nu} e^\nu_b
+\]
+\end{definition}
+
+\begin{definition}[Pseudo-orthonormal Basis]
+Define the pseudo-orthonormal basis of one forms $\set{E^\mu}$ by 
+\[
+E^\mu = e^\mu_a dx^a
+\]
+In this basis 
+\[
+ds^2 = g_{ab} dx^a dx^b = \eta_{\mu\nu} E^{\mu} E^{\nu}
+\]
+\end{definition}
+
+\begin{definition}[Spin Connection]
+Define the \bam{spin connection} $\omega\indices{_\mu^\nu_\rho}$ with the covariant derivative 
+\[
+\nabla_\mu V^\nu = \del_\mu V^\nu + \omega\indices{_\mu^\nu_\rho} V^\rho
+\]
+subject to the constraints
+\[
+\nabla_a e^b_\nu = 0
+\]
+which gives the condition
+\[
+\omega_{\lambda\tau\nu} =e_\lambda^a e_{b\tau}\left(\partial_a e_\nu^b+\Gamma_{ac}^b e_\nu^c \right)
+\]
+as well as having a vanishing torsion tensor 
+\[
+\nabla_\mu e^a_\nu - \nabla_\nu e^a_\mu = T\indices{^\rho_\mu_\nu} e^a_\rho
+\]
+which gives 
+\[
+\omega_{\mu\rho\sigma} = -\omega_{\mu\sigma\rho}
+\]
+\end{definition}
+
+\begin{definition}[Riemann Tensor]
+Define the Riemann tensor in terms of $\omega$ as 
+\[
+(\nabla_\mu \nabla_\nu - \nabla_\nu \nabla_\mu ) V_\rho = R\indices{_\mu_\nu_\rho^\sigma}(\omega) V_\sigma
+\]
+\end{definition}
+
+\begin{theorem}
+\[
+R_{abcd}(\Gamma) = e^\mu_a e^\mu_b e^\rho_c e^\sigma_d R_{\mu\nu\rho\sigma}(\omega)
+\]
+\end{theorem}
+
+\begin{definition}[Ricci Spin Coefficients]
+Define the \bam{Ricci spin coefficients} $c\indices{^\mu_\rho_\sigma}$ by 
+\[
+dE^\mu = \frac{1}{2} c\indices{^\mu_\rho_\sigma} E^\rho \wedge E^\sigma
+\]
+\end{definition}
+
+\begin{definition}[Connection 1-form]
+Define the \bam{connection 1-form} by 
+\[
+\omega\indices{^\mu_\nu} = \omega\indices{^\mu_\nu_\rho}E^\rho
+\]
+\end{definition}
+
+\begin{definition}[Torsion 2-form]
+Define the \bam{torsion 2-form} by 
+\[
+\Theta^\mu = \frac{1}{2} T\indices{^\mu_\rho_\sigma} E^\rho \wedge E^\sigma
+\]
+\end{definition}
+
+\begin{definition}[Curvature 2-form]
+Define the \bam{curvature 2-form} by 
+\[
+\Omega\indices{^\mu_\nu} = \frac{1}{2} R\indices{^\mu_\nu_\rho_\sigma}(\omega) E^\rho \wedge E^\sigma
+\]
+\end{definition}
+
+\begin{theorem}[Cartan's Equations of Structure]
+Cartan's first and second equations of structure are 
+\begin{itemize}
+    \item $dE^\mu +  \omega\indices{^\mu_\nu} E^\nu = \Theta^\mu = 0 $ 
+    \item $\Omega\indices{^\mu_\nu} = d\omega\indices{^\mu_\nu} +  \omega\indices{^\mu_\rho} \wedge  \omega\indices{^\rho_\nu}$
+\end{itemize}
+\end{theorem}
+
+
+
+
+
+
+\end{document}
