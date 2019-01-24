@@ -15,8 +15,10 @@
 \maketitle
 \tableofcontents
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Path Integral in Quantum Mechanics}
 (See Osborn's notes, section 1.2). Set $\hbar = 1 = c$ for now, though later when restoring $\hbar$ through dimensional analysis 
 \[
@@ -60,6 +62,7 @@ In the Schr\"odinger picture, states depend on time, operators are treated as co
 \hat{H}\psi(x,t) = \left( -\frac{1}{2m} \pds{x} +V(x) \right) \psi(x,t)
 \]
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Path Integral}
 We wish to express time evolution as a sum over all  trajectories, appropriately weighted. 
 \[
@@ -140,4 +143,149 @@ If we restore $\hbar$, noting $[S] = [E][t] = [\hbar]$ so
 K(x,x_0;T)  = \int \mc{D}x \; e^{i\frac{S[x]}{\hbar}}
 \]
 In the limit $\hbar \to 0$, i.e. the classical limit, the lowest frequency dominates the integral (Riemann-Lebesgue lemma) so the minimal action dominates. This coincides with Hamilton's principle from classical dynamics. 
+
+Consider analytically continuing, "rotating" $t \to -i\tau$. Then 
+\[
+\braket{x | e^{-\frac{H\tau}{\hbar}} | x_0 } = \int \mc{D}x e^{-\frac{S}{\hbar}}
+\]
+In the $\hbar \to 0$ limit, it is clear that the integral is dominated by the classical path $x(t)$ that minimises $S[x]$. Thus quantum mechanics corresponds to QFT in $0+1$ dimensions. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Path Integral Methods} 
+The main ideas here are identical in 0-dimensions. $\phi:\set{pt}\to\mbb{R}$, i.e. $\phi$ a real variable. As with imaginary time, we study the "partition function"
+\[
+Z = \int_\mbb{R} d\phi e^{-\frac{S(\phi)}{\hbar}}
+\]
+$S(\phi)$ will be a polynomial, with the highest power even for convergence. The  correlation functions or expectation values are given by 
+\[
+\braket{ f } = \frac{1}{Z} \int d\phi f(\phi) e^{-\frac{S(\phi)}{\hbar}}
+\]
+where $f(\phi)$ should not grow $\hbar$ fast to ensure convergence. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Free Field Theory}
+Say we have $N$ real field $\set{\phi_a}$. For a free theory, the action is quadratic. 
+\[
+\Rightarrow S(\phi) = \frac{1}{2} M_{ab} \phi_a \phi_b = \frac{1}{2} \phi^T M \phi 
+\]
+where $M$ is $N\times N$ symmetric and positive definite. Thus we can diagonalise $M= P\Lambda P^T$. Thus 
+\[
+Z_0 = \int d^n \phi e^{-\frac{1}{2\hbar}\phi^T M \phi} = \frac{(2\pi\hbar)^{\frac{N}{2}}}{\sqrt{\det M}}
+\]
+Now introduce a source $J$ such that the action becomes 
+\[
+S(\phi) = \frac{1}{2} \phi^T M \phi  + J\cdot\phi
+\]
+Complete the square, writing $\tilde{\phi} = \phi + M^{-1}J$. Then 
+\[
+Z_0(J) = e^{\frac{1}{2\hbar}J^T M^{-1}J}Z_0
+\]
+This is called the \bam{generator function}.
+
+\begin{example}
+\begin{align*}
+    \braket{ \phi_a \phi_b } &= \frac{1}{Z_0} \int d^N \phi \phi_a \phi_b \exp\left[ -\frac{1}{2\hbar}\phi^T M \phi - \frac{1}{\hbar} J\cdot \phi \right] \rvert_{J=0} \\
+    &= \frac{1}{Z_0} \int d^N \phi \left( -\hbar \pd{J_a} \right) \left( -\hbar \pd{J_b } \right) \exp\left[ -\frac{1}{2\hbar}\phi^T M \phi - \frac{1}{\hbar} J\cdot \phi \right] \rvert_{J=0} \\
+    &= \hbar^2 \frac{\del^2}{\del J_a \del J_b} \frac{1}{Z_0} Z_0 (J) |_{J=0} \\
+    &= \hbar (M^{-1})_{ab}
+\end{align*}
+i.e. the two point function is the inverse of the quadratic part of the action, called the \bam{propagator}. \\
+An alternative method is to consider 
+\begin{align*}
+    M_{ca} \braket{ \phi_c \phi_b } &= \frac{1}{Z_0} \int d^N \phi M_{ca} \phi_c \phi_b e^{ -\frac{1}{2\hbar}\phi^T M} \\
+    &= \frac{-\hbar}{Z_0} \int d^N\phi \phi_b \pd{\phi_a} \left( e^{ -\frac{1}{2\hbar}\phi^T M} \right) \\
+    &\text{Integrate by parts, assuming boundary terms vanish} \\
+    &= \frac{\hbar}{Z_0} \int d^n \phi \pd[\phi_b]{\phi_a} e^{ -\frac{1}{2\hbar}\phi^T M} \\
+    &= \hbar \frac{\delta_{ab}}{Z_0} Z_0 = \hbar \delta_{ab}
+\end{align*}
+\end{example}
+More generally, let $\mc{L}(\phi)$ be some linear operator acting on $\phi_a$, i.e. $\mc{L}(\phi) = \ell_a \phi_a$. Then 
+\[
+\braket{ \mc{L}_1(\phi) \dots \mc{L}_p(\phi) } = (-\hbar)^p \prod_{i=1}^p  \left( \ell_i \pd{J} \right) \frac{Z_0(J)}{Z_0} \rvert_{J=0}
+\]
+\begin{itemize}
+    \item If $p$ is odd, then the integrand is odd in at least one $\phi_a$ and the integral vanishes. 
+    \item If $p=2k$ the terms that survive $J\to0$ involves $k$ factors of $M^{-1}$.
+\end{itemize}
+
+\begin{example}[4-point function]
+\[
+\braket{ \phi_a \phi_b \phi_c \phi_d } = \hbar^2 \left[ (M^{-1})_{ab}(M^{-1})_{cd}+(M^{-1})_{ac}(M^{-1})_{bd}+(M^{-1})_{ad}(M^{-1})_{bc} \right]
+\]
+This corresponds to the Feynmann diagram
+\[
+\tensor*[^a_c]{=}{^b_d} + \tensor*[^a_c]{|\phantom{x}|}{^b_d} + \tensor*[^a_c]{\times}{^b_d}
+\]
+\end{example}
+In general the number of ways of pairing $2k$ elements is $\frac{(2k)!}{2^k k!}$.
+
+\begin{remark}
+For complex $\phi_a$, $M$ is Hermitian $\Rightarrow M^{-1}$ not symmetric $\Rightarrow$ order of indices matters. We denote 
+\[
+\braket{ \phi_a \phi_b^\ast } = \hbar (M^{-1})_{ab} = \tensor[_a]{\rightarrow}{_b}
+\]
+\end{remark}
+
+\subsection{Interacting Theory}
+Take a single, real scalar field $\varphi$. Let 
+\[
+S(\varphi) = \frac{1}{2} m^2 \varphi^2 + \frac{\lambda}{4!}\varphi^4
+\]
+Take $\lambda>0$ for stability, and $m^2>0$ s.t. minimum of S is at $\varphi = 0$. Expand about the minimum of $S$, equivalent to expanding   about $\hbar = 0$. 
+\begin{align*}
+Z &= \int d\varphi e^{-\frac{1}{\hbar}(\frac{1}{2} m^2 \varphi^2 + \frac{\lambda}{4!}\varphi^4)} \\
+&= \int d\varphi e^{\frac{m^2\varphi^2}{2\hbar}} \sum_{n=0}^\infty \frac{1}{n!} \left( -\frac{\lambda}{\hbar 4!} \right)^n \varphi^{4n} \\
+&= \frac{\sqrt{2\hbar}}{m} \sum_{n=0}^\infty \frac{1}{n!} \left( - \frac{\hbar \lambda}{4! m^4} \right)^n \cdot 2^{2n} \underbrace{\int_0^\infty dx e^{-x} x^{2n+\frac{1}{2}-1}}_{\Gamma(2n+1)=\frac{(4n)! \sqrt{\pi}}{4^{2n}(2n)!}} \quad \text{letting } x=\frac{m^2 \varphi^2}{2\hbar}\\
+&= \frac{\sqrt{2\pi\hbar}}{m} \sum_{n=0}^N \left( -\frac{\lambda \hbar}{m^4}\right)^n \underbrace{\frac{1}{(4!)^n n!}}_{(1)} \underbrace{\frac{(4n)!}{2^{2n}(2n)!}}_{(2)}
+\end{align*}
+Recall stirling's approximation $ n! \approx e^{n\log n}$. This give $(1)\cdot(2) \approx e^{n\log n} \approx n!$. Factorial growth of coefficients give zero radius of convergence and hence the above is an asymptotic series. The true function can deviate from truncated series by some transcendental function. \\
+Term $(1)$ comes from expanding $\frac{\lambda}{4! \hbar} \varphi^4$ term in $e^{-S}$. \\
+Term $(2)$ is the number of ways of joining $4n$ elements into distinct pairs. \\
+In Feynmann diagrams , we give a propagator a factor $-\frac{\hbar}{m^2}$ and a vertex a factor $-\frac{\lambda}{\hbar}$. 
+$Z$ has no $\varphi$ dependence $\Leftrightarrow$ no external legs ("vacuum diagrams"). Let $D_n$ be the set of all labelled vacuum diagrams with $n$ vertices.
+\begin{itemize}
+    \item $D_1 = \set{\tensor*[^1_2]{\infty}{^3_4},\tensor*[^1_2]{8}{^3_4}, \tensor*[^1_2]{}{^3_4} } \Rightarrow |D_1| = 3$
+\end{itemize}
+Let $G_n$ be group which permutes each of the 4 fields at each vertex $(S_4)^n$, and also permutes the $n$ vertices $S_n$. Then 
+\[
+|G_n| = |S_4|^n |S_n| = (4!)^n n!
+\]
+\begin{align*}
+\frac{Z}{Z_0} &= \sum_{n=0}^N \left(-\frac{\lambda\hbar}{m^4} \right)^n \frac{|D_n|}{|G_n|} \qquad Z_0 =\frac{\sqrt{2\pi\hbar}}{m} \\
+&= 1 - \frac{\hbar\lambda}{8m^4} + \frac{35}{384}\frac{\hbar^2 \lambda^2}{m^8}+\dots
+\end{align*}
+\[
+\frac{|D_n|}{|G_n|} = \frac{\text{sum over topologically distinct graphs}}{\text{symmetry factor}} = \sum_{\Gamma} \frac{1}{S_\Gamma}
+\]
+$\Gamma$ a distinct graph, free from labels, and $S_\Gamma$ the number of permutations of lines and vertices leaving $\Gamma$ invariant. 
+
+\begin{example}
+\begin{align*}
+&\Gamma = 8 \Rightarrow S_\Gamma = \underbrace{2^2}_{\text{left/right for top/bottom}} \times \underbrace{2}_{\text{flip up/down}}=8 \\
+&\Gamma = basketball \Rightarrow S_\Gamma = 2 \times 4! = 48 \\
+&\Gamma = ooo \Rightarrow S_\Gamma = 16 \\
+&\Gamma = 8 8 \Rightarrow S_\Gamma = 128
+\end{align*}
+\end{example}
+Then 
+\begin{align*}
+    \frac{Z}{Z_0} &= \emptyset + 8 + basketball + ooo + 8 8 + \dots \\
+    &= 1 - \frac{\hbar\lambda}{8m^4} + \frac{\hbar^2}{\lambda^2 m^6} \left( \frac{1}{48} + \frac{1}{16} + \frac{1}{128} \right) + \dots 
+\end{align*}
+In dimensions $d>0$, loops $\Rightarrow$ integrals over momenta. \\
+With external source, the generating function 
+\[
+Z(j) = \int d\varphi \exp -\frac{1}{\hbar} \left( \frac{1}{2}m^2 \varphi^2 + \frac{\lambda}{4!}\varphi^4 + J\varphi \right) 
+\]
+\[
+\braket{\varphi^2} = \frac{\hbar^2}{Z(0)} \pds{J} \left. Z(J) \right \rvert_{J=0}
+\]
+Rule for the source term: Expansion of $Z(J)$ includes $Z(0)$ vacuum diagrams, but also those ending here in $2,4,6,8,\dots$ sources. 
+\begin{align*}
+\braket{\varphi^2} = \frac{\hbar^2}{Z_0} \pds{J} \left.\left( 8 + \dots + \mc{l} + \mc{l}o +\dots +x+\dots \right)\right\rvert_{J=0} \\
+= 1 + 10 + \dots 
+\end{align*}
+
+
+
 \end{document}

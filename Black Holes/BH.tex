@@ -20,7 +20,7 @@
 \[
 c = G = 1
 \]
-The signature used it $(-,+,+,+)$. \\
+The signature used is $(-,+,+,+)$. \\
 Greek indices will be used for coordinate dependent expressions \\
 Latin indices will be used for coordinate invariant expressions (e.g $R=g^{ab}R_{ab}$.\\ 
 The Riemann tensor is fixed by 
@@ -332,4 +332,107 @@ We define Reggie-Wheeler (tortoise) coordinates
 \[
 dr_\ast = (1-\frac{2m}{r} )^{-1} dr \Rightarrow r_\ast = r+2M\log \left\lvert \frac{r}{2M} -1 \right\rvert
 \]
+In tortoise coordinates 
+\[
+\frac{dt}{dr_\ast} = \pm 1 \Rightarrow t = \pm r_\ast + \text{constant}
+\]
+Define $v=t+r_\ast$, constant on ingoing geodesics. Hence eliminate $t$ from the line element 
+\[
+dt = dv - (1-\frac{2M}{r}) dr 
+\]
+so
+\[
+ds^2 = -(1-\frac{2M}{r}) dv^2 + 2dvdr + r^2 d\Omega_2^2
+\]
+i.e. 
+\begin{align*}
+g_{\mu\nu} &= \begin{pmatrix} -1+\frac{2M}{r} & 1 &0 &0 \\ 1 & 0 & 0 & 0 \\ 0 & 0 & r^2 & 0\\ 0 & 0 & 0 & r^2 \sin^2 \theta \end{pmatrix} \\
+\det g &= -r^4 \sin^2 \theta 
+\end{align*}
+These coordinates are \bam{Ingoing Eddington Finkelstein coordinates}
+Compute the Kretschmann scalar 
+\[
+\mc{K} = R^{abcd}R_{abcd} = \frac{48M^2}{r^6} \to \infty \text{ as } r\to 0
+\]
+This shows that $r=2M$ is no longer a special point, but $r=0$ is in fact a physical singularity, as scalars are invariant under coordinate change. 
+In these coordinates $\pd{t} = \pd{v}$. 
+\[
+K=\pd{v} \Rightarrow K^2 = -(1-\frac{2M}{r})
+\]
+This killing vector is no longer always timelike, so the metric is not stationary. 
+
+\subsection{Finkelstein Diagram}
+For $r>2m$, 
+\[
+t-r_\ast = \text{const} \Rightarrow v = 2r + 4M\log | \frac{r}{2M} - 1| +\text{const}
+\]
+
+\subsection{Black Hole Region}
+\begin{definition}[Causal]
+A vector is \bam{causal} if it is null or timelike and non-zero. \\
+A curve is causal if its tangent vectors are everywhere causal. 
+\end{definition}
+
+\begin{definition}[Time Orientable Spacetime]
+A spacetime it \bam{time orientable} if it admits a time orientation, i.e. a causal vector field $T^a$ defined everywhere. 
+\end{definition}
+
+
+\begin{definition}
+Another  causal vector $X^a$ is \bam{future directed} if it lies in the same light cone ($X^a T_a \leq 0$). It is \bam{past directed} otherwise.
+\end{definition}
+
+Take $\pm \pd{r}$. In $IEF$ coordinates $g_{rr}=0$, so $\pd{r} \pd{r} = 0$, i.e. null. In fact, with $K  = \pd{v}$
+\[
+K \cdot (-\pd{r}) = -g_{vr} = -1
+\]
+Hence the arrows go up in Finkelstein diagrams. 
+
+\begin{prop}
+Let $x^\mu(\lambda)$ be any future directed causal cureve. Assume $r(\lambda_0)\leq 2M$. Then $\forall \lambda \geq \lambda_0 \; r(\lambda) \leq 2M$
+\end{prop}
+\begin{proof}
+Let $V^\mu = \frac{dx^\mu}{d\lambda}$. Since $(-\pd{r})$ and $V^0$ are both future directed 
+\[
+0 \geq (-\pd{r}) V = -g_{r\mu}V^\mu = -V^v = -\frac{dv}{d\lambda}
+\]
+\[
+\Rightarrow \frac{dv}{d\lambda} \geq 0
+\]
+Hence 
+\[
+V^2 = V^a V_a = -(1-\frac{2M}{r}) (\frac{dv}{d\lambda})^2 + 2 \frac{dv}{d\lambda} \frac{dr}{d\lambda} + r^2 (\frac{d\Omega}{d\lambda})^2
+\]
+where $ (\frac{d\Omega}{d\lambda})^2 = (\frac{d\theta}{d\lambda})^2 + \sin^2 \theta (\frac{d\phi}{d\lambda})^2$
+Hence 
+\[ \label{eq:3}
+-2\frac{dv}{d\lambda} \frac{dr}{d\lambda} = -V^2 + (\frac{2M}{r}-1) (\frac{dv}{d\lambda})^2 + r^2 (\frac{d\Omega}{d\lambda})^2
+\]
+If $V$ is causal and $r\leq 2M$ then 
+\[
+\frac{dv}{d\lambda} \frac{dr}{d\lambda} \leq 0 
+\]
+Let us assume $\frac{dr}{d\lambda} > 0 \Rightarrow \frac{dv}{d\lambda} = 0$
+
+If this is ture, the from \ref{eq:3} 
+\[
+V^2 = 0 \; \text{ and } \; \frac{d\Omega}{d\lambda}
+\]
+so $V$ is a positive multiple of $\pd{r}$ and hence is past directed. Contradiction. 
+
+This shows that $\frac{dr}{d\lambda} \leq 0 $ if $r\leq 2M$. If $r< 2M$ then the equality must be strict. If $\frac{dr}{d\lambda}=0$ then because of \ref{eq:3} 
+\[
+\frac{d\Omega}{d\lambda} = \frac{dv}{d\lambda}=0 = V^\mu
+\]
+Hence if $r(\lambda_0)<2M$ then $r(\lambda)$ is monotonically decreasing for $\lambda \geq \lambda_0$. 
+
+\end{proof}
+
+
+
+
+
+
+
+
 \end{document}

@@ -18,7 +18,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-The following notes are a collection of topics in geometry. They are intended to provide a sufficient understanding on the underlying geometry present in lots of mathematical physics. Where possible geometric meaning will be promoted to avoid the tendency to immediately work in coordinates.
+The following notes are a collection of topics in geometry. They are intended to provide a sufficient understanding on the underlying geometry present in lots of mathematical physics. Where possible geometric meaning will be promoted to avoid the tendency to immediately work in coordinates. Often in these notes care will \emph{not} have been taken to ensure all definitions are given suitably stringently (e.g. emphasising the difference between a manifold and a smooth manifold). As the tools presented become more important, and so the need to have them be more precise is increased, these flaws will be ironed out.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -40,6 +40,13 @@ that is linear, and totally antisymmetric.
 The space of k-forms on $\mbb{R}^n$ forms a vector space of dimension $\binom{n}{k}$
 \end{theorem}
 
+\begin{definition}
+Given a function $f:\mbb{R}^m \to \mbb{R}^n$ and exterior k-form $\omega^k$ on $\mbb{R}^n$, there is the corresponding exterior k-form $f^\ast\omega^k$ on $\mbb{R}^m$ given by 
+\[
+(f^\ast\omega^k)(v_1,\dots,v_k) = \omega^k(fv_1,\dots,fv_k)
+\]
+\end{definition}
+
 \begin{definition}[Exterior Product]
 The \bam{exterior product} of a k-form $\omega^k$ and a l-form $\omega^l$ is the $k+l$-form $\omega^k \wedge \omega^l$ defined by 
 \[
@@ -59,8 +66,8 @@ It is
 \begin{definition}[Differential]
 The \bam{differential} of a function on a manifold $f:\mc{M}\to\mbb{R}$ is 
 \begin{align*}
-    df : T\mc{M} \to \mbb{R} \\
-    df(x,v) = df_x(v) = \left. \frac{d}{dt} \right\rvert_{t=0} f(\gamma(t))
+    & df : T\mc{M} \to \mbb{R} \\
+    & df(x,v) = df_x(v) = \left. \frac{d}{dt} \right\rvert_{t=0} f(\gamma(t))
 \end{align*}
 where $\gamma:I\to\mc{M}$, $\gamma(0)=x, \dot{\gamma}(0)=v$ is a curve on the manifold. Note that $\forall x\in\mc{M}$, $df_x$ is a 1-form on $T_x \mc{M}$.
 \end{definition}
@@ -77,12 +84,159 @@ is a k-form on $\mc{M}$
 Note the double use of the term k-form. In not considered properly, this can cause confusion, but the use should be clear from context. 
 \end{remark}
 
+\begin{fact}
+Differential forms can be multiplied by smooth functions to give another differential form. As such it can be seen that the space of all differential forms is a module over the ring of smooth real functions on $\mc{M}$, called $\mc{C}^\infty(\mc{M},\mbb{R})$.
+\end{fact}
+
 \begin{theorem}
-Given coordinates $\set{x^i}_{i=1}^n$ on $\mc{M}$ and differential k-form can be written as 
+Given coordinates $\set{x^i}_{i=1}^n$ on $\mc{M}$ any differential k-form can be written as 
 \[
 \omega^k = \sum_{i_1<\dots<i_k} a_{i_1 \dots i_k}(x) dx^{i_1} \wedge \dots \wedge dx^{i_k}
 \]
 \end{theorem}
+
+\begin{definition}
+As before for a smooth function $f:\mc{M}\to\mc{N}$ and differential k-form on $\mc{N}$ define the differential k-form $f^\ast\omega^k$ on $\mc{M}$ by 
+\[
+(f^\ast\omega^k)(v_1,\dots,v_k) = \omega^k(f_\ast v_1, \dots, f_\ast v_k)
+\]
+where $f_\ast = df$ is the differential of f. 
+\end{definition}
+
+\begin{theorem}
+Let $\set{x^i}$ be an oriented coordinate system on $\mbb{R}^k$. Then every differential k-form on $\mbb{R}^k$ is proportional to $dx^1 \wedge \dots \wedge dx^k$
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cells and Chains}
+
+\begin{definition}[k-dimensional cell]
+A \bam{k-dimensional cell} on $\mc{M}$ is a triple $\sigma=(D,f,Or)$ where 
+\begin{itemize}
+    \item $D\subset\mbb{R}^k$ is a convex polyhedron
+    \item $f:D\to\mc{M}$ a differentiable map
+    \item $Or$ an orientation on $\mbb{R}^k$
+\end{itemize}
+\end{definition}
+
+\begin{definition}[k-dimensional chain]
+A \bam{k-dimensional chain} is a collection $\set{\sigma_i, m_i}_{i=1}^r$ where $\sigma_i$ are k-dimsensional cells and $m_i \in \mbb{Z}$. Denote the chain as 
+\[
+c_k = m_1 \sigma_1 + \dots + m_r \sigma_r
+\]
+Introduce the natural identification 
+\eq{
+(m_1 + m_2)\sigma &= m_1 \sigma + m_2 \sigma \\
+m_1 \sigma_1 + m_2 \sigma_2 &= m_2 \sigma_2 + m_1 \sigma_1 \\ 
+0\sigma &= 0 \\
+\sigma + 0 &= \sigma
+}
+\end{definition}
+
+\begin{definition}[Boundary]
+Given a k-dimensional cell $\sigma=(D,f,Or)$ the boundary of $\sigma$ is defined as 
+\[
+\del \sigma = \sum \sigma_i \quad  \sigma_i = (D_i, f_i, Or_i)
+\]
+where 
+\begin{itemize}
+    \item $D_i$ are the $(k-1)$-dimensional faces of $D$. 
+    \item $f_i = f\rvert_{D_i}$.
+    \item $Or_i$ is the orientation compatible with $Or$ given the normal to $D_i$ is the first element. 
+\end{itemize}
+For a chain $c_k = m_1 \sigma_1 + \dots + m_r \sigma_r$ similarly define 
+\[
+\del c_k = m_1 \del\sigma_1 + \dots + m_r \del\sigma_r
+\]
+\end{definition}
+
+\begin{definition}[Cycle]
+A chain $c$ is called a \bam{cycle} if $\del c =0$
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Integral and Differential}
+
+\begin{definition}
+Let $\omega^k$ be a differential k-form on $\mbb{R}^k$ and $D\subset \mbb{R}^k$ a bounded convex polyhedra. Writing $\omega^k = \varphi(x) dx^1 \wedge \dots \wedge dx^k $ define 
+\[
+\int_D \omega^k = \int_D \varphi(x) dx^1\dots dx^k
+\]
+\end{definition}
+
+\begin{definition}
+Given a k-dimensional cell $\sigma=(D,f,Or)$ and differital k-form $\omega^k$ define 
+\[
+\int_\sigma \omega^k = \int_D f^\ast \omega^k 
+\]
+\end{definition}
+
+\begin{definition}
+Given a k-dimensional chain $c_k = \sum m_i \sigma_i $ and differential k form $\omega^k$ let 
+\[
+\int_{c_k} \omega^k = \sum m_i \int_{\sigma_i} \omega^k 
+\]
+\end{definition}
+
+\begin{definition}[Increment]
+Let $\omega^k$ be a differential k-form on $\mc{M}$. Given $v_1, \dots, v_{k+1} \in T_x \mc{M}$ for $x\in\mc{M}$, and $f:\mbb{R}^n \to T_x\mc{M}$ coordinates on the tangent space define the \bam{increment} 
+\[
+F(v_1, \dots, v_{k+1}) = \int_{\del\Pi} \omega^k
+\]
+where $\Pi = f(\spn_{[0,1]}\set{f^{-1}(v_1),\dots,f^{-1}(v_{k+1})})$
+\end{definition}
+
+\begin{definition}[Exterior Derivative]
+The principal part of the increment is call the \bam{exterior derivative} or \bam{differential} of $\omega^k$ and is denoted $d\omega^k$
+\end{definition}
+
+\begin{theorem}
+The differential of $\omega^k$ is independent of the choice of $f$. Moreover, if 
+\[
+\omega^k = \sum_{i_1<\dots<i_k} a_{i_1 \dots i_k}(x) dx^{i_1} \wedge \dots \wedge dx^{i_k}
+\]
+then 
+\[
+d\omega^k = \sum_{i_1<\dots<i_k} da_{i_1 \dots i_k}(x) \wedge dx^{i_1} \wedge \dots \wedge dx^{i_k}
+\]
+\end{theorem}
+
+\begin{theorem}[Properties of the exterior derivative]
+The exterior derivative satisfies
+\begin{itemize}
+    \item $d(\omega_1 + \omega_2) = d\omega_1 + d\omega_2$
+    \item $d(\omega^k \wedge \omega^l) = d\omega^k \wedge \omega^l + (-1)^k \omega^k \wedge d\omega^l $
+    \item $dd=0$
+    \item $f^\ast (d\omega) = d(f^\ast \omega)$
+\end{itemize}
+\end{theorem}
+
+\begin{definition}[Closed]
+A differential form $\omega$ is \bam{closed} if 
+\[
+d\omega = 0
+\]
+\end{definition}
+
+\begin{theorem}
+Every differential is closed. 
+\end{theorem}
+
+\begin{theorem}[Stokes' Formula]
+For $\omega$ a k-form and $c$ a $k+1$ chain 
+\[
+\int_{\del c} \omega = \int_c d\omega
+\]
+\end{theorem}
+
+\begin{corollary}
+If $\omega^k$ is a closed k-form then for any $(k+1)$-chain $c_{k+1}$
+\[
+\int_{c_{k+1}} \omega^k = 0
+\]
+\end{corollary}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

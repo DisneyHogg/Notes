@@ -28,6 +28,7 @@
 \newtheorem{fact}{Fact}[subsection]
 \newtheorem*{idea}{Idea}
 \newtheorem{example}{Example}[subsection]
+\newtheorem{prop}{Proposition}[subsection]
 
 %Text math operators.
 \DeclareMathOperator{\spn}{Span}
@@ -36,6 +37,7 @@
 %\DeclareMathOperator{\dim}{dim}
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Pfaff}{Pfaff}
 
 %Symbolic shortcuts 
 \newcommand{\eps}{\epsilon}
@@ -48,7 +50,8 @@
 \newcommand{\fmeas}{\frac{d^4p}{(2\pi)^4}} %Momentum measure in 4 dimensions
 \newcommand{\LImeas}{\frac{d^3\bm{p}}{(2\pi)^32E_{\bm{p}}}}
 %Normalised LI measure.
-\newcommand{\cst}{\alpha^\prime} % String constant. 
+\newcommand{\cst}{\alpha^\prime} % String constant.
+\newcommand{\msolar}{M_\odot}
 
 %Text type shortcuts
 \newcommand{\bam}[1]{\textbf{#1}}
@@ -70,5 +73,8 @@
 \newcommand{\be}{\begin{equation}}  
 \newcommand{\ee}{\end{equation}}
 %Used like \[ \] but with tags.
+
+\newcommand{\eq}[1]{\begin{align*}#1\end{align*}}
+%Used to short align env. 
 
 \numberwithin{equation}{subsection}
