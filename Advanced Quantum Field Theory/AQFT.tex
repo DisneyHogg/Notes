@@ -163,7 +163,7 @@ $S(\phi)$ will be a polynomial, with the highest power even for convergence. The
 where $f(\phi)$ should not grow $\hbar$ fast to ensure convergence. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Free Field Theory}
+\subsubsection*{Free Field Theory}
 Say we have $N$ real field $\set{\phi_a}$. For a free theory, the action is quadratic. 
 \[
 \Rightarrow S(\phi) = \frac{1}{2} M_{ab} \phi_a \phi_b = \frac{1}{2} \phi^T M \phi 
@@ -226,7 +226,7 @@ For complex $\phi_a$, $M$ is Hermitian $\Rightarrow M^{-1}$ not symmetric $\Righ
 \]
 \end{remark}
 
-\subsection{Interacting Theory}
+\subsubsection*{Interacting Theory}
 Take a single, real scalar field $\varphi$. Let 
 \[
 S(\varphi) = \frac{1}{2} m^2 \varphi^2 + \frac{\lambda}{4!}\varphi^4
@@ -282,10 +282,199 @@ Z(j) = \int d\varphi \exp -\frac{1}{\hbar} \left( \frac{1}{2}m^2 \varphi^2 + \fr
 \]
 Rule for the source term: Expansion of $Z(J)$ includes $Z(0)$ vacuum diagrams, but also those ending here in $2,4,6,8,\dots$ sources. 
 \begin{align*}
-\braket{\varphi^2} = \frac{\hbar^2}{Z_0} \pds{J} \left.\left( 8 + \dots + \mc{l} + \mc{l}o +\dots +x+\dots \right)\right\rvert_{J=0} \\
-= 1 + 10 + \dots 
+\braket{\varphi^2} &= \frac{\hbar^2}{Z_0} \pds{J} \left.\left( 8 + \dots + \mc{l} + \mc{l}o +\dots +x+\dots \right)\right\rvert_{J=0} \\
+&= \frac{1}{Z(0} (1 + 10 + \dots + \text{disconnected vacuum bubble diagrams}) \\
+&= \frac{1}{Z(0)} (\text{non bubble diagrams})\underbrace{(\text{vacuum bubbles})}_{=Z(0)} \\
+&= (\text{non bubble diagrams})
 \end{align*}
+Also note 
+\eq{
+\braket{\varphi^4} = ( || + x + \dots ) 
+}
 
+\subsection{Effective Actions}
+The Wilsonian effective action is W, with 
+\[
+Z = e^{-\frac{W}{\hbar}}
+\]
+as $\sum(\text{all vacuum diagrams}) = \exp\left( -\frac{1}{\hbar} \sum (\text{connected diagrams}) \right)$.
+Any diagram $D$ is the product of connected diagrams $C_I$ 
+\[
+D = \frac{1}{S_D} \prod_{I} (C_I)^{n_I}
+\]
+$I$ is the index over connected diagrams. Note $C_I$ \emph{includes} its own symmetry factor. 
+\[
+C_D = \text{number of ways of rearranging identical } C_I
+\]
+\[
+\Rightarrow S_D = \prod_I (n_I)^1
+\]
+e.g. $D = 8 8 \infty 8 = 8 8 8 \infty \Rightarrow C_D = 3! \cdot 1! = 6$. 
+\eq{
+\Rightarrow \frac{Z}{Z_0} = \sum_{\set{n_I}} D &= \sum_{\set{n_I}} \prod_I \frac{1}{n_I!}(C_I)^{n_I} \\
+&= \prod_I \sum_{n_I} \frac{1}{n_I!}(C_I)^{n_I} \\
+&= \exp\left(\sum_I C_I \right) = e^{-\frac{W-W_0}{\hbar}}
+}
+Hence 
+\[
+W=W_0 - \hbar \sum_I C_I \quad \text{sum of connected diagrams}
+\]
+\\
+Why is $W$ an "effective action"?. Consider a theory with two real scalar fields $\varphi, \chi$ 
+\[
+S(\varphi,\chi) = \frac{1}{2}m^2 \varphi^2 + \frac{1}{2}M^2 \chi^2 + \underbrace{\frac{1}{4} \varphi^2 \chi^2}_{\text{no factoral}} 
+\]
+The Feynmann rules are 
+\begin{itemize}
+    \item $\frac{\hbar}{m^2}$ for $\varphi$ propagator 
+    \item $\frac{\hbar}{M^2}$ for $\chi$ propagator 
+    \item $-\frac{\lambda}{\hbar}$ at vertex.
+\end{itemize}
+Then 
+\eq{
+-\frac{W}{\hbar} &= (\text{sum of bubble in $\varphi,\chi$}) \\
+&= -\frac{\hbar\lambda}{4m^2M^2} + \frac{\hbar^2\lambda^2}{m^4 M^4} \left( \frac{1}{16} + \frac{1}{16} + \frac{1}{8} \right) + \dots
+}
+\eq{
+\braket{\varphi^2} = \frac{\hbar}{m^2}+ \frac{\hbar^2\lambda}{2m^4M^2} + \frac{\hbar^3\lambda^2}{m^6 M^4} \left[ \frac{1}{4} + \frac{1}{4} + \frac{1}{2} \right] + \dots 
+}
+Say we want to remove explicit dependence on $\chi$, e.g. say $\chi$ is very massive ($M\gg m$). Then "integrate out" the heavy field. Define $W$ such that 
+\eq{
+e^{-\frac{W(\varphi)}{\hbar}} = \int d\chi e^{-\frac{S(\varphi,\chi)}{\hbar}}
+}
+The $\varphi^2\chi^2$ acts as a source term for $\chi^2$. \\
+The correlation functions can then be expressed as 
+\eq{
+\braket{f(\varphi)} &= \frac{1}{Z} \int d\varphi d\chi f(\varphi) e^{-\frac{S(\varphi,\chi)}{\hbar}} \\
+&= \frac{1}{Z} \int d\varphi f(\varphi) e^{-\frac{W(\varphi)}{\hbar}}
+}
+
+In our example, the integral can be done exactly, as 
+\eq{
+\int d\chi e^{-\frac{S(\varphi,\chi)}{\hbar}} = e^{-\frac{1}{2}m^2\varphi^2} \sqrt{\frac{2\pi\hbar}{M^2 + \frac{1}{2}\lambda\varphi^2}} \\
+W(\phi) = \frac{1}{2}m^2 \varphi^2 + \frac{\hbar}{2}\log\left(1+\frac{\lambda}{2M^2} \varphi^2 \right) + \underbrace{\frac{\hbar}{2} \log \frac{M^2}{2\pi\hbar}}_{\text{const so ignored}}
+}
+The constant piece won't affect QFT correlation functions. However, this term will contribute to the cosmological constant of the universe. Why is the observed cosmological constant $\Lambda$ so small? \\ 
+Expand the log, 
+\eq{
+W(\varphi) &= \left( \frac{1}{2}m^2 + \frac{\hbar\lambda}{4M^2}\right) \varphi^2 - \frac{\hbar\lambda^2}{16M^4}\varphi^4 + \frac{\hbar\lambda^3}{48M^6} \varphi^6 + \dots \\
+&= \frac{1}{2}m_{eff}^2\varphi^2 + \frac{\lambda_4}{4!} \varphi^4 + \frac{\lambda_6}{6!} \varphi^6 + \dots +\frac{\lambda_{2k}}{(2k)!} \varphi^{2k} + \dots
+}
+where 
+\eq{
+m_{eff} &= m^2 + \frac{\hbar\lambda}{2M^2} \\
+\lambda_{2k} &= (-1)^{k+1}\hbar \frac{(2k)!}{2^{k+1}k} \frac{\lambda^k}{m^{2k}}
+}
+Note all the new terms are
+\begin{itemize}
+    \item  $\propto \hbar$ and hence are quantum effects.
+    \item  Suppressed by $\sim \frac{1}{M^{2k}}$
+\end{itemize}
+Usually we find $W(\varphi)$ perturbatively. Again, we treat the $\frac{\lambda}{4} \varphi^2\chi^2$ term as a source, and use the Feynmann rules for the $\chi$ integration 
+\begin{itemize}
+    \item $\frac{\hbar}{M^2}$ for a $\chi$ propagator. 
+    \item $-\frac{\lambda}{2}\frac{\varphi^2}{\hbar}$ for each source. 
+\end{itemize}
+Then the effective action is (sum of connected components)($\times -\hbar$) so 
+\eq{
+W(\varphi) &\sim -\hbar \left[ \text{source} + \text{1 source loop} + \dots \right] \\
+&= \frac{m^2 \varphi^2}{2} + \frac{1}{2}\frac{\hbar\lambda}{2M^2} \varphi^2 - \frac{1}{4} \frac{\hbar\lambda^2}{4M^2}\varphi^4 + \dots 
+}
+so 
+\eq{
+\braket{\varphi^2} = \frac{1}{Z} \int d\varphi \varphi^2 e^{-\frac{W}{\hbar}} = \frac{h}{m_{eff}} - \frac{\lambda_4 \hbar^2}{2m_{eff}^6} + \dots
+}
+as before. 
+
+\subsubsection*{Quantum Effective action}
+\begin{itemize}
+    \item $W(J)$ is the Wilson effective action, is the average over quantum fluctuation of some degrees of freedom. 
+    \begin{example}
+    \eq{
+    e^{-\frac{W(\phi)}{\hbar}} = \int d\chi e^{-\frac{S(\phi,\chi)}{\hbar}}
+    }
+    \end{example}
+    \item $\Gamma(\Phi)$ is the quantum effective action averaged over all quantum fluctuations. 
+\end{itemize}
+
+Define an average field in the presesnce of some source $J$ as 
+\eq{
+\Phi = \pd[W]{J} &= -\frac{\hbar}{Z(J)} \pd{J} \int d\varphi e^{-\frac{S(\varphi) + J\varphi}{\hbar}} \\
+&= braket{\varphi}_J
+}
+
+Legendre transform from $W(J) \to \Gamma(\Phi)$ is then 
+\eq{
+\Gamma(\Phi) = W(J) - \Phi
+}
+Note 
+\eq{
+\pd[\Gamma]{\Phi} &= \pd[W]{\Phi} - J - \Phi \pd[J]{\Phi} \\
+&= \pd[W]{J} \pd[J]{\Phi} - J - \Phi  \pd[J]{\Phi} = -J \\
+}
+and 
+\eq{
+\pd[\Gamma]{\Phi} |_{J=0} = 0 
+}i.e. in absence of a source, $J=0$, $\Phi=\braket{\varphi}$ corresponds to an extremum of $\Gamma(\Phi)$. In higher dimensions 
+\eq{
+\Gamma(\Phi) = \int d^d x \left[ - V(\Phi) \highlight{-} \frac{1}{2} \del^\mu \Phi \del_\mu \Phi + \dots \right] 
+}
+The first term $V(\Phi)$ is the \bam{effective potential}. 
+
+\subsubsection*{analogy with statistical mechanics of magnetic systems}
+Say we have a spin $s(x)$, an external magnetic field $h$ and Hamiltonian $\mc{H}$. Then 
+\eq{
+Z(h) = e^{-\beta F(h)} = \int \mc{D}s \exp \left[ -\beta \int d^x (\mc{H}(s) - hs)\right]
+}
+The magnetisation is 
+\eq{
+M = -\pd[F]{h} = \int d^d x \braket{s(x)}
+}
+and the Legendre transform is 
+\eq{
+G &= F + hm \\
+\pd[G]{M} &= h
+}
+giving the Gibbs free energy from the Helmholtz free energy. When $h\to0$ the equilibrium $M$ is given by the minimum of $G$
+
+\subsection{Perturbative Calculation of Gamma}
+Treat $\Phi$ as we did $\varphi$. A quantum path integral over $\Phi$
+\begin{align} \label{eq:8}
+e^{-\frac{W_\Gamma(J)}{g}} = \int d\Phi e^{-\frac{\Gamma(\Phi)+J\Phi}{g}}
+\end{align}
+where $g$ is a fictional new Plancks constant. $W_\Gamma(J)$ is the sum of connected diagrams with $\Phi$ propagators and vertices. Expanding in $g$ gives 
+\eq{
+W_\Gamma(J) = \sum_{l=0}^\infty g^l W_\Gamma^{(l)} (J)
+}
+where each term corresponds to $l$ loops. \bam{Tree diagrams} are those composing $W^{(0)}_\Gamma(J)$. In the $g\to 0$ limit only these contribute i.e. 
+\eq{
+\lim_{g \to 0} W_\Gamma(J) = W^{(0)}_\Gamma(J)
+}
+Also, as $g\to 0 $, integral \ref{eq:8} over $\Phi$ will be dominated by minima of the exponent i.e $\Phi$ such that 
+\eq{
+\pd[\Gamma]{\Phi} = -J \quad \text{(Steepest descent)} \\
+\Rightarrow W_\Gamma(J) = W^{(0)}_\Gamma(J) = \Gamma(\Phi) + J\Phi = W(J)
+}
+Hence the sum of the connected diagrams $W(J)$ (action $S(\varphi)+J\varphi$) can be otained as the sum of \emph{tree diagrams} $W_\Gamma^{(0)}(J)$ (action $\Gamma(\Phi)+J\Phi$). 
+
+\begin{definition}[Bridge]
+An edge of a connected graph is a \bam{bridge} if cutting it would make the graph disconnected. 
+\end{definition}
+
+\begin{definition}
+A connected graph is \bam{one particle irreducible (1PI)} if it contains no bridges. 
+\end{definition}
+
+$\Gamma(\Phi)$ sums the 1PI grphs of the theory with action $S(\Phi)$ yielding many vertices. Then correlation functions van be found using tree graphs with vertices from $\Gamma(\Phi)$
+
+\begin{example}
+For N component $\varphi$ 
+\eq{
+-\hbar \frac{\del^2 W}{\del J_a \del J_b} &= \braket{\varphi_a \varphi_b}_J^\text{connected} \\
+&= \hbar \left( \frac{\del^2 \Gamma}{\del \Phi_a \del \Phi_b} \right)^{-1} = \hbar \times \text{inverse of quadratic part of } \Gamma
+\braket{\varphi_a \varphi_b}_J^\text{connected} = \braket{\varphi_a \varphi_b} - \braket{\varphi_a}\braket{\varphi_b}
+}
+\end{example}
 
 
 \end{document}

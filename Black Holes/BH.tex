@@ -38,6 +38,7 @@ R(X,Y) = \grad_X \grad_Y Z - \grad_Y \grad_X Z - \grad_{\comm[X]{Y}} Z
 The \bam{Pauli exclusion principle} gives the \bam{degeneracy pressure}. If the degeneracy pressure of electrons is enough to balance the gravitational collapse (possible for mass  $<1.4 \msolar$ then a \bam{white dwarf} forms.\\
 If $1.4 \msolar < M < 3 \msolar$ then neutron degeneracy pressure is required and a \bam{neutron star} forms. Above this mass a \bam{black hole} forms. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Spherical Symmetry}
 A round sphere is invariant under rotations in $SO(3)$. 
 
@@ -69,6 +70,7 @@ r(p) = \sqrt{\frac{A(p)}{4\pi}}
 $r$ is the \bam{radius}. 
 \end{definition}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Time Independence}
 
 \begin{definition}[Stationary]
@@ -272,7 +274,7 @@ From the $rr$ component
 We may then redefine $t$ so $C(t)=1$
 \end{proof}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Gravitational Redshift}
 Consider two observers Alice and Bob at radii $r_A,r_B>@M$ respectively sharing angles. Let us assume Alice sends signals to Bob and that they are separated by a Schwarzschild coordinate time $\Delta t$. The proper time between photons emitted by A/B and measured by A/B is 
 \[
@@ -287,6 +289,7 @@ The interval is a proxy for wavelength $\lambda_b > \lambda_A$. If B is really f
 1+z = \frac{\lambda_B}{\lambda_A} = \frac{1}{\sqrt{1-\frac{2M}{r_A}}}
 \]
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Geodesics of Schwarzschild}
 Let $x^\mu(\lambda)$ be an affinely parametrised geodesic with tangent vector $u^\mu = \frac{dx^\mu}{d\lambda}$. Since $K=\pd{t}$ and $m=\pd{\phi}$ are Killing vectors. Then
 \begin{align*}
@@ -314,7 +317,7 @@ g_{\mu\nu}\dot{x}^\mu \dot{x}^\nu = -\sigma \Rightarrow \frac{1}{2}\dot{r}^2 + V
 V(r) = \frac{1}{2} \left( \sigma +\frac{h^2}{r^2} \right) \left( 1-\frac{2M}{r} \right)
 \end{align*}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Eddington Finkelstein Coordinates}
 Take $h=0$ and $E=1 \Rightarrow \dot{t} = (1-\frac{2M}{r})^{-1}, \dot{r} = \pm1$. For ther upper sign 
 \[
@@ -361,6 +364,7 @@ K=\pd{v} \Rightarrow K^2 = -(1-\frac{2M}{r})
 \]
 This killing vector is no longer always timelike, so the metric is not stationary. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Finkelstein Diagram}
 For $r>2m$, 
 \[
@@ -389,25 +393,25 @@ K \cdot (-\pd{r}) = -g_{vr} = -1
 Hence the arrows go up in Finkelstein diagrams. 
 
 \begin{prop}
-Let $x^\mu(\lambda)$ be any future directed causal cureve. Assume $r(\lambda_0)\leq 2M$. Then $\forall \lambda \geq \lambda_0 \; r(\lambda) \leq 2M$
+Let $x^\mu(\lambda)$ be any future directed causal curve. Assume $r(\lambda_0)\leq 2M$. Then $\forall \lambda \geq \lambda_0 \; r(\lambda) \leq 2M$
 \end{prop}
 \begin{proof}
 Let $V^\mu = \frac{dx^\mu}{d\lambda}$. Since $(-\pd{r})$ and $V^0$ are both future directed 
 \[
 0 \geq (-\pd{r}) V = -g_{r\mu}V^\mu = -V^v = -\frac{dv}{d\lambda}
 \]
-\[
+\be \label{eq:4}
 \Rightarrow \frac{dv}{d\lambda} \geq 0
-\]
+\ee
 Hence 
 \[
 V^2 = V^a V_a = -(1-\frac{2M}{r}) (\frac{dv}{d\lambda})^2 + 2 \frac{dv}{d\lambda} \frac{dr}{d\lambda} + r^2 (\frac{d\Omega}{d\lambda})^2
 \]
 where $ (\frac{d\Omega}{d\lambda})^2 = (\frac{d\theta}{d\lambda})^2 + \sin^2 \theta (\frac{d\phi}{d\lambda})^2$
 Hence 
-\[ \label{eq:3}
+\be \label{eq:3}
 -2\frac{dv}{d\lambda} \frac{dr}{d\lambda} = -V^2 + (\frac{2M}{r}-1) (\frac{dv}{d\lambda})^2 + r^2 (\frac{d\Omega}{d\lambda})^2
-\]
+\ee
 If $V$ is causal and $r\leq 2M$ then 
 \[
 \frac{dv}{d\lambda} \frac{dr}{d\lambda} \leq 0 
@@ -424,15 +428,184 @@ This shows that $\frac{dr}{d\lambda} \leq 0 $ if $r\leq 2M$. If $r< 2M$ then the
 \[
 \frac{d\Omega}{d\lambda} = \frac{dv}{d\lambda}=0 = V^\mu
 \]
-Hence if $r(\lambda_0)<2M$ then $r(\lambda)$ is monotonically decreasing for $\lambda \geq \lambda_0$. 
-
+Hence if $r(\lambda_0)<2M$ then $r(\lambda)$ is monotonically decreasing for $\lambda \geq \lambda_0$. \\
+Finally consider the case $r(\lambda_0)=2M$. 
+\begin{itemize}
+    \item If $\frac{dr}{d\lambda}\rvert_{\lambda=\lambda_0} <0$ then we are done after time $\eps$. 
+    \item If $\frac{dr}{d\lambda}\rvert_{\lambda=\lambda_0} =0$ then $r(\lambda)=0 \forall \lambda \geq \lambda_0$ so done. 
+\end{itemize}
+The final case is $\frac{dr}{d\lambda}\rvert_{\lambda=\lambda_0}>0$. At $\lambda=\lambda_0$ \ref{eq:3} vanishes, so $\frac{d\Omega}{d\lambda}=V^2=0$. This means $\frac{dv}{d\lambda} \neq 0 $ as otherwise $V^\mu=0$ (contradiction). Then $\frac{dv}{d\lambda}\rvert_{\lambda=\lambda_0} >0$ because of \ref{eq:4}. Hence at least near $\lambda = \lambda_0$ we can use $v$ instead of $\lambda$ as a parameter along the curve with $r=2M$ at $v=v_0=v(\lambda_0)$. \\
+Dividing \ref{eq:3} by $(\frac{dv}{d\lambda})^2$ gives 
+\[
+-2\frac{dr}{dv} \geq \frac{2M}{r}-1 \Rightarrow 2\frac{dr}{dv} \leq 1-\frac{2M}{r}
+\]
+Hence for $v_1< v_2$ slightly greater than $v_0$ 
+\[
+2 \int_{r(v_1)}^{r(v_2)} \frac{dr}{1-\frac{2M}{r}} \leq v_2 - v_1
+\]
 \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Detecting Black Holes} 
+Note 
+\begin{itemize}
+    \item There is no bound on the mass of a black hole.
+    \item Black holes are very small. Black holes with the mass of the earth has a radius of 0.9cm
+\end{itemize}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Orbits around black holes}
+Consider a timelike geodesic. The turning points of the potential are
+\[
+\dot{r}=0 \Rightarrow V(r) = \frac{1}{2}E^2 \Rightarrow \frac{1}{2} \left( \sigma + \frac{h^2}{r^2} \right) (\left(1-\frac{2M}{r}\right) = \frac{1}{2}E^2
+\]
+and these occur when
+\[
+V^\prime(r)=0 \Rightarrow r_\pm = \frac{h^2 \pm \sqrt{h^4 - 12h^2 \sigma M^2}}{2M\sigma}, \; \sigma=1
+\]
+If $h^2<12M^2$, there is no minimum. \\
+One can show 
+\[
+3M < r_- < 6M < r_+
+\]
+The \bam{Inner Most Stable Circular Orbit (ISCO)} is the orbit with $r=6M$. \\
+The energy of the orbit is 
+\[
+E_\pm = \frac{r_\pm - 2M}{r_\pm^\frac{1}{2}(r_\pm-3M)^\frac{1}{2}}
+\]
+thus for $r_+\gg M$
+\[
+E_+ \approx 1-\frac{M}{2r_+}
+\]
+For an actual particle mass $m$ at such a radius $E=m-\frac{Mm}{2r_+}$, so the energy corresponds to that of the orbit. \\
+Now for an accretion disk around a black hole, a gap will be observed at radius $r=6M$ inwards as inside this particle will fall into the black hole in a short time. As a travels around the black hole, it will radiate energy as gravitational radiation, and so fall towards the black hole. As it crosses $r=6M$ it emits a burst of energy $E=\sqrt{\frac{8}{9}}$. This is observed by astronomers. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{White Holes}
+What about using outgoing null radial geodesics? 
+\[
+u=t-r_\ast
+\]
+$u$ constant along radial outgoing null geodesics as $\frac{dt}{dr_\ast}=1$. The line element becomes 
+\[
+ds^2 = -(1-\frac{2M}{r}) du^2 - 2dudr + r^2 d\Omega^2_2
+\]
+This region $(u,r,\theta,\phi)$, $r<2M$ is \emph{not} the same region we uncovered in $(v,r,\theta,\phi)$. As easy way to see this is to look at outgoing null radial geodesics, i.e. lines of constant $u$. These obey 
+\be\label{eq:5}
+\frac{dr}{d\tau} = 1 
+\ee
+These can propagate from the curvature singularity at $r=0$ through the surface $r=2M$. We proved earlier that this was not possible in the earlier region. It has been shown to linear order that black holes are stable. As white holes are the time reversal of black holes, they must be linearly unstable, and hence are unphysical solutions. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Kruskal Extension}
+We start in the region $r>2M$ and define \bam{Kruskal-Szekeres coordinates} $(U,V,\theta,\phi)$ by 
+\eq{
+U &= -e^{-\frac{u}{4M}} \\
+V &= e^{\frac{v}{4M}}
+}
+so for $r>2M$, $U<0$ and $V>0$. Now we know 
+\begin{align}
+\label{eq:6}
+UV = -e^{\frac{r}{2M}}(\frac{r}{2M}-1)
+\end{align}
+The RHS is a monotonic function of $r$ and hence defines $r(U,V)$ uniquely. We also have 
+\begin{align}
+\label{eq:7}
+\frac{V}{U} = -e^\frac{t}{2M}
+\end{align}
+so we have $t=t(U,V)$ unique. \\
+Now note 
+\eq{
+dU &= \frac{1}{4M} e^{-\frac{u}{4M}}du \\
+dV &= \frac{1}{4M} e^{\frac{v}{4M}}dv
+}
+so 
+\eq{
+dUdV = \frac{1}{16M^2} e^{\frac{v-u}{4M}}dudv &= \frac{1}{16M^2} e^\frac{r_\ast}{2M} (dt^2 - dr_\ast^2) \\
+&= \frac{1}{16M^2} e^\frac{r_\ast}{2M} \left[ dt^2 - \frac{dr^2}{(1-\frac{2M}{r})^2} \right] 
+}
+so 
+\eq{
+ds^2 = -32M^4 \frac{e^{-\frac{r(U,V)}{2M}}}{r(U,V)} dU dV + r(U,V)^2 d\Omega_2^2
+}
+One can still define $r(U,V)$ to $U\geq0$, $V\leq0$ via \ref{eq:6} and \ref{eq:7}. The surface $r=2M$ is actually achieved by either taking $U=0$ or $V=0$. They intersect at $U=V=0$. At $r=0$, $UV=1$. \\
+The Killing field
+\eq{
+K = \pd{t} = \frac{1}{4M} ( V \pd{V} - U \pd{U} ) 
+}
+At the \bam{Bifurcating Killing Sphere} $K=0$. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{The Einstein-Rosen Bridge}
+Take 
+\eq{
+r = \rho + M + \frac{M^2}{4\rho}
+}
+such that as $\rho \to \infty $, $r \to \infty$. We choose $\rho>\frac{M}{2}$ in region I and $\rho < \frac{M}{2}$ in IV
+\eq{
+ds^2 = -\left[ \frac{1-\frac{2M}{\rho}}{1+\frac{2M}{\rho}} \right]^2 dt^2 + (1+\frac{M}{2\rho})^4 (d\rho^2 + \rho^2 d\Omega_2^2)
+}
+The transformation $\rho \to \frac{M^2}{4\rho}$ leaves this invariant. At constant t 
+\eq{
+ds_{\Sigma_t}^2 = (1+\frac{M}{2\rho})^4 (d\rho^2 + \rho^2 d\Omega_2^2)
+}
+Not the value $\rho=\frac{M}{2}$ is invariant under the transform. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Extendibility}
 
+\begin{definition}[Extendible]
+A spacetime $(\mc{M},g)$ is \bam{extendible} if it is isometric to a proper subset of another spacetime $(\mc{M}^\prime,g^\prime)$. The latter is called an \bam{extension} of $(\mc{M},g)$. 
+\end{definition}
 
+\subsubsection{Singularities}
+
+\begin{definition}[Coordinate Singularity]
+A point is a \bam{coordinate singularity} if the metric is not smooth in some coordinate chart at that point. They are unphysical.
+\end{definition}
+
+\begin{definition}[Curvature Singularity]
+A point is a \bam{curvature singularity} if the scalar curvature becomes singular at that point. They are physical. 
+\end{definition}
+
+\begin{definition}]Conical Singularity]
+\begin{example}
+Consider the line element 
+\eq{
+ds^2 &= dr^2 + \lambda^2 r^2 d\phi^2 \quad \lambda\in \mbb{R}_{\geq 0 } \\
+ &= dr^2 + r^2 d\tilde{\phi}^2 \quad \tilde{\phi}=\lambda\phi 
+}
+For $\lambda \neq 1$ a point forms at the origin that looks like a cone. This can be seen by computing 
+\eq{
+\lim_{r\to 0} \frac{\text{circumference circle radius r}}{r} = 2\pi\lambda
+}
+so locally the surface cannot look like $\mbb{R}^2$. 
+\end{example}
+\end{definition}
+
+A curve is a smooth map 
+\eq{
+\gamma:(a,b) \to \mc{M}
+}
+
+\begin{definition}
+Take $p\in\mc{M}$. $p$ is a \bam{future endpoint} of a \bam{future directed causal curve} $\gamma:(a,b) \to \mc{M}$ if $\forall O \ni p$ an open neighborhood $\exists t_0$ such that $ \forall t>t_0 \, \gamma(t)\in O$
+\end{definition}
+
+We say that $\gamma$ is a future inextendible if it has \emph{no} future endpoints. 
+\begin{example}
+Let 
+\eq{
+\gamma : (-\infty,0) \to \mbb{R}^2 \\
+\gamma(t) = (t,0)
+}
+\end{example}
+
+\begin{definition}
+A geodesic is \bam{complete} if an affine parametrisation of the geodesic exists to $\pm\infty$. A spacetime is geodesically complete if all inextensible causal geodesic are complete. 
+\end{definition}
+
+\begin{theorem}
+All geodesically incomplete, inextensible manifolds are \bam{singular}
+\end{theorem}
 
 \end{document}

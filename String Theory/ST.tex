@@ -354,15 +354,190 @@ Using the fact that
 \[
 \del_- X^\mu = \sqrt{\frac{\cst}{2}} \sum_n \alpha^\mu_n e^{-in\sigma}
 \]
-where $\alpha^\mu_0 = \sqrt{\frac{\cst}{2}} p^\mu$
+where $\alpha^\mu_0 = \sqrt{\frac{\cst}{2}} p^\mu$.\\
+We shall see that $l_m, \bar{l}_m$ are conserved particles on the space $T_{ab}=0$. Using 
+\[
+\del_- X^\mu (\sigma) = \sqrt{\frac{\cst}{2}} \sum_n \alpha_n^\mu e^{-in\sigma}
+\]
+where $\alpha_0^\mu = \sqrt{\frac{\cst}{2}} p^\mu$. We fine $l_n$ in terms of the $\alpha)m^\mu$s.
+\begin{example}
+\eq{
+l_n &= \frac{1}{2\pi\cst} \int_0^{2\pi} d\sigma \del_- X \cdot \del_-X e^{in\sigma} \\
+&= \frac{1}{4\pi} \sum_{m,p} \alpha_m \cdot\alpha_p \int_0^{2\pi} d\sigma e^{i(m+p-n)\sigma} \\
+&= \frac{1}{4\pi} \sum_{m,p} \alpha_m \cdot\alpha_p 2\pi \delta_{m+p,n} \\
+&= \frac{1}{2} \sum_m \alpha_{n-m} \cdot \alpha_m 
+}
+Similarly 
+\[
+\bar{l}_n = \frac{1}{2} \sum_m \bar{\alpha}_{n-m} \cdot \bar{\alpha}_m 
+\]
+\end{example}
+Using these expressions and the Possion bracket relations it can be shown 
+\eq{
+\pb[l_m]{l_n} &= (m-n) l_{m+n} \\
+\pb[\bar{l}_m]{\bar{l}_n} &= (m-n) \bar{l}_{m+n} \\
+\pb[l_m]{\bar{l_n}} = 0
+}
+This is often called the \bam{Wit algebra}. Note $l_0, l_{\pm1},\bar{l}_0,\bar{l}_{\pm1}$ generate the algebra $\mf{sl}(2,\mbb{C})$. \\
+The Hamiltonian may be written as  
+\eq{
+H = \frac{1}{2\pi\cst} \int_0^{2\pi} d\sigma \left[ (\del_+ X)^2 + (\del_- X)^2 \right] &= \frac{1}{2} \sum_n (\alpha_{-n}\cdot\alpha_n + \bar{\alpha}_{-n}\cdot\bar{\alpha}_n \\
+&= l_0 + \bar{l_0}
+}
+Call the $l$ \bam{Virasoro generators}. \\
+
+On the contraint surface $l_n=0$, one can show that $\frac{dl_n}{d\tau}=\pb[H]{l_n}=-nl_n = 0$ on this surface.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Canonical Quantisation}
 
+Our classical theory takes the form of a Poisson bracket $\pb[X^\mu]{P_\nu}$ and a constraint $T_{ab}=0$. To quantise we could possibly 
+\begin{itemize}
+    \item Impose the constraint on our functions to get some brackets $\pb[q^\mu]{\pi_\nu}^\prime$ and quantise by $\pb[ ]{ }^\prime \to i\comm[ ]{ }$ giving a light cone Hilbert space $\mc{H}_{l.c.}$
+    \item Directly quantise $\pb[ ]{ } \to i\comm[ ]{ }$, leading to a quantum theory on which we then impose the constraint by $T_{ab}\ket{0}=0$ to get a Hilbert space $\mc{H}_Q$
+\end{itemize}
+The hope is that $\mc{H}_{l.c.} = \mc{H}_Q$ (and in fact is true, though not shown here). \\
+We start by replaicng the \emph{fundamental} Poisson bracket relations with canonical commutation relations 
+\[
+\pb[X^\mu]{P_\nu} \to -i\comm[X^\mu]{P_\nu}
+\]
+and similarly for the modes. We introduce the \bam{Virasoro operators} 
+\[
+L_n = \frac{1}{2} \sum_m \alpha_{n-m} \cdot \alpha_m \quad n\neq 0
+\]
+where we might distinguish the $L_n$ from the classical $l_n$. and we introduce a vacuum state $\ket{0}$
+\[
+\forall m\geq0 \; \alpha^\mu_m \ket{0} = 0 
+\]
+We think of $\alpha^\mu_n$ as annihilation operators for $n>0$ and creation operators for $n<0$. \\
+We notice an ambiguity in the definition of $L_0$ and $\bar{L}_0$. 
+\eq{
+L_0 = \frac{1}{2} \alpha_0^2 + \sum_{n>0} \alpha_{-n} \cdot \alpha_n
+}
+so the order of the $\alpha$ changes $L_0$ up to a constant. We define \bam{normal ordering} $::$ in the usual way and define composite operators using the ordering 
+\begin{example}
+\[
+T_{--}(\sigma^-) = -\frac{1}{\cst} : \del_- X^\mu \del_- X_\mu :
+\]
+\end{example}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Physical State Conditions}
+We define the number operator $N_n$ by 
+\[
+n N_n = \alpha_{-n} \cdot \alpha_n
+\]
+and the total number operators as 
+\eq{
+N &= \sum_n nN_n \\
+\bar{N} &= \sum_n n\bar{N}_n
+}
+The $L_0, \bar{L}_0$ may be written as 
+\eq{
+L_0 &= \frac{\cst}{4} p^2 + N \\
+\bar{L}_0 &= \frac{\cst}{4} p^2 + \bar{N}
+}
+We will impose the conditions 
+\eq{
+L_n \ket{\phi} &= 0 = \bar{L_n} \ket{\phi} & n>0 \\
+(L_0 - a) \ket{\phi} &= 0 = (\bar{L}_0-a)\ket{\phi} & a\in\mbb{R}
+}
+for $\ket{\phi}$ to be a physical state, where $a$ quantises the ambiguity in $L_0$. \\
+We shall see later that the theory is consistent only if $D=26, a=1$. From now on we shall assume $a=1$. \\
+It will be useful to define  
+\eq{
+L_0^\pm = L_0 \pm \bar{L}_0
+}
+and so we have
+\eq{
+(L_0^+-2)\ket{\phi} &= 0 \\
+L_0^- &= 0 \\
+L_n \ket{\phi} &= 0 = \bar{L_n} \ket{\phi}
+}
+Recall 
+\eq{
+L_0 &= \frac{\cst}{4} p^2 + N \\
+\bar{L}_0 &= \frac{\cst}{4} p^2 + \bar{N}
+}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Spectrum}
+We shall look atthe lowest lying modes of the theory. 
 
+\subsubsection*{The Tachyon}
+The simplest state we can write down is the momentum eigenstate 
+\eq{
+\ket{k} = e^{ik\cdot x}\ket{0} \quad k_\mu \text{ some 4-vector}
+}
+and the action of the momentum $p_\mu$ is 
+\eq{
+p_\mu \ket{k} = k_\mu \ket{k}
+}
+We could also define a ket by a weighted sum of such states, 
+\eq{
+\ket{T} = \int d^D k \, T(k) \ket{k} 
+}
+where $T(k)$ is some function of the momentum space. The $L_0^-\ket{\phi} = 0$ condition imposes $N=\bar{N}$\footnote{This is called the "Level Matching" Condition. This is roughly the idea that the number of left and right moving operators must be the same, and this is the only condition that relates the two sides. You can think of this as the left and right sector agreeing on the mass of the state.}. Now 
+\eq{
+(L_0^+ - 2) T(k) \ket{k} = \left(\frac{\cst}{2}p^2 + N +\bar{N} -2 \right)T(k) \ket{k} 
+}
+In this case $N=\bar{N} = 0$
+\eq{
+\Rightarrow & \left( \frac{\cst}{2} k^2 -2 \right) T(k) = 0 \\
+\Rightarrow & (k^2 + m^2) T(k) = 0 
+}
+where 
+\eq{
+m^2 = -\frac{4}{\cst}
+}
+This is just a mass shell condition for the momentu, space field $T(k)$. We notice that the field $T(k)$ is \bam{Tachyonic} as it is \emph{spacelike}. 
+\eq{
+L_n \ket{T} = 0 = \bar{L}_n \ket{T} \quad \forall n>0
+}
+is satisfied trivially. 
 
-
+\subsubsection*{Massless states}
+Next we consider states ofthe form  
+\eq{
+\ket{\eps} = \eps_{\mu\nu}(k) \alpha_{-1}^\mu \bar{\alpha_{-1}^\nu} \ket{k}
+}
+Level matching is clearly satisfies and the condition $(L_0^+-2) \ket{\eps} = 0$ gives 
+\[
+m^2 = 0
+\]
+Trivially for $n>1$ $L_n\ket{\eps}=0$. However for $L_1$ 
+\eq{
+L_1 \ket{\eps} &= \frac{1}{2} \sum_n \alpha_{1-n} \cdot \alpha_n \eps_{\mu\nu}(k) \alpha_{-1}^\mu \bar{\alpha_{-1}^\nu} \ket{k} \\
+&= \eps_{\mu\nu}(k) \alpha_0 \cdot \alpha_1 \alpha_{-1}^\mu \bar{\alpha_{-1}^\nu} \ket{k} \\
+&= \highlight{\sqrt{\frac{2}{\cst}}} \eps_{\mu\nu}(k) k_\lambda \alpha_1^\lambda alpha_{-1}^\mu \bar{\alpha_{-1}^\nu} \ket{k} \\
+&= \highlight{\sqrt{\frac{2}{\cst}}} \eps_{\mu\nu}(k) k_\lambda \left( \comm[\alpha_1^\lambda]{\alpha_{-1}^\mu} + \alpha_{-1}^\mu \alpha_1^\lambda \right) \bar{\alpha}_{-1}^\nu \ket{k} \\
+&= \highlight{\sqrt{\frac{2}{\cst}}} \eps_{\mu\nu}(k) k_\lambda \eta^{\lambda\mu} \bar{\alpha}_{-1}^\nu \ket{k} =0 \\
+\Rightarrow \eps_{\mu\nu}(k) k^\mu = 0
+}
+Two states related by $\eps_{\mu\nu}(k) \to \eps_{\mu\nu}(k) + k_\mu \xi_
+nu$ are physically equivalent and
+\eq{
+\bar{L}_1 \ket{\eps} = 0 \Rightarrow k^\nu \eps_{\mu\nu}(k) = 0
+}
+It is useful to decompose $\eps_{\mu\nu}(k)$ as 
+\eq{
+\eps_{\mu\nu}(k) &= \tilde{g}_{\mu\nu}(k) + \tilde{B}_{\mu\nu}(k) + \eta_{\mu\nu} \tilde{\phi}(k)
+}
+where $\tilde{g}$ tracless and symmetric, $\tilde{B}$ antisymmetric. We find that $\tilde{g}_{\mu\nu}(\eps)$ is a momentum space metric perturbation 
+\eq{
+\tilde{g}_{\mu\nu}(k) \sim \tilde{g}_{\mu\nu}(k) + k_\mu \xi_\nu + \xi_\mu k_\nu
+}
+This is simply linearised diffeomorphism invariance. \\
+Also, the 'B field', which corresponds to the momentum spacetime field $B_{\mu\nu}=-B_{\nu\mu}$\footnote{"Kinda like a photon with an extra index".} where
+\eq{
+\tilde{B}_{\mu\nu}(k) \sim \tilde{g}_{\mu\nu}(k) + k_\mu \\lambda_\nu - \lambda_\mu k_\nu
+}
+In spacetime, this is a gauge invariance 
+\eq{
+B_{\mu\nu} \sim B_{\mu\nu} + \del_\mu \lambda_\nu - \del_\nu \lambda_\mu \quad \text{(gerbe)}
+}
 
 
 

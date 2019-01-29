@@ -75,7 +75,7 @@ The mass term explicitly breaks the chiral symmetry to a remaining vector symmet
 \subsection{Review of Dirac Field}
 Quantise 
 \[
-\psi(x) = \sum_{p,s} \left[ b^s(p) u^s(p) e^{-ip\cdot c} + {d^s}^\dagger v^s(p) e^{ip\cdot x} \right]
+\psi(x) = \sum_{p,s} \left[ b^s(p) u^s(p) e^{-ip\cdot x} + {d^s}^\dagger(p) v^s(p) e^{ip\cdot x} \right]
 \]
 $s=\pm\frac{1}{2}$, and $\sum_p = \int \LImeas$, $\braket{p|q} = (2\pi)^2 (2E_p)\delta^3(\bm{p}-\bm{q})$ with $\ket{p} = b^\dagger(p) \ket{0}$. $u$ and $v$ are solutions of 
 \[
@@ -230,7 +230,8 @@ Hence must have $\hat{P}$ linear and unitary, whereas $\hat{T}$ antilinear and a
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Parity}
 
-\begin{definition}[Scalar fields]
+\subsubseciont*{Scalar fields}
+\begin{definition}[Scalar Fields]
 A complex scalar field is 
 \[
 \phi(x) = \sum_p \left[ a(p) e^{-ip\cdot x} + c^\dagger(p) e^{ip\cdot x} \right]
@@ -252,6 +253,191 @@ To conserve normalisation, $\hat{P} a(p) \hat{P}^{-1} = \eta^{a} a(p_P)$. Simila
 [p_P \cdot x = p\cdot x_P] \Rightarrow &= \sum_{p_P} \left[ \eta^a a(p) e^{-ip\cdot x_P} + {\eta^c}^\ast c^\dagger(p) e^{ip \cdot x_P} \right]  \\
 [\sum_p = \sum_{p_P}] \Rightarrow &= \sum_{p} \left[ \eta^a a(p) e^{-ip\cdot x_P} + {\eta^c}^\ast c^\dagger(p) e^{ip \cdot x_P} \right] 
 \end{align*}
-This does not look like $\phi(x_P)$ unless $\eta^a = {\eta^c}^\ast \equiv \eta_p$ and otherwise would note in general find $\comm[\phi(x)]{\hat{P}\phi^\dagger(y) \hat{P}^{-1}}$ vanishes for spacelike $x-y_p$. 
+This does not look like $\phi(x_P)$ unless $\eta^a = {\eta^c}^\ast \equiv \eta_P$ and otherwise would note in general find $\comm[\phi(x)]{\hat{P}\phi^\dagger(y) \hat{P}^{-1}}$ vanishes for spacelike $x-y_p$. Hence
+\[
+\hat{P} \phi(x) \hat{P}^{-1} = \eta_P \phi(x_P)
+\]
+\\
+Note that for a real scalar field $a=c$ and so $\eta^a = {\eta^a}^\ast \Rightarrow \eta_P = \pm 1$. For a complex field, we may not have real $\eta_P$, but if there is some conserved charge we can redefine $\hat{P}$ such that $\eta_P = \pm1$
+
+\subsubsection*{Vecotr fields}
+\begin{definition}[Vector Fields]
+A vector field is 
+\[
+V^\mu(x) = \sum_{p,\lambda} \left[ \eps^\mu(\lambda,p) a^\lambda(p) e^{-ip\cdot x} +{\eps^\mu}^\ast(\lambda,p) {c^\lambda}^\dagger(p) e^{ip\cdot x} \right]
+\]
+$\lambda = 0, \pm1$ is helicity, $\eps^\mu$ polarisation vectors. 
+\end{definition}
+Use $\eps^\mu(\lambda, p_P) = -\mbb{P}^\mu_\nu \eps^\nu (\lambda,p)$. In analogy to the above treatment we find 
+\[
+\hat{P} V^\mu(x) \hat{P}^{-1} = -\eta_P \mbb{P}^\mu_\nu V^\nu(x_P)
+\]
+Vectos have $\eta_P = -1$, axial vectors have $\eta_P = 1$. \\
+
+\subsubsection*{Dirac Field}
+For a Dirac field, creation/annihilation operators should behave like those for bosons. The 3-momentum reverses direction, the spin component s is changed. 
+\eq{
+\hat{P} b^s(p) \hat{P}^{-1} &= \eta^b b^s(p_P) \\
+\hat{P} {d^s}^\dagger(p) \hat{P}^{-1} &= {\eta^d}^\dagger {d^s}^\dagger(p_P)
+}
+Then
+\eq{
+\hat{P}\psi(x)\hat{P}^{-1} &= \sum_{p,s} \left[ \eta^b b^s(p_P) u^s(p) e^{-ip\cdot x} + {\eta^d}^\ast {d^s}^\dagger(p_P) v^s(p) e^{ip\cdot x} \right] \\
+&= \sum_{p,s} \left[ \eta^b b^s(p) u^s(p_P) e^{-ip\cdot x_P} + {\eta^d}^\ast {d^s}^\dagger(p) v^s(p_P) e^{ip\cdot x_P} \right]
+}
+One can verify
+\eq{
+u^s(p_P) &= \gamma^0 u^s(p) \\
+v^s(p_P) &= -\gamma^0 v^s(p)
+}
+so 
+\eq{
+\hat{P}\psi(x) \hat{P}^{-1} = \sum_{p,s} \left[ \eta^b b^s(p) \gamma^0 u^s(p) e^{-ip\cdot x_P} - {\eta^d}^\ast {d^s}^\dagger(p) \gamma^0 u^s(p) e^{ip\cdot x_P} \right]
+}
+Require $\eta^b = -{\eta^d}^\ast=\eta_P$ so that 
+\eq{
+\hat{P} \psi(X) \hat{P}^{-1} = \eta_P \gamma^0 \psi(x_P) \equiv \psi^P(x)
+}
+Then 
+\[
+\bar{\psi}^P(x) = \hat{P}\bar{\psi}(x) \hat{P}^{-1} = \eta_P^\ast \bar\psi(x_P) \gamma^0
+\]
+Note 
+\begin{itemize}
+    \item $\hat{P} \psi_L(x) \hat{P}^{-1} = \eta_P \gamma^0 \psi_R(x_P)$ 
+    \item It can be checked that $\psi$ satisfies the Dirac equation $\Rightarrow \psi^P$ satisfies the Dirac equation.  
+\end{itemize}
+From the above we can determine the transformation properties of fermion bilinears. 
+\eq{
+\bar{\psi}(x) \psi(x) &\to \hat{P} \bar{\psi}(x) \hat{P}^{-1} \hat{P} \bar{\psi}(x) \hat{P}^{-1} = \bar{\psi}(x_P) \psi(x_P) \quad &\text{(scalar)} \\
+\bar{\psi}(x) \gamma^5 \psi(x) &\to -\bar{\psi}(x_P) \gamma^5 \psi(x_P) \quad &\text{(pseudoscalar)} \\
+\bar{\psi}(x) \gamma^\mu \psi(x) &\to \mbb{P}^\mu_\nu\bar{\psi}(x_P) \gamma^\nu \psi(x_P) \quad &\text{(vector)} \\
+\bar{\psi}(x) \gamma^\mu \gamma^5 \psi(x) &\to  - \mbb{P}^\mu_\nu\bar{\psi}(x_P) \gamma^\nu  \gamma^5 \psi(x_P) \quad &\text{(axial vector)}
+} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Charge conjugation}
+$\hat{C}$ is a linear and unitary operator sending particles $\leftrightarrow$ antiparticles 
+
+\subsubsection*{Scalar Field}
+Lorentz symmetry constrains the phases 
+\eq{
+\hat{C} a(p) \hat{C}^{-1} &= \eta_C c(p) \\
+\hat{C} c(p) \hat{C}^{-1} &= {\eta_C}^\ast a(p)
+}
+Then 
+\eq{
+\hat{C} \ket{particle, p} &= \hat{C}a^\dagger(p) \ket{0} \\
+&= {\eta_C}^\ast c^\dagger(p) \ket{0} \\
+&= {\eta_C}^\ast \ket{antiparticle,p}
+}
+From the decomposition 
+\eq{
+\hat{C}\phi(x) \hat{C}^{-1} = \eta_C \phi^\dagger (x) \\
+\hat{C}\phi^\dagger(x) \hat{C}^{-1} = {\eta_C}^\ast \phi(x)
+}
+For a real scalar field $\phi=\phi^\dagger$ and so $\eta_C = \pm1$. 
+
+\subsubsection*{Vector field}
+Photon field must obey $\hat{C} A_\mu(x) \hat{C}^{-1} = -A_\mu (x)$. Hence a $\pi^0$ meson can decay to $2\gamma \Rightarrow \eta_C^{\pi^0} = (-1)^2 = 1$.
+For a complex field, $\eta_C$ is arbitrary. Say $\eta_C= e^{2i\beta}$, we can do a global $U(1)$ transform st $\phi \to \phi^\prime = e^{-i\beta}\phi$ such that $\eta_C^\prime = 1$.
+
+\subsubsection*{Dirac Field}
+Define the matrix $C$ such that $(\gamma^\mu C)^T = \gamma^\mu C$. In the chiral basis where 
+\eq{
+{\gamma^0}^T &= \gamma^0 \\
+{\gamma^1}^T &= -\gamma^1 \\
+{\gamma^2}^T &= \gamma^2 \\
+{\gamma^3}^T &= -\gamma^3 
+}
+a suitable choice is 
+\eq{
+C = =i\gamm^0 \gamma^2 = \begin{pmatrix} i\sigma^2 & 0 \\ 0 & -i\sigma^2 \end{pmatrix}
+}
+giving 
+\[
+C = -C^T = -C^\dagger = -C^{-1}
+\]
+Then 
+\eq{
+(\gamma^\mu)^T &= -C^{-1} \gamma^\mu C \\
+{\gamma^5}^T &= C^{-1} \gamma^5 C
+}
+similarly to bosons 
+\eq{
+\hat{C} b^s(p) \hat{C}^{-1} &= \eta_C d^s(p) \\
+\underbrace{\hat{C} {d^s}^\dagger(p) \hat{C}^{-1}}_{\text{in } \psi} &= \underbrace{\eta_C {b^s}^\dagger (p)}_{\text{in } \bar{\psi}}
+}
+Now consider 
+\eq{
+\hat{C} \psi(x) \hat{C}^{-1} = \eta_C \sum_{p,s} \left[ d^s(p) u^s(p) e^{-ip\cdot x} + {b^s}^\dagger v^s(p) e^{ip\cdot x} \right]
+}
+and compare with 
+\eq{
+\bar{\psi}^T (x) = \sum_{p,s} \left[ {b^s}^\dagger(p) {\bar{u}^s}^T(p) e^{ip\cdot x} + d^s {\bar{v}^s}^T(p) e^{-ip\cdot x} \right]
+}
+Consider the spinors and take $\eta^s = i\sigma^2 {\xi^s}^\ast$ (choosing a basis for the spinors) we can write 
+\eq{
+v^s(p) &= C {\bar{u}^s}^T \\
+u^s(p) &= C {\bar{v}^s}^T \\
+}
+and so 
+\eq{
+\psi^C(x) = \hat{C} \psi(x) \hat{C}^{-1} = \eta_C C\bar{\psi}^T (x)
+}
+similarly 
+\eq{
+\bar{\psi}^C(x) = \hat{C} \bar{\psi}(x) \hat{C}^{-1} = {\eta_C}^\ast \psi^T (x) C = -{\eta_C}^\ast \psi^T(x) C^{-1}
+}
+Note that $\psi(x)$ satsifes the Dirac eqn $\Rightarrow \; \psi^C(x)$ does. 
+\begin{itemize}
+    \item Majorana fermions have $b^s(p) = d^s(p) \Rightarrow$ particle is its own anti particle. In this case $\psi = \psi^C$. 
+    \item Is is note known whether the only neutral fermions in the SM (neutrinos) are Majorana (c.f. neutrinoless double beta decay). 
+\end{itemize}
+
+\subsubsection*{Fermion Bilinears}
+Note it is important to keep track of what's an operator ($\hat{C}$) nad what is a matrix in spinor space ($C$). 
+\begin{example}
+\eq{
+j^\mu(x) &= \bar{\psi}(x) \gamma^\mu \psi(x) \\ 
+\Rightarrow \hat{C} j^\mu \hat{C}^{-1 } &= \hat{C}\bar{\psi} \hat{C}^{-1} \gamma^\mu \hat{C} \psi \hat{C}^{-1} \\
+&= -\eta_C^\ast \eta_C \psi^T C^{-1} \gamma^\mu C \bar{\psi}^T  \\
+&= - \psi_\alpha (C^{-1} \gamma^\mu C)_{\alpha\beta} \bar{\psi}_\beta \\
+&= \bar{\psi}_\beta (C^{-1} \gamma^\mu C)_{\alpha\beta} \psi_\alpha \quad \text{(fermions anticommute)} \\
+&= \bar{\psi}_\beta (C^{-1} \gamma^\mu C)_{\beta\alpha}^T \psi_\alpha \\
+&= \bar{\psi} (C^{-1} \gamma^\mu C)^T \psi \\
+&= -\bar{\psi} \gamma^\mu \psi = -j^\mu
+}
+Similarly 
+\eq{
+\hat{C} {j^\mu}^5 \hat{C}^{-1} = {j^\mu}^5
+}
+where ${j^\mu}^5 = \bar{\psi} \gamma^\mu \gamma^5 \psi$.
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Time Reversal}
+Take the notation $x^\mu_T = (-x^0, \bm{x})$, $p^\mu_T = (p^0, -\bm{p})$. In T-symmetric theories, the physics is unchanged if time runs backwards. 
+
+\subsubsection*{Boson Field}
+\eq{
+\hat{T} a(p) \hat{T}^{-1} &= \eta_T a(p_T) \\
+\hat{T} c^\dagger(p) \hat{T}^{-1} &= \eta_T c^\dagger (p_T)
+}
+From the decomposition, recalling $\hat{T}$ antihermitian, 
+\eq{
+\hat{T} \phi(x) \hat{T}^{-1} &= \sum_p \left[ \hat{T} a(p) \hat{T}^{-1} e^{ip\cdot x} + \hat{T} c^\dagger (p) \hat{T}^{-1} e^{-ip\cdot x} \right] 
+}
+So using $p_T \cdot x  = -p\cdot x_T$ 
+\eq{
+\hat{T} \phi(x) \hat{T}^{-1} &= \eta_T \sum_p \left[ a(p) e^{-p\cdot x_T} + c^T(p) e^{ip\cdot x_T} \right]
+}
+\subsubsection*{Dirac Field}
+$\hat{T}$ flips sign of any momentum. The creation/annihilation ops can be taken to transform as 
+\eq{
+\hat{T} b^s(p) \hat{T}^{-1} & = \eta_T (-1)^{\frac{1}{2}-s} b^{-s} (p_T) \\
+\hat{T} {d^s}^\dagger(p) \hat{T}^{-1} & = \eta_T (-1)^{\frac{1}{2}-s} {d^{-s}}^\dagger (p_T)
+}
+
 
  \end{document} 

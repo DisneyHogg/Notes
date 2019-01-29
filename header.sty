@@ -6,6 +6,8 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
 \usepackage{braket} %Bras, kets, sets, caps or not. 
 \usepackage{hyperref} %References and links. 
 \usepackage{bm} %Bold vectors. 
@@ -15,6 +17,8 @@
 \usepackage{mathtools} %Contraction notation \overbracket. 
 \usepackage{xcolor} % \highlight to color math input.
 \usepackage{tensor} %Raised and lowered indices with \indices.
+\usepackage{color}
+\usepackage{listings}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Definitions
@@ -29,6 +33,7 @@
 \newtheorem*{idea}{Idea}
 \newtheorem{example}{Example}[subsection]
 \newtheorem{prop}{Proposition}[subsection]
+\newtheorem{ex}{Exercise}[subsection]
 
 %Text math operators.
 \DeclareMathOperator{\spn}{Span}
@@ -38,6 +43,8 @@
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\Pfaff}{Pfaff}
+\DeclareMathOperator{\image}{Im}
+\DeclareMathOperator{\vol}{Vol}
 
 %Symbolic shortcuts 
 \newcommand{\eps}{\epsilon}
@@ -77,4 +84,10 @@
 \newcommand{\eq}[1]{\begin{align*}#1\end{align*}}
 %Used to short align env. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Misc
 \numberwithin{equation}{subsection}
+
+\definecolor{mygray}{rgb}{0.4,0.4,0.4}
+
+\lstset{basicstyle=\ttfamily\color{mygray}, commentstyle=\color{blue}, keywordstyle=\color{black}, language=Matlab }

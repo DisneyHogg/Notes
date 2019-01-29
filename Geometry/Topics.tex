@@ -60,6 +60,25 @@ It is
 \end{itemize}
 \end{definition}
 
+\begin{definition}[Exterior Algebra]
+The \bam{k\textsuperscript{th} exterior power} of a vector space $V$ is the subspace $\Lambda^k(V)$ defined by 
+\[
+\Lambda^k(V) = \spn\set{v_1 \wedge \dots \wedge v_k : v_i \in V}
+\]
+for $k<n=\dim V$. The \bam{exterior algebra} is then 
+\[
+\Lambda(V) = \Lambda^0(V) \oplus \Lambda^1(V) \oplus \dots \oplus \Lambda^n(V)
+\]
+where by convention $\Lambda^0(V)=\mbb{F}$, the field the vector space is defined over.  Note the sum is terminated here as for $k>n$, $\Lambda^k(V)=0$, so would add no information to the direct sum. 
+\end{definition}
+
+\begin{definition}[Orientation]
+An \bam{orientation} is determined by specifying a preferred unit vector 
+\[
+w \in \Lambda^n (V)
+\]
+\end{definition}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Differential Forms}
 
@@ -72,12 +91,35 @@ The \bam{differential} of a function on a manifold $f:\mc{M}\to\mbb{R}$ is
 where $\gamma:I\to\mc{M}$, $\gamma(0)=x, \dot{\gamma}(0)=v$ is a curve on the manifold. Note that $\forall x\in\mc{M}$, $df_x$ is a 1-form on $T_x \mc{M}$.
 \end{definition}
 
+\begin{example}
+Take coordinate functions about $x\in\mc{M}$ on the manifold $x^i : \mc{M} \to \mbb{R}$, i.e. $\phi:\mc{M}\to\mbb{R}^n$ about x, $\phi(p)=(x^1(p),\dots,x^n(p))$. Take a basis of the tangent space corresponding to the coordinate functions $\set{ \pd{x^i} }$ and let $v=v^i \pd{x^i}\in T_x \mc{M}$. Then let $\gamma=\gamma(t)$ be the curve with coordinates $x^j(\gamma(t)) = x^j(x) + v^j t $ (defined in some open ball). This gives
+\eq{
+dx^j_x(v) &= \left. \frac{d}{dt} \right\rvert_{t=0} x^j(\gamma(t))\\
+&= \left. \frac{d}{dt} \right\rvert_{t=0} x^j(x) + v^j t \\
+&= v^j
+}
+Now for a function $f:\mc{M}\to\mbb{R}$ its expression in terms of the coordinates can be considered as $\tilde{f}:\mbb{R}^n \to \mbb{R}$ where $f=\tilde{f} \circ \phi$. By the chain rule 
+\[
+df = d\tilde{f} \circ d\phi
+\]
+It is known 
+\eq{
+d\tilde{f}\left( \frac{dx^i}{dt} \bm{e}_i \right) &= \pd[\tilde{f}]{x^i} \frac{dx^i}{dt} \\
+\Rightarrow d\tilde{f}\left( \bm{e}_j \right) &= \pd[\tilde{f}]{x^j}
+}
+and hence 
+\eq{
+df(v)&=\pd[\tilde{f}]{x^i}v^i \\
+\Rightarrow df &= \pd[\tilde{f}]{x^i} dx^j
+}
+\end{example}
+
 \begin{definition}[Differential k-form]
 A \bam{differential k-form} at a point $x\in\mc{M}$ some manifold is an exterior k-form on the tangent space $T_x\mc{M}$. If given such $\omega^k\rvert_x$ is given $\forall x\in \mc{M}$ and the corresponding map on $\mc{M}$ is differentiable, then
 \begin{align*}
     \omega^k : T\mc{M} \to \mbb{R}
 \end{align*}
-is a k-form on $\mc{M}$
+is a k-form on $\mc{M}$. The vector space of all such differntial k-forms is denoted $\Omega^k(\mc{M})$
 \end{definition}
 
 \begin{remark}
@@ -187,7 +229,11 @@ where $\Pi = f(\spn_{[0,1]}\set{f^{-1}(v_1),\dots,f^{-1}(v_{k+1})})$
 \end{definition}
 
 \begin{definition}[Exterior Derivative]
-The principal part of the increment is call the \bam{exterior derivative} or \bam{differential} of $\omega^k$ and is denoted $d\omega^k$
+The principal part of the increment is a $(k+1)$-form and is called the \bam{exterior derivative} or \bam{differential} of $\omega^k$. It is denoted $d\omega^k$. Let 
+\[
+d(=d^k): \Omega^k(\mc{M}) \to \Omega^{k+1}(\mc{M})
+\]
+be the map $d:\omega \to d\omega$. 
 \end{definition}
 
 \begin{theorem}
@@ -219,7 +265,10 @@ d\omega = 0
 \end{definition}
 
 \begin{theorem}
-Every differential is closed. 
+Every differential is closed. i.e. 
+\[
+\image d^{k-1} \leq \ker d 
+\]
 \end{theorem}
 
 \begin{theorem}[Stokes' Formula]
@@ -236,6 +285,57 @@ If $\omega^k$ is a closed k-form then for any $(k+1)$-chain $c_{k+1}$
 \]
 \end{corollary}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Operators}
+
+\begin{definition}[Hodge Star Operator]
+Given an inner product space $V$ with inner product $(\cdot,\cdot)$ and orientation given by $w$, the \bam{Hodge star operator} 
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Homology and Cohomology}
+
+\begin{definition}[Homology Group]
+The \bam{k\textsuperscript{th} homology group} is
+\[
+H^k(\mc{M})=\faktor{\ker d^k}{\image d^{k-1}}
+\]
+\end{definition}
+
+\begin{example}
+Let $\mc{M}=S^1$. A 0-form is just a smooth function $f:S^1 \to \mbb{R}$. Taking the coordinate $\theta$ on some patch of $S^1$ 
+\[
+df = \frac{df}{d\theta} d\theta 
+\]
+Taking a one form on $S^1$,  $\omega = a(\theta) d\theta$. Then 
+\eq{
+d^1 \omega = da \wedge d\theta = \frac{da}{d\theta} d\theta \wedge d\theta = 0
+}
+Now define 
+\[
+\bar{a} =\frac{1}{2\pi} \int_{S^1} \omega =\frac{1}{2\pi} \int_0^{2\pi} a(\theta) d\theta
+\]
+and let $a_0(\theta) = a(\theta) - \bar{a}$. Then 
+\[
+f(\theta) = \int_0^\theta a_0(t) dt 
+\]
+satisfies $f(0) = f(2\pi)=0 \Rightarrow f(\theta) = f(\theta+2\pi)$ so $f$ is a well defined function on $S^1$. In addition $\frac{df}{d\theta} = a_0$ so 
+\[
+\omega = df + \bar{a} d\theta
+\]
+so 
+\[
+H^1(S^1) = \set{\bar{a}d\theta + \image d^0 : \bar{a}\in\mbb{R}} \cong \mbb{R} 
+\]
+\begin{definition}[Betti Number]
+The \bam{k\textsuperscript{th} Betti number} of $\mc{M}$ is 
+\[
+\dim H^k(\mc{M})
+\]
+\end{definition}
+
+\end{example}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

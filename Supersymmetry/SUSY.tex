@@ -183,7 +183,129 @@ Since $\bar{Q}_\lambda = \bar{\psi} \pd{x} + (\lambda \del W) \pd{\psi}$, this v
 \end{proof}
 Thus $I(1) = \lim_{\lambda \to \infty} I(\lambda)$. As $\lambda \to \infty$, $e^{-\frac{\lambda^2}{2}(\del W)^2}$ suppreses the integral except near where $\del W = 0$. The integral localises to critical points of $W(x)$. 
 
+Suppose we have a group $G$ acting freely\footnote{This means something, and isn't just a turn of phrase} on our space of fields, and suppose the action and integration measure are $G$-invariant. 
 
+\begin{example}
+\eq{
+\int_{\mbb{R}^2 \setminus \set{0} } e^{-S(x,y)} \, dxdy 
+}
+with $G=SO(2)$ and $S$ just a function of $r=\sqrt{x^2+y^2}$. 
+\end{example}
+In this case decompose $\mc{C}$ as $G \times \faktor{\mc{C}}{G}$ and integrate over $G$ to obtain $\vol G$. \\
+If $G$ is a fermionic group, then $\vol G = 0$ since $0 = \int_G 1 d^{\dim G} \theta$.\\
+More generally, if $G \circlearrowleft \mc{C}$ has some fixed points, we can only get contributions form a nbhd of these fixed points. In our case $\delta \psi = \bar{\eps} \del W, \delta \bar{\psi} = -\eps \del W$ so ficed points of our susy are critical points of $W(x)$. Away from such critical points define 
+\eq{
+y = x - \frac{\bar{\psi}\psi}{\del W} \\
+\chi = \psi \sqrt{\del W} \\
+ \bar{\chi} = \bar{\psi}
+}
+\begin{ex}
+Show $dxd^2 \psi = \sqrt{\del W(y)} dy d^2\chi$
+\end{ex}
+The point is
+\begin{itemize}
+\item \eq{
+\delta y = \eps \psi - \bar{\eps} \bar{\psi} - \frac{\eps \del W \psi}{\del W} - \frac{\bar{\psi} \bar{\eps} \del W}{\del W} = 0
+} 
+\item \eq{
+S(y,0,0) &= \frac{1}{2} ( \del W(y) )^2 \\
+&= \frac{1}{2} ( \del W(x) )^2 - \del W \del^2 W \frac{\bar{\psi}{\psi}}{\del W} \\
+&= S(x,\psi,\bar{\psi})
+}
+\end{itemize}
+Hence 
+\eq{
+\int_{U^c} e^{-S(x,\psi,\bar{\psi})} dx d^2\psi = \int e^{-S(y,0,0)} \sqrt{\del W(y)} dy d^2\chi = 0
+}
+where $U$ is an open neighborhood of $\set{ \del W = 0}$ and $U^c = \mc{C}\setminus U$. Near any isolated critical point $x_\ast$ such that 
+\eq{
+W(x) = W(x_\ast) + \frac{c_\ast}{2} (x-x_\ast)^2 +\dots
+}
+the higher order terms will be irrelevant, so 
+\eq{
+S^{(2)}(x,\psi,\bar{\psi}) = \frac{c_\ast^2}{2}(x-x_\ast)^2 - \bar{\psi}\psi c_\ast
+}
+Hence 
+\eq{
+I &= \int e^{-S(x,\psi,\bar{\psi})} \frac{dx}{\sqrt{2\pi}} d\psi \\
+&= \int e^{-\frac{c_\ast^2}{2}(x-x_\ast)^2} (-1 + \bar{\psi}\psi c_\ast ) dx d^2\psi \\
+&= \frac{c_\ast}{\sqrt{2\pi}} \int_\mbb{R} e^{-\frac{c_\ast^2}{2}(x-x_\ast)^2} dx = \frac{c_\ast}{|c_\ast|} = \pm 1
+}
+If $W$ has several critical points the 
+\eq{
+I = \sum_{x_\ast : \del W = 0} \frac{c_\ast}{|c_\ast|}
+}
+Hence 
+\begin{itemize}
+    \item $I=0$ if $W$ is an odd degree polynomial
+    \item $I=-1$ if $W$ has even degree and $\lim_{|x|\to\infty} W(x) = -\infty$
+    \item $I=1$ if $W$ has even degree and $\lim_{|x|\to\infty} W(x) = \infty$
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{d=0 Landua Ginzburg Theory}
+Now take $z\in\mbb{C}$ and two fermions $\psi_1,\psi_2$. Choose a holomorphic $W(z)$
+\eq{
+S(z,\psi) = |\del W|^2 + \del^2 W \psi_2 \psi_2 - \bar{\del^2 W} \bar{\psi_1} \bar{\psi_2}
+}
+This is invariant under 
+\eq{
+\delta z &= \eps_1 \psi_1 + \eps_2 psi_ 2 \\
+\delta \psi_1 &= \eps_2 \bar{\del W } \\
+\delta \psi_2 &= -\eps_1 \bar{\del W} \\
+\bar{\delta} \bar{z} &= \bar{\eps}_1 \bar{\psi}_1 + \bar{\eps}_2 \bar{psi}_ 2 \\
+\bar{delta} \bar{\psi}_1 &= \bar{\eps}_2 \del W \\
+\bar{\delta} \bar{\psi}_2 &= -\bar{\eps}_1 \del W
+}
+and 
+\eq{
+\bar{\delta} z &= 0 = \bar{\delta} \psi_i \\
+\delta \bar{z} &= 0 =\delta \bar{\psi}_i
+}
+You may check $\acomm[Q_i]{\bar{Q}_j}=0$ and $\acomm[Q_i]{Q_j}=0=\acomm[\bar{Q}_i]{\bar{Q}_j}$ %only holds "on shell", i.e. $\del^2 W = 0 = \bar{\del^2 W}$.\\
+Again by rescaling $W \to \lambda W$ for $\lambda \in \mbb{R}_{\geq 0}$, localise $I = \int e^{-S} d^2z d^4\psi$ to its critical points of $W$ where 
+\eq{
+W(z) = W(z_\ast) + \frac{\alpha_\ast}{2} (z-z_\ast)^2 + \dots
+}
+\eq{
+S^{(2)}(z,\psi_i) = |\alpha_\ast|^2 |z-z_\ast|^2 + \alpha_\ast \psi_1 \psi_2 - \bar{\alpha}_\ast \bar{\psi}_1 \bar{\psi}_2 + \dots
+}
+so 
+\eq{
+I &= \frac{1}{2\pi} \int e^{-S} d^2z d^4\psi \\
+&= \sum_{z_\ast} \frac{1}{2\pi} \int e^{-|\alpha_\ast (z-z_ast)|^2} |\alpha_\ast|^2 \psi_1 \psi_2 \bar{\psi}_1 \bar{\psi}_2 d^2z d^4\psi \\
+&= \sum_{z_\ast} \frac{|\alpha_\ast|^2}{|\alpha_\ast|^2} = \sum_{z_\ast} 1
+}
+counting the critical points. More generally let $f(z)$ be any holomorphic functions, then 
+\eq{
+\braket{f(z)} = \int e^{-S} f(z) d^2z d^4\psi
+}
+is still invariant under $\bar{\delta}$ transform, to again localises to critical points of $\bar{W}$. Then 
+\eq{
+\braket{f(z)} &= \sum_{z_\ast} f(z_\ast) \frac{1}{2\pi} \int e^{-S^{(2)}} d^2z d^4\psi \\
+&= \sum_{z_\ast} f(z_\ast) 
+}
+the sum of the values at critical points. The key fact was $\bar{\delta}f=0$. Since $\bar{Q}_i^2=0$, one way to construct a $\bar{Q}_i$-invariant function is to take $\bar{Q}_i \Lambda(z,\bar{z},\psi_i,\bar{\psi}_j)$ for some general $\Lambda$ . However, if $F=\bar{Q}\Lambda$, 
+\eq{
+\braket{F} &= \braket{ \bar{Q}\Lambda } \\
+&= \int (\bar{Q}\Lambda) e^{-S} \frac{d^2zd^4\psi}{2\pi} \\
+&= \int \bar{Q} (\Lambda e^{-S} ) \frac{d^2zd^4\psi}{2\pi} = 0
+}
+So interesting functions are in 
+\eq{
+H_\bar{Q} = \faktor{\ker \bar{Q}}{\image \bar{Q}}
+}
+Now 
+\eq{
+\braket{F + \bar{Q} \Lambda} = \braket{F} + \braket {\bar{Q} \Lambda} = \braket{F} 
+}
+and supposing $F_i = \bar{Q} \Lambda$
+
+\eq{
+\braket{\prod_{i=1}^n F_i } &= \braket{\bar{Q} \Lambda \prod_{i=2}^n F_i } \\
+&= \braket{\bar{Q} (\Lambda \prod_{i=2}^n F_i )}=0
+}
 
 
 \end{document}
