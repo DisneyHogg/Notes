@@ -400,7 +400,7 @@ Let $V^\mu = \frac{dx^\mu}{d\lambda}$. Since $(-\pd{r})$ and $V^0$ are both futu
 \[
 0 \geq (-\pd{r}) V = -g_{r\mu}V^\mu = -V^v = -\frac{dv}{d\lambda}
 \]
-\be \label{eq:4}
+\be \label{eq:BH:4}
 \Rightarrow \frac{dv}{d\lambda} \geq 0
 \ee
 Hence 
@@ -409,7 +409,7 @@ V^2 = V^a V_a = -(1-\frac{2M}{r}) (\frac{dv}{d\lambda})^2 + 2 \frac{dv}{d\lambda
 \]
 where $ (\frac{d\Omega}{d\lambda})^2 = (\frac{d\theta}{d\lambda})^2 + \sin^2 \theta (\frac{d\phi}{d\lambda})^2$
 Hence 
-\be \label{eq:3}
+\be \label{eq:BH:1}
 -2\frac{dv}{d\lambda} \frac{dr}{d\lambda} = -V^2 + (\frac{2M}{r}-1) (\frac{dv}{d\lambda})^2 + r^2 (\frac{d\Omega}{d\lambda})^2
 \ee
 If $V$ is causal and $r\leq 2M$ then 
@@ -418,13 +418,13 @@ If $V$ is causal and $r\leq 2M$ then
 \]
 Let us assume $\frac{dr}{d\lambda} > 0 \Rightarrow \frac{dv}{d\lambda} = 0$
 
-If this is ture, the from \ref{eq:3} 
+If this is ture, the from \ref{eq:BH:1} 
 \[
 V^2 = 0 \; \text{ and } \; \frac{d\Omega}{d\lambda}
 \]
 so $V$ is a positive multiple of $\pd{r}$ and hence is past directed. Contradiction. 
 
-This shows that $\frac{dr}{d\lambda} \leq 0 $ if $r\leq 2M$. If $r< 2M$ then the equality must be strict. If $\frac{dr}{d\lambda}=0$ then because of \ref{eq:3} 
+This shows that $\frac{dr}{d\lambda} \leq 0 $ if $r\leq 2M$. If $r< 2M$ then the equality must be strict. If $\frac{dr}{d\lambda}=0$ then because of \ref{eq:BH:1} 
 \[
 \frac{d\Omega}{d\lambda} = \frac{dv}{d\lambda}=0 = V^\mu
 \]
@@ -434,8 +434,8 @@ Finally consider the case $r(\lambda_0)=2M$.
     \item If $\frac{dr}{d\lambda}\rvert_{\lambda=\lambda_0} <0$ then we are done after time $\eps$. 
     \item If $\frac{dr}{d\lambda}\rvert_{\lambda=\lambda_0} =0$ then $r(\lambda)=0 \forall \lambda \geq \lambda_0$ so done. 
 \end{itemize}
-The final case is $\frac{dr}{d\lambda}\rvert_{\lambda=\lambda_0}>0$. At $\lambda=\lambda_0$ \ref{eq:3} vanishes, so $\frac{d\Omega}{d\lambda}=V^2=0$. This means $\frac{dv}{d\lambda} \neq 0 $ as otherwise $V^\mu=0$ (contradiction). Then $\frac{dv}{d\lambda}\rvert_{\lambda=\lambda_0} >0$ because of \ref{eq:4}. Hence at least near $\lambda = \lambda_0$ we can use $v$ instead of $\lambda$ as a parameter along the curve with $r=2M$ at $v=v_0=v(\lambda_0)$. \\
-Dividing \ref{eq:3} by $(\frac{dv}{d\lambda})^2$ gives 
+The final case is $\frac{dr}{d\lambda}\rvert_{\lambda=\lambda_0}>0$. At $\lambda=\lambda_0$ \ref{eq:BH:1} vanishes, so $\frac{d\Omega}{d\lambda}=V^2=0$. This means $\frac{dv}{d\lambda} \neq 0 $ as otherwise $V^\mu=0$ (contradiction). Then $\frac{dv}{d\lambda}\rvert_{\lambda=\lambda_0} >0$ because of \ref{eq:BH:4}. Hence at least near $\lambda = \lambda_0$ we can use $v$ instead of $\lambda$ as a parameter along the curve with $r=2M$ at $v=v_0=v(\lambda_0)$. \\
+Dividing \ref{eq:BH:1} by $(\frac{dv}{d\lambda})^2$ gives 
 \[
 -2\frac{dr}{dv} \geq \frac{2M}{r}-1 \Rightarrow 2\frac{dr}{dv} \leq 1-\frac{2M}{r}
 \]
@@ -490,7 +490,7 @@ $u$ constant along radial outgoing null geodesics as $\frac{dt}{dr_\ast}=1$. The
 ds^2 = -(1-\frac{2M}{r}) du^2 - 2dudr + r^2 d\Omega^2_2
 \]
 This region $(u,r,\theta,\phi)$, $r<2M$ is \emph{not} the same region we uncovered in $(v,r,\theta,\phi)$. As easy way to see this is to look at outgoing null radial geodesics, i.e. lines of constant $u$. These obey 
-\be\label{eq:5}
+\be\label{eq:BH:5}
 \frac{dr}{d\tau} = 1 
 \ee
 These can propagate from the curvature singularity at $r=0$ through the surface $r=2M$. We proved earlier that this was not possible in the earlier region. It has been shown to linear order that black holes are stable. As white holes are the time reversal of black holes, they must be linearly unstable, and hence are unphysical solutions. 
@@ -504,12 +504,12 @@ V &= e^{\frac{v}{4M}}
 }
 so for $r>2M$, $U<0$ and $V>0$. Now we know 
 \begin{align}
-\label{eq:6}
+\label{eq:BH:6}
 UV = -e^{\frac{r}{2M}}(\frac{r}{2M}-1)
 \end{align}
 The RHS is a monotonic function of $r$ and hence defines $r(U,V)$ uniquely. We also have 
 \begin{align}
-\label{eq:7}
+\label{eq:BH:7}
 \frac{V}{U} = -e^\frac{t}{2M}
 \end{align}
 so we have $t=t(U,V)$ unique. \\
@@ -527,7 +527,7 @@ so
 \eq{
 ds^2 = -32M^4 \frac{e^{-\frac{r(U,V)}{2M}}}{r(U,V)} dU dV + r(U,V)^2 d\Omega_2^2
 }
-One can still define $r(U,V)$ to $U\geq0$, $V\leq0$ via \ref{eq:6} and \ref{eq:7}. The surface $r=2M$ is actually achieved by either taking $U=0$ or $V=0$. They intersect at $U=V=0$. At $r=0$, $UV=1$. \\
+One can still define $r(U,V)$ to $U\geq0$, $V\leq0$ via \ref{eq:BH:6} and \ref{eq:BH:7}. The surface $r=2M$ is actually achieved by either taking $U=0$ or $V=0$. They intersect at $U=V=0$. At $r=0$, $UV=1$. \\
 The Killing field
 \eq{
 K = \pd{t} = \frac{1}{4M} ( V \pd{V} - U \pd{U} ) 
@@ -607,5 +607,137 @@ A geodesic is \bam{complete} if an affine parametrisation of the geodesic exists
 \begin{theorem}
 All geodesically incomplete, inextensible manifolds are \bam{singular}
 \end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Initial Value Problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Predictability}
+\begin{definition}[Partial Cauchy Surface]
+Let $(\mc{M},g)$ be a time orientable spacetime. A \bam{partial Cauchy surface} $\Sigma$ is a hypersurface for which no two points are connected by a causal curve in $\mc{M}$. The \bam{future (past) domain of dependence} of $\Sigma$, denoted by $D^{+(-)}(\Sigma)$, is the set of $p\in\mc{M}$ such that every past(future)-inextendible causal curve through $p$ intersects $\Sigma$. The \bam{domain of dependence} is 
+\eq{
+D(\Sigma) = D^+(\Sigma) \cup D^-(\Sigma)
+}
+\end{definition}
+
+\begin{definition}[Hyperbolic PDE]
+A \bam{hyperbolic second order pde} is of the form 
+\eq{
+g^{ef} \nabla_e \nabla_f T^{(i)ab\dots}T_{cd\dots} = \tilde{G}\indices{^a^b^\dots_c_f_\dots}
+}
+i.e only a function of  first derivatives of $T$ or $T$.
+\end{definition}
+
+\begin{example}
+Take $\Sigma = \set{x>0}$. Then 
+\eq{
+D^+(\Sigma) &= \set{ x>|t|,x>0, t>0} \\
+D^-(\Sigma) &= \set{ x>|t|,x>0, t<0}  \\
+D(\Sigma) &= \set{x>|t|,x>0}
+}
+If $Sigma^\prime=\set{\text{whole x axis}}$, $D(\Sigma^\prime)=\mc{M}$
+\end{example}
+
+Now consider the wave equation 
+\eq{
+\nabla^a \nabla_a \psi = -\del_t^2 \psi + \del_x^2 \psi = 0
+}
+On $\Sigma$ take $(\psi,\del_t\psi)$. If $D(\Sigma)\neq\mc{M}$, then solutions of hyperbolic equation will not be uniquely specified on $\mc{M}\setminus D(\Sigma)$ by data on $\Sigma$.
+
+\begin{definition}[Globally Hyperbolic]
+A Spacetime is \bam{globally hyperbolic} if it admits a \bam{Cauchy surface} : a partial Cauchy surface $\Sigma$ such that $\mc{M}=D(\Sigma)$
+\end{definition}
+
+\begin{example}
+Consider $\mc{M} = \mbb{R}^2\setminus\set{0}$. For a point whose light cone intersect the origin, data cannot be specified, so the space must not be globally hyperbolic. 
+\end{example}
+
+\begin{theorem}[Wald]
+Let $(\mc{M},g)$ be a globally hyperbolic spacetime. Then 
+\begin{itemize}
+    \item $\exists t: \mc{M} \to \mbb{R}$ s.t $-(dt)^a$ (normal to constant time surfaces) is future directed and timelike (Global-time function)
+    \item Surfaces of constant $t$ are Cauchy surfaces and they all have the same topology as $\Sigma_t$.
+    \item The topology of $\mc{M}$ is $\mbb{R}\times\Sigma$.  
+\end{itemize}
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Extrinsic Curvature}
+Let $\Sigma$ denote a spacelike or timelike hypersurface with unit normal $n_a$ s.t. $n_a n^a = \pm1$
+
+\begin{lemma}
+$\forall p \in \Sigma$, let $h^a_b = \delta^a_b \mp n^a n_b$ s.t. 
+\eq{
+h^a_b n^b = 0
+}
+Then 
+\begin{itemize}
+    \item $h^a_c h^c_b = h^a_b$ 
+    \item Any vector $X^a$ at $p$ can be written as 
+    \eq{
+    X^a = X^a_{\parallel} + X^a_{\bot}
+    }
+    where 
+    \eq{
+    X^a_{\parallel} &= h^a_b X^b \\
+    X^a_{\bot} &= \pm n_b X^b n^a
+    }
+    \item If $X^a$ and $Y^b$ are tangent to $\Sigma$ the 
+    \eq{
+    h^{ab} X_a Y_b = g^{ab} X_a Y_b
+    }
+\end{itemize}
+$h$ is called the \bam{first fundamental form}. 
+\end{lemma}
+Let $N^a$ be a normal o $\Sigma$ at $p$, and $Y$ tangent to $\Sigma$. i.e. 
+\eq{
+X^b \nabla_b N_a = 0 \\
+Y^a N_a = 0 \text{  at } p 
+}
+Then 
+\eq{
+X(Y^a N_a) = X^b \nabla_b (Y^a N_a) = N_a X^b \nabla_b Y^a
+}
+
+\begin{definition}[Extrinsic Curvature]
+Up to now $n_a$ was only been defined on $\Sigma$, so extend arbitrarily to a neighborhood. The \bam{extrinsic curvate} or \bam{second fundamental form} is the tensor defined at $p\in\Sigma$ by
+\eq{
+K(X,Y) = -n_a (\nabla_{X_{\parallel}} Y_{\parallel})
+}
+\end{definition}
+
+\begin{lemma}
+$K_{ab}$ is independent of how $n_a$ is extended and 
+\eq{
+K_{Ab} = h\indices{_a^c}h\indices{_b^d} \nabla_c n_d
+}
+\end{lemma}
+\begin{proof}
+\eq{
+ K(X,Y) = -n_d X_\parallel^c \nabla_c Y^d_\parallel = X_\parallel^c Y^d \nabla_c n_d \text{ as } n_d Y^d_\parallel=0
+}
+so 
+\eq{
+K(X,Y) = X^a Y^b h\indices{_a^c} h\indices{_b^d} \nabla_c n_d
+}
+hence done. \\
+To demonstrate that $K_{ab}$ is independent of how $n$ is extended, consider a differend extension $n_a^\prime$ and let 
+\eq{
+m_a = n_a^\prime - n_a
+}
+so $m_a=0$ on $\Sigma$. Then 
+\eq{
+X^a Y^b (K_{ab}^\prime K_{ab}) &= X_\parallel^c Y_\parallel^d \nabla_c n_d \\
+&= \nabla_{X_\parallel} (Y_\parallel^d m_d) = X_\parallel (Y_\parallel^d m_d) = 0
+}
+\end{proof}
+We can use $n^b\nabla_c n_b = \frac{1}{2} \nabla_c (n_b n^b) = 0 $ so 
+\eq{
+K_{ab} = h_a^c \nabla_c n_b 
+}
+Thus it can be shown 
+\eq{
+K_{ab} = \frac{1}{2}\mc{L}_n h_{ab}
+}
 
 \end{document}

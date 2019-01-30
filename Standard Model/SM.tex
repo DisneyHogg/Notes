@@ -200,7 +200,7 @@ Insert expansion of $W$ and compare coefficients of $-\eps_0$ to get
 \]
 and doing likewise for $\hat{T}$ gives 
 \be
-\hat{T} iH \hat{T}^{-1} = -iH \label{eq:1}
+\hat{T} iH \hat{T}^{-1} = -iH \label{eq:SM:1}
 \ee
 Suppose $\Psi$ is an energy eigenstate
 \[
@@ -209,7 +209,7 @@ Suppose $\Psi$ is an energy eigenstate
 If $\hat{P},\hat{T}$ are symmetries then $\hat{P}\Psi,\hat{T}\Psi$ should also be energy eigenstates with the same energy. 
 Suppose $\hat{P}$ is linear. Then
 \begin{align*}
-(\hat{P}\Psi,iH\hat{P}\Psi) &= (\hat{P}\Psi,\hat{P} iH\Psi) \text{ from \ref{eq:1}} \\ 
+(\hat{P}\Psi,iH\hat{P}\Psi) &= (\hat{P}\Psi,\hat{P} iH\Psi) \text{ from \ref{eq:SM:1}} \\ 
 &= (\hat{P}\Psi,\hat{P} iE\Psi) \\
 &= iE(\hat{P}\Psi,\hat{P}\Psi) \text{ as $\hat{P}$ linear} \\
 &= iE 
@@ -230,7 +230,7 @@ Hence must have $\hat{P}$ linear and unitary, whereas $\hat{T}$ antilinear and a
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Parity}
 
-\subsubseciont*{Scalar fields}
+\subsubsection*{Scalar fields}
 \begin{definition}[Scalar Fields]
 A complex scalar field is 
 \[
@@ -352,7 +352,7 @@ Define the matrix $C$ such that $(\gamma^\mu C)^T = \gamma^\mu C$. In the chiral
 }
 a suitable choice is 
 \eq{
-C = =i\gamm^0 \gamma^2 = \begin{pmatrix} i\sigma^2 & 0 \\ 0 & -i\sigma^2 \end{pmatrix}
+C = =i\gamma^0 \gamma^2 = \begin{pmatrix} i\sigma^2 & 0 \\ 0 & -i\sigma^2 \end{pmatrix}
 }
 giving 
 \[
@@ -374,7 +374,7 @@ Now consider
 }
 and compare with 
 \eq{
-\bar{\psi}^T (x) = \sum_{p,s} \left[ {b^s}^\dagger(p) {\bar{u}^s}^T(p) e^{ip\cdot x} + d^s {\bar{v}^s}^T(p) e^{-ip\cdot x} \right]
+{\bar{\psi}}^T (x) = \sum_{p,s} \left[ {b^s}^\dagger(p) {{\bar{u}}^s}^T (p) e^{ip\cdot x} + d^s {{\bar{v}}^s}^T (p) e^{-ip\cdot x} \right]
 }
 Consider the spinors and take $\eta^s = i\sigma^2 {\xi^s}^\ast$ (choosing a basis for the spinors) we can write 
 \eq{
@@ -438,6 +438,99 @@ $\hat{T}$ flips sign of any momentum. The creation/annihilation ops can be taken
 \hat{T} b^s(p) \hat{T}^{-1} & = \eta_T (-1)^{\frac{1}{2}-s} b^{-s} (p_T) \\
 \hat{T} {d^s}^\dagger(p) \hat{T}^{-1} & = \eta_T (-1)^{\frac{1}{2}-s} {d^{-s}}^\dagger (p_T)
 }
+It can be shown that 
+\eq{
+(-1)^{\frac{1}{2}-s} {u^{-s}}^\ast (p_T) &= -Bu^s(p) \\
+(-1)^{\frac{1}{2}-s} {v^{-s}}^\ast (p_T) &= -Bv^s(p) 
+}
+where 
+\eq{
+B = C^{-1} \gamma^5 = \begin{pmatrix} i\sigma^2 & 0 \\ 0 & i\sigma^2 \end{pmatrix}
+}
+Then 
+\eq{
+\hat{T} \psi(x) \hat{T}^{-1} &= \eta_T \sum_{p,s} (-1)^{\frac{1}{2}-s} \left[ b^{-s}(p_T) {u^s}^\ast(p) e^{ip\cdot x} + {d^{-s}}^\dagger(p_T) {v^s}^\ast(p) e^{-ip\cdot x}   \right] \\
+&= \eta_T \sum_{p,s} (-1)^{\frac{1}{2}-s+1} \left[ b^{s}(p) {u^{-s}}^\ast(p_T) e^{ip\cdot x_T} + {d^{s}}^\dagger(p) {v^{-s}}^\ast(p_T) e^{ip\cdot x_T}   \right] \\
+&= \eta_T B \psi(x_T)
+}
+Similarly 
+\eq{
+\hat{T} \bar{\psi}(x) \hat{T}^{-1} = \eta_T^\ast \bar{\psi}(x_T) B^{-1}
+}
+Then some bilinears we have 
+\eq{
+\hat{T} \bar{\psi}(x) \psi(x) \hat{T}^{-1} &= \bar{\psi}(x_T) \psi(x_T) \\
+\hat{T} \bar{\psi}(x) \gamma^\mu \psi(x) \hat{T}^{-1} &= \bar{\psi}(x_T) B^{-1} {\gamma^\mu}^\ast B \psi(x_T)
+}
+Now we can check 
+\eq{
+B^{-1} {\gamma^0}^\ast B &= \gamma^0 \\
+B^{-1} {\gamma^0i}^\ast B &= -\gamma^i \\ 
+\Rightarrow B^{-1} {\gamma^\mu}^\ast B &= -\mbb{T}^\mu_\nu \gamma^\nu
+}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Scattering S-Matrix}
+Define 
+\eq{
+\braket{p_1,p_2,\dots| S | k_A, k_B, \dots} &= \tensor[_o]{\braket{p_1,p_2,\dots| k_A, k_B, \dots}}{_i} \\
+&= \lim_{T\to\infty} \braket{p_1,p_2,\dots | Te^{-i\int_{-T}^T V(t) dt} | k_A, k_B, \dots}
+}
+with 
+\eq{
+V(t) = -\int d^3 x \mc{L}_I
+}
+the potential energy term. 
+\begin{example}
+In QED 
+\eq{
+\mc{L}_I = -e \bar{\psi} \gamma^\mu A_\mu \psi
+}
+\end{example}
+Now we have the table of transformations 
+\begin{center}$
+\begin{array}{cccc}
+    \text{Quantity} & \hat{P}\cdot\hat{P}^{-1} & \hat{C}\cdot\hat{C}^{-1} & \hat{T}\cdot\hat{T}^{-1} \\
+    \hline
+    \hline
+    \mc{L}_I(x) & \mc{L}_I(x_P) & \mc{L}_I(x) & \mc{L}_I(x_T) \\
+    V(t) & V(t) & V(t) & V(-t) \\
+    S & ? & ? & ? \\
+\end{array}
+$\end{center}
+
+Now write 
+\eq{
+S = \sum_{n=0}^\infty (-i)^n \int_{-\infty}^\infty dt_1 \int_{-\infty}^{t_1} dt_2 \dots \int_{-\infty}^{t_{n-1}} dt_n V(t_1) V(t_2) \dots V(t_n) \\
+\Rightarrow S_T \ \hat{T} S \hat{T}^{-1} =  \sum_{n=0}^\infty (i)^n \int_{-\infty}^\infty dt_1 \int_{-\infty}^{t_1} dt_2 \dots \int_{-\infty}^{t_{n-1}} dt_n V(-t_1) V(-t_2) \dots V(-t_n)
+}
+Substituting $\tau = -t_{n+1-i}$ 
+\eq{
+S_T &= \sum_{n=0}^\infty (i)^n \int_\infty^{-\infty} (-d\tau_n) \int_\infty^{-t_1} (-d\tau_{n-1}) \dots \int_\infty^{-t_{n-1}} (-d\tau_1) V(\tau_n) V(\tau_{n-1})\dots V(\tau_1) \\
+&=\sum_{n=0}^\infty (i)^n \int_{-\infty}^\infty d\tau_n \int_{-t_1}^\infty d\tau_{n-1} \dots \int_{-t_{n-1}}^\infty d\tau_1 V(\tau_n) V(\tau_{n-1})\dots V(\tau_1) \\ 
+&= \sum_{n=0}^\infty (i)^n \int_{-\infty}^\infty d\tau_n \int_{\tau_n}^\infty d\tau_{n-1} \dots \int_{\tau_2}^\infty d\tau_1 V(\tau_n) V(\tau_{n-1})\dots V(\tau_1)
+}
+Geometrically it can be seen 
+\eq{
+\int_{-\infty}^\infty d\tau_n \int_{\tau_n}^\infty d\tau_{n-1} = \int_{-\infty}^\infty d\tau_{n-1} \int_{-\infty}^{\tau_{n-1}} d\tau_n 
+}
+so successively swapping 
+\eq{
+S_T = \sum_{n=0}^\infty (i)^n \int_{-\infty}^\infty d\tau_1 \int_{-\infty}^{\tau_1} d\tau_2 \dots \int_{-\infty}^{\tau_{n-1}} d\tau_n V(\tau_n) V(\tau_{n-1})\dots V(\tau_1)
+}
+Now consider 
+\eq{
+S^\dagger &= \sum_{n=0}^\infty (i)^n \int_{-\infty}^\infty dt_1 \int_{-\infty}^{t_1} dt_2 \dots \int_{-\infty}^{t_{n-1}} dt_n [V(t_1) V(t_2) \dots V(t_n)]^\dagger \\
+&= \sum_{n=0}^\infty (i)^n \int_{-\infty}^\infty dt_1 \int_{-\infty}^{t_1} dt_2 \dots \int_{-\infty}^{t_{n-1}} dt_n V(t_n) V(t_{n-1}) \dots V(t_1)
+}
+So we have shown 
+\eq{
+S_T = S^\dagger
+}
+Hence note ${S_T}^\dagger = S$. Now consider $\ket{\xi},\ket{\eta}$ with 
+\eq{
+\ket{\xi_T} &= \hat{T} \ket{\xi} \\
+\ket{\eta_T} &= \hat{T} \ket{\eta}
+}
 
  \end{document} 

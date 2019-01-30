@@ -80,7 +80,7 @@ S[X] = - m\int_{s_1}^{s_2} \, ds
 \]
 Note that working with $\hbar=c=1$ requires that we have a parameter with mass dimensions outside the integral to make the action dimensionless. \\
 We can parametrise the worldline such that 
-\be \label{eq:1}
+\be \label{eq:ST:1}
 S[X] = -m \int_{s_1}^{s_2} d\tau \, \sqrt{-\eta_{\mu\nu} \dot{X}^\mu \dot{X}^\nu}
 \ee
 The conjugate momentum is 
@@ -104,7 +104,7 @@ and the $e$ e.o.m is
 \[
 \dot{X}^2 + e^2m^2=0
 \]
-Note $e(\tau)$ appears only algebraically, and so we can substitute back into the action to recover the previous formulation, equation \ref{eq:1}. \\
+Note $e(\tau)$ appears only algebraically, and so we can substitute back into the action to recover the previous formulation, equation \ref{eq:ST:1}. \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Symmetries}
@@ -300,7 +300,7 @@ X^\mu_R(\tau-\sigma) = \frac{1}{2} x^\mu + \frac{\cst}{2} p^\mu (\tau-\sigma) + 
 X^\mu_L(\tau+\sigma) = \frac{1}{2} x^\mu + \frac{\cst}{2} p^\mu (\tau+\sigma) + i\sqrt{\frac{\cst}{2}} \sum_{n\neq0} \frac{1}{n} \bar{\alpha}^\mu_n e^{-in(\tau+\sigma)}
 \]
 The Poisson bracket, acting on the modes $\alpha^\mu_n, \bar{\alpha}^\mu_n$ are 
-\begin{align} \label{eq:2}
+\begin{align} \label{eq:ST:2}
 \pb[\alpha^\mu_m]{\alpha^\nu_n} &= -im \delta_{m,-n} \eta^{\mu\nu} = \pb[\bar{\alpha}^\mu_m]{\bar{\alpha}^\nu_n} \\
 \pb[\alpha^\mu_m]{\bar{\alpha}^\nu_n} &= 0
 \end{align}
@@ -314,7 +314,7 @@ So
 \[
 \pb[X^\mu(\sigma)]{P_\nu(\sigma^\prime)} = \frac{1}{2\pi} \pb[x^\mu]{p^\nu} - \frac{1}{4\pi} \sum_{n,m\neq0} \frac{1}{m} \left( \pb[\alpha^\mu_m]{\alpha^\nu_n} e^{i(m\sigma+n\sigma^\prime}+\pb[\bar{\alpha}^\mu_m]{\bar{\alpha}^\nu_n}e^{-i(m\sigma+n\sigma^\prime)} \right)
 \]
-using \ref{eq:2} and also the periodic delta function 
+using \ref{eq:ST:2} and also the periodic delta function 
 \[
 \delta(\sigma-\sigma^\prime)=\frac{1}{2\pi} \sum_{m=-\infty}^{m=\infty} e^{im(\sigma-\sigma^\prime)} \quad \text{("Dirac Comb")}
 \]
@@ -538,6 +538,62 @@ In spacetime, this is a gauge invariance
 \eq{
 B_{\mu\nu} \sim B_{\mu\nu} + \del_\mu \lambda_\nu - \del_\nu \lambda_\mu \quad \text{(gerbe)}
 }
+
+\subsubsection*{Massless Modes}
+Let 
+\eq{
+\ket{g} &= h_{\mu\nu} \alpha_{-1}^{(\mu} \bar{\alpha}_{-1}^{\nu)}\ket{k} \\
+\ket{B} &= B_{\mu\nu} \alpha_{-1}^{[\mu} \bar{\alpha}_{-1}^{\nu]}\ket{k} \\
+\ket{\phi} = \phi \alpha_{-1}^\mu \bar{\alpha}_{-1 \mu}\ket{k}
+}
+These are a graviton ($g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu}$), B field $B_{\mu\nu} = -B_{\nu\mu}$, and Dilaton respectively. \\
+One can show that these fields arise as a linear approximation to the theory described by the action
+\begin{align} \label{eq:ST:3}
+S = -\frac{1}{2k^2} \int d^D x \sqrt{-g} e^{-2\phi} \left( R - 4\del_\mu \phi \del^\mu \phi + \frac{1}{12} H_{\mu\nu\lambda}H^{\mu\nu\lambda}\right)
+\end{align}
+where $H_{\mu\nu\lambda}=\del_{[\mu}B_{\nu\lambda]}$.
+We could consider the more general starting point 
+\eq{
+S_1[X,h] = -\frac{1}{4\pi\cst} \int_\Sigma d^2\sigma \sqrt{-h} h^{ab} \del_a X^\mu \del_b X^\nu g_{\mu\nu}(X)
+}
+The quantum theory has Weyl symmetry if $g_{\mu\nu}$ satisfies 
+\eq{
+R_{\mu\nu}=0
+}
+to first order in $\cst$. Higher orders give corrections to this result to next order in $\cst$
+\eq{
+R_{\mu\nu} + \frac{\cst}{2} R_{\mu\rho\lambda\sigma}R\indices{_\nu^\rho^\lambda^\sigma}=0
+}
+We can also add another term 
+\eq{
+S_2[X,h] &= -\frac{1}{4\pi\cst} \int_\Sigma d^2\sigma \sqrt{-h} \eps^{ab} \del_a X^\mu \del_b X^\nu B_{\mu\nu} \\
+S_3 &= \frac{1}{4\pi\cst} \int_\Sigma d^2\sigma \sqrt{-h} \phi(x) R_2
+}
+where $R_2$ is the worldsheet Ricci scalar. The condition that the action 
+\eq{
+S = S_1 + S_2 + S_3
+}
+gives a Weyl-invariant quantum theory are what we might call equations of motion in spacetime for $g_{\mu\nu}, B_{\mu\nu}, \phi$. To leasing order in $\cst$ these equation of motion may be derived from the action \ref{eq:ST:3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Path Integral Quantisation}
+Path integrals give us a conceptually different way to think about calculating transition amplitudes in QM and QFT. 
+\eq{
+\braket{x_f,t_f | x_i, t_i} = \int_{x(t_i)}^{x(t_f)} \mc{D}X e^{-iS[X]}
+}
+for 
+\eq{
+S[X] = \int_{t_i}^{t_f} dt L(X,\dot{X})
+}
+We will be interested in the path integral quantisation of the Polyakov action. 
+Given some inital and final string state $\Psi_{i,f}$ the path integral is  
+\eq{
+\braket{\Psi_f | \Psi_i} = \int_i^f \mc{D}X \mc{D}h e^{iS[X,h]}
+}
+a weighted sum over all possible worldsheets with fixed inital and final states. 
+
+
 
 
 

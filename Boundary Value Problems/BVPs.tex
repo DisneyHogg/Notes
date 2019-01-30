@@ -15,7 +15,98 @@
 \maketitle
 \tableofcontents
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 A brief overview of some key ideas, concepts, and facts that I find useful in revising BVPs. 
+
+\section{Complex Tools}
+\begin{definition}[Fourier Transform]
+Given some suitable function $f:\Omega \to \mbb{C}$ that is $L_1$ and $L_2$, its \bam{Fourier transform} is 
+\eq{
+\hat{f} : \mbb{R} \to \mbb{C} \\
+\hat{f}(\lambda) = \int_\Omega e^{-i\lambda x} dx
+}
+and the inverse transform is 
+\[
+f(x) = \frac{1}{2\pi} \int_\mbb{R} e^{i\lambda x} \hat{f}(\lambda)
+\]
+\end{definition}
+
+\begin{lemma}[Jordan's Lemma]
+Let $\gamma_R$ be the contour in $\mbb{C}$ for $R\in\mbb{R}_{geq 0}$
+\eq{
+\gamma_R : [0,\pi] \to \mbb{C}
+\gamma_R(t) = Re^{it}
+}
+Then for $f:\mbb{C}\to\mbb{C}$ a holomorphic function satisfying 
+\eq{
+\forall z\in \gamma_R |f(z)| < K(R) 
+}
+for some $K(R)$ s.t. $\lim_{R\to\infty} K(R) = 0$ then 
+\eq{
+\forall \lambda \in \mbb{R}_{>0} \lim_{R\to\infty} \int_{\gamma_R} e^{i\lambda z} f(z) dz = 0
+}
+An analogous result hold for $\lambda <0$ for a semicircular contour in the LHP. 
+\end{lemma}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Heat Equation}
+In this section the standard approach to a PDE 1st order in time, and higher order in space is discussed. At all points the heat equation will be used as the "lab rat" PDE the method will be tried out on. \\
+\begin{definition}[Heat Equation]
+The \bam{heat equation} is the partial differential equation for $u:\Omega \times [0,\infty) \to \mbb{R}$ $u=u(x,t)$
+\[
+u_t = u_{xx}
+\]
+Typical domains $\Omega$ are 
+\begin{itemize}
+    \item The half line $\Omega = [0,\infty)$
+    \item The  finite interval $\Omega = [0,L]$ for $L\in\mbb{R}$
+\end{itemize}
+The problem will come with conditions on the boundary $\del \Omega \times [0,\infty) \cup \Omega\times \set{0}$. Standard notation is 
+\eq{
+u(x,0) &= u_0(x) \\
+(\del_x)^j u(0,t) &= g_j(t) \\
+(\del_x)^j u(L,t) &= h_j(t)
+}
+\end{definition}
+
+
+\subsection{Unified Transform}
+The typical approach to solving this problem is to initially convert the PDE into a \bam{global relation}. To do this, define
+\eq{
+\hat{u}(\lambda,t) &= \int_\Omega e^{-i\lambda x}u(x,t) dx \\
+\tilde{g}_j(\lambda,t) &= \int_0^t e^{\lambda\tau} g_j(\tau) d\tau
+}
+for $\lambda \in \mbb{C}$. Note that both integral are only defined provided the exponential remains bounded over the integral. For $\tilde{g}_j$ this is ensure by the finite upper limit to integration. Now 
+\eq{
+\left| e ^ { - i \lambda x } \right| = \left| e ^ { - i \lambda _ { R } x + \lambda _ { I } x } \right| = e ^ { \lambda _ { I } x }
+}
+so when $\Omega$ is the half line it is required that $\Im \lambda < 0$. With these definition, the PDE can be expressed via integration by parts. 
+
+\begin{example}[Heat equation on the Half Line]
+\eq{
+\hat(u)_t &= \int_0^\infty e^{-i\lambda x} u_t dx \\
+&= \int_0^\infty e^{-i\lambda x} u_{xx} dx \\
+&= \left[ u_x e^{-i\lambda x} \right]_0^\infty -(-i\lambda) \left[ u e^{-i\lambda x} \right]_0^\infty +(-1)^2 (-i\lambda)^2 \hat{u} }
+and so 
+\eq{
+\Rightarrow&& \hat{u}_t - (-1)^2(-i\lambda)^2 \hat{u} &= -g_1 + (-i\lambda) g_0 \\
+\Rightarrow&& (\hat{u} e^{-(-i\lambda)^2 t} )_t &= -e^{-(-i\lambda)^2 t} [g_1 - (-i\lambda) g_0] \\
+\Rightarrow&&  e^{-(-i\lambda)^2 t}\hat{u}(\lambda,t) &= \hat{u}_0(\lambda) - \int_0^t e^{-(-i\lambda)^2 \tau} [g_1(\tau) - (-i\lambda) g_0(\tau)] d\tau
+}
+\end{example}
+This can be extended in general for a PDE on the half line
+\eq{
+\highlight{u_t &= \left[\sum_{i=0}^n a_i (\del_x)^i \right] u} \\
+}
+to 
+\eq{
+\hat{u} &= \sum_{i=0}^n a_i \int_0^\infty  e^{-i\lambda x} (\del_x)^i u \\
+&= \sum_{i=0} a_i \sum_{j=1}^{i} -(-i\lambda)^ g_{}
+}
+gives some polynomial $\omega(-i\lambda)$. \\
+The solution for $u$ is then obtained via inverse fourier transform 
+
 
 \end{document}
