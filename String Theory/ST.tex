@@ -587,14 +587,87 @@ for
 S[X] = \int_{t_i}^{t_f} dt L(X,\dot{X})
 }
 We will be interested in the path integral quantisation of the Polyakov action. 
-Given some inital and final string state $\Psi_{i,f}$ the path integral is  
+Given some initial and final string state $\Psi_{i,f}$ the path integral is  
 \eq{
 \braket{\Psi_f | \Psi_i} = \int_i^f \mc{D}X \mc{D}h e^{iS[X,h]}
 }
-a weighted sum over all possible worldsheets with fixed inital and final states. 
+a weighted sum over all possible worldsheets with fixed initial and final states. 
+We need to quotient out by the group of diffeomorphisms and weyl transformations. We would like to split the integral over all $h_{ab}$ into integrals over all physically inequivalent $h_{ab}$ and those related by gauge transform. 
+\eq{
+\mc{D} h = \mc{D} h_{phys} \times \mc{D} h_{Diff \times Weyl}
+}
+For an illustrative toy example, consider 
+\eq{
+\int dxdy e^{-(x^2+y^2)}
+}
+$x^2 + y^2$ is invariant underrotations about $(0,0)$, so we might be interested in the integral "modulo rotations". Then 
+\eq{
+\int dxdy e^{-(x^2+y^2)} = \int r dr d\theta e^{-r^2} = \underbrace{\int d\theta}_{=2\pi \text{ "volume of rotation group"}} \int dr re^{-r^2}
+}
+Here we needed the Jacobian $dxdy = rdrd\theta$. Hence we will take formally 
+\eq{
+\frac{1}{|Diff|\times|Weyl|} \int \mc{D}h \mc{D} X = \int \mc{D}h_{phys} \mc{D}X_{phys} \mc{J}  
+}
+where $\mc{J}$ is a functional determinant. In the same way we could write \eq{
+\sqrt{\frac{\pi}{\det M}} = \int_V dx e^{-(x,Mx)}
+}
+we will write $\mc{J}$ as a functional integral 
+\eq{
+\mc{J} = \int \mc{D}b \mc{D} c e^{-S[b,c]}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Global Properties of the Worldsheet}\footnote{A crash course on Riemann surfaces}
+We need to know more about what type of world sheets appear in the path integral. We have looked at 2-dimensional Riemannian manifolds $(\Sigma,h)$ modulo Weyl transformations $h_{ab}=e^{2w}h_{ab}$. These are called \bam{Riemann surfaces}\footnote{To read books and learn more about these than will be covered in the course, see Farkas + Kra and Donaldson}.
+
+\subsubsection*{Worldsheet Genus}
+For Riemann surfaces without boundary, the topological data is encoded in the \emph{Euler characteristic}
+\eq{
+\chi = \frac{1}{4\pi}\int_{\Sigma} d^2\sigma \sqrt{h} R(h)
+}
+In general there will be obstructions to globally bringing the metric to a required form.
+The genus is $g$ such that 
+\eq{
+\chi = 2-2g
+}
+$g$ is kind of like the number of holes in $\Sigma$. 
+
+\subsubsection*{Moduli space of Riemann surfaces}
+For a given genus $g$,  the space of metrics on $\Sigma_g$, modulo Weyl and Diffeomorphisms, is a finite dimensional space called the \bam{Moduli space} of $\Sigma_g$
+\eq{
+\mc{M}_g = \faktor{\set{metrics h_{ab} }}{\set{Diff}\times\set{Weyl}}
+}
+A useful result is 
+\eq{
+s = |\mc{M}_g| = \left\{ \begin{array}{lc} 0 & g=0 \\ 2 & g=1 \\ 6g-6 & g\geq 2 \end{array} \right.
+}
+$s$ is the real dimension of $\mc{M}_g$. 
+
+\begin{example}[Torus]
+Given a metric $\hat{h}_{ab}$ on a $g=0$ surface, we can bring any metrix to the form $e^{2w}\hat{h}_{ab}$. This is not so for a torus $(g=1)$. We can build a torus by imposing identifications on $\mbb{C}$
+\eq{
+z \sim z + n\lambda_1 + m\lambda_2
+}
+$n,m \in \mbb{Z}$, $\tau = \frac{\lambda_1}{\lambda_2}\notin \mbb{R}$. One can show $\tau$ is diffeomorphism and Weyl invariant. We can then choose $\lambda_i$ s.t. $\Im \tau \geq 0$. Then 
+\eq{
+ds^2 = |dz^2 + \tau d\bar{z}|^2
+}
+If we change 
+\eq{
+\begin{pmatrix} \lambda_1 \\ \lambda_2 \end{pmatrix} \to U\begin{pmatrix} \lambda_1 \\ \lambda_2 \end{pmatrix} \\
+U = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \quad a
+}
+We can undo that change by also changing 
+\eq{
+(n,m) \to (n,m) U^{-1}
+}
+so for $(n,m)$ to be integers we require $a,b,c,d \in \mbb{Z}$, i.e $U\in SL(2,\mbb{Z})$. Our moduli soace is the 
+\eq{
+\mc{M}_1 = \faktor{UHP}{SL(2,\mbb{Z})}
+}
 
 
 
-
+\end{example}
 
 \end{document}

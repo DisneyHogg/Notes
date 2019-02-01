@@ -532,5 +532,74 @@ Hence note ${S_T}^\dagger = S$. Now consider $\ket{\xi},\ket{\eta}$ with
 \ket{\xi_T} &= \hat{T} \ket{\xi} \\
 \ket{\eta_T} &= \hat{T} \ket{\eta}
 }
+Then 
+\eq{
+\braket{\eta_T | S \xi_T } &= (\hat{T} \eta , S_T^\dagger \hat{T} \xi) \\
+&=(\hat{T} \eta , \hat{T} S^\dagger \xi) \\
+&= (\eta, S^\dagger \xi)^\ast \quad \text{( $\hat{T}$ antiunitary)} \\
+&= (S^\dagger \xi,\eta) \\ 
+&= (\xi, S \eta) \\
+&= \braket{\xi | S | \eta}
+}
+Hence if $\hat{T} \mc{L}_I (x) \hat{T}^{-1} = \mc{L}_I (x_T)$, S-matrix elements are equal form time reversed processes where initial and final states are swapped. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{CPT theorem}
+
+\begin{theorem}
+Any Lorentz invariant $\mc{L}$ with a Hermitian Hamiltonian should be invariant under the product of P,C, and T. 
+\end{theorem}
+\begin{proof}
+See Streater and Wightman "PCT, spin and statistics, and all that" (1989).
+\end{proof}
+All observations suggest that CPT is respected in nature. This means 
+ a particle (positive charge, spin up) propagating forward in time cannot be distinguished from an antiparticle (negative charge, spin down) propagating backwards in time. 
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \subsection{Baryogenesis}
+
+\begin{definition}[Baryogenesis]
+\bam{Baryogenesis} is the generation of matter-antimatter asymmetry in the universe. 
+\end{definition}
+
+There are three necessary conditions for Baryongenesis, the \bam{Sakarov conditions}
+\begin{itemize}
+    \item Baryon number violation: $X \to Y+B$, B excess baryons (or leptogenesis, i.e lepton number violation giving baryon number asymmetry through B+L violation). 
+    \item Non-equilibrium : Otherwise $\Gamma(Y+B \to X) = \Gamma(X \to Y+B)$
+    \item C and CP violation: Otherwise  
+    \eq{
+    \frac{dB}{dt}\propto \Gamma(X \to Y+B) - \Gamma(\bar{X} \to \bar{Y} + \bar{B})=0
+    }
+    with C-symmetry, or 
+    \eq{
+    \Gamma(x \to nq_L) + \Gamma(x \to n q_R) = \Gamma(\bar{x} \to n \bar{q}_R) + \Gamma(\bar{x} \to n \bar{q}_L)
+    }
+    with CP-symmetry.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Spontaneous Symmetry Breaking (SSB)}
+There are hidden symmetries present in \mc{L} but not in observable. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{SSB of discrete symmetry}
+Consider a real scalar field $\phi(x)$ with symmetric $V(\phi)$ and $\mc{L} = \frac{1}{2} \del_\mu \phi \del^\mu - V(\phi)$, e.g. $V(\phi) = \frac{1}{2} m^2 \phi^2 + \frac{\lambda}{4} \phi^4$, $\lambda > 0$ \\
+We have either 
+\begin{itemize}
+    \item the typical case to analyze, $m^2 > 0$, where $V(\phi)$ has a minimum at $\phi=0$.
+    \item$m^2< 0$, then $V(\phi) = \frac{\lambda}{4} (\phi^2 - v^2)^2$ up to a constant, where $v = \sqrt{\frac{-m^2}{\lambda}}$. Now $\phi=0$ is an unstable vacuum and there are two degenerate vacua at $\phi = \pm v$.
+\end{itemize}
+In the second case $\phi$ has a acquired a non zero \bam{vacuum expectation value (vev)}. Wlog we may study small excitations about $\phi=v$ 
+\eq{
+\phi(x) = v + f(x) ]]
+\mc{L} = \frac{1}{2} \del_\mu f \del^\mu f - \lambda ( v^2 f + vf^3 + \frac{1}{4} f^4) + \text{ constant}
+}
+Hence $f$ is a scalar field with mass $m_f = \sqrt{2\lambda v^2}$. This $\mc{L}$ is \emph{not} invariant under $f \to -f$. The symmetry of the original $\mc{L}$ is broken by the VEV of $\phi$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{SSB of continuous (global) symmetry}
+
+
 
  \end{document} 

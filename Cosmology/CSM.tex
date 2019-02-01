@@ -17,7 +17,218 @@
 \section{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Evolution equations}
+
+\section{Conventions and prerequisites}
+
+\begin{definition}[Natural Units]
+\bam{Natural units} are used where
+\[
+c=\hbar=k_B = 1
+\]
+$[c]=LT^{-1}$, $[\hbar]=L^2 M T^{-1}$, $[k_B] = ML^2 T^{-2} K^{-1}$, so in natural units
+\[
+L=T=K^{-1}=M^{-1}
+\]
+Units are therefore given in \bam{mass dimension}, e.g. if $[f]=M^d$, write $[f]=d$.
+\end{definition}
+
+\begin{fact}
+A table of common values and their mass dimension is given below. 
+\begin{center}$
+\begin{array}{ccc}
+    \text{Quantity} & \text{Symbol} & \text{Mass Dimension} \\
+    \hline
+    \hline
+    \text{Energy} & E & 1 \\
+    \text{Energy Density} & \rho & 4 \\
+    \text{Pressure} & P & 4 \\
+    \text{Scale Factor} & a & 0 \\
+    \text{Hubble Rate} & H & 1 \\
+    \text{Newton's Constant} & G & -2 \\
+\end{array}
+$\end{center}
+\end{fact}
+
+\begin{definition}[Plank Mass]
+The \bam{Plank mass} is 
+\eq{
+M_{pl} = (8 \pi G)^{-\frac{1}{2}}3
+}
+\end{definition}
+
+\begin{definition}[Mostly plus signature]
+The signature that will be used throughout these notes will be the \bam{mostly plus signature}. As these notes will only consider 1+3 dimensional spacetime, as these are all the dimensions that have been observed, this take the form $(-,+,+,+)$. 
+\end{definition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{General Relativity}
+Some of the tools from General Relativity will be useful in discussions of cosmology. For a better idea of these results, see the GR notes, and these will be referenced where appropriate. 
+
+\begin{definition}[Energy Momentum Tensor]
+Given an action $S$ with respect to a metric $g_{ab}$ the \bam{energy momentum tensor} is 
+\eq{
+T^{ab} = \frac{2}{\sqrt{-g}} \frac{\delta S_{matter}}{g_{ab}}
+}
+where $g=\det g_{ab}$ and 
+\eq{
+S_{matter} = \int \mc{L}_{matter} g^{\frac{1}{2}} d^4 x
+}
+is the matter action. 
+\end{definition}
+
+\begin{definition}[Perfect Fluid]
+A \bam{perfect fluid} is a medium in which at each point there exist a Local Inertial Frame (LIF). 
+\end{definition}
+
+\begin{fact}
+In a comoving LIF the energy momentum tensor must be diagonal and isotropic hence 
+\eq{
+T^\mu_\nu = \diag(-\rho,P,P,P)
+}
+Hence for a general frame moving with velocity $u^\mu$ s.t $u^\mu u_\mu = - 1$ 
+\eq{
+T^{\mu\nu} =(\rho+p) u^\mu u^\nu +g^{\mu\nu}p
+}
+\end{fact}
+
+
+\begin{definition}[Lie Derivative]
+If under an infinitesimal transform $x^\mu \to x^\mu + \eps V^\mu$ a tensor transform as $T \to T^\prime$ then the \bam{Lie Derivative} of $T$ in the $V$ direction is 
+\eq{
+(\mc{L}_V T)(x) = \lim_{\eps\to 0} \frac{T\indices{^\dots_\dots}(x) - {T^\prime}\indices{^\dots_\dots}(x)}{\eps}
+}
+Some examples are 
+\eq{
+\mc{L}_V \phi &= V^\mu \del_\mu \phi \\
+\mc{L}_V W^\mu &= V^\nu \nabla_\nu W^\mu - W^\nu \nabla_\nu V^\mu \\
+\mc{L}_V W_\mu &= V^\nu \nabla_\nu W^\mu + W_\nu \nabla_\mu V^\nu \\ 
+\mc{L}_V T_{\mu\nu} &= V^\rho \nabla_\rho T_{\mu\nu} + T_{\rho\nu} \nabla_\mu V^\rho + T_{\mu\rho} \nabla_\nu V^\rho
+}
+The most important example is for $g_{\mu\nu}$ the metric tensor where
+\eq{
+\mc{L}_V g_{\mu\nu} = \nabla_\mu V_\nu + \nabla_\nu V_\mu
+}
+\end{definition}
+
+\begin{definiton}[Isometry]
+A transform $x \to x^\prime$ is an \bam{isometry} if under the transform 
+\eq{
+g_{\mu\nu} \to g^\prime_{\mu\nu} \; g^\prime_{\mu\nu}(x) = g_{\mu\nu}(x)
+}
+\end{definiton}
+
+\begin{definition}[Killing Vector]
+A vector $\xi^\mu$ is a \bam{Killing vector} if 
+\eq{
+\mc{L}_\xi g_{\mu\nu} = \nabla_\mu \xi_\nu + \nabla_\nu \xi_\mu =0
+}
+Motion along integral curves of $\xi$ are then isometries. 
+\end{definition}
+
+\begin{prop}
+For a Killing vector $\xi$
+\eq{
+\nabla_\rho \nabla_\sigma \xi_\mu = R\indices{\lambda\sigma\mu\rho} \xi^\lambda
+}
+\end{prop}
+\begin{corollary}
+A Killing vector field  is determined uniquely by specifying $\xi_\mu ,\nabla_\nu \xi^\mu$ at a point. Hence a $D$ dimensional spacetime has at most 
+\[
+D + \frac{1}{2}D(D-1) = \frac{1}{2}D(D+1)
+\]
+isometries. 
+\end{corollary}
+
+\begin{definition}[Maximally Symmetric Spactime]
+A $D$ dimensional spacetime is \bam{maximally symmetric} if it admits $\frac{1}{2}D(D+1)$ independent Killing vectors. 
+\end{definition}
+
+\begin{prop}
+In maximally symmetric spacetime the Riemann tensor is 
+\eq{
+R_{\mu\nu\rho\sigma} = K g_{\mu(\sigma}g_{\nu\rho)}
+R = -D(D-1) K 
+}
+Hence the Ricci scalar uniquely characterises a maximally symmetric spacetime. 
+\end{prop}
+
+\begin{fact}
+If $N\leq M$ is a maximally symmetric subspace then the line element on $M$ can be expressed as the \bam{warp product} 
+\eq{
+ds^2 = g_{ab}(x) dx^a dx^b + f(x) \tilde{g}_{ij}(y) dy^i dy^j
+}
+where $y$ are coordinate on $N$ and $x$ coordinates on the rest of $M\setminus N$
+\end{fact}
+
+\begin{definition}[Einstein-Hilbert Action]
+The \bam{Einstein - Hilbert action} is 
+\eq{
+S_{EH} = \frac{1}{2}M_{pl}^2 \int (R-2\Lambda) g^{\frac{1}{2}} d^4 x
+}
+\end{definition}
+
+\begin{definition}[Einstein Equations]
+The \bam{Einstein Equations} are a set of 10 non-linear PDEs for the metric in the presence of some energy momentume tensor, and they are 
+\eq{
+M_{pl}^2 ( R_{ab} - \frac{1}{2}R g_{ab} + \Lambda g_{ab} = T_{ab}
+}
+\end{definition}
+
+\begin{theorem}
+The Einstein equations are obtained from finding when the action 
+\eq{
+S = S_{EH} + S_{Matter}
+}
+is stationary, i.e. $\delta S = 0$ with respect to variations in the metric. 
+\end{theorem}
+
+\begin{prop}[Contracted Bianchi Identity]
+\eq{
+\nabla^a(R_{ab} -  \frac{1}{2}R g_{ab} ) = \nabla^a R_{ab} - \frac{1}{2} \nabla_b R = 0
+}
+\end{prop}
+\begin{corollary}
+The energy momentum tensor is conserved, i.e. 
+\eq{
+\nabla_a T^{ab} = 0 
+}
+\end{corollary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{FLRW}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Metric}
+On large scales, at any given time the universe looks \emph{homogeneous} and \emph{isotropic}, and hence it has a maximally symmetric constant time hypersurface. As a result the line element is 
+\eq{
+ds^2 = dt^2 + a(t)^2 \tilde{g}_{ij}(x) dx^i dx^j
+}
+Note $x$ are \emph{comoving} coordinates such that, for a spacelike separation $\Delta x$
+\eq{
+|\Delta x|_{\phys} = a |\Delta x|
+}
+
+\begin{definition}[Hubble Parameter]
+Define the \bam{Hubble parameter} $H$
+\eq{
+H= \frac{\dot{a}}{a}
+}
+\end{definition}
+
+\begin{definition}[FLRW metric]
+The metric induced on the homogeneous isotropic spacetime is the \bam{Friedmann-Lemaitre-Robertson-Walker Metric} 
+\eq{
+ds^2 &= - dt^2 + a(t)^2 \left[ \frac{dr^2}{1-Kr^2} + r^2 d\Omega^2 \right] \\
+ &= - dt^2 + a(t)^2 \left[ d\chi^2 + f(\chi) d\Omega^2 \right]
+}
+where $K = 0, \pm1$, and 
+\eq{
+f(\chi) = \left\{ \begin{array}{lc} \sinh^2 \chi  & K = -1 \\
+    \chi^2 & K=0 \\
+    0\sin^2 \chi & K=1
+    \end{array} \right.
+}
+\end{definition}
 
 \begin{definition}[Conformal time]
 Introduce \bam{conformal time} $\tau$ which satisfies 
@@ -25,6 +236,52 @@ Introduce \bam{conformal time} $\tau$ which satisfies
 d\tau = \frac{dt}{a(t)} \Leftrightarrow \tau = \int^t \frac{dt^\prime}{a(t^\prime)}
 \]
 \end{definition}
+
+In conformal time the FLRW metric becomes 
+\eq{
+ds^2 = a^2 [ -d\tau^2 + d\chi^2 + f(\chi) d\Omega^2 ]
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Evolution equations}
+
+\begin{definition}[Continuity Equation]
+The conservation of the energy momentum tensor implies 
+\eq{
+\dot{\rho} + 3H(\rho + p) = 0
+}
+\end{definition}
+
+\begin{definition}[Equation of State]
+The \bam{equation of state} is a relation $p=p(\rho)$. In this course the equation of state will be taken to be 
+\eq{
+p = w\rho
+}
+where the constant $w$ depends on the fluid.
+\end{definition}
+
+\begin{prop}
+If the equation of state is $p = w\rho$ then 
+\eq{
+\dot{\rho} + 3 \frac{\dot{a}}{a}(1+w) \rho = 0 \Rightarrow \rho \propto a^{-3(1+w)}
+}
+\end{prop}
+
+The examples encountered in this course are 
+\begin{center}$
+\begin{array}{ccc}
+    \text{Fluid} & w & \text{Relation} \\
+    \hline
+    \hline
+    \text{Non-relativistic matter (dust)} & 0 & \rho\propto a^{-3}  \\
+    \text{Radiation} & \frac{1}{3} & \rho\propto a^{-4} \\
+    \text{Dark energy (cosmological constant)} & -1 & \rho \text{ constant} \\
+\end{array}
+$\end{center}
+
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -234,9 +491,65 @@ The \bam{conformal horizon scale} is $\mc{H}^{-1}$, where
 \mc{H} = \frac{a^\prime}{a}
 }
 is the conformal hubble parameter
-A CMB mode it \bam{superhorizon} if $k\ll aH$
+A mode is \bam{superhorizon} if $k^{-1}\gg \mc{H}^{-1}$, and it is \bam{subhorizon} if $k^{-1}\ll \mc{H}^{-1}$.
 \end{definition}
 
+\begin{fact}
+Superhorizon modes are not in causal contact with themselves, and so cannot evolve dynamically. 
+\end{fact}
+
+Now for a relativistic perturbation, the following first order equations are 
+\eq{
+\delta^\prime + 3\mc{H} \left( \frac{\delta P}{\delta \rho} - \frac{\bar{P}}{\bar{\rho}} \right) \delta = - \left( 1 + \frac{\bar{P}}{\bar{\rho}}\right) (\grad \cdot \bm{v} - 3\Phi^\prime) \quad \text{(Conservation of stress energy)} \\
+\bm{v}^\prime + 3\mc{H} \left(\frac{1}{3} - \frac{\bar{P}}{\bar{\rho}} \right) \bm{v} = -\frac{\grad \delta P}{\bar{\rho}+\bar{P}} - \grad\Phi \quad \text{(Euler equation)} \\
+}
+and the Einstein equations 
+\begin{align} \label{eq:CSM:2}
+\nabla^2 \Phi - 3\mc{H}(\Phi^\prime + \mc{H}\Phi)  &= 4\pi G a^2 \delta \rho \\
+\Phi^\prime + \mc{H}\Phi &= -4\pi G a^2 (\bar{\rho} + \bar{P}) v \\
+\Phi^{\prime\prime} + 3 \mc{H} \Phi^\prime + (2\mc{H}^\prime + \mc{H}^2 ) \Phi &= 4\pi G a^2 \delta P 
+\end{align}
+where $\bm{v} = \grad v$.
+\begin{definition}[Comoving gauge density contrast]
+Define the \bam{Comoving gauge density contrast} $\Delta$ by
+\eq{
+\Delta = \delta - 3\mc{H}\left(1 + \frac{\bar{P}}{\bar{\rho}} \right) v
+}
+\end{definition}
+
+Substituting for the CGDC gives 
+\eq{
+\nabla^2 \Phi = 4\pi G a^2 \bar{\rho} \Delta
+}
+
+\begin{definition}[Comoving curvature perturbation]
+The \bam{comoving curvature perturbation} $\mc{R}$ is the curvature perturbation on a comoving hyperfusrface and is defined by 
+\[
+\mc{R} = -\Phi + \mc{H}v
+\]
+Using \ref{eq:CSM:2} this can be written as 
+\eq{
+\mc{R} = -\Phi - \frac{\mc{H}(\Phi^\prime + \mc{H} \Phi}{4\pi G a^2 (\bar{\rho} + \bar{P})}
+}
+\end{definition}
+
+\begin{prop}
+$\mc{R}$ is conserved on superhorizon scales
+\end{prop}
+\begin{proof}
+It can be shown 
+\eq{
+-4\pi G a^2 (\bar{\rho} + \bar{P}) \mc{R}^\prime = \underbrace{4\pi G a^2 \mc{H} (\delta P - \frac{\bar{P}^\prime}{\bar{\rho}^\prime} \delta \rho)}_{=0 \text{ for adiabatic pert}} + \underbrace{\mc{H} \frac{\bar{P}^\prime}{\bar{\rho}^\prime} \nabla^2 \Phi}_{\sim \mc{H}k^2 \mc{R}}
+}
+Hence 
+\eq{
+\frac{d \log \mc{R}}{d\log a} \sim (\frac{k}{\mc{H}})^2
+}
+small on superhorizon scales. 
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{remark}
 In cosmology, Bessel functions like to turn up (why?). Hence it can sometimes be useful to try turn an euqaiotn into the form of Bessel's equation 

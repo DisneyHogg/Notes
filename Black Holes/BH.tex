@@ -740,4 +740,279 @@ Thus it can be shown
 K_{ab} = \frac{1}{2}\mc{L}_n h_{ab}
 }
 
+\begin{lemma}
+$K_{ab}=K_{ba}$, so $K$ is a symmetric 2 tensor
+\end{lemma}
+\begin{proof}
+Let $f:\mc{M} \to \mbb{R}$ be constant on $\Sigma$ iwth $df \neq 0$ on $\Sigma$. Let $X^a$ be tangent to $\Sigma$. 
+\eq{
+X(f) = X^a \nabla_a f = 0
+}
+This implies that $(df)^a$ is normal to $\Sigma$
+Thus on $\Sigma$ we can write 
+\eq{
+n_a = \alpha (df)_a
+}
+where $\alpha$ is chosen such that $n_a n^a = \pm1$. Hence 
+\eq{
+\nabla_c n_d = \alpha \nabla_c \nabla_d f + \frac{(\nabla_c \alpha)}{\alpha}n_d \\
+\Rightarrow K_{ab} = h\indices{_a^c} h\indices{_b^d}\nabla_c n_d = \alpha h\indices{_a^c}h\indices{_b^d} \nabla_c \nabla_d f
+}
+so $K_{ab}$ is symmetric. Hence 
+\eq{
+K_{ab} = \frac{1}{2}(\mc{L}_n h)_{ab}
+}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Gauss - Codacci Equation}
+A tensor at $p\in\Sigma$ is invariant under projection $h\indices{_a^b} if $
+\eq{
+T\indices{^{a_1}^\dots^{a_n}_{b_1}_\dots_{b_n}} = h\indices{_{c_1}^{a_1}}\dots h\indices{_{c_n}^{a_n}} h\indices{_{b_1}^{d_1}} \dots h\indices{_{b_n}^{d_n}} T\indices{^{c_1}^\dots^{c_n}_{d_1}_\dots_{d_n}}
+}
+\begin{prop}
+A covariant derivative on $\Sigma$ can be identified by projection of the covariant derivative on $\mc{M}$ 
+\eq{
+D_a T\indices{^{b_1}^\dots^{b_n}_{c_1}_\dots_{c_n}} = h\indices{_a^d}h\indices{_{e_1}^{b_1}}\dots h\indices{_{e_n}^{b_n}} h\indices{_{b_1}^{f_1}} \dots h\indices{_{b_n}^{f_n}} \nabla_d T\indices{^{e_1}^\dots^{e_n}_{f_1}_\dots_{f_n}}
+}
+\end{prop}
+
+\begin{lemma}
+$D$ is the Levi - Civita connection associated to the metric $h_{ab}$ on $\Sigma$ 
+\eq{
+D_a h_{bc} = 0
+}
+and $D$ is torsion free. 
+\end{lemma}
+\begin{proof}
+\eq{
+\nabla_a h_{bc} = \mp n_c \nabla_a n_b \mp n_b \nabla_a n_c
+}
+Recall that 
+\eq{
+h\indices{_a^c}n_c = 0 \\
+\Rightarrow D_a h_{bc} = 0
+}
+Now let $f:\Sigma \to \mbb{R}$ and extend to a function $f:\mc{M} \to \mbb{R}$ 
+\eq{
+D_a D_b f &= h\indices{_a^c} h\indices{_b^d} \nabla_c(h\indices{_d^e} \nabla_e f) \\
+&= h\indices{_a^c} h\indices{_b^e} \nabla_c \nabla_e f + h\indices{_a^c} h\indices{_b^d} \nabla_c h\indices{^e_d} \nabla_e f 
+}
+now 
+\eq{
+h\indices{_a^c} h\indices{_b^d} \nabla_c h\indices{_d^e} &= g^{ef} h\indices{_a^c} h\indices{_b^d} \nabla_c h_{ef} \\
+&= \mp g^{ef} h\indices{_a^c} h\indices{_b^d} n_f \nabla_a n_d \\
+&= \mp n^e K_{ab} \\
+\Rightarrow D_{[a} D_{b]}f &=0
+}
+\end{proof}
+
+\begin{prop}
+Denote the Riemann tensor associated with $D_a$ on $\Sigma$ as ${R^\prime}\indices{^a_b_c_d}$. This is given by Gauss' equation 
+\eq{
+{R^\prime}\indices{^a_b_c_d} = h\indices{^a_e} h\indices{_b^f} h\indices{_c^g}h\indices{_d^h} R\indices{^e_f_g_h} \pm 2K\indices{_{[c}^a} K\indices{_{d]}_b}
+}
+\end{prop}
+\begin{proof}
+Let $X^a$ be tangent to $\Sigma$. The Ricci identity for $D$ is 
+\eq{
+{R^\prime}\indices{^a_b_c_d} X^b = 2 D_{[c}D_{d]}X^a
+}
+Let us compute the RHS 
+\begin{align}\label{eq:BH:9}
+D_c D_d X^a &= h\indices{_c^e}h\indices{_d^f}h\indices{_g^a}\nabla_e(D_f X^g) \\
+&= h\indices{_c^e}h\indices{^f_d}h\indices{^a_g}\nabla_e ( h\indices{_f^h} h\indices{_i^g} \nabla_h X^i ) \\
+&= h\indices{^e_c}h\indices{_d^h} h\indices{^a_i} \nabla_e \nabla_h X^i + h\indices{^e_c}h\indices{^f_d}h\indices{^a_i}(\nabla_c h\indices{^h_f}) \nabla_h X^i + h\indices{^e_c}h\indices{^h_d}h\indices{^a_g} (\nabla_c h\indices{^g_i}) \nabla_h X^i
+\end{align}
+We have seen 
+\begin{align}\label{eq:BH:8}
+h\indices{^c_d}h\indices{^d_b}\nabla_c h\indices{^e_d} = \mp n^e K_{ab}
+\end{align}
+We can spot this identity in the last two terms of \ref{eq:BH:8} so 
+\eq{
+D_c D_d X^a = h\indices{^e_c}h\indices{_d^h} h\indices{^a_i} \nabla_e \nabla_h X^i \mp K_{cd}h\indices{^a_i} n^h \nabla_h X^i \mp K\indices{_c^a} n_i h\indices{^h_d} \nabla_h X^i
+}
+and this may be recast as 
+\eq{
+D_c D_d X^a &= \mp K\indices{_c^a} h\indices{^h_d} \nabla_h(n_i X^i) \pm K\indices{^a_c} X^i h\indices{^h_d} \nabla_h n_i \\
+&= \pm K\indices{_c^a}K_{bd}X^b
+}
+antisymmetrising 
+\eq{
+{R^\prime}\indices{^a_b_c_d} &= 2h\indices{_{[c}^e}h\indices{_{d]}^d} h\indices{^a_g} \nabla_e \nabla_f X^g \pm 2 K\indices{_{[c}^a}K_{d]b}X^b \\
+&= h\indices{_c^e} h\indices{_d^f} h\indices{_g^a} h\indices{_b^h} R\indices{^g_h_e_f}X^b \pm 2 K\indices{_{[c}^a}K_{d]b}X^b
+}
+\end{proof}
+
+\begin{lemma}
+The Ricci scalar of $\Sigma$ is 
+\eq{
+R^\prime = R \mp 2R_{ab} n^a n^b \pm K^2 \mp K^{ab}K_{ab}
+}
+\end{lemma}
+
+\begin{prop}[Codacci equation]
+\eq{
+D_a K_{bc} - D_b K_{ac} = h\indices{_a^d}h\indices{_b^e}h\indices{_c^f}n^g R_{defg}
+}
+\end{prop}
+
+\begin{lemma}
+\eq{
+D_a K\indices{^a_b} - D_b H = h\indices{_b^c} R_{cd} n^d
+}
+\end{lemma}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Constraint Equation}
+Assume $\Sigma$ is spacelike, $n^a$ is timelike. Recall the Einstein equations 
+\eq{
+R_{ab} - \frac{1}{2}R g_{ab} = G_{ab} = 8\pi T_{ab}
+}
+Contracting with $n^a n^b$
+\eq{
+R^\prime - K^{ab} K_{ab} + K^2 = 16\pi\rho \quad \text{(Hamiltonian Constraint)}
+}
+Contracting with $n^a$ and projecting with $h$ 
+\eq{
+D_b K\indices{^b_a} - D_a K = 8\pi h\indices{_a^b}T_{bc}n^c
+}
+
+\begin{theorem}[Choquet-Bruhat and Geroch]
+Let $(\Sigma, h,K)$ be initial data satisfying the vacuum Hamiltonian and momentum constraints. Then there is a unique (up to diffeomorphism) spacetime $(\mc{M},g)$ call the \bam{Maximal Cauchy Development} of  $(\Sigma, h,K)$ such that 
+\begin{itemize}
+    \item $(\mc{M},g)$ satisfy the Einstein equations 
+    \item $(\mc{M},g)$ is globally hyperbolic with Cauchy surface $\Sigma$ 
+    \item The induced metric and extrinsic curvature of $\Sigma$ are $h$ and $K$ respectively 
+    \item Any other spacetime satisfying the above is isometric to a subset of $(\mc{M},g)$. 
+\end{itemize}
+\end{theorem}
+We will require the initial data to be inextendible. 
+\\
+Look at Schwarzschiled with negative $M$. 
+\eq{
+ds^2 = -(1+frac{2|M|}{r})dt^2 + (1+frac{2|M|}{r})^{-1}dr^2 + r^2 d\Omega_2^2
+}
+Look at the outgoing geodesics 
+\eq{
+\frac{dt}{dr}= \frac{1}{1+\frac{2|M|}{r}} \Rightarrow t \approx t_0 + \frac{r^2}{2|M|}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Inital Data wishlist}
+We want the inital data to be 
+\begin{itemize}
+    \item Inextendible 
+    \item Geodesically complete
+    \item Asymptotically flat
+\end{itemize}
+
+\begin{definition}[Asymptotically flat]
+An initial data set $(\Sigma,h,K)$ is \bam{asymptotically flat} if 
+\begin{itemize}
+    \item $\Sigma$ is diffeomorphic to $\mbb{R}^3\setminus B $ where $B$ is a closed ball centered on the origin in $\mbb{R}^3$. 
+    \item If we pull back the $\mbb{R}^3$ coordinates to define coordinates $x^i$ on $\Sigma$ then 
+    \eq{
+    h_{ij} = \delta_{ij} + \mc{O}(\frac{1}{r}) \\
+    K_{ij} = \mc{O}(\frac{1}{r^2})
+    }
+    as $r\to\infty$ for $r=\sqrt{x^i x_i}$
+    \item Derivatives of the latter expression also hold 
+    \eq{
+    \del_k h_{ij} \mc{O}(\frac{1}{r^2})
+    }
+\end{itemize}
+An initial data set is asymptotically flat with $N$ ends if it is the union of a compact set with $N$ asymptotically flat ends. 
+\end{definition}
+
+\begin{theorem}[Strong Cosmic Censorship Conjecture]
+Let $(\Sigma,h,K)$ be a geodesically complete asymptotically flat initial data set for the vacuum Einstein equation. Then \bam{generically} the maximal Cauchy development of the initial data is inextendible. 
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Null Hypersurface}
+
+\begin{definition}[Null Hypersurface]
+A \bam{null hypersurface} is a hypersurface whose normal is everywhere null. 
+\end{definition}
+
+\begin{example}
+consider
+\eq{
+g^{\mu\nu} = \begin{pmatrix} 0 & 1 & 0 & 0 \\ 1 & 1-\frac{2m}{r} & 0 & 0 \\ 0 & 0 & \frac{1}{r^2} & 0 \\ 0 & 0 & 0 & \end{pmatrix}
+}
+
+The 1 form $n=dr$ is normal to surfaces of constant $\Omega$. 
+\eq{
+n^2 = g^{\mu\nu}n_\mu  n_\nu = g^{rr} = (1-\frac{2m}{r})
+}
+so the surface $r=2m$ is a null hypersurface. For 
+\eq{
+n^a = (\pd{v})^a
+}
+\end{example}
+
+Let $n^a$ be normal to a null hypersurface $\mc{N}$. Then any non-zero vecotr $x^a$ tangent to the hypersurface, i.e. 
+\eq{
+X^a n_a = 0
+}
+gives that $X^a$ is spacelike or parallel to $n^a$. In practice, not that $n^a$ is tangent to the hypersurface, hence on $\mc{N}$ the integral curves of $n^a$ lie within $\mc{N}$. 
+
+\begin{prop}
+The integral curves of $n^a$ are null geodesics. These are called the generators of $\mc{N}$. 
+\end{prop}
+\begin{proof}
+Let $\mc{N}$ be given by an function $f$
+\eq{
+f = constant
+}
+where $df \neq  0$  on $\mc{N}$. Then we must have $n=h df$. Let $N=df$. Then since $\mc{N}$ is null we must have $N_a N^a = 0$ on $\mc{N}$. Hence the function $(N^a N_a)$ is constant at 0 on $\mc{N}$, which implies that the gradienft of this function is normal to $\mc{N}$. 
+\eq{
+\nabla_a (N_b N^b) |_\mc{N} = 2\alpha N_a
+}
+now we also have 
+\eq{
+\nabla_a N_b = \nabla_a \nabla_b f = \nabla_b \nabla_a f = \nabla_b N_a \\
+\Rightarrow N^b \nabla_b N_a |_\mc{N} = \alpha N_a
+}
+so a null geodesic. 
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Geodesic Deviation}
+
+\begin{definition}
+A \bam{1 parameter family of geodesics} is a map $\gamma : I\times I^\prime \to \mc{M}$, where $I,I^\prime$ are open intervals, such that 
+\begin{itemize}
+    \item for fixed $s$ $\gamma(s,\lambda)$ is a geodesic with affine parameter $\lambda$. 
+    \item the map $\gamma$ is smooth and has a smooth inverse. 
+\end{itemize}
+\end{definition}
+
+Let $U^a$ be the tangent vectors to the geodesics and $S^a$ be the vectors tangent to the curves of constant $\lambda$. In a chart $x^\mu$, the geodesics are specified by $x^\mu(s,\lambda)$ with $S^\mu = \pd[x^\mu]{s}$. Hence 
+\eq{
+x^\mu(s+\delta s,\lambda) = x^\mu(s,\lambda) + \delta s S^\mu + \mc{O}((\delta s)^2)
+}
+Call $S^\mu$ the \bam{deviation vector}. Now $\gamma$ defines a surface in $\mc{M}$ and we can use $s,\lambda$ as coordinates on the surface. This gives a coordinate chart in which  
+\eq{
+S^\mu = (\pd{s})^\mu \\
+U^\mu = ( \pd{\lambda})^\mu
+}
+on the surface. Hence $S^a, U^a$ commute 
+\eq{
+0 = \comm[S]{U} \\
+\Leftrightarow U^b \nabla_b S^a = S^b \nabla_b U^a
+}
+so this implies 
+\eq{
+U^c \nabla_c (U^b \nabla_b S^a) = R\indices{^a_b_c_d}U^b U^c S^d
+}
+solutions to this equation are called \bam{Jacobi fields} 
+
+\begin{definition}
+Let $\mc{U} \subset \mc{M}$ be open. A geodesic congruence in $\mc{U}$ is a family of geodesics such that exactly one geodesic passes through each $p \in \mc{U}$. 
+\end{definition}
+
+
+
 \end{document}

@@ -226,6 +226,7 @@ For complex $\phi_a$, $M$ is Hermitian $\Rightarrow M^{-1}$ not symmetric $\Righ
 \]
 \end{remark}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{Interacting Theory}
 Take a single, real scalar field $\varphi$. Let 
 \[
@@ -292,6 +293,7 @@ Also note
 \braket{\varphi^4} = ( || + x + \dots ) 
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Effective Actions}
 The Wilsonian effective action is W, with 
 \[
@@ -352,7 +354,7 @@ The correlation functions can then be expressed as
 In our example, the integral can be done exactly, as 
 \eq{
 \int d\chi e^{-\frac{S(\varphi,\chi)}{\hbar}} = e^{-\frac{1}{2}m^2\varphi^2} \sqrt{\frac{2\pi\hbar}{M^2 + \frac{1}{2}\lambda\varphi^2}} \\
-W(\phi) = \frac{1}{2}m^2 \varphi^2 + \frac{\hbar}{2}\log\left(1+\frac{\lambda}{2M^2} \varphi^2 \right) + \underbrace{\frac{\hbar}{2} \log \frac{M^2}{2\pi\hbar}}_{\text{const so ignored}}
+W(\varphi) = \frac{1}{2}m^2 \varphi^2 + \frac{\hbar}{2}\log\left(1+\frac{\lambda}{2M^2} \varphi^2 \right) + \underbrace{\frac{\hbar}{2} \log \frac{M^2}{2\pi\hbar}}_{\text{const so ignored}}
 }
 The constant piece won't affect QFT correlation functions. However, this term will contribute to the cosmological constant of the universe. Why is the observed cosmological constant $\Lambda$ so small? \\ 
 Expand the log, 
@@ -386,6 +388,7 @@ so
 }
 as before. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{Quantum Effective action}
 \begin{itemize}
     \item $W(J)$ is the Wilson effective action, is the average over quantum fluctuation of some degrees of freedom. 
@@ -437,6 +440,7 @@ G &= F + hm \\
 }
 giving the Gibbs free energy from the Helmholtz free energy. When $h\to0$ the equilibrium $M$ is given by the minimum of $G$
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Perturbative Calculation of Gamma}
 Treat $\Phi$ as we did $\varphi$. A quantum path integral over $\Phi$
 \begin{align} \label{eq:AQFT:1}
@@ -476,5 +480,109 @@ For N component $\varphi$
 }
 \end{example}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Fermions}
+Let \bam{Grassman numbers} be n elements $\set{\theta_a}$ obeying 
+\eq{
+\theta_a \theta_b = - \theta_b \theta_a \\
+\forall \varphi_n \text{ complex scalar } \theta_a \varphi_b = \varphi_b \theta_a
+}
+Note $\theta_a^2 = 0$, which implies any function of of $n$ Grassman variables can be written in finite form 
+\eq{
+F(\theta) = f + \varphi_a \theta_a + \frac{1}{2!} g_{ab} \theta_a \theta_b +\dots + \frac{1}{n!} h_{a_1 \dots a_n} \theta_{a_1} \dots \theta_{a_n}
+}
+where coeeficients $\varphi,g,\dots,h$ are totally antisymmetric under interchange of indices. Differentiation defined to anticommute as follows 
+\eq{
+\pd{\theta_a} \theta_b + \theta_b \pd{\theta_a} = \delta_{ab}
+}
+Integration defined such that for a single Grassmann variable $\theta$, with $F(\theta) = f + \varphi \theta$, we require "translational invariance" of the integrate so 
+\eq{
+\int d\theta (\theta+ \eta) = \int d\theta \theta \\
+\Rightarrow \int d\theta = 0
+}
+and so choose the normalisation such that 
+\eq{
+\int d\theta \theta 1
+}
+These rules (the \bam{Berezin rules}) give 
+\eq{
+\int d\theta \pd{\theta} F(\theta) = 0 
+}
+For $n$ Grassmann variabls the only non vanishing integrals involve exactly 1 power of each integration variable. 
+\eq{
+\int d^n\theta \theta_1 \dots \theta_n = \int d\theta_n \dots d\theta_1 \theta_1 \dots \theta_n = 1
+}
+In general, 
+\eq{
+\int d^n \theta \theta_{a_1} \dots \theta_{a_n} = \eps^{a_1 \dots a_n} 
+}
+say we had a change of variables $\theta_a^\prime = A_{ab} \theta_b$. Then 
+\eq{
+\int d^n \theta \theta_{a_1}^\prime \dots \theta_{a_n}^\prime  &= A_{a_1 b_1} \dots A_{a_n b_n}\int d^n \theta \theta_{b_1} \dots \theta_{b_n} \\
+&= A_{a_1 b_1} \dots A_{a_n b_n} \eps^{b_1 \dots b_n} \\
+&= \det A \eps^{a_1 \dots a_n} \\
+&= \det A \int d^n\theta^\prime \theta_{a_1}^\prime \dots \theta_{a_n}^\prime \\
+\Rightarrow d^n\theta^\prime = \frac{d^n \theta}{\det A }
+}
+Note for scalars this is the opposite, $d^n\varphi = \frac{d^n\varphi^\prime}{\det A }$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Free fermion field theory}
+Consider $d=0$, with 2 fermion fields $\theta_1,\theta_2$. The action must be scalar bosonic, so the only possible non constant action is 
+\eq{
+S(\theta) = \frac{1}{2} A \theta_1 \theta_2
+}
+for $A\in\mbb{R}$. 
+Then
+\eq{
+Z_0 &= \int d^2\theta e^{-\frac{S(\theta)}{\hbar}} \\
+&= \int d^2\theta (1-\frac{A}{2\hbar} \theta_1\theta_2 ) = -\frac{A}{2\hbar}
+}
+Now for $n=2m$ fermion fields 
+\eq{
+S = \frac{1}{2}A_{ab} \theta_a \theta_b
+}
+for $A$ antisymmetric, then 
+\eq{
+Z_0 &= \int d^{2m}\theta e^{-\frac{S(\theta)}{\hbar}} \\
+&= \int d^{2m}\theta \sum_{j=0}^m \frac{(-1)^j}{(2\hbar)^j j!} (A_{ab} \theta_a \theta_b)^j \\
+&= \frac{(-1)^m}{(2\hbar)^m m!} \int d^{2m}\theta A_{a_1 a_2}A_{a_3 a_3} \dots A_{a_{2m-1} a_{2m}} \theta_{a_1} \dots \theta_{a_{2m}} \\
+&=  \frac{(-1)^m}{(2\hbar)^m m!} \eps^{a_1 \dots a_{2m}} A_{a_1 a_2}A_{a_3 a_3} \dots A_{a_{2m-1} a_{2m}} \\
+&= \frac{(-1)^m}{\hbar^m} \Pffaf(A)
+}
+where 
+\eq{
+\Pffaf(A) = \highlight{\frac{1}{2^m m!}} \eps^{a_1 \dots a_{2m}} A_{a_1 a_2}A_{a_3 a_3} \dots A_{a_{2m-1} a_{2m}} 
+}
+\begin{ex}
+Show $\Pffaf(A) = \pm \sqrt{\det A}$
+\end{ex}
+
+\begin{example}
+\eq{
+\Pffaf \begin{pmatrix} 0 & -a \\ a & 0 \end{pmatrix} = a
+}
+\end{example}
+Then
+\eq{
+Z_0 &= \pm \sqrt{\frac{\det A }{\hbar^n}} \quad \text{(Fermionic)} \\
+Z_0 &= \sqrt{\frac{(2\pi\hbar)^n }{\det M}} \quad \text{(Bosonic)} 
+}
+Introduce an external source function 
+\eq{
+S(\theta,\eta) = \frac{1}{2}A_{ab} \theta_a \theta_b + \eta_a \theta_a 
+}
+Complete the square as before to get 
+\eq{
+S(\theta,\eta) = \frac{1}{2}(\theta_a + \eta_c (A^{-1})_{ca}) A_{ab} (\theta_b + \eta_d (A^{-1})_{db}) + \frac{1}{2} \eta_a (A^{-1})_{ab} \eta_b 
+}
+so 
+\eq{
+Z_0 (\eta) = \exp \left( - \frac{1}{2\hbar} \eta^T (A^{-1}) \eta \right) Z_0(0)
+}
+and the propagator is 
+\eq{
+\braket{\theta_a \theta_b} = \frac{\hbar^2}{Z_0(0)} \frac{\del^2 Z_0(\eta)}{\del \eta_a \del \eta_b} \rvert_{\eta=0} = \hbar (A^{-1})_{ab}
+}
 
 \end{document}
