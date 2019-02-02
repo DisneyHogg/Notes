@@ -110,12 +110,12 @@ The most important example is for $g_{\mu\nu}$ the metric tensor where
 }
 \end{definition}
 
-\begin{definiton}[Isometry]
+\begin{definition}[Isometry]
 A transform $x \to x^\prime$ is an \bam{isometry} if under the transform 
 \eq{
 g_{\mu\nu} \to g^\prime_{\mu\nu} \; g^\prime_{\mu\nu}(x) = g_{\mu\nu}(x)
 }
-\end{definiton}
+\end{definition}
 
 \begin{definition}[Killing Vector]
 A vector $\xi^\mu$ is a \bam{Killing vector} if 
@@ -128,7 +128,7 @@ Motion along integral curves of $\xi$ are then isometries.
 \begin{prop}
 For a Killing vector $\xi$
 \eq{
-\nabla_\rho \nabla_\sigma \xi_\mu = R\indices{\lambda\sigma\mu\rho} \xi^\lambda
+\nabla_\rho \nabla_\sigma \xi_\mu = R\indices{_\lambda_\sigma_\mu_\rho} \xi^\lambda
 }
 \end{prop}
 \begin{corollary}
@@ -205,7 +205,7 @@ ds^2 = dt^2 + a(t)^2 \tilde{g}_{ij}(x) dx^i dx^j
 }
 Note $x$ are \emph{comoving} coordinates such that, for a spacelike separation $\Delta x$
 \eq{
-|\Delta x|_{\phys} = a |\Delta x|
+|\Delta x|_{phys} = a |\Delta x|
 }
 
 \begin{definition}[Hubble Parameter]
@@ -279,8 +279,138 @@ The examples encountered in this course are
 \end{array}
 $\end{center}
 
+\begin{definition}[Friedmann equation]
+In the FLRW metric the Einstein equations reduce to 
+\eq{
+3M_{pl}^2 ( H^2 + \frac{K}{a^2} ) = \sum_i \rho_i
+}
+this is the \bam{Friedmann equation}. 
+\end{definition}
+
+\begin{definition}[Critical Density]
+Define the \bam{critical density} to be 
+\eq{
+\rho_c = 3 M_{pl}^2 H^2
+}
+writing 
+\eq{
+\Omega_i &= \frac{\rho_i}{\rho_c} \\
+\Omega_K &= \frac{3M_{pl}^2 K}{\rho_c a^2} = \frac{K}{H^2 a^2}
+}
+the Friedmann equation becomes 
+\eq{
+1-\Omega_K = \sum_i \Omega_i
+}
+It is common notation to let $\Omega_{i,0} = \Omega_i |_{t=t_0}$
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Possible Universes}
+
+\begin{example}
+Consider a flat $(K=0)$ universe, with only one contribution to the energy density. Then 
+\eq{
+3M_{pl}^2 \left(\frac{\dot{a}}{a}\right)^2 &= \rho_0 \left(\frac{a}{a_0}\right)^{-3(1+w)} \\
+\Rightarrow \frac{\dot{a}}{a} &\propto a^{-\frac{3(1+w)}{2}} \\
+\frac{da}{a} a^{\frac{3(1+w)}{2}} &= dt \\
+\Rightarrow a(t) &= \left\{ \begin{array}{cc} \left[ \frac{3}{2}(1+w) H_0 t \right]^{\frac{2}{3(1+w)}} & w\neq -1 \\ Ae^{H_0 t} & w = -1 \end{array} \right.
+}
+Hence \begin{itemize}
+    \item For non-relativistic matter, $a \propto t^{\frac{2}{3}}$
+    \item For radiation, $a \propto t^\frac{1}{2}$
+    \item For dark energy, $a \propto e^{H_0 t}$
+\end{itemize}
+
+In this case 
+\eq{
+H = \left\{ \begin{array}{cc}  \frac{2}{3(1+w)}\frac{1}{t}  & w\neq -1 \\ H_0 & w = -1 \end{array} \right.
+}
+\end{example}
+
+\begin{prop}
+If $K=0$, the age of the universe can be calculates as 
+\eq{
+t_{age} &= \int dt \\
+ &= \int \frac{da}{\dot{a}} \\
+ &= \int \frac{da}{a H} \\
+ &= \frac{1}{H_0} \int \frac{da}{a} \left[  \frac{\sum_i \rho_i}{3 M_{pl}^2 H_0^2} \right]^{-\frac{1}{2}} \\
+ &= \frac{1}{H_0} \int \frac{da}{a} \left[ \Omega_\Lambda + \Omega_{m,0}a^{-3} + \Omega_{r,0} a^{-4} \right]^{-\frac{1}{2}}
+}
+\end{prop}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Distance}
+
+\begin{definition}[Redshift]
+Suppose that a wave is emitted with wavelength $\lambda_e$ and observed with wavelength $ \lambda_o$. Then the \bam{redshift} $z$ is defined by 
+\eq{
+1+z = \frac{\lambda_o}{\lambda_e}
+}
+\end{definition}
+
+\begin{definition}[Cosmological redshift]
+For a photon emitted at time $t_e < t_0$ the redshift due to the expansion of the universe is the \bam{cosmological redshift}
+\eq{
+1+z = \frac{a_0}{a_e}
+}
+\end{definition}
+
+\begin{definition}[Comoving Distance]
+The \bam{comoving distance} $\chi(t_i,t_f)$ is the distance travelled by a photon between times $t_i,t_f$. Note that for a radially moving null geodesic $ds^2 = a^2[-d\tau^2 + d\chi^2] = 0$ so $d\chi=d\tau$, so 
+\eq{
+\chi(t_i,t_f) &= \int d\tau \\
+&= \int_{t_i}^{t_f} \frac{dt}{a} \\
+&= \int \frac{da}{a^2 H} \\
+&= \int \frac{dz}{H(z)}
+}
+Writing this then in terms of the redshift 
+\eq{
+\chi(z) = \int_0^z \frac{dz}{H(z)}
+}
+\end{definition}
+
+\begin{definition}[Luminosity]
+The \bam{intrinsic luminosity} $L$ of an object is the amount of energy radiated per unit time. The \bam{observed luminosity} $l$ is the amount of energy radiated per unit time per unit surface arriving at an observer some distance from the object.
+\end{definition}
+
+\begin{definition}[Luminosity Distance]
+The observed and instrinsic luminosity are related by 
+\eq{
+l = \frac{L}{4\pi d_L^2}
+}
+which defines the $\bam{luminosity distance}$ $d_L$
+ \end{definition}
+ 
+ \begin{prop}
+ The luminosity distance and comoving distance are related by 
+ \eq{
+ d_L(z) = (1+z) a_o \chi(z)
+ }
+ \end{prop}
+\begin{proof}
+\eq{
+l = \frac{L}{4\pi (\chi a_o)^2}\left(frac{a_e}{a_o}\right)^2
+}
+\end{proof}
+
+\begin{definition}[Angular Diameter Distance]
+For an object of size $s$ which subtends an angle $\theta$ from the point of view of the observer, the \bam{angular diameter distance} $d_A$ to the object is 
+\eq{
+d_A = \frac{s}{\theta}
+}
+As the angle the object takes up in the sky will be stretched by a factor of (1+z), the angular diameter distance is related to the comoving distance by 
+\eq{
+d_A(z) = \frac{\chi(z)}{1+z}
+}
+\end{definition}
+
+\begin{definition}[Particle Horizon]
+The \bam{particle horizon} $d_{p.h.}$ is is the greatest distance a photon a could have travelled since the beginning of time $t_i$. Any object a distance $d>d_{p.h.}$ from an observer away can never have communicated with said observer. 
+\eq{
+d_{p.h.}(t) = a(t) \chi(t,t_i) = a(t) \int_{t_i}^t \frac{dt^\prime}{a(t^\prime)}
+}
+\end{definition}
 
 
 
@@ -298,7 +428,7 @@ Let $n_g$ be the galaxy number density. Then define the \bam{fractional overdens
 where $\bar{n}_g$. 
 \end{definition}
 
-It is typical to assume a linear relation ship beteween the galaxy density and matter density 
+It is typical to assume a linear relation ship between the galaxy density and matter density 
 \[
 n_g = b \rho_m
 \]
