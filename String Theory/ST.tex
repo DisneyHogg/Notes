@@ -635,18 +635,18 @@ $g$ is kind of like the number of holes in $\Sigma$.
 \subsubsection*{Moduli space of Riemann surfaces}
 For a given genus $g$,  the space of metrics on $\Sigma_g$, modulo Weyl and Diffeomorphisms, is a finite dimensional space called the \bam{Moduli space} of $\Sigma_g$
 \eq{
-\mc{M}_g = \faktor{\set{metrics h_{ab} }}{\set{Diff}\times\set{Weyl}}
+M_g = \faktor{\set{\text{metrics } h_{ab} }}{\set{Diff}\times\set{Weyl}}
 }
 A useful result is 
 \eq{
-s = |\mc{M}_g| = \left\{ \begin{array}{lc} 0 & g=0 \\ 2 & g=1 \\ 6g-6 & g\geq 2 \end{array} \right.
+s = |M_g| = \left\{ \begin{array}{lc} 0 & g=0 \\ 2 & g=1 \\ 6g-6 & g\geq 2 \end{array} \right.
 }
 $s$ is the real dimension of $\mc{M}_g$. 
 
 \begin{example}[Torus]
 Given a metric $\hat{h}_{ab}$ on a $g=0$ surface, we can bring any metrix to the form $e^{2w}\hat{h}_{ab}$. This is not so for a torus $(g=1)$. We can build a torus by imposing identifications on $\mbb{C}$
 \eq{
-z \sim z + n\lambda_1 + m\lambda_2
+z \sim z + n\lambda_1 + m\lambda_2 = (n,m) \begin{pmatrix} \lambda_1 \\ \lambda_2 \end{pmatrix}
 }
 $n,m \in \mbb{Z}$, $\tau = \frac{\lambda_1}{\lambda_2}\notin \mbb{R}$. One can show $\tau$ is diffeomorphism and Weyl invariant. We can then choose $\lambda_i$ s.t. $\Im \tau \geq 0$. Then 
 \eq{
@@ -655,19 +655,408 @@ ds^2 = |dz^2 + \tau d\bar{z}|^2
 If we change 
 \eq{
 \begin{pmatrix} \lambda_1 \\ \lambda_2 \end{pmatrix} \to U\begin{pmatrix} \lambda_1 \\ \lambda_2 \end{pmatrix} \\
-U = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \quad a
+U = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \quad ad-bc = 1
 }
 We can undo that change by also changing 
 \eq{
 (n,m) \to (n,m) U^{-1}
 }
-so for $(n,m)$ to be integers we require $a,b,c,d \in \mbb{Z}$, i.e $U\in SL(2,\mbb{Z})$. Our moduli soace is the 
+so for $(n,m)$ to be integers we require $a,b,c,d \in \mbb{Z}$, i.e $U\in SL(2,\mbb{Z})$. Our moduli space is the 
 \eq{
-\mc{M}_1 = \faktor{UHP}{SL(2,\mbb{Z})}
+M_1 = \faktor{UHP}{SL(2,\mbb{Z})}
+}
+\end{example}
+
+\subsubsection*{Conformal Killing Vectors}
+Conformal Killing Vectors (CKV) generate diffeomorphisms that preserve the metric up to a Weyl transformation. Our gauge tranformations are 
+\eq{
+\delta _v h_{ab} &= \nabla_a v_b + \nabla_b v_a \\
+\delta_w h_{ab} &= 2w h_{ab}
+}
+We are interested in $v^a$ such that 
+\eq{
+\delta_{CK} h_{ab} = \nabla_a v_b + \nabla_b v_a + 2w h_{ab}
+}
+Taking the trace 
+\eq{
+2(\nabla_a v^a) + 2w = 0 \Rightarrow w = -\frac{1}{2}(\nabla_a v^a)
+}
+so we say $v^a$ is Conformal Killing (CK) if 
+\eq{
+\delta h_{ab} = \nabla_a v_b + \nabla_b v_a - h_{ab} (\nabla_c v^c) = 0 
+}
+We define 
+\eq{
+(P(v))_{ab} = \nabla_a v_b + \nabla_b v_a - h_{ab} (\nabla_c v^c)
+}
+so $v^a$ a CKV if $v^a \in \ker P$ \\
+\newline
+For closed Riemann surfaces of genus $g$, the (real) dimension of the Conformal Killing Group (CKG) is 
+\eq{
+\kappa = |CKG| = \left\{ \begin{array}{cc} 6 & g=0 \\ 2 & g=1 \\ 0 & g \geq 2 \end{array} \right. 
+}
+On the sphere (i.e. $\mbb{C}\cup\set{\infty}$) the CKVs generate the transformations 
+\eq{
+z \to \frac{az+b}{cz+d} \quad \text{similarly for $\bar{z}$}
+}
+for $a,b,c,d \in \mbb{C}$, $ad-bc=1$. This a a Mobius map, and recall that these \emph{sharply three transitive}. We shall fix the conformal Killing symmetry by requiring that the $v^a$ vanish at three distinct points $\hat{\sigma}_i^a\in\Sigma$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Modular Groups}
+The diffeomorphism group on the Riemann surface $\Sigma_g$ is not connected. Let us call the conneceted component of diffeomorphisms that includes the identity $Diff_0$. 
+
+\begin{definition}[Modular Group]
+The \bam{modular group} is 
+\eq{
+\mc{M}_g = \faktor{Diff}{Diff_0}
+}
+\end{definition}
+
+\begin{example}
+\eq{
+\mc{M}_1 = SL(2;\mbb{Z})
+}
+\end{example}
+
+The moduli space may be written as 
+
+\eq{
+M_g &= \faktor{\set{\text{metrics } h_{ab} }}{\set{Diff}\times\set{Weyl}} \\
+&= \faktor{\left(\faktor{\set{\text{metrics } h_{ab} }}{\set{Diff_0}\times\set{Weyl}}\right)}{\mc{M}_g}
+}
+We often call the space
+\eq{
+\mc{T}_g = \faktor{\set{\text{metrics } h_{ab} }}{\set{Diff_0}\times\set{Weyl}}
+}
+the \bam{Teichmuller space}. Clearly 
+\eq{
+M_g = \faktor{\mc{T}_g}{\mc{M}_g}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Faddeev - Popov Determinant}
+The idea is to choose a 'gauge slice' through the space of metrics on $\Sigma_g$. We formally defines the \bam{Faddeev-Popov determinant} as 
+\eq{
+1=\Delta_{FP}(\hat{h}) \int_{{Diff}_0 \times Weyl} \mc{D}(\delta h) \underbrace{\delta[h-\hat{h}]}_{\text{delta functional}} \prod_i \delta(v(\hat{\delta}_i))
+}
+Where the $\hat{\sigma}_i^a$ are locations on $\Sigma_g$ where $v^a$ vanishes (to fix the CKG). In more detail, 
+\eq{
+1 = \Delta_{FP}(\hat{h}) = \int_{\mc{T}_g} d^s t \int \mc{D}w \mc{D}v \delta[h_{ab} - \hat{h}_{ab} \prod_i \delta (v(\hat{\delta}_i))
+}
+$t$ coordinates on the Teichmuller space. We will write the delta functions and delta functionals as integrals and functional integrals. Let us introduce numbers $\xi_a^i$ and fields $\beta^{ab}(\sigma,\tau)$ 
+\eq{
+1 = \Delta_{FP}(\hat{h}) \int_{\mc{T}_g} d^s t \int \mc{D}v \, \mc{D}\omega \, d^\kappa \xi_a^i \,  \mc{D}\beta \,  \exp\left[i(\beta|h-\hat{h}) + i \sum_i \xi_a^i v^a (\hat{\sigma}_i) \right] \\
+(\beta| h-\hat{h}) = \int_\Sigma d^2 \sigma \sqrt{|h|} \beta^{ab} (h_{ab} - \hat{h}_{ab})
+}
+we can write $h_{ab} - \hat{h}_{ab} = \delta h_{ab}$ as 
+\eq{
+\delta h_{ab} &= \underbrace{\nabla_a v_b + \nabla_b v_a}_{Diff} + \underbrace{2\omega h_{ab}}_{Weyl} + \underbrace{t^2 \del_I h_{ab}}_{Moduli} \\
+&= (Pv)_{ab} + 2(\omega+ \nabla_c v^c)h_{ab} + t^2 \del_I h_{ab} \\
+&= (Pv)_{ab} + 2\bar{\omega}h_{ab} + t^2 \mu_{I,ab}
+}
+where 
+\begin{itemize}
+    \item $(Pv)_{ab}$ as before 
+    \item $\mu_{I,ab} = \del_I h_{ab} - \text{trace}$
+    \item $\bar{\omega}$ contains the residual trace terms. 
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Grassmann Quantities}
+These are quantities $\theta$ such that 
+\eq{
+\theta_1 \theta_2 = - \theta_2 \theta_1
+}
+Defining the anticommutator we get this as 
+\eq{
+\acomm[\theta_1]{\theta_2} = \theta_1 \theta_2 + \theta_2 \theta_1 = 0
+}
+Objects that obey Fermi statistics are naturally described by Grassmann numbers. This can be seen as 
+\eq{
+\theta^2 = - \theta^2 \Rightarrow \theta^2 = 0 
+}
+and likewise for measures 
+\eq{
+\acomm[d\theta_1]{d\theta_2} = 0 
+}
+One can then show that 
+\eq{
+\int d\theta &= 0 \\
+\int \theta d\theta &= 1
+}
+The Dirac delta function for Grassmann quantities is then  
+\eq{
+\delta(\theta) = \theta
+}
+We find that integration and differentiation of Grassmann quantities is essentially the same thing. Taylor expansions are easy 
+\eq{
+f(x,\theta) = f_0(x) + \theta f_1(x) \\
+\Rightarrow \int d\theta f(x,\theta) = f_1(x) = \pd{\theta} f(x,\theta) 
 }
 
-
-
+\begin{example}
+Let 
+\eq{
+\theta^a = \begin{pmatrix} \theta_1 \\ \theta_2 \end{pmatrix} \\
+\bar{\theta}^a = (\bar{\theta}_1, \bar{\theta}_2 ) 
+}
+independent, and consider 
+\eq{
+\int d^2 \theta d^2 \bar{\theta} \exp(-\bar{\theta}^a M_{ab} \theta^b ) 
+}
+where $M$ is a 2x2 matrix independent of $\theta,\bar{\theta}$. Then 
+\eq{
+\int d^2 \theta d^2 \bar{\theta} \exp(-\theta^a M_{ab} \theta^b ) &= \frac{\del^4}{\del\theta_1 \del\theta_2 \del\bar{\theta}_1 \del\bar{\theta}_2} \left\lbrace  (\bar{\theta}_1 M_{11}\theta_1)(\bar{\theta}_2 M_{22}\theta_2) + (\bar{\theta}_1 M_{12}\theta_2)(\bar{\theta}_2 M_{21}\theta_1)  \right\rbrace
+ \\
+ &= (M_{11}M_{22}-M_{12}M_{21}) = \det M_{ab}
+}
 \end{example}
+
+This generalises 
+\eq{
+\int d^n \theta d^n \bar{\theta} \exp(-\theta^a M_{ab} \theta^b ) = \det M_{ab}
+}
+compare this to $z, \bar{z}$ real, where 
+\eq{
+\int d^2 z d^2 \bar{z} \exp(-\bar{z} M z ) = \frac{1}{\det M_{ab}}
+}
+The effect og inverting the determinant when we replace commuting with Grassmann variables carries over to the functional case. 
+
+In our expression for $\Delta_{FP}^{-1}$ we replace 
+\eq{
+v^a &\to c^a \\
+\beta^{ab} &\to b^{ab} \\
+t^a &\to \xi^a \\
+\zeta^i_a &\to \eta^i_a
+}
+and so 
+\eq{
+\Delta_{FP}(\hat{h}) = \int d^s \xi \int \mc{D}c \, \mc{D}b \, d^k \eta \exp \left( i(b|Pc + \xi^I\mu_I ) + i \sum_{i=1}^k \eta_a^i c^a(\hat{\sigma}_i) \right) 
+}
+\subsubsection*{Where is w}
+\eq{
+\Delta_{FP}(\hat{h})^{-1} &\sim \int \mc{D}\omega \, \exp \left\lbrace i(\beta|2\bar{\omega}h) \right\rbrace \\
+&= \int \mc{D}\bar{\omega} \exp \left( i\int_\Sigma d^2\sigma \sqrt{h} \beta^{ab} 2\bar{\omega}h_{ab} \right) 
+}
+We can do this integral and it constraints $\beta^{ab} h_{ab} = 0 \Rightarrow \beta$ traceless. 
+
+We can do the $\eta^i_a$ and the $\xi^I$ integrals 
+\eq{
+\Delta_{FP}(\hat{h}) &= \int \mc{D}c \, \mc{D}b \, e^{i(b|Pc)} \prod_{I=1}^s \delta[(b|\mu_I)] \prod_{i=1}^k \delta(c^a(\hat{\sigma}_i)) \\
+&= \int \mc{D}c \, \mc{D}b \, e^{i(b|Pc)}\prod_{I=1}^s (b|\mu_I) \prod_{i=1}^k c^a(\hat{\sigma}_i) 
+}
+as the variables are Grassmann. Finally we have 
+\eq{
+\Delta_{FP}(\hat{h}) &= \int \mc{D}c \, \mc{D}b \, e^{iS[b,c]} \prod_{I=1}^s (b|\mu_I) \prod_{i=1, a=1,2}^k c^a(\hat{\sigma}_i) 
+}
+where 
+\eq{
+S[b,c] = \int_\Sigma \sqrt{\hat{h}} b^{ab}(Pc)_{ab} = 2 \int_\Sigma \sqrt{\hat{h}} b^{ab} \nabla_a c_b 
+}
+\\
+$c^a$ and $b_{ab}$ are Grassmann fields that obey Fermi statistics, but they also have integer spin. They are note observables, and so we call them \bam{Faddeev-Popov ghosts}
+
+Now 
+\eq{
+Z = \frac{1}{|Diff|\times |Weyl|} \int \mc{D}X \, e^{iS[X,\hat{h}]} \int_{\mc{T}_g} d^s t \int \mc{D} \bar{\omega} \, \mc{D}v \, \prod_{i,a} \delta (v^a (\hat{\sigma}_i)) \Delta_{FP}(\hat{h})
+}
+Notice that 
+\eq{
+|Weyl| \times \frac{|Diff_0|}{|CKG|} = \int \mc{D} \bar{\omega} \, \mc{D}v \, \prod_{i,a} \delta (v^a (\hat{\sigma}_i))
+}
+and 
+\eq{
+\frac{1}{|Diff|\times |Weyl|}  |Weyl| \times \frac{|Diff_0|}{|CKG|} = \frac{1}{|\mc{M}_g| \times |CKG|}
+}
+so 
+\eq{
+Z = \frac{1}{|\mc{M}_g| \times |CKG|} \int_{\mc{T}_g} d^s t \int \mc{D}X \, e^{iS[X,\hat{h}]} \Delta_{FP}(\hat{h})
+}
+Now we can take 
+\eq{
+\frac{1}{|\mc{M}_g|} \int_{\mc{T}_g} d^s t = \int_{\faktor{\mc{T}_g}{\mc{M}_g}} d^s t = \int_{M_g} d^s t 
+}
+giving finally 
+\eq{
+Z = \frac{1}{|CKG|}\int_{M_g} d^s t \int \mc{D}X \, \mc{D}b \, \mc{D}c \,  e^{iS[\hat{h},X,b,c]} \prod_{I=1}^s (b | \mu_I) \prod_{i,a} c^a(\hat{\sigma}_i)
+}
+where $(b| \mu_I) = \int_\Sigma d^2 \sigma \, \sqrt{|h|}b^{ab}(\mu_I)_{ab}$ and $(\mu_I)_{ab} = \del_I h_{ab} - \text{trace}$. WE shall choose to define $b,c$ such that 
+\eq{
+S[\hat{h},X,b,c] = -\frac{1}{4\pi \cst} \int_\Sigma d^2\sigma \, \sqrt{|\hat{h}|} \hat{h}^{ab} \del_a X^\mu \del_b X^\nu \eta_{\mu\nu} + \frac{1}{2\pi} \int_\Sigma d^2\sigma \, \sqrt{|\hat{h}|} b^{ab}\nabla_a c_b
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction to Conformal Field Theory (CFT)}
+
+We are interested in theories that are invariant under Weyl transformations. We can ask what the natural generalisation of the Poincare group that preserves a metric $\eta_{\mu\nu}$ up to Weyl transformation is. \\
+In general dimension $d>1$ we are interested in transformations such that 
+\eq{
+\eta_{\rho\sigma} \pd[{x^\prime}^\rho]{x^\mu}\pd[{x^\prime}^\sigma]{x^\nu} = \Lambda(x) \eta_{\mu\nu}
+}
+where, infinitesimally, $x^\mu \to {x^\prime}^\mu = x^\mu + v^\mu(x)+\dots$. We find that, if $\Lambda(x) = e^{\omega(x)}$, then 
+\eq{
+\omega(x) = \frac{2}{d} \del_\mu v^\mu(x)
+}
+so $v(x)$ satisfies 
+\begin{align}\label{eq:ST:4}
+\del_\mu v_\nu + \del_\nu v_\mu = \frac{2}{d} \eta_{\mu\nu} \del_\lambda v^\lambda 
+\end{align}
+$v$ then generates a conformal transform. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{2 dimensions}
+Let us take our metric to be conformally equivalent to 
+\eq{
+h_{ab} = \begin{pmatrix}
+1 & 0 \\ 0 & 1
+\end{pmatrix}
+}
+up to a conformal factor\footnote{Note we have performed a Wick rotation $\tau \to i\tau$ to move to Euclidean space}. We have $x^\mu \to \sigma^a=(\tau,\sigma)$, so  \ref{eq:ST:4} becomes 
+\eq{
+2 \del_\tau v_\tau = \del_\tau v_\tau + \del_\sigma v_\sigma \Rightarrow \del_\tau v_\tau = \del_\sigma v_\sigma
+}
+ands 
+\eq{
+\del_\sigma v_\tau + \del_\sigma v_\tau = 0 
+}
+Hence
+\eq{
+ \pd[v_\tau]{\tau} &= \pd[v_\sigma]{\sigma} \\
+ \pd[v_\tau]{\sigma} &= -\pd[v_\tau]{\sigma}
+}
+These are the Cauchy-Riemann equations for a complex function $v = v^\tau + i v^\sigma$. In $d=2$ the condition on $v$ given by \ref{eq:ST:4} is thus that $v$ is holomorphic i.e 
+\eq{
+\bar{\del} v = \pd[v]{\bar{z}} = 0
+}
+where $z=\tau+i\sigma$, $\bar{z}=\tau-i\sigma$. All holomorphic functions preserve our metricup to Weyl transformations, hence a bettwe choise is 
+\eq{
+z &= e^{\tau+i\sigma} \\
+\bar{z} &= e^{\tau-i\sigma}
+}
+In these new coordinates we find 
+\eq{
+S = - \frac{1}{4\pi \cst} \int_\Sigma d^2\sigma \, \del_a X^\mu \del^a X^\nu \eta_{\mu\nu} = \frac{i}{2\pi \cst} \int_\Sigma d^2z \, \del X^\mu \bar{\del}X6\nu \eta_{\mu\nu}
+}
+The stresss tensor $T_{ab}$ has 2 non trivial components 
+\eq{
+T_{zz} &= T = -\frac{1}{\cst} \del X^\mu \del X^\nu \eta_{\mu\nu} \\
+T_{\bar{z}\bar{z}} = \bar{T} = -\frac{1}{\cst} \bar{\del} X^\mu \bar{\del} X^\nu \eta_{\mu\nu} \\
+T_{z\bar{z}} &= 0 = T_{\bar{z}z}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Conformal Fields}
+
+\begin{definition}[Chiral Fields]
+A \bam{chiral field} is a field $\Phi$ that depends on $z$ only, i.e. $\Phi=\Phi(z)$. An \bam{antichiral fields} is $\Phi = \Phi(\bar{z})$. 
+\end{definition}
+
+\begin{definition}[Conformal Dimension]
+Consider the scaling
+\eq{
+z \to \lambda z \\
+\bar{z} \to \bar{\lambda} \bar{z} \\
+}
+for $\lambda \in \mbb{C}^\ast $. If $\Phi$ transforms as 
+\eq{
+\Phi(z,\bar{z}) \to \Phi^\prime (z^\prime, \bar{z}^\prime) = \lambda^h \bar{\lambda}^{\bar{h}} \Phi(\lambda z, \bar{\lambda}\bar{z})
+}
+then $h$ and $\bar{h}$ are called the \bam{conformal dimension} of $\Phi$.\footnote{Sometime $h+\bar{h}$ is called the dimension and $h-\bar{h}$ the conformal spin.}
+\end{definition}
+
+\begin{definition}[Primary Fields]
+Under the conformal transform $z \to z^\prime = f(z)$, a \bam{primary field} with dimension $(h,\bar{h})$ transforms as 
+\eq{
+\Phi(z,z^\prime) = \left( \pd[f]{z} \right)^h \left( \pd[\bar{f}]{\bar{z}} \right)^{\bar{h}} \Phi(f(z),\bar{f}(\bar{z}))
+}
+\end{definition}
+
+\begin{example}
+Consider an infinitesimal transform 
+\eq{
+z \to z^\prime = z + v(z) + \dots = f(z) 
+}
+so 
+\eq{
+\left( \pd[f]{z} \right)^h &\approx (1 + \del v)^h \\
+\Phi(f(z)) &= \Phi(z) + v(z) \del \Phi(z) + \dots 
+}
+So a field with $(h,\bar{h}) = (h,0)$ has 
+\eq{
+\delta \Phi(z) = (h \del v(z) + v(z) \del ) \Phi(z) 
+}
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Symmetries and the Stress Tensor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Classical Theory}
+Let us start with the action 
+\eq{
+S[X] = -\frac{1}{4\pi\cst} \int_\Sigma d^2 \tau \, \del_a X^\mu \del^a X^\nu \eta_{\mu\nu} \quad \text{for fixed } h_{ab} = \delta_{ab}
+}
+\eq{
+\left( \Rightarrow e^{iS} \underbrace{\to}_{(z,\bar{z})} e^{-S} \right) 
+}
+Consider the transformation 
+\eq{
+\delta_v X^\mu &= v^a \del_a X^\mu \quad \text{(Conformal transformation)} \\
+\delta_v S[X] &= -\frac{1}{2\pi \cst} \int_\Sigma d^2 z \, \left( (\del_a v^b) \del_b X^\mu \del^a X_\mu + v^b \del_a(\del_b X^\mu) \del^a X_\mu \right) \\ 
+&= \frac{1}{2\pi} \int_\Sigma d^2z \, (\del^a v^b) T_{ab}
+}
+so $\delta S = 0$ requires 
+\eq{
+\delta^a T_{ab} = 0 \quad \text{(Noether's Theorem)}
+}
+We could define a conserved charge 
+\eq{
+Q = Q_+ + Q_- \\
+Q_\pm = \frac{1}{2\pi } \int_0^{2\pi} d\sigma \, T_{\pm\pm}(\sigma) \text{ at } \tau=0
+}
+Classically, they symmetry transformations are generated by Q: 
+\eq{
+\delta X^\mu = \pb[Q]{X^\mu}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Conformal Transformations and Ward Identities}
+We stay in $d=2$, but we shall work with general field $\phi(x,\bar{z})$. We will be interested in the quantum analogue of Noether's theorem. Consider a change 
+\eq{
+\phi \to \phi^\prime = \phi + \delta \phi \\
+S[\phi^\prime ] = S[\phi] + \delta S[\phi]
+}
+Let us consider the correlation function\footnote{Symmetries in quantum theories should preserve the answer to sensible question we can ask, i.e. those involving correlation functions}.
+\eq{
+\braket{\phi_1(z_1) \dots \phi_n(z_n) } \quad \text{(the $\bar{z}_i$ dependence is left explicity )} \\
+=\braket{\phi_1 \dots \phi_n} \quad \text{(notationally)}
+}
+Under the transformation 
+\eq{
+\braket{\phi_1 \dots \phi_n} &\to \braket{\phi_1^\prime \dots \phi_n^\prime} \\
+&= \int \mc{D}\phi^\prime \, e^{-S[\phi^\prime]} \phi_1^\prime \dots \phi_n^\prime
+}
+Assume that $\mc{D} \phi = \mc{D} \phi^\prime$ so 
+\eq{
+ &= \int \mc{D} \phi \, e^{-S[\phi]} (1 - \delta S[\phi] + \dots)(\phi_1 + \delta \phi_1+\dots)\cdots(\phi_n + \delta \phi_n+\dots) \\
+ &= \braket{\phi_1 \dots \phi_n} - \int \mc{D}\phi \, e^{-S[\phi]} \delta S[\phi] \phi_1 \dots \phi_n + \sum_{k=1}^n \int \mc{D} \, e^{-S[\phi]} \phi_1 \dots \delta \phi_k \dots \phi_n
+}
+we require $\braket{\phi_1 \dots \phi_n} = \braket{\phi_1^\prime \dots \phi_n^\prime}$. Then 
+\eq{
+\braket{\delta S[\phi] \phi_1 \dots \phi_n } = \sum_{k=1}^n \braket{\phi_1 \dots \delta \phi_k \dots \phi_n}
+}
+We shall write $\delta S$ as 
+\eq{
+\delta S[\phi] = \frac{1}{2\pi i} \int_\Sigma d^2 z \, (\del_a v(z) ) j^a (z)
+}
+with $v$ the parameter of the transform and $j$ the classical Noether current. Then 
+\eq{
+\frac{1}{2\pi i } \int_\Sigma d^2 z \, \del_a v(z) \braket{j^a(z) \phi_1 \dots \phi_n} = \sum_{k=1}^n \braket{\phi_1 \dots \delta \phi_k \dots \phi_n}
+}
+We choose\footnote{\hl{Why are we able to do this?}} $\Sigma$ and $v(z)$ such that we are able to isolate a particular $\delta \phi_k$. We define $\omega = z_i $, i.e. $\phi_k(z_k) = \phi(\omega)$, and two curves $C_1, C_2$ such that $\del \Sigma = C_1 \cup C_2$. We choose $v(z)$ to be constant within $C_1$, 0 outside of $C_2$, and arbitrary in $\Sigma$. (Assume also sufficient continuity at the boundary and in the regions etc.) We also require that $C_1, C_2$ encircle $\omega=z_k$ only, so they lie in the region $v=0$. Hence 
+\eq{
+\forall j\neqk \; \delta \phi_j = 0 \\
+\Rightarrow \frac{1}{2\pi i } \int_\Sigma d^2 z \, \del_a v(z) \braket{j^a(z) \phi_1 \dots \phi_n} = \braket{\phi_1 \dots \delta \phi(\omega) \dots \phi_n}
+}
+
 
 \end{document}

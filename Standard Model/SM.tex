@@ -374,12 +374,12 @@ Now consider
 }
 and compare with 
 \eq{
-{\bar{\psi}}^T (x) = \sum_{p,s} \left[ {b^s}^\dagger(p) {{\bar{u}}^s}^T (p) e^{ip\cdot x} + d^s {{\bar{v}}^s}^T (p) e^{-ip\cdot x} \right]
+{\bar{\psi}}^{T} (x) = \sum_{p,s} \left[ {b^s}^{\dagger(p)} ({\bar{u}}^s)^{T} (p) e^{ip\cdot x} + d^s ({\bar{v}}^s)^{T} (p) e^{-ip\cdot x} \right]
 }
 Consider the spinors and take $\eta^s = i\sigma^2 {\xi^s}^\ast$ (choosing a basis for the spinors) we can write 
 \eq{
-v^s(p) &= C {\bar{u}^s}^T \\
-u^s(p) &= C {\bar{v}^s}^T \\
+v^s(p) &= C (\bar{u}^s)^T \\
+u^s(p) &= C (\bar{v}^s)^T \\
 }
 and so 
 \eq{
@@ -580,7 +580,7 @@ There are three necessary conditions for Baryongenesis, the \bam{Sakarov conditi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Spontaneous Symmetry Breaking (SSB)}
-There are hidden symmetries present in \mc{L} but not in observable. 
+There are hidden symmetries present in $\mc{L}$ but not in observable. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{SSB of discrete symmetry}
@@ -590,7 +590,7 @@ We have either
     \item the typical case to analyze, $m^2 > 0$, where $V(\phi)$ has a minimum at $\phi=0$.
     \item$m^2< 0$, then $V(\phi) = \frac{\lambda}{4} (\phi^2 - v^2)^2$ up to a constant, where $v = \sqrt{\frac{-m^2}{\lambda}}$. Now $\phi=0$ is an unstable vacuum and there are two degenerate vacua at $\phi = \pm v$.
 \end{itemize}
-In the second case $\phi$ has a acquired a non zero \bam{vacuum expectation value (vev)}. Wlog we may study small excitations about $\phi=v$ 
+In the second case $\phi$ has a acquired a non zero \bam{Vacuum Expectation Value (vev)}. Wlog we may study small excitations about $\phi=v$ 
 \eq{
 \phi(x) = v + f(x) ]]
 \mc{L} = \frac{1}{2} \del_\mu f \del^\mu f - \lambda ( v^2 f + vf^3 + \frac{1}{4} f^4) + \text{ constant}
@@ -600,6 +600,271 @@ Hence $f$ is a scalar field with mass $m_f = \sqrt{2\lambda v^2}$. This $\mc{L}$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{SSB of continuous (global) symmetry}
 
+Consider a real $N$- component scalar field $\phi=(\phi_1,\dots,\phi_N)^T$, with 
+\eq{
+\mc{L}= \frac{1}{2} (\del_\mu \phi)\cdot(\del^\mu \phi) - V(\phi) \\
+V(\phi) = \frac{1}{2}m^2 \phi^2 + \frac{\lambda}{4} \quad \phi^2 = \phi \cdot \phi , \phi^4 = (\phi^2)^2,  \lambda > 0
+}
+invariant under a global $O(N)$ symmetry. We're interested in $m^2 < 0$ again. In this case 
+\eq{
+V(\phi) = \frac{\lambda}{4}(\phi^2-v^2)^2
+}
+Up to an irrelevant constant where 
+\eq{
+v^2 = - \frac{m^2}{\lambda}
+}
+This is the "Mexican hat" potential. 
+There is then a continuum of vacua with $\phi^2=v^2$. Wlog choose $\phi_0 = (0,\dots,0,v)^T$ and study small fluctuations about this 
+\eq{
+\phi(x) = (\pi_1(x), \dots, \pi_{N-1}(x),v+\sigma(x))^T
+}
+then 
+\eq{
+\mc{L} = \frac{1}{2} (\del_\mu \pi)\cdot(\del^\mu \pi) + \frac{1}{2} \del_\mu \sigma \del^\mu \sigma - V(\pi,\sigma) \\
+V(\pi,\sigma) = \frac{1}{2} m_\sigma^2 \sigma^2 + \lambda v (\sigma^2+ \pi^2)\sigma + \frac{\lambda}{4}(\sigma^2)+\pi^2)^2
+}
+The $\sigma$ field, which is a radial excitation in the potential, has mass $m_\sigma^2=2\lambda v^2$, but the $N-1$ $\pi$ fields, which are azimuthal excitations that see flat potential, are massless \\
+\newline
+Generalise to a symmetry group $G$ of $\mc{L}$ which is broken to a subgroup $H\subset G$ by the vacuum (we'll generally be considering normal subgroups). The transform is $\phi \to g\phi$ with $g\in G$ in some representation, and $\mc{L}(\phi) = \mc{L}(g\phi)$. Assume $G$ is spontaneously broken and hence the vacuum is not unique but a manifold\footnote{I suspect that this is necessarily a manifold as our configuration space is assume to be a manifold (in this case $\mbb{R}^N$) and then $\Phi_0$ is a closed subgroup for continuous $V$, so the closed subgroup theorem applies}. 
+\eq{
+\Phi_0 = \set{\phi_0 : V(\phi_0)=V_{min}}
+}
+The invariant subgroup (or stability group) $H\subset G$ is 
+\eq{
+H = \set{h \in G : h\phi_0 = \phi_0}
+}
+Different vacua are related by $\phi_0^\prime = g\phi_0$ for some $g\in G$. Stability groups for different vacua are isomorphic. For $
+\phi_0^\prime$ the stability group is $H^\prime = gHg^{-1}$. Group elements that map one vacuum to another are in the coset space $\faktor{G}{H}$ and fall into equivalence classes 
+\eq{
+g_1 \sim g_2 \Leftrightarrow g_2^{-1}g_1 \in H 
+}
+which are the left cosets. Hence there's one equivalence class for each $\phi_0^\prime \in \Phi_0 \Rightarrow \Phi_0 \cong \faktor{G}{H}$. If $H$ is a normal subgroup the this is a group\footnote{I may prove this for fun if I find the time}. Now let's consider infinitesimal transforms $g\phi = \phi + \delta \phi$, $\delta \phi = i \alpha^a t^a \phi$, where $a=1,\dots,\dim G$ and $t^a$ are the generators of the Lie algebra of $G$ in the representation acting on $\phi$, and $\alpha^a$ are 'small' parameters. $G$ invariance means that $V(\phi) = V(\phi+\delta\phi)$, or 
+\begin{align}\label{eq:SM:2}
+V(\phi+\delta\phi) - V(\phi) = i\alpha^a (t^a \phi)_r \left(\pd[V]{\phi}\right)_r = 0 \quad \text{to first order}
+\end{align}
+where $r=1,\dots,N$ are indices of the components of $\phi$. If $\phi_0$ is a min of V, 
+\eq{
+V(\phi_0 + \delta \phi) - V(\phi_0) = \frac{1}{2} \delta\phi_r \underbrace{\frac{\del^2 V}{\del \phi_r \del \phi_s}}_{=M_{rs} \text{ (mass matrix)}} \delta \phi_s + \dots
+}
+Differentiate \ref{eq:SM:2} and evaluate at $\phi_0$ to get 
+\eq{
+\pd{\phi_s}\left[\left( t^a \phi)\right)_r \pd[V]{\phi_r} \right] = \pd{\phi_s} \left(t^a \phi\right)_r \pd[V]{\phi_r}|_{\phi_0} + (t^a \phi_0)_r M^2_{sr} = 0
+}
+Two cases 
+\begin{itemize}
+    \item Unbroken symmetry : $\forall g \in G \; g\phi_0=\phi_0 \Rightarrow \delta\phi=0 \Rightarrow \forall a \; t^a \phi_0 = 0$
+    \item Brojen symmetry : $\exists g\in G \, s.t. \, \exists a \; t^a \phi_0 \neq 0 \Rightarrow t^a \phi_0$ is an eigenstate of $M^2_{rs}$ with eigenvalue 0.  \\
+    Generatros of $H\subset G$ are $\tilde{t}^i \; i=1,\dots,\dim H$ and $\tilde{t}^i \phi_0 = 0$
+\end{itemize}
+
+Now a fact from SFP, for a compact semi-simple lie algebra of $G$ we can define a group invariant inner product and orthogonality. Choose a basis of the Lie algebra $t^a = \set{\tilde{t}^i, \theta^{\tilde{a}} }$ where $\theta^{\tilde{a}}$ are orthogonal to $\tilde{t}^i$ (i.e. $\tr {\tilde{t}}^i \theta^{\tilde{a}} = 0$. Then $\theta^{\tilde{a}} \phi_0$ is a unique zero eigenvector of $M^2_{sr}$ for $\tilde{a}=1,\dots,\dim G - \dim H \Rightarrow \dim G - \dim H$ massless modes  exists (\bam{Goldstone Bosons}) and in general $N-(\dim G - \dim H)$ massive modes exist. \\
+This is the \emph{classical} proof of Goldstone's theorem
+
+\begin{example}
+For $O(N)$ model, $O(N) \to O(N-1)$ as $\Phi_0 = S^{N-1}$, so we expect
+\eq{
+\frac{1}N(N-1) - \frac{1}{2}(N-1)(N-2) = N-1 
+}
+massless modes, and  this is what was found. 
+\end{example}
+
+\subsubsection*{Insert on Group Theory}
+Suppose a $\mc{L}$ written in terms of a complex $N\times N$ matrix field $M$ is invariant under $M \to AMB^{-1}$ where $A,B \in U(N)$. There should be only one identity element in the group, $(I_A,I_B)\in U(N)\times U(N)$ s.t. 
+This is true when $M=I \Rightarrow I=I_A I_B^{-1} \Rightarrow I_A = I_B$. Hence \eq{
+I_A M = M I_A \text{ for arbitrary } M
+}
+\begin{lemma}[Schur's lemma]
+If $\forall g \in G \; SD(g) = D(g) S$ for $D$ some irreducible rep of $G$ then $S \propto I$. 
+\end{lemma}
+Schur's Lemma gives $I_A \propto I \Rightarrow I_A = e^{i\theta} I$ for $\theta\in\mbb{R}$. Thus these $I_A$ form a $U(1)$ normal subgroup. Hence the symmetry group is $\faktor{U(N)\times U(N)}{U(1)}$
+
+\subsection{Goldstone's Theorem}
+Now consider SSB in a fully quantum way. Suppose the symmetry group $G$ of $\mc{L}$ is psontaneously broken to $H\subset G$, i.e. $\phi$ gets a non-zero VEE $\braket{0| \phi | 0} = \phi_0 \neq 0$. The VEV is invariant under $h\in H$,but not under $g^\prime \in G\setminus H$. Let 
+\begin{itemize}
+    \item Lie algebra of G be $\set{t^a : a=1,\dots,\dim G}$
+    \item Lie algebra of H be $\set{\tilde{t}^i : i=1,\dots,\dim H}$
+\end{itemize}
+$G$ is a symmetry of $\mc{L} \Rightarrow $ conserved currents from Noether's theorem 
+\eq{
+j^{a\mu}(x) = i \frac{\del \mc{L}}{\del(\del_\mu \phi)}t_a \phi
+}
+and charges 
+\eq{
+Q^a = \int d^3 x j^{a0}(x) = \int d^3 x \pi(x) t_a \phi(x)
+}
+These induce a representation on the Lie algebra 
+\eq{
+\delta \phi(0) = i\alpha^a t^a \phi(0) = i\comm[Q^a]{\phi(0)} \alpha^a 
+}
+Consider now 
+\eq{
+C^{a\mu} &= \braket{0 | \comm[j^{a\mu}(x)]{\phi(0)}|0} \\
+&= \sum_n \left[ \braket{0|j^{a\mu}(x)|n}\braket{n|\phi(0)|0} - \braket{0|\phi(0)|n}\braket{n|j^{a\mu}(x)|0} \right] \\
+&= i \int \frac{d^4 k}{(2\pi)^3 } \left[ \rho^{a\mu}(k) e^{-ik \cdot x} - \tilde{\rho}^{a\mu}(k) e^{ik \cdot x}   \right]
+}
+where 
+\eq{
+i \rho^{a\mu}(k) &= (2\pi)^3 \sum_n \delta^{(4)}(k-p_n) \braket{0|j^{a\mu}(0)|n}\braket{n|\phi(0)|0} \\
+i \tilde{\rho}^{a\mu}(k) &= (2\pi)^3 \sum_n \delta^{(4)}(k-p_n) \braket{0|\phi(0)|n}\braket{n|j^{a\mu}(0)|0}
+}
+and recall 
+\eq{
+j^{a\mu}(x) = e^{ip \cdot x} j^{a\mu}(0) e^{-ip \cdot x}
+}
+This is the \bam{K\"allen Lehmann spectral representation}. Lorentz covariance gives $\rho^{a\mu} \propto k^\mu \propto \tilde{\rho}^{a\mu}$, physical states with $k^0 > 0$. Hence 
+\eq{
+\rho^{a\mu}(k) &= k^\mu \Theta(k^0)\rho^a(k^2) \\
+\tilde{\rho}^{a\mu}(k) &= k^\mu \Theta(k^0)\tilde{\rho}^a(k^2)
+}
+So 
+\eq{
+C^{a\mu} &= - \del^\mu \int \frac{d^4 k}{(2\pi)^3 } \Theta(k^0) \left[ \rho^a(k^2) e^{-ik \cdot x} + \tilde{\rho}^a e^{ik \cdot x} \right]
+}
+Now consider the propagator 
+\eq{
+D(z-y;\sigma) &= \braket{0|\phi(z) \phi(y) | 0} \\
+&= \int \frac{d^4 p}{(2\pi)^3} \, \Theta(p^0) \delta(p^2-\sigma) e^{-ip \cdot (z-y)}
+}
+and recognise 
+\eq{
+\rho(k^2) = \int d\sigma \, \rho(\sigma) \delta(k^2 - \sigma)
+}
+so 
+\eq{
+C^{a\mu} &= - \del^\mu \int  d\sigma \, \left[ \rho^a(\sigma) D(x;\sigma) + \tilde{\rho}^a D(-x,\sigma) \right]
+}
+For $x^2 < 0$ $D(x,\sigma) = D(-x,\sigma)$. The requiring $x^2 < 0 \Rightarrow C^{a\mu}=0$, i.e. causality, yields 
+\eq{
+\rho^a(\sigma) = -\tilde{\rho}^a(\sigma)
+}
+\begin{align}\label{eq:SM:3}
+\Rightarrow C^{a\mu} = -\del^\mu \int d\sigma \, \rho^a(\sigma) i \Delta(x,\sigma)
+\end{align}
+where 
+\eq{
+i\Delta(x,\sigma) &= D(x,\sigma) - D(-x,\sigma) \\
+&= \int \frac{d^4 k }{(2\pi)^3} \delta(k^2 - \sigma) \eps(k^0) e^{ik \cdot x} \\
+\eps(k^0) &= \left\{ \begin{array}{cc} 1 & k^0 > 0 \\ -1 & k^0 < 0 \end{array} \right. 
+}
+Now 
+\eq{
+\del_\mu j^{a\mu} = 0 \Rightarrow -\del^2 \int d\sigma \, \rho^a(\sigma) i \Delta(x,\sigma) = 0
+}
+and the Klein Gordon equation gives 
+\eq{
+(\del^2 + \sigma) \Delta(x,\sigma) = 0 \Rightarrow \int d\sigma \, \sigma \rho^a(\sigma) i \Delta(x,\sigma) = 0 
+}
+For this second equation to hold $\forall x$, using that the norm of the states is positive definites so $\rho > 0$ gives 
+\eq{
+\sigma \rho(\sigma) = 0 
+}
+This gives two possibilites 
+\begin{itemize}
+    \item $\forall \sigma \, \rho(\sigma) = 0 \Rightarrow C^{a\mu} = 0 \Rightarrow t^a \phi = 0 $ (unbroken generator) 
+    \item $\rho^a(\sigma) = N^a \delta(\sigma)$ where $N^a$ is a dimensionful non-zero constant. 
+\end{itemize}
+In the second case substitute into  \ref{eq:SM:3} to get 
+\eq{
+C^{a\mu} = -i N^a \del^\mu \Delta(x,\sigma) \\ 
+\Rightarrow \braket{0| \comm[Q^a]{\phi(0)}|0} = -iN^a \int d^3 x \, \del^0 \Delta(x,0) = iN^a \\
+\Rightarrow t^a \phi = \comm{0 | \comm[Q^a]{\phi(0)}|0} = iN^a
+}
+Now some states in $\rho^{a\mu},\tilde{\rho}^{a\mu}$ must be non zero. Label these $B(p)$ s.t. 
+\eq{
+\braket{0 | j^{a\mu}(0) | B(p)} = i F_B^a p^\mu \quad F_B^a \text{ a dim 1 constant} \\
+\braket{B(p) | \phi(0) | 0} = Z^B \quad Z^B \text{ dim 0 constant}
+}
+$B(p)$ are spin 0 and massless as $\sigma = p^2 = 0$. Now 
+\eq{
+i \rho^{a\mu}(k) &= ik^\mu \Theta(k^0) N^a \delta(k^2) \\
+&= \sum_B \int \frac{d^3 p }{2|\bm{p}|} \, \delta^{(4)}(k-p) \braket{0|j^{a\mu}(0)|B(p)}\braket{B(p) | \phi(0) | 0} \\
+\Rightarrow \int \frac{d^3 p }{2|\bm{p}|} 
+\delta^{(4)}(k-p) ik^\mu N^a &= \int \frac{d^3 p }{2|\bm{p}|} 
+\delta^{(4)}(k-p) i p^\mu \sum_B F_B^a Z^B \\
+\Rightarrow N^a &= \sum_B F_B^a Z^B
+}
+Hence we have $n$ $\rho^a$ which have non-zero contribution at $\sigma = 0$, so $F_B^a$ is a rank $n$ matrix gives we have $n$ \bam{Goldstone bosons}. \\
+
+Note we've assumed Lorentz invariance in our theory with $>2$ spacetime dimensions, and also that states have positive definite norm. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Abelian Higgs Mechanism}
+Gauge theories can violate this theorem, e.g. in QED, imposing a Lorentz invariance gauge condition (Lorentz gauge) can lead to states with a negative norm. Hence a gauge with no negative norm states breaks Lorentz invariance. \\
+
+Consider scalar electrodynamics with complex scalar $\phi(x)$ nad photon $A_\mu(x)$ 
+\eq{
+\mc{L} &= -\frac{1}{4} F_{\mu\nu}F^{\mu\nu} + (D_\mu \phi)^\ast (D^\mu \phi) - V(\phi^\ast \phi) \\
+F_{\mu\nu} &= \del_\mu A_\nu - \del_\nu A_\mu \\
+D_\mu &= \del_\mu + iq A_\mu 
+}
+With $U(1)$ gauge invariance, $\phi(x) \to e^{i\alpha(x)}\phi(x)$, $\alpha\in\mbb{R}$, and $A_\mu(x) \tp A_\mu(x) - \frac{1}{q} \del_\mu \alpha(x)$. Take 
+\eq{
+V(\phi^\ast \phi) = \mu^2 |\phi|^2 + \lambda |\phi|^4 \quad \lambda>0
+}
+Then 
+
+\begin{itemize}
+    \item $\mu^2 > 0 \Rightarrow |\phi|^2$ is usual mass term for $\phi$ and there is a unique vacuum at $\phi=0$. 
+    \item $\mu^2 < 0 \Rightarrow $ minima at $|\phi_0|^2=-\frac{\mu^2}{2\lambda} = \frac{v^2}{2}$. 
+\end{itemize}
+Wlog expand around real $\phi_0$ 
+    \eq{
+    \phi(x) &= \frac{1}{\sqrt{2}} e^{i\frac{\theta(x)}{v}} \left( v + \eta(x) \right) \\
+    \Rightarrow \mc{L} = \frac{1}{2}\left( \del_\mu \eta \del^\mu \eta - 2\lambda v^2 \eta^2 \right) + \frac{1}{2} (\del_\mu \theta) (\del^\mu \theta) - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + qv A_\mu \del^\mu \theta + \frac{q^2 v^2}{2} A_\mu A^\mu + \mc{L}_{int}
+    }
+where $\mc{L}_{int}$ are terms with $>2$ fields. Appear to have mass for $\eta,A_\mu$ but not $\theta$. Transform to unitary gauge $\alpha(x) = -\frac{1}{v} \theta(x) $
+\eq{
+\phi \to e^{-i\frac{\theta}{v}} \phi = \frac{1}{\sqrt{2}} \left( v + \eta \right) \\
+A_\mu \to A_\mu + \frac{1}{vq} \del_\mu \theta \\
+\mc{L} = \frac{1}{2} (\del_\mu \eta \del^\mu \eta - 2\lambda v^2 \eta^2) - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + \frac{q^2 v^2}{2} A_\mu A^\mu + \mc{L}_\int
+}
+Hence 
+\begin{itemize}
+    \item Photon has mass $m_A^2 = q^2 v^2$ 
+    \item Scalar $\eta$ has mass $m_\eta^2 = 2\lambda v^2 = -2\mu^2$ 
+    \item Goldstone modes $\theta$ has been 'eaten' to become longitudinal polarisation of $A_\mu$. 
+\end{itemize}
+Now 
+\eq{
+\mc{L}_{int} = \frac{q^2}{2} A_\mu A^\mu \eta^2 q m_A A_\mu A^\mu \eta - \frac{\lambda}{4} \eta^4 - m_\eta \sqrt{\frac{\lambda}{2}} \eta^3
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Non Abelian Gauge Theories (SU(N))}
+Consider the transform 
+\eq{
+\psi_i (x) \to U_{ij}(x) \psi_j (x) = \exp \left( i t^a \theta^a(x) \right)_{ij} \psi_j(x)
+}
+where the $U$ are matrices for an n-dimensional representation $R$ of a unitary Lie group, and $t^a$ are the hermitian generators of $R$ forming a Lie algebra. Then 
+\eq{
+\bar{\psi}_i(x) \to \bar{\psi}_j (x) (U^\dagger (x))_{ji} = \bar{\psi}_j (x) \exp\left( - i t^a \theta^a(x) \right)_{ji} 
+}
+Let the Lie algebra be defined by 
+\eq{
+\comm[t^a]{t^b} = i f^{abc}t^c
+}
+with 
+\eq{
+\tr(t^a t^b) = T(R) \delta^{ab}
+}
+as the normalisation, $T(R)$ the \bam{Dynkin index} of the representation. (Note for the fundamental rep of SU(N) $T(R)=\frac{1}{2}$). The covariant derivative is 
+\eq{
+(D_\mu)_{ij} = \del_\mu \delta_{ij} + ig (t^a A_\mu^a)_{ij} \\
+}
+we want 
+\eq{
+ (D_\mu \psi)_i \to ( U D_\mu \psi)_i \\
+ \text{s.t} \quad \mc{L} = \bar{\psi}_i (i \slashed{D}_{ij} - m\delta_{ij}) \psi_j
+}
+Hence the gauge field transformation 
+\eq{
+t^a A_\mu^a \to U t^a A_\mu^a U^{-1} + \frac{i}{g} (\del_\mu U) U^{-1}
+}
+The infinitesimal transform is 
+\eq{
+\delta A_\mu^a = -\frac{1}{g} \del_\mu \theta^a - f^{abc} \theta^b A_\mu^c
+}
 
 
- \end{document} 
+
+\end{document} 

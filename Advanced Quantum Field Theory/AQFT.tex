@@ -593,15 +593,16 @@ In the first example sheet, there are two typos.
 \end{itemize}
 \end{remark}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{LSZ (Lehmann-Symanzik-Zimmermann) reduction formula}
+\subsection{LSZ (Lehmann-Symanzik-Zimmermann) reduction formula}
 
 \begin{remark}
-The Main results is this : there is a direct relation between scatterin amplitudes and correlation functions (Vacuum Expectation Values). 
+The Main results is this : there is a direct relation between scattering amplitudes and correlation functions (Vacuum Expectation Values). 
 \end{remark}
 
-\section{2 to 2 scattering of real scalar fields}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{2 to 2 scattering of real scalar fields}
 Let look at the example of 2 to 2 scattering of real scalar fields
 Consider first free scalar fields 
 \eq{
@@ -609,10 +610,10 @@ Consider first free scalar fields
 }
 Invert to find 
 \eq{
-\int  d^3 x e^{i p \cdot x} \varphi(x) &= \frac{1}{2E_{\bm{p}}} a(\bm{p}) + \frac{1}{2E_{\bm{p}}} e^{2iE_{\bm{p}}p} a^\dagger(-\bm{p})  \\
-\int  d^3 x e^{i p \cdot x} \del_0\varphi(x) &= -\frac{i}{2} a(\bm{p}) + \frac{i}{2} e^{2iE_{\bm{p}}p} a^\dagger(-\bm{p}) \\
-\Rightarrow a(\bm{p}) &= \int d^3 x e^{ip\cdot x}(i \del_0 \varphi(x) + E_{\bm{p}} \varphi(x) ) \\
-a^\dagger(\bm{p}) = \int d^3 x e^{-ip\cdot x}(-i \del_0 \varphi(x) + E_{\bm{p}} \varphi(x) )
+\int  d^3 x \,  e^{i p \cdot x} \varphi(x) &= \frac{1}{2E_{\bm{p}}} a(\bm{p}) + \frac{1}{2E_{\bm{p}}} e^{2iE_{\bm{p}}t} a^\dagger(-\bm{p})  \\
+\int  d^3 x \, e^{i p \cdot x} \del_0\varphi(x) &= -\frac{i}{2} a(\bm{p}) + \frac{i}{2} e^{2iE_{\bm{p}}t} a^\dagger(-\bm{p}) \\
+\Rightarrow a(\bm{p}) &= \int d^3 x \,  e^{ip\cdot x}(i \del_0 \varphi(x) + E_{\bm{p}} \varphi(x) ) \\
+a^\dagger(\bm{p}) &= \int d^3 x \,  e^{-ip\cdot x}(-i \del_0 \varphi(x) + E_{\bm{p}} \varphi(x) )
 }
 
 \subsubsection*{Initial state}
@@ -626,7 +627,7 @@ where the vacuum $\ket{0}$ satisfies $\braket{0|0}=1$ and $a(\bm{p})\ket{0}=0$. 
 }
 Introduce a Guassian wavepacket 
 \eq{
-a_1^\dagger = \int d^3 p f_1(\bm{p}) a^\dagger(\bm{p})
+a_1^\dagger = \int d^3\bm{p} \,  f_1(\bm{p}) a^\dagger(\bm{p})
 }
 with 
 \eq{
@@ -635,8 +636,8 @@ f_1(\bm{p}) \propto \exp \left[ -\frac{(\bm{p}-\bm{p}_1)^2}{4\sigma^2}\right]
 for some $\bm{p}_1,\sigma$. 
 Similarly, for a second particle 
 \eq{
-a_2^\dagger = \int d^3 p f_2(\bm{p}) a^\dagger(\bm{p}) \\
-f_1(\bm{p}) \propto \exp \left[ -\frac{(\bm{p}-\bm{p}_2)^2}{4\sigma^2}\right] \quad $\bm{p}_1 \neq \bm{p}_2$. 
+a_2^\dagger = \int d^3\bm{p} \,  f_2(\bm{p}) a^\dagger(\bm{p}) \\
+f_1(\bm{p}) \propto \exp \left[ -\frac{(\bm{p}-\bm{p}_2)^2}{4\sigma^2}\right] \quad \bm{p}_1 \neq \bm{p}_2. 
 }
 Now evolve Gaussain wavepackets in the far distant past(/future), so the overlap between Gaussians is vanishingly small. Assume this work s even when interactions are present. The problem is that $a^\dagger$ becomes times dependent. We will assume that as $t\to \pm\infty$, $a_1^\dagger,a_2^\dagger$ coincide with free theory expressions.
 
@@ -647,14 +648,12 @@ Let the initial/final states be
 }
 with 
 \eq{
-\braket{i|i} = 1 = \braket{f|f} \\
-\bm{p}_1 \neq \bm{p}_2 \\
-\bm{p}_{1^\prime} \neq \bm{p}_{2^\prime}
+\braket{i|i} = &1 = \braket{f|f} \\
+\bm{p}_1 &\neq \bm{p}_2 \\
+\bm{p}_{1^\prime} &\neq \bm{p}_{2^\prime}
 }
-The scattering amplitude is the 
-\eq{
-\braket{f|i}
-}
+The scattering amplitude is then $
+\braket{f|i}$
 Noting 
 \eq{
 a_1^\dagger(\infty) - a_1^\dagger(-\infty) &= \int_{-\infty}^\infty \del_0 a_1^\dagger(t) \quad \text{(FTC)} \\
@@ -666,7 +665,7 @@ a_1^\dagger(\infty) - a_1^\dagger(-\infty) &= \int_{-\infty}^\infty \del_0 a_1^\
 }
 Now time ordering 
 \eq{
-\braket{f|i} = \braket{0| \mc{J} a_{1^\prime}(\infty)a_{2^\prime}(\infty)a_1(-\infty)a_2^(-\infty) | 0}
+\braket{f|i} = \braket{0| \mc{J} a_{1^\prime}(\infty)a_{2^\prime}(\infty)a_1(-\infty)a_{2^\prime}(-\infty) | 0}
 }
 Use equations to substitute 
 \eq{
@@ -691,8 +690,279 @@ We may weaken the assumptions to
 under which LSZ still applies. e.g. 
 \eq{
 \mc{L} &= \frac{1}{2} \del_\mu \varphi \del^\mu \varphi - \frac{1}{2}m^2 \varphi^2 + \dots \\
-\text{renormalise} \\
+\text{so renormalising} \\
 &= \frac{1}{2} Z_\varphi \del_\mu \varphi \del^\mu \varphi - \frac{1}{2} Z_m m^2 \varphi^2 + \dots 
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Scalar Field Theory}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Wick rotation}
+The operation of moving from Minkowski space (signature $(+,-,-,-)$) to Euclidean space (signature $(+,+,+,+)$) is \bam{Wick rotation}. 
+\begin{example}
+\eq{
+\mc{L} = \frac{1}{2} \del_\mu \varphi \del^\mu \varphi - V(\varphi) & \to \mc{L} = \frac{1}{2} \del_\mu \varphi \del^\mu \varphi + V(\varphi) \\
+Z = \int \mc{D} \varphi \, e^{i\int dx^0 d^3x \mc{L}} & \to Z = \int \mc{D} \varphi \, e^{i\int dx_4 d^3x \mc{L}} \quad (ix^0 = x_4)
+}
+\end{example}
+The Minkowski propagator is 
+\eq{
+\frac{i}{k^2 - m^2 + i\eps} = \frac{i}{(k^0)^2 - |\bm{k}|^2 - m^2 + i\eps}
+}
+whereas in Euclidean space the propagator is 
+\eq{
+\frac{1}{k^2+m^2}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Generating functional}
+The free field action with a source is 
+\eq{
+S[\varphi,j] = \int d^4 x \left( \frac{1}{2} \del_\mu \varphi \del^\mu \varphi + \frac{1}{2} m^2 \varphi^2 + j(x) \varphi(x) \right)
+}
+Fourier transform by letting 
+\eq{
+\varphi(x) = \int \fmeas e{ip\cdot x} \tilde{\varphi}(p)
+}
+giving 
+\eq{
+S_0[\tilde{\varphi},\tilde{j}]= \frac{1}{2} \int \fmeas \left[ \tilde{\varphi}(-k)(k^2+m^2) \tilde{\varphi}(k) + \tilde{j}(-k) \tilde{\varphi}(k) + \tilde{j}(k) \tilde{\varphi}(-k) \right]
+}
+Let $\tilde{\chi}(k) = \tilde{\varphi}(k) + \frac{\tilde{j}(k)}{k^2+m^2}$, and so completing the square
+\eq{
+S_0[\tilde{\varphi},\tilde{j}]] = \frac{1}{2} \int \fmeas \left[ \tilde{\chi}(-k)(k^2+m^2)\tilde{\chi}(k) + \frac{\tilde{j}(-k)\tilde{j}(k)}{k^2+m^2} \right]
+}
+The $\chi$ path integral is just over a Gaussian. Assum normalisation such that $Z_0[0]=1$ 
+\eq{
+Z_0[\tilde{j}] &= \exp \left[ -\frac{1}{2} \int \fmeas \frac{\tilde{j}(-p)\tilde{j}(p)}{p^2+m^2}\right] \\
+Z_0[j] = \exp \left[ -\frac{1}{2} \int d^4 x \, d^4 x^\prime \, j(x) \Delta(x-x^\prime) j(x^\prime) \right]
+}
+where the \bam{Feynmann propagator} is 
+\eq{
+\Delta(x-x^\prime) - \int \fmeas \frac{e^{ip\cdot (x-x^\prime)}}{p^2+m^2}
+}
+This is a Green's function for the Klein Gordon equation
+\eq{
+(\del_x^2 + m^2) \Delta(x-x^\prime) = \delta^{(4)}(x-x^\prime)
+}
+Recalls 
+\eq{
+\Delta(x-x^\prime) = \braket{0 | \mc{J} \varphi(x) \varphi(x^\prime) | 0}
+}
+so we see that 
+\eq{
+\braket{0 | \mc{J} \varphi(x) \varphi(x^\prime) | 0} = \left( - \frac{\delta}{\delta j(x)} \right)\left( - \frac{\delta}{\delta j(x^\prime)} Z_0[j]|_{j=0} \right)
+}
+where these are functional derivatives such that 
+\eq{
+\frac{\delta}{\delta f(x_2)} f(x_1) = \delta(x_1-x_2)
+}
+a continual generalisation of 
+\eq{
+\pd{x_i}x_j = \delta_{ij}
+}
+Similarly, the 4-point function in the free theory is 
+\eq{
+\braket{0 | \mc{J} \varphi(x_1) \varphi(x_2) \varphi(x_3) \varphi(x_4) | 0} = \Delta(x_1-x_2)\Delta(x_3-x_4)+\Delta(x_1-x_3)\Delta(x_2-x_4)+\Delta(x_1-x_4)\Delta(x_3-x_2)
+}
+The results of 0-dimensions apply with the complication that $\Delta(x-x^\prime)$ is non-trivial. 
+In an \emph{interacting} theory, write the full exact propagator as 
+\eq{
+\bm{\Delta}(x_1-x_2) = \braket{0 | \mc{J} \varphi(x_1) \varphi(x_2) | 0}
+}
+Using the Wilsonian effective action $W[j] = -\log Z[j]$ and notation $\delta_i = - \frac{\delta}{\delta j(x_i)}$ gives 
+\eq{
+\bm{\Delta}(x_1-x_2) = \delta_1 \delta_2 Z[j]|{j=0} = -\delta_1 \delta_2 W[j]|{j=0} + (\delta_1 W[j])(\delta_2 W[j])|_{j=0}
+}
+Assume we have 
+\eq{
+\braket{0 | \varphi(x_i) | 0} - \delta_i W[j] |_{j=0} = 0 
+}
+so 
+\eq{
+\bm{\Delta}(x_1-x_2) = -\delta_1 \delta_2 W[j]|{j=0}
+}
+Consider the 4-point function 
+\eq{
+\braket{0 | \mc{J} \varphi(x_1) \varphi(x_2) \varphi(x_3) \varphi(x_4) | 0} &= \delta_1 \delta_2 \delta_3 \delta_4 Z[j]|_{j=0} \\
+&= \left[ - \delta_1 \delta_2 \delta_3 \delta_4 W + (\delta_1 \delta_2 W)(\delta_3 \delta_4 W) + (\delta_1 \delta_3 W)(\delta_2 \delta_4 W)  + (\delta_1 \delta_4 W)(\delta_3 \delta_2 W)  \right]
+}
+We show that the last three terms correspond to "non-scattering" LSZ for 2-2 scattering 
+Recalling 
+\eq{
+\braket{f|i} &= (i)^4 \int d^4 x_1 d^4 x_2 d^4 x_{1^\prime} d^4 x_{2^\prime} e^{-ip_1 \cdot x_1} e^{-ip_2 \cdot x_2} e^{ip_{1^\prime} \cdot x_{1^\prime}} e^{ip_{2^\prime} \cdot x_{2^\prime}} \\
+& \cdot (\del_1^2 + m^2)(\del_{1^\prime}^2 + m^2)(\del_2^2 + m^2)(\del_{2^\prime}^2 + m^2) \\
+& \cdot \braket{0| \mc{J} \varphi(x_1) \varphi(x_2) \varphi(x_{1^\prime}) \varphi(x_{2^\prime})|0}
+}
+Notate 
+\eq{
+F(x_{ij}) = (\del_i^2+m^2) (\del_j^2 + m^2) \bm{\Delta}^{(m)}(x_{ij})
+}
+with $\tilde{F}$ its F.T and $x_{ij} = x_i = x_j$, $k_{ij} = \frac{1}{2}(k_i \cdot k_j)$. 
+The contribution of the $(\delta_1 \delta_2 W)(\delta_3 \delta_4 W)$ terms are 
+\eq{
+\braket{f|i} &= (i)^4 \int d^4 x_1 d^4 x_2 d^4 x_{1^\prime} d^4 x_{2^\prime} e^{-ip_1 \cdot x_1} e^{-ip_2 \cdot x_2} e^{ip_{1^\prime} \cdot x_{1^\prime}} e^{ip_{2^\prime} \cdot x_{2^\prime}}  F(x_{1 1^\prime}) F(x_{2 2^\prime}) \\
+&= (2\pi)^8 \delta^{(4)}(k_1 - k_1^\prime) \delta^{(4)}(k_2 - k_2^\prime) \tilde{F}(\bar{k}_{1 1^\prime}) \tilde{F}(\bar{k}_{2 2^\prime})
+}
+so $k_1 = k_1^\prime$, $k_2 = k_2^\prime$ and hence there is no scattering. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Feynmann Rules}
+
+\begin{prop}
+`for function $F,G$
+\eq{
+G(-\pd{j})F(-j) = F(\pd{\varphi}) G(\varphi) e^{-j\varphi}|_{\varphi=0}
+}
+\end{prop}
+\begin{proof}
+Consider $F(j)=e^{\beta j}$, $G(\varphi)=e^{\alpha\varphi}$
+LHS:
+\eq{
+G(-\pd{j})F(-j) &= e^{-\alpha \pd{j}} e^{-\beta j} \\
+&= \sum_{n=0}^\infty \frac{1}{n!} (-\alpha)\pd{j})^n e^{-\beta j} \\
+&= e^{\alpha\beta}e^{-\beta j} = F(\alpha-j)
+}
+RHS:
+\eq{
+F(\pd{\varphi}) G(\varphi) e^{-j\varphi}|_{\varphi=0} &= e^{\beta \pd{\varphi}} e^{\alpha \varphi - j \varphi}|_{\varphi=0} \\
+&= e^{\beta(\alpha-j)} = F(\alpha-j)
+}
+Then for general F,G, write them as Fourier series and apply the above. 
+\end{proof}
+We will employ this identity in interacting scalar field theory in the form 
+\eq{
+e^{-\mc{L}_{int}(-\pd{j})}e^{-\frac{1}{2}j\Delta j} = e^{-\frac{1}{2}\pd{\varphi} \Delta \pd{\varphi}} e^{-\mc{L}_{int}(\varphi) - j\varphi}|_{\varphi=0}
+}
+Take 
+\eq{
+\mc{L}= \mc{L}_0 + \mc{L}_{int} \\
+\mc{L}_0 = \frac{1}{2}\del_\mu \varphi \del^\mu \varphi + \frac{1}{2}m^2 \varphi^2
+}
+Then 
+\eq{
+Z[j] &= \int \mc{D} \varphi \, \exp \left[ - \int d^4 x \, (\mc{L}_0 + \mc{L}_{int}+j\varphi) \right] \\
+&= \exp \left\lbrace - \int d^4y \, \mc{L}_{int}(-\pd{j}) \right\rbrace \underbrace{\int \mc{D}\varphi \, \exp \left[ - \int d^4 x \, (\mc{L}_0 +j\varphi) \right]}_{=Z_0[j]} \\
+&= \exp \left\lbrace - \int d^4y \, \mc{L}_{int}(-\pd{j}) \right\rbrace \exp\left[ - \frac{1}{2} \int d^4 x \, d^4 x^\prime \, j(x) \Delta(x-x^\prime) j(x^\prime) \right] \\
+&= \exp\left[ - \frac{1}{2} \int d^4 x \, d^4 x^\prime \, \frac{\delta}{\delta \varphi(x)} \Delta(x-x^\prime) \frac{\delta}{\delta \varphi(x^\prime)} \right] \exp\left[ - \int d^4y \, \mc{L}_{int}(\varphi) +j(y)\varphi(y) \right]|_{\varphi=0}
+}
+The Feynmann rules are then based on the series expansion of exponentials in $Z[j]$. 
+\begin{itemize}
+    \item Propagators are $\Delta(x-x^\prime)$
+    \item Vertices with $n$ lines are $(\frac{\delta}{\delta \varphi(x)})^n (-\mc{L}_{int} [\varphi])|_{\varphi=0} = -v^{(n)}$
+    \item Integrate over all positions of internal vertices 
+    \item Symmetry factors as before 
+\end{itemize}
+
+In momentum space we Fourier transform 
+\eq{
+\int d^4x_1 \dots d^4 x_n \, e^{-i(p_1\cdots x_1 + \dots p_n \dots x_n)}\braket{\varphi(x_1) \dots \varphi(x_n)} \\
+\tilde{\Delta}(k) = \int d^4 y \, \Delta(y) e^{-i k \cdot y} = \frac{1}{k^2+m^2}
+}
+Integral over positions give delta function which conserve momentum at each vertex and overall:
+\eq{
+(2\pi)^4 \delta^{(4)}(\sum_l p_j)
+}
+$p_j$ the external momenta. Hence the rules are
+\begin{itemize}
+    \item Propagator gives factor $\frac{1}{k^2+m^2}$
+    \item Vertex gives factor $(2\pi)^4 \delta^{(4)}(\sum_l p_j)$ , $p_i$ heading \emph{into} the vertex. 
+    \item Integrate over all momenta $\int \frac{d^4 k}{(2\pi)^2}$
+\end{itemize}
+For fully connected diagrams, it is a graph theory fact that 
+\eq{
+L = I-V+1 \\
+\text{loops } = \text{ internal } - \text{ vertices } + 1
+}
+we can use this to simplify 
+\eq{
+\int \left[ \prod_{i=1}^I \frac{d^4 k_i}{(2\pi)^4}\right] \left[ \prod_{v=1}^V (2\pi)^4 \delta^{(4)}(\sum_l p_j)\right]
+}
+factor out overall external momentum conserving $\delta$ function then do $V-1$ integrals over the rest of the $\delta$ functions so we are left with $L$ non trivial integral. 
+\eq{
+(\frac{1}{(2\pi)^4})^I (2\pi)^{4V} = \frac{1}{(2\pi)^{4(L-1)}}
+}
+so we have the simplified rules 
+\begin{itemize}
+    \item External lines $\frac{1}{p_j^2+m^2}$
+    \item Internal lines $\frac{1}{k^2+m^2}$
+    \item Vertices  $-v^{(n)}$ from coupling $\frac{v^{(n)}}{n!}\varphi^n$
+    \item Momentum conservation at each vertex 
+    \item Integral over each undetermined loop momenta 
+    \item Overall conservation of momentum $(2\pi)^4 \delta^{(4)}(\sum_j p_j)$
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Renormalisation}
+Let us consider $\varphi^4$ theory 
+\eq{
+S[\varphi] = \int d^4 x \, \left[ \frac{1}{2} \del_\mu \varphi \del^\mu \varphi + \frac{1}{2} m^2 \varphi^2 + \frac{\lambda}{4!}\varphi^4 \right]
+}
+In momentum space, the full propagator is 
+\eq{
+\tilde{\Delta}(p^2) &= \int d^4 x \, e^{-ip \cdot x} \braket{\varphi(x) \varphi(0)}_{\text{connected}} \\
+&= \frac{1}{p^2+m^2} + \frac{1}{p^2+m^2} \Pi(p^2) \frac{1}{p^2+m^2}+\frac{1}{p^2+m^2}\Pi(p^2)\frac{1}{p^2+m^2}\Pi(p^2)\frac{1}{p^2+m^2} + \dots \\
+&= \frac{1}{p^2+m^2 - \Pi(p^2)}
+}
+$\Pi(p^2)$ is called the \bam{self energy}\footnote{Note $\Pi$ is a contribution to the quantum effective action}. In a perturbative expansion, one loop on an external line \hl{see drawings} gives a contribution
+\eq{
+-\frac{\lambda}{2} \int \frac{d^4k}{(2\pi)^4} \frac{1}{k^2+m^2}
+}
+If we introduce a UV cut off such that we only integrate up to $|k| < \Lambda$ we get 
+\eq{
+-\frac{\lambda}{2} \int^\Lambda \frac{d^4k}{(2\pi)^4} \frac{1}{k^2+m^2} &= -\frac{\lambda S_3}{2(2\pi)^4} \int^\Lambda_0 \frac{k^3 dk}{k^2+m^2} \\
+&= - \frac{\lambda S_3 m^2}{4(2\pi)^4} \int_0^\frac{\Lambda^2}{m^2} \frac{udu}{1+u} \quad \text{letting } u=\frac{k^2}{m^2}\\
+&= - \frac{\lambda}{32\pi^2} \left[ \Lambda^2 - m^2 \log \left( 1 + \frac{\Lambda^2}{m^2}\right) \right]
+}
+where $d^d k = S_{d-1} |k|^{d-1} d|k|$ where $S_{d-1}=\frac{2\pi^\frac{d}{2}}{\Gamma\left(\frac{d}{2}\right)}$ is the hypervolume of the sphere $S^{d-1}$. 
+Suppose we allow the coupling to depend on $\Lambda$ by adding counter terms to the action 
+    \eq{
+    S[\varphi] \to S[\varphi] + \hbar S^{ct}[\varphi,\Lambda] \\ 
+    S^{ct}[\varphi] = \int d^4 x \, \left[ \frac{\delta Z}{2} \del_\mu \varphi \del^\mu \varphi + \frac{1}{2} \delta (m^2) \varphi^2 + \frac{\delta \lambda}{4!} \varphi^4 \right] 
+    }
+The new terms added to $\Pi(p^2)$ are 
+\eq{
+\Pi^{1-loop}(p^2) = -p^2 \delta Z - \delta m^2 -\frac{\lambda}{32\pi^2} \left[ \Lambda^2 - m^2 \log \left( 1 + \frac{\Lambda^2}{m^2}\right) \right]
+}
+All the 2-loops to the counter term diagrams must also be included. Now we tune $\delta Z, \delta m^2 , \delta \lambda$ to cancel divergences. In other words we \bam{renormalise} $\varphi, m^2, \lambda$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{On Shell Renormalisation Scheme}
+The need to |regulate" the theory by cancelling divergences does not uniquely determine the counter terms. Impose \bam{renormalisation conditions} that we call a \bam{scheme}. Physical observables do not depend on the scheme. 
+
+\begin{definition}[On Shell Scheme]
+In the \bam{on shell scheme} fix $\delta Z, \delta m^2 , \delta \lambda$ by requiring 
+\begin{itemize}
+    \item $\tilde{\Delta}(p^2)$ has a simple pole at some experimentally observable mass $-p^2 = m_{phys}^2$ (Euclidean spacetime). 
+    \item $Res_{-p^2 = m_{phys}^2} (\tilde{\Delta}(p^2)) = 1$
+\end{itemize}
+\end{definition}
+The conditions for the on shell scheme give, as 
+\eq{
+\tilde{\Delta}(p^2)  = \frac{1}{p^2+m^2 - \Pi(p^2)}
+}
+\begin{itemize}
+    \item $\Pi(-m_{phys}^2) = m^2 - m_{phys}^2 \Rightarrow \delta m^2 = -\frac{\lambda}{32\pi^2} \left[ \Lambda^2 - m^2 \log \left( 1 + \frac{\Lambda^2}{m^2}\right) \right]$ 
+    \item $\pd[\Pi]{p^2}|_{-p^2 = m_{phys}^2} = 0 \Rightarrow \delta Z = 0$
+\end{itemize}
+These give 
+\eq{
+\forall p^2 \; \Pi^{1-loop}(p^2) = 0
+}
+which is a consequence of the fact that the 1 loop diagram has no $p$ dependence. 
+
+\subsubsection*{Spotting UV Divergences}
+We saw 
+\eq{
+\int^\Lambda \frac{d^4k}{(2\pi)^4} \frac{1}{k^2+m^2} \sim \Lambda^2
+}
+Generically, 
+\eq{
+\int^\Lambda \frac{d^n k}{k^m} \sim \left\{ \begin{array}{cc} \Lambda^{n-m} & n\neq m \\ \log \Lambda & n=m \end{array} \right. 
+}
+
+
+
+
 
 \end{document}

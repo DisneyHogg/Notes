@@ -1,0 +1,98 @@
+
+\documentclass{article}
+
+\usepackage{header}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Preamble
+
+\title{Supersymmetry Notes}
+\author{Linden Disney-Hogg}
+\date{January 2019}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Supersymmetric Quantum Mechanics}
+
+\eq{
+S[x,\psi,\bar{\psi}] = \int \frac{1}{2}\dot{x}^2 + \frac{1}{2}(\bar{\psi} \dot{\psi} - \dot{\bar{\psi}} \psi) - \frac{1}{2}(\del h)^2 - \bar{\psi}\psi \del^2 h 
+}
+
+\eq{
+\delta x &= \eps \bar{\psi} - \bar{\eps} \psi \\
+\delta \psi &= \eps (i\dot{x} + \delta h) \\
+\delta \bar{\psi} = \bar{\eps} ( -i\dot{x} + \del h)
+}
+
+\eq{
+\delta S = -i \int (\dot{\eps} Q + \dot{\bar{\eps}} \bar{Q})
+}
+ 
+\eq{
+Q &= \bar{\psi} (i\dot{x} + \del h ) \\
+\bar{Q} &= \psi ( -i \dot{x} + \del h ) 
+}
+
+\eq{
+\acomm[Q]{\bar{Q}} x &= (Q\bar{Q} + \bar{Q} Q )x \\
+&= -Q \psi + \bar{Q} \bar{\psi} \\
+&= - (i\dot{x} + \del h ) + (-i \dot{x} + \del h ) \\
+&= -2i\dot{x} \\
+\acomm[Q]{\bar{Q}} \psi = \bar{Q}(i\dot{x} + \del h) \\
+&= -i\dot{\psi} - \psi \del^2 h \\
+&= -2i\dot{\psi} \quad \text{on e.o.m} \dot{\psi} = - i \psi \del^2 h \\
+\acomm[Q]{\bar{Q}} \bar{\psi} \approx -2i\dot{\bar{\psi}}
+}
+
+
+\eq{
+p = \frac{\delta L}{\delta \dot{x}} = \dot{x} \\
+\pi = \frac{\delta L }{\delta \dot{\psi}} = i\bar{\psi}
+}
+so 
+\eq{
+H = p\dot{x} + \pi \dot{\psi} - L = \frac{1}{2}p^2 + (\del h )^2 + \frac{1}{2}\del^2 h (\bar{\psi}\psi - \psi \bar{\psi})
+}
+
+\eq{
+\comm[\hat{x}]{\hat{p}} &= i \\
+\acomm[\hat{\psi}]{\hat{\bar{\psi}}} = 1
+}
+For $x$ as usual take the Hilbert space $\mc{H} = L^2 ( \mbb{R}, dx)$ in which case $\hat{x} \Psi(x) = x\Psi(x)$ and $\hat{p} \Psi(x) = -i \pd[\Psi]{x}$. The relations $\acomm[\hat{\psi}]{\hat{\bar{\psi}}}$ are reminiscient of $\comm[a]{a^\dagger}=1$ in a SHO. Lets define a fermionic number operator $\hat{F} = \hat{\bar{\psi}}\hat{\psi}$. Then 
+\eq{
+\comm[\hat{F}]{\hat{\psi}} &= -\hat{\psi} \\
+\comm[\hat{F}]{\hat{\bar{\psi}}} = \hat{\bar{\psi}}
+}
+We also let the vacuum of the fermionic system be $\ket{0}$ defined by $\hat{\psi}\ket{0}=0$. The 1st excited state is $\hat{\bar{\psi}}\ket{0} = \ket{1}$, but since $\acomm[\hat{\bar{\psi}}]{\hat{\bar{\psi}}}=0$, there are no other excited states. Hence 
+\eq{
+\mc{H} &= L^2(\mbb{R},dx) \ket{0} \oplus L^2(\mbb{R},dx)\ket{1} \\
+&= \mc{H}_B \oplus \mc{H}_F
+}
+
+\eq{
+\hat{Q} &= \hat{\bar{\psi}}(i\hat{p} +\del h ) \\
+\hat{\bar{Q}} &= \hat{\psi} ( -i\hat{p} + \del h ) \\
+\hat{H} = \frac{1}{2}\hat{p}^2 + (\del h )^2 + \frac{1}{2} \del^2 h (\hat{\bar{\psi}} \hat{\psi} - \hat{\psi} \hat{\bar{\psi}} )
+}
+
+\eq{
+\acomm[Q]{Q} = 0 = \acomm[\bar{Q}]{{\bar{Q}}}
+}
+
+\eq{
+\acomm[Q]{{\bar{Q}}}=2H
+}
+
+\begin{ex}
+Prove this result
+\end{ex}
+
+
+
+\end{document}
