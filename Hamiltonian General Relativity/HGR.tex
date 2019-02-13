@@ -31,4 +31,19 @@ and we have the gauge transform
 A_\mu \to A_\mu - \del_\mu \eps
 }
 making them equivalent. 
+
+We have 
+\eq{
+K_{ij} = \frac{1}{2N} ( h_{ij} - D_i \beta_j - D_j \beta_i) = \frac{1}{2N} (\dots)_{ij}
+}
+Then 
+\eq{
+\pb[\int d^3y\, \eps(y) p(y) ]{D_i K_j^i - D_j K(x)} &= \int d^3 y \, \eps(y) \pb[p(y)]{D_i K_{mj} - D_j K_{mi}(x)} h^{im}(x) \\
+&= \int d^3 y \, \eps(y) \pb[p(y)]{\left[ D_i(\frac{1}{2N}(\dots)_{mj}) - D_j(\frac{1}{2N}(\dots)_{mi}(x))\right]} h^{im}(x) \\
+&= \int d^3 y \, \eps(y) \left[ D_i(x) \pb[p(y)]{\frac{1}{2N(x)}} (\dots)_{mj}(x) - D_j(x) \pb[p(y)]{\frac{1}{2N(x)}} (\dots)_{mi}(x) \right] h^{mi}(x) \\
+&= \int d^3 y \, h^{im}(x)\eps(y) \left[ D_i(x) \frac{\delta(x,y)}{2N^2(x)} (\dots)_{mj} - D_j \frac{\delta(x,y)}{2N^2(x)} (\dots)_{mi} \right] \\
+&= D_i(x) h^{im}(x) \int d^3 y \, \eps(y) \frac{\delta(x,y)}{2N^2(x)}(\dots)_{mj}(x) - D_j(x) h^{im}(x) \int d^3 y \, \eps(y) \frac{\delta(x,y)}{2N^2(x)} (\dots)_{mi}(x) \\
+&= D_i h^{im} \frac{\eps}{2N^2} (\dots)_{mj} - D_j h^{im} \frac{\eps}{2N^2} (\dots)_{mi} \\
+&= D_i ( \frac{\eps}{N} K_j^i) - D_j ( \frac{\eps}{N} K)
+}
 \end{document}

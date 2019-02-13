@@ -797,7 +797,7 @@ Consider scalar electrodynamics with complex scalar $\phi(x)$ nad photon $A_\mu(
 F_{\mu\nu} &= \del_\mu A_\nu - \del_\nu A_\mu \\
 D_\mu &= \del_\mu + iq A_\mu 
 }
-With $U(1)$ gauge invariance, $\phi(x) \to e^{i\alpha(x)}\phi(x)$, $\alpha\in\mbb{R}$, and $A_\mu(x) \tp A_\mu(x) - \frac{1}{q} \del_\mu \alpha(x)$. Take 
+With $U(1)$ gauge invariance, $\phi(x) \to e^{i\alpha(x)}\phi(x)$, $\alpha\in\mbb{R}$, and $A_\mu(x) \to A_\mu(x) - \frac{1}{q} \del_\mu \alpha(x)$. Take 
 \eq{
 V(\phi^\ast \phi) = \mu^2 |\phi|^2 + \lambda |\phi|^4 \quad \lambda>0
 }
@@ -816,7 +816,7 @@ where $\mc{L}_{int}$ are terms with $>2$ fields. Appear to have mass for $\eta,A
 \eq{
 \phi \to e^{-i\frac{\theta}{v}} \phi = \frac{1}{\sqrt{2}} \left( v + \eta \right) \\
 A_\mu \to A_\mu + \frac{1}{vq} \del_\mu \theta \\
-\mc{L} = \frac{1}{2} (\del_\mu \eta \del^\mu \eta - 2\lambda v^2 \eta^2) - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + \frac{q^2 v^2}{2} A_\mu A^\mu + \mc{L}_\int
+\mc{L} = \frac{1}{2} (\del_\mu \eta \del^\mu \eta - 2\lambda v^2 \eta^2) - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + \frac{q^2 v^2}{2} A_\mu A^\mu + \mc{L}_{int}
 }
 Hence 
 \begin{itemize}
@@ -864,7 +864,58 @@ The infinitesimal transform is
 \eq{
 \delta A_\mu^a = -\frac{1}{g} \del_\mu \theta^a - f^{abc} \theta^b A_\mu^c
 }
+Then 
+\eq{
+\comm[D_\mu]{D_\nu} = igt^a F_{\mu\nu}^a \\
+F_{\mu\nu}^a = \del_\mu A_\nu^a - \del_\nu A_\mu^a - g f^{abc} A_\mu^b A_\nu^c \\
+F_{\mu\nu} = F_{\mu\nu}^a t^a \\ 
+\mc{L}_{gauge} = -\frac{1}{4} F_{\mu\nu}^a F^{a\mu\nu} = - \frac{1}{2} \tr F_{\mu\nu}F^{\mu\nu}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Electroweak Theory}
+Electroweak theory uses Higgs mechanics to break $SU(2)_L \times U(1)_Y \to U(1)_{EM}$ to give gauge bosons mass. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{EW Gauge Theory (Gauge and Higgs part)}
+The gauge symmetry is $SU(2)_L \times U(1)_Y$. The complex scalar (Higgs) field is the fundamental (doublet) representation of $SU(2)_L$, and hypercharge $Y=\frac{1}{2}$. Under gauge transform 
+\eq{
+\phi(x) \to e^{i\alpha^a(x) \tau^a} e^{i \frac{\beta(x)}{2}} \phi(x) \\
+\tau^a = \frac{1}{2} \sigma^a \quad \sigma^a \text{ the Pauli matrices} \\
+\mc{L}_{gauge} = -\frac{1}{2} \tr F_{\mu\nu}^W F^{W\mu\nu} - \frac{1}{4} F_{\mu\nu}^B F^{B\mu\nu} + (D_\mu \phi)^\dagger (D^\mu \phi) - \mu^2 |\phi|^2 - \lambda |\phi|^4 \quad \lambda > 0 \\ 
+D_\mu \phi = (\del_\mu + ig \underbrace{W_\mu^a}_{SU(2) \text{ gauge bosons}} \tau^a + i g^\prime \frac{1}{2} \underbrace{B_\mu}_{U(1) \text{ gauge bosons}} ) \phi \\ 
+F_{\mu\nu}^{Wa} = \del_\mu W_\nu^a - \del_\nu W_\mu^a - g \eps^{abc} W_\mu^b W_\nu^c \\
+F_{\mu\nu}^B = \del_\mu B_\nu - \del_\nu B_\mu
+}
+SSB occurs when $\mu^2 = -\lambda v^2 < 0$, and the scalar acquires a VEV, wlog $\phi_0 = \begin{psmallmatrix} 0 \\ \frac{v}{\sqrt{2}} \end{psmallmatrix}$. Hence we get $U(1)_{EM}$ $(\alpha^1 = 0 = \alpha^2, \alpha^3 = \beta)$. Some gauge fields get mass: $(D_\mu \phi)^\dagger (D^\mu \phi)$ contains 
+\eq{
+\frac{1}{2} \frac{v^2}{4} \;eft[ g^2 (W^\prime)^2 + g^2 (W^2)^2 + (-gW^3+g^\prime B)^2]
+}
+Define $W_\mu^\pm = \frac{1}{\sqrt{2}} (W_\mu^1 \pm iW_\mu^2)$, then these get mass $m_Q = \frac{vg}{2}$ 
+\eq{
+\begin{pmatrix} Z_\mu^0 \\ A_\mu \end{pmatrix} = \begin{pmatrix} \cos\theta_W & -\sin\theta_W \\ \sin\theta_W & \cos\theta_W \end{pmatrix} \begin{pmatrix} W_\mu^3 \\ B_\mu \end{pmatrix} \\
+\Rightarrow \cos\theta_W = \frac{g}{\sqrt{g^2 + {g^\prime}^2}} \\
+\Rightarrow \sin\theta_W = \frac{g^\prime}{\sqrt{g^2 + {g^\prime}^2}}
+}
+giving
+\eq{
+m_2 = \frac{v}{2} \sqrt{g^2 + {g^\prime}^2} \\ 
+m_\gamma = 0 \quad \text{(massless photon)}
+}
+We see $m_W = m_2 \cos\theta_W$, where we call $\theta_W$ the \bam{Weinberg angle}. Experimentally we find 
+\eq{
+m_W \approx 80 GeV \\ 
+m_2 \approx 91 GeV \\ 
+m_\gamma < 10^{-18} GeV
+}
+The Higgs boson get mass $m_H = \sqrt{2\lambda v^2}$ ($\lambda$ and so $m_H$ not predicted), but experimentally $m_H \approx 125 GeV$. There are $W^\pm,Z$- Higgs interaction, but there are no Higgs - photon interactions (i.e. Higgs chargeless) 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Coupling to matter (fermions) - leptons}
+Leptons to start with (quarks similar but some complications). 
+\eq{
+D_\mu &= \del_\mu + ig W_\mu^a T^a + i g^\prime Y B_\mu \\
+&= \del_\mu + \frac{ig}{\sqrt{2}} (W_\mu^= T^+ + W_\mu^- T^-) + \frac{ig Z_\mu}{\cos\theta_W} ( \cos^2 \theta_W T^3 - \sin^2 \theta_W Y) + ig \sin\theta_W A_\mu \underbrace{(T^3 + Y)}_{Q}
+}
+with $T^\pm = T^1 \pm i T^2$.
 \end{document} 

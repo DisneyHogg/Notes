@@ -276,7 +276,7 @@ Then
 In dimensions $d>0$, loops $\Rightarrow$ integrals over momenta. \\
 With external source, the generating function 
 \[
-Z(j) = \int d\varphi \exp -\frac{1}{\hbar} \left( \frac{1}{2}m^2 \varphi^2 + \frac{\lambda}{4!}\varphi^4 + J\varphi \right) 
+Z(J) = \int d\varphi \exp \left[-\frac{1}{\hbar} \left( \frac{1}{2}m^2 \varphi^2 + \frac{\lambda}{4!}\varphi^4 + J\varphi \right) \right]
 \]
 \[
 \braket{\varphi^2} = \frac{\hbar^2}{Z(0)} \pds{J} \left. Z(J) \right \rvert_{J=0}
@@ -284,7 +284,7 @@ Z(j) = \int d\varphi \exp -\frac{1}{\hbar} \left( \frac{1}{2}m^2 \varphi^2 + \fr
 Rule for the source term: Expansion of $Z(J)$ includes $Z(0)$ vacuum diagrams, but also those ending here in $2,4,6,8,\dots$ sources. 
 \begin{align*}
 \braket{\varphi^2} &= \frac{\hbar^2}{Z_0} \pds{J} \left.\left( 8 + \dots + \mc{l} + \mc{l}o +\dots +x+\dots \right)\right\rvert_{J=0} \\
-&= \frac{1}{Z(0} (1 + 10 + \dots + \text{disconnected vacuum bubble diagrams}) \\
+&= \frac{1}{Z(0)} (1 + 10 + \dots + \text{disconnected vacuum bubble diagrams}) \\
 &= \frac{1}{Z(0)} (\text{non bubble diagrams})\underbrace{(\text{vacuum bubbles})}_{=Z(0)} \\
 &= (\text{non bubble diagrams})
 \end{align*}
@@ -403,7 +403,7 @@ as before.
 Define an average field in the presesnce of some source $J$ as 
 \eq{
 \Phi = \pd[W]{J} &= -\frac{\hbar}{Z(J)} \pd{J} \int d\varphi e^{-\frac{S(\varphi) + J\varphi}{\hbar}} \\
-&= braket{\varphi}_J
+&= \braket{\varphi}_J
 }
 
 Legendre transform from $W(J) \to \Gamma(\Phi)$ is then 
@@ -475,7 +475,7 @@ $\Gamma(\Phi)$ sums the 1PI grphs of the theory with action $S(\Phi)$ yielding m
 For N component $\varphi$ 
 \eq{
 -\hbar \frac{\del^2 W}{\del J_a \del J_b} &= \braket{\varphi_a \varphi_b}_J^\text{connected} \\
-&= \hbar \left( \frac{\del^2 \Gamma}{\del \Phi_a \del \Phi_b} \right)^{-1} = \hbar \times \text{inverse of quadratic part of } \Gamma
+&= \hbar \left( \frac{\del^2 \Gamma}{\del \Phi_a \del \Phi_b} \right)^{-1} = \hbar \times \text{inverse of quadratic part of } \Gamma \\
 \braket{\varphi_a \varphi_b}_J^\text{connected} = \braket{\varphi_a \varphi_b} - \braket{\varphi_a}\braket{\varphi_b}
 }
 \end{example}
@@ -497,31 +497,31 @@ where coeeficients $\varphi,g,\dots,h$ are totally antisymmetric under interchan
 }
 Integration defined such that for a single Grassmann variable $\theta$, with $F(\theta) = f + \varphi \theta$, we require "translational invariance" of the integrate so 
 \eq{
-\int d\theta (\theta+ \eta) = \int d\theta \theta \\
+\int d\theta \, (\theta+ \eta) = \int d\theta \, \theta \\
 \Rightarrow \int d\theta = 0
 }
 and so choose the normalisation such that 
 \eq{
-\int d\theta \theta 1
+\int d\theta \, \theta = 1
 }
 These rules (the \bam{Berezin rules}) give 
 \eq{
-\int d\theta \pd{\theta} F(\theta) = 0 
+\int d\theta \, \pd{\theta} F(\theta) = 0 
 }
 For $n$ Grassmann variabls the only non vanishing integrals involve exactly 1 power of each integration variable. 
 \eq{
-\int d^n\theta \theta_1 \dots \theta_n = \int d\theta_n \dots d\theta_1 \theta_1 \dots \theta_n = 1
+\int d^n\theta \, \theta_1 \dots \theta_n = \int d\theta_n \dots d\theta_1 \theta_1 \dots \theta_n = 1
 }
 In general, 
 \eq{
-\int d^n \theta \theta_{a_1} \dots \theta_{a_n} = \eps^{a_1 \dots a_n} 
+\int d^n \theta \, \theta_{a_1} \dots \theta_{a_n} = \eps^{a_1 \dots a_n} 
 }
 say we had a change of variables $\theta_a^\prime = A_{ab} \theta_b$. Then 
 \eq{
-\int d^n \theta \theta_{a_1}^\prime \dots \theta_{a_n}^\prime  &= A_{a_1 b_1} \dots A_{a_n b_n}\int d^n \theta \theta_{b_1} \dots \theta_{b_n} \\
+\int d^n \theta \, \theta_{a_1}^\prime \dots \theta_{a_n}^\prime  &= A_{a_1 b_1} \dots A_{a_n b_n}\int d^n \theta  \, \theta_{b_1} \dots \theta_{b_n} \\
 &= A_{a_1 b_1} \dots A_{a_n b_n} \eps^{b_1 \dots b_n} \\
 &= \det A \eps^{a_1 \dots a_n} \\
-&= \det A \int d^n\theta^\prime \theta_{a_1}^\prime \dots \theta_{a_n}^\prime \\
+&= \det A \int d^n\theta^\prime \,  \theta_{a_1}^\prime \dots \theta_{a_n}^\prime \\
 \Rightarrow d^n\theta^\prime = \frac{d^n \theta}{\det A }
 }
 Note for scalars this is the opposite, $d^n\varphi = \frac{d^n\varphi^\prime}{\det A }$
@@ -535,7 +535,7 @@ S(\theta) = \frac{1}{2} A \theta_1 \theta_2
 for $A\in\mbb{R}$. 
 Then
 \eq{
-Z_0 &= \int d^2\theta e^{-\frac{S(\theta)}{\hbar}} \\
+Z_0 &= \int d^2\theta \, e^{-\frac{S(\theta)}{\hbar}} \\
 &= \int d^2\theta (1-\frac{A}{2\hbar} \theta_1\theta_2 ) = -\frac{A}{2\hbar}
 }
 Now for $n=2m$ fermion fields 
@@ -544,15 +544,15 @@ S = \frac{1}{2}A_{ab} \theta_a \theta_b
 }
 for $A$ antisymmetric, then 
 \eq{
-Z_0 &= \int d^{2m}\theta e^{-\frac{S(\theta)}{\hbar}} \\
-&= \int d^{2m}\theta \sum_{j=0}^m \frac{(-1)^j}{(2\hbar)^j j!} (A_{ab} \theta_a \theta_b)^j \\
-&= \frac{(-1)^m}{(2\hbar)^m m!} \int d^{2m}\theta A_{a_1 a_2}A_{a_3 a_3} \dots A_{a_{2m-1} a_{2m}} \theta_{a_1} \dots \theta_{a_{2m}} \\
-&=  \frac{(-1)^m}{(2\hbar)^m m!} \eps^{a_1 \dots a_{2m}} A_{a_1 a_2}A_{a_3 a_3} \dots A_{a_{2m-1} a_{2m}} \\
+Z_0 &= \int d^{2m}\theta \, e^{-\frac{S(\theta)}{\hbar}} \\
+&= \int d^{2m}\theta  \, \sum_{j=0}^m \frac{(-1)^j}{(2\hbar)^j j!} (A_{ab} \theta_a \theta_b)^j \\
+&= \frac{(-1)^m}{(2\hbar)^m m!} \int d^{2m}\theta \,  A_{a_1 a_2}A_{a_2 a_3} \dots A_{a_{2m-1} a_{2m}} \theta_{a_1} \dots \theta_{a_{2m}} \\
+&=  \frac{(-1)^m}{(2\hbar)^m m!} \eps^{a_1 \dots a_{2m}} A_{a_1 a_2}A_{a_2 a_3} \dots A_{a_{2m-1} a_{2m}} \\
 &= \frac{(-1)^m}{\hbar^m} \Pfaff(A)
 }
 where 
 \eq{
-\Pfaff(A) = \highlight{\frac{1}{2^m m!}} \eps^{a_1 \dots a_{2m}} A_{a_1 a_2}A_{a_3 a_3} \dots A_{a_{2m-1} a_{2m}} 
+\Pfaff(A) = \frac{1}{2^m m!} \eps^{a_1 \dots a_{2m}} A_{a_1 a_2}A_{a_2 a_3} \dots A_{a_{2m-1} a_{2m}} 
 }
 \begin{ex}
 Show $\Pfaff(A) = \pm \sqrt{\det A}$
@@ -722,7 +722,7 @@ S[\varphi,j] = \int d^4 x \left( \frac{1}{2} \del_\mu \varphi \del^\mu \varphi +
 }
 Fourier transform by letting 
 \eq{
-\varphi(x) = \int \fmeas e{ip\cdot x} \tilde{\varphi}(p)
+\varphi(x) = \int \fmeas e^{ip\cdot x} \tilde{\varphi}(p)
 }
 giving 
 \eq{
@@ -730,12 +730,12 @@ S_0[\tilde{\varphi},\tilde{j}]= \frac{1}{2} \int \fmeas \left[ \tilde{\varphi}(-
 }
 Let $\tilde{\chi}(k) = \tilde{\varphi}(k) + \frac{\tilde{j}(k)}{k^2+m^2}$, and so completing the square
 \eq{
-S_0[\tilde{\varphi},\tilde{j}]] = \frac{1}{2} \int \fmeas \left[ \tilde{\chi}(-k)(k^2+m^2)\tilde{\chi}(k) + \frac{\tilde{j}(-k)\tilde{j}(k)}{k^2+m^2} \right]
+S_0[\tilde{\varphi},\tilde{j}] = \frac{1}{2} \int \fmeas \left[ \tilde{\chi}(-k)(k^2+m^2)\tilde{\chi}(k) + \frac{\tilde{j}(-k)\tilde{j}(k)}{k^2+m^2} \right]
 }
 The $\chi$ path integral is just over a Gaussian. Assum normalisation such that $Z_0[0]=1$ 
 \eq{
 Z_0[\tilde{j}] &= \exp \left[ -\frac{1}{2} \int \fmeas \frac{\tilde{j}(-p)\tilde{j}(p)}{p^2+m^2}\right] \\
-Z_0[j] = \exp \left[ -\frac{1}{2} \int d^4 x \, d^4 x^\prime \, j(x) \Delta(x-x^\prime) j(x^\prime) \right]
+Z_0[j] &= \exp \left[ -\frac{1}{2} \int d^4 x \, d^4 x^\prime \, j(x) \Delta(x-x^\prime) j(x^\prime) \right]
 }
 where the \bam{Feynmann propagator} is 
 \eq{
@@ -961,7 +961,65 @@ Generically,
 \int^\Lambda \frac{d^n k}{k^m} \sim \left\{ \begin{array}{cc} \Lambda^{n-m} & n\neq m \\ \log \Lambda & n=m \end{array} \right. 
 }
 
-
+To determine $\delta \lambda$, we must look, at the 1-loop level, at 3 diagrams: 
+\eq{
+= \frac{\lambda^2}{2} \int^\Lambda \frac{d^4 k}{(2\pi)^4} \frac{1}{k^2+m^2} \left[ \frac{1}{(p_1+p_2+k)^2 +m^2} +  \frac{1}{(p_1+p_4+k)^2 +m^2} +  \frac{1}{(p_1+p_3+k)^2 +m^2} \right]
+}
+From the above we can expect $\sim \log \Lambda$ divergence. $\delta \lambda$ will come from the $p$-independent terms 
+\eq{
+\frac{3\lambda^2}{2} \int^\Lambda \frac{d^4k}{(2\pi)^4} \frac{1}{(k^2+m^2)^2} &= \frac{3\lambda^2}{16\pi^2} \int^\Lambda \frac{k^3 dk}{(k^2 + m^2)^2} \\
+&= \frac{3\lambda^2}{32\pi^2} \left[ \log\left( 1 + \frac{\Lambda^2}{m^2} \right) - \frac{\Lambda^2}{\Lambda^2 + m^2} \right]
+}
+Choose 
+\eq{
+\delta \lambda = \frac{3\lambda^2}{32\pi^2} \left[ \log \frac{\Lambda^2}{m^2} - 1 \right] 
+}
+which will give 
+\eq{
+\highlight{\lambda_{eff} = \lambda - \frac{3\lambda^2}{32\pi^2} \left[ \log\left( 1 + \frac{m^2}{\Lambda^2} \right) + \frac{m^2}{\Lambda^2 + m^2} \right]} ,
+}
+finite as $\Lambda \to \infty$. We have ignored higher order counter terms now. Here's why : 
+First, Feynmann's trick, let $x$ be a feynmann propagator, then 
+\eq{
+\int_0^1 \frac{dx}{\left[ xA + (1-x)B \right]^2} = \frac{1}{B-A} \left[ \frac{1}{\left[ xA + (1-x)B \right]} \right]_0^1 = \frac{1}{AB}
+}
+and 
+\eq{
+\int_0^1 \frac{dx}{\left[ xA + (1-x)B \right]^2} = \int_0^1 dx \, \int_0^1 dy \, \frac{\delta(x+y-1)}{(xA+yB)^2}
+}
+Then for the first diagram, let $p_{12}=p_1+p_2$. 
+\eq{
+\frac{1}{k^2+m^2} \frac{1}{(p_{12}+k)^2 +m^2} &= \int_0^1 \frac{dx}{\left[ x\left( (p_{12}+k)^2 + m^2\right) + (1-x)(k^2+m^2)\right]^2} \\
+&= \int_0^1 \frac{dx}{\left[ (k+xp_{12})^2 + m^2 + x(1-x)p_{12}^2 \right]^2} \\
+&= \int_0^1 \frac{dx}{\left[ l^2 + m^2 + x(1-x) p_{12}^2 \right]^2} \quad \text{letting $l=k+x p_{12}$}
+}
+In the $\Lambda \to \infty$ limit, the shift of integration range $|k| \leq \Lambda \to |l| \leq \Lambda$ disappears. Swap the limits of integration 
+\eq{
+\int d^4 l \, \int \frac{dx}{\left[ l^2 + m^2 + x(1-x) p_{12}^2 \right]^2} &= \underbrace{S_3}_{=2\pi^2} \int_0^1 dx \, \int_0^\Lambda \frac{l^3 \, dl}{\left[ l^2 + m^2 + x(1-x) p_{12}^2 \right]^2} \\
+&= \pi \int_0^1 dx \, \left\{ \log\left[\frac{\Lambda^2 + m^2 + x(1-x) p_{12}^2}{ m^2 + x(1-x) p_{12}^2}\right] + \underbrace{\frac{ m^2 + x(1-x) p_{12}^2}{\Lambda^2 + m^2 + x(1-x) p_{12}^2}}_{\to 0 \text{ as } \Lambda\to\infty} - 1 \right\} \quad \text{integrating by parts} \\
+}
+Sum all three diagrams using Mandelstam variables 
+\eq{
+s &= -(p_1+p_2)^2 \\
+t &= -(p_1+p_4)^2 \\
+u &= -(p_1+p_3)^2 
+}
+gives the final answer 
+\eq{
+= \frac{\lambda^2}{32\pi^2} \int_0^1 dx \, \left\{ \log\left[\frac{\Lambda^2 }{ m^2 - x(1-x) s}\right] + \log\left[\frac{\Lambda^2 }{ m^2 - x(1-x) t}\right] + \log\left[\frac{\Lambda^2 }{ m^2 - x(1-x) u}\right] - 3 \right\}
+}
+coefficient of $\tilde{\varphi}^4$ in an effective ation $\Gamma$ is 
+\eq{
+\lambda + \delta \lambda - \frac{\lambda^2}{32\pi^2} \int_0^1 dx \, \left\{ \dots \right\}
+}
+with $\delta \lambda$ as above, and replacing $(m^2, \lambda) \to (m_{phys}^2, \lambda_{eff})$ then we find 
+\eq{
+\lambda_{eff} + \frac{\lambda_{eff}^2}{32\pi^2} \int_0^1 dx \, \left\{ \log\left[ 1 - \frac{x(1-x)s}{m_{phys}^2} \right] + \log\left[ 1 - \frac{x(1-x)t}{m_{phys}^2} \right] + \log\left[ 1 - \frac{x(1-x)u}{m_{phys}^2} \right] \right\}
+}
+This is finite, so no new counter terms are necessary after $\delta \lambda, \delta m^2$. $s,t,u$ in $\Gamma$ gives terms like $\varphi^2(\del_\mu \varphi \del^\mu \varphi)$, higher in mass dimension. 
+\eq{
+S = \int d^4 x \, \left[ \frac{1}{2} ( \del\varphi)^2 + \frac{1}{2}m^2 \varphi^2 + \frac{\lambda}{4!} \varphi^4 \right]
+}
 
 
 

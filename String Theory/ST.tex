@@ -1054,9 +1054,78 @@ with $v$ the parameter of the transform and $j$ the classical Noether current. T
 }
 We choose\footnote{\hl{Why are we able to do this?}} $\Sigma$ and $v(z)$ such that we are able to isolate a particular $\delta \phi_k$. We define $\omega = z_i $, i.e. $\phi_k(z_k) = \phi(\omega)$, and two curves $C_1, C_2$ such that $\del \Sigma = C_1 \cup C_2$. We choose $v(z)$ to be constant within $C_1$, 0 outside of $C_2$, and arbitrary in $\Sigma$. (Assume also sufficient continuity at the boundary and in the regions etc.) We also require that $C_1, C_2$ encircle $\omega=z_k$ only, so they lie in the region $v=0$. Hence 
 \eq{
-\forall j\neqk \; \delta \phi_j = 0 \\
-\Rightarrow \frac{1}{2\pi i } \int_\Sigma d^2 z \, \del_a v(z) \braket{j^a(z) \phi_1 \dots \phi_n} = \braket{\phi_1 \dots \delta \phi(\omega) \dots \phi_n}
+\forall j\neq k \; \delta \phi_j &= 0 \\
+\Rightarrow \frac{1}{2\pi i} \int_\Sigma d^2 z \, \del_a v(z) \braket{j^a(z) \phi_1 \dots \phi_n} &= \braket{\phi_1 \dots \delta \phi(\omega) \dots \phi_n}
 }
+so 
+\eq{
+\frac{1}{2\pi} \int_\Sigma d^2 \sigma \, (\del^a v^b) \braket{T_{ab} \phi_1 \dots \phi_n} = \braket{\phi_1 \dots \delta_v \phi(\omega,\bar{\omega}) \dots \phi_n}
+}
+letting 
+\eq{
+v^z(z,\bar{z}) &= v(z) \\
+v^{\bar{z}}(z,\bar{z}) &= \bar{v}(\bar{z})
+}
+Integrate by parts so 
+\eq{
+\frac{1}{2\pi} \int_\Sigma d^2 \sigma \, (\del^a v^b) \braket{T_{ab} \phi_1 \dots \phi_n} = \frac{1}{2\pi} \int_\Sigma d^2 \sigma \, \del^a \left( v^b \braket{T_{ab} \phi_1 \dots \phi_n} \right) - \frac{1}{2\pi} \int_\Sigma d^2 \sigma \, v^b \del^a \braket{T_{ab} \phi_1 \dots \phi_n}
+}
+It is usedul to write the surface term in $(z,\bar{z})$ coordinates. 
+\eq{
+&= \frac{1}{2\pi i} \oint_{C_1} dz \, v(z) \braket{T_{zz} \phi_1 \dots \phi_n} - \frac{1}{2\pi i} \oint_{C_1} d\bar{z} \, \bar{v}(z) \braket{T_{\bar{z}\bar{z}} \phi_1 \dots \phi_n} - \frac{1}{2\pi}\int_\Sigma d^2 \sigma \, v^b \del^a \braket{T_{ab} \phi_1 \dots \phi_n} \\
+= \braket{\phi_1 \dots \delta_v \phi_k \dots \phi_n}
+}
+writing $T(z) = T_{zz}(z,\bar{z})$ and $\bar{T}(\bar{z}) = T_{\bar{z}\bar{z}}(z,\bar{z})$. We see that 
+\eq{
+\del^a \braket{T_{ab} \phi_1 \dots \phi_n } = 0
+}
+leaving 
+\eq{
+\braket{\phi_1 \dots \delta_v \phi(\omega,\bar{\omega})} = \oint_{C_1} \frac{dz}{2\pi i} v(z) \braket{ T(z) \phi_1 \dots \phi(\omega,\bar{\omega}) \dots \phi_n} - \oint_{C_1} \frac{d\bar{z}}{2\pi i} \bar{v}(\bar{z}) \braket{ \bar{T}(\bar{z}) \phi_1 \dots \phi(\omega,\bar{\omega}) \dots \phi_n}
+}
+abstractly 
+\eq{
+\delta_v \phi(\omega,\bar{\omega}) = \oint_{C(\omega)} \frac{dz}{2\pi i} v(z) T(z) \phi(\omega,\bar{\omega}) - \oint_{C(\omega)} \frac{d\bar{z}}{2\pi i} \bar{v}(\bar{z}) \bar{T}(\bar{z}) \phi(\omega,\bar{\omega})
+}
+We will always think of this as being inserted into a correlation function. 
+note \begin{itemize}
+    \item We need to take care to define the ordering of operators in this expression. 
+ \item $T,\bar{T}$ generate holomorphic and antiholomorphic conformal transformations respectively.
+ \item The poles in $T\phi$ govern the conformal transform as it is a contour integral in the $\mbb{C}$ plane 
+\end{itemize}
+If we are interested in $\braket{\delta \phi_1 \dots \delta \phi_k \phi_{k+1} \dots \phi_n }$ we could choose A contour enclosing $k$ poles at $z_1 , \dots, z_k$
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Radial Ordering}
+Recall 
+\eq{
+z = e^{\tau + i\sigma} = e^\tau e^{i\sigma}
+}
+Hence $|z| = e^\tau$ and time ordering on the cylinder corresponds to radial ordering on $\mbb{C}$. Hence we are interested in radially ordered correlation functions 
+\begin{definition}[Radial Ordering]
+\eq{
+\mc{R} (A(z)B(\omega)) = \left\{ \begin{array}{cc} A(z)B(\omega) & |z| > |\omega| \\ B(\omega)A(z) & |z| < |\omega| \end{array} \right.
+}
+\end{definition}
+We now ask how we radially order 
+\eq{
+\oint_{C(\omega)} \mc{R} (A(z)B(\omega)) \, dz
+}
+We think of $C(\omega)$ as the sum of a circle with $|z| > |\omega|$ $C_1$ and a circle with $|z| < |\omega|$ $C_2$. Then 
+\eq{
+\oint_{C(\omega)} \mc{R} (A(z)B(\omega)) \, dz  &= \oint_{C_1} \mc{R} (A(z)B(\omega)) \, dz \highlight{-} \oint_{C_2} \mc{R} (A(z)B(\omega)) \, dz \\
+&= \oint_{C_1} A(z)B(\omega) \, dz \highlight{-} \oint_{C_2} B(\omega)A(z)
+}
+So our expression for $\delta_v \phi(\omega,\bar{\omega})$ is 
+\eq{
+\delta_v \phi(\omega) = \oint_{|\omega| < |z|} \frac{dz}{2\pi i} v(zz) T(z) \phi(\omega) - \oint_{|\omega| > |z|} \frac{dz}{2\pi i} \phi(\omega) v(z) T(z) 
+}
+for a chiral field. If we define 
+\eq{
+Q = \oint_{C(\omega)} \frac{dz}{2\pi i} v(z) T(z) 
+}
+Then we could define a braket $\comm[]{}$ as 
+\eq{
+\delta_v \phi(\omega) = \comm[Q]{\phi(\omega)}
+}
 \end{document}
