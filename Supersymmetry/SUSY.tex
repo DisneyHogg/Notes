@@ -26,7 +26,7 @@ In any quantum theory involving fermions, we can always split true Hilbert space
 \mc{H} = \mc{H}_N \oplus \mc{H}_F
 \]
 Here, $\mc{H}_B$ contains an even number of fermionic excitations and $\mc{H}_F$ contains an odd number of fermion excitations, since a pair of fermions is a boson. \\
-A theory is \bam{supersymmetric} if there is a fermionic operator $G"\mc{H}_B \to \mc{H}_F$, $G:\mc{H}_F \to \mc{H}_B$, such that $\acomm[Q]{Q^\dagger} = 2H$, where $H$ is the Hamiltonian, and $Q^\dagger$ is the adjoint of $Q$ with respect to the inner product on $\mc{H}$. We also require $Q^2 = 0 = (Q^\dagger)^2$. 
+A theory is \bam{supersymmetric} if there is a fermionic operator $Q:\mc{H}_B \to \mc{H}_F$, $Q:\mc{H}_F \to \mc{H}_B$, such that $\acomm[Q]{Q^\dagger} = 2H$, where $H$ is the Hamiltonian, and $Q^\dagger$ is the adjoint of $Q$ with respect to the inner product on $\mc{H}$. We also require $Q^2 = 0 = (Q^\dagger)^2$. 
 
 The consequences of this are 
 \begin{itemize}
@@ -104,47 +104,47 @@ We define derivatives by:
 \]
 We can also define integration simply by defining $\int 1 d\psi$ and $\int \psi d\psi$. We want our integral to be translation invariant, i.e 
 \[
-\int (\psi + \eta) d\psi = \int d\psi
+\int (\psi + \eta) \, d\psi = \int \psi \, d\psi
 \]
 \[
-\Rightarrow \int 1 d\psi = 0 
+\Rightarrow \int 1 \, d\psi = 0 
 \]
 We then want to normalise by choosing 
 \[
-\int \psi d\psi = 1 \quad \text{(Berezin integration)}
+\int \psi \, d\psi = 1 \quad \text{(Berezin integration)}
 \]
 Note, suppose we have $n$ fermions $\psi^1, \dots, \psi^n$. with 
 \[
-\int \psi^1 \dots \underbrace{\psi^n d\psi^1 \dots d\psi^n}_{d^n \psi} = 1 
+\int \psi^1 \dots \psi^n \, \underbrace{ d\psi^1 \dots d\psi^n}_{d^n \psi} = 1 
 \]
 and 
 \[
-\int \psi^{a_1} \dots \psi^{a_n} d^n \psi = \eps^{a_1 \dots a_n}
+\int \psi^{a_1} \dots \psi^{a_n} \, d^n \psi = \eps^{a_1 \dots a_n}
 \]
 Now let ${\psi^\prime}^a=N^a_b \psi^b$ for $N\in GL(n)$. We have 
 \begin{align*}
-    \int {\psi^\prime}^a {\psi^\prime}^b \dots {\psi^\prime}^d d^n \psi &= N^a_e N^b_f \dots N^d_g \int \psi^e \psi^f \dots \psi^g d^n \psi \\
+    \int {\psi^\prime}^a {\psi^\prime}^b \dots {\psi^\prime}^d \, d^n \psi &= N^a_e N^b_f \dots N^d_g \int \psi^e \psi^f \dots \psi^g \, d^n \psi \\
     &= N^a_e N^b_f \dots N^d_g \eps^{ef\dots g} = \det N \eps^{ab\dots d} \\
-    &= \det N \int {\psi^\prime}^a {\psi^\prime}^b \dots {\psi^\prime}^d d^n \psi^\prime 
+    &= \det N \int {\psi^\prime}^a {\psi^\prime}^b \dots {\psi^\prime}^d \, d^n \psi^\prime 
 \end{align*}
 Hence we see $d^n \psi^\prime = \frac{1}{\det N} d^n \psi$ (opposite way round to usual).
 
 In QFT, we will often need Gaussian integral. Suppose $\psi^1, \psi^2$ are fermions and let $S(\psi^a) = \frac{1}{2}\psi^1 M \psi^2$. Then 
 \[
-\int e^{-iS(\psi^a)} d\psi^1 d\psi^2 = \int \left( 1- \frac{1}{2} \psi^1 M \psi^2 \right) d\psi^1 d\psi^2 = \frac{1}{2}M
+\int e^{-iS(\psi^a)} d\psi^1 d\psi^2 = \int \left( 1- \frac{1}{2} \psi^1 M \psi^2 \right) \, d\psi^1 d\psi^2 = \frac{1}{2}M
 \]
 More generally for $2m$ fermions we action $S(\psi^a) = \frac{1}{2} \psi^a M_{ab} \psi^b$ ($M_{ab}=-M_{ba})$. 
 \begin{align*}
-    \int e^{-S(\psi)} d^{2m}\psi &= \int \sum_{k=0}^\infty \frac{(-1)^k}{k!} \frac{1}{2^k} \left( \psi^a M_{ab} \psi^b \right)^k d^{2m}k \\
+    \int e^{-S(\psi)} d^{2m}\psi &= \int \sum_{k=0}^\infty \frac{(-1)^k}{k!} \frac{1}{2^k} \left( \psi^a M_{ab} \psi^b \right)^k \, d^{2m}\psi \\
     &=\frac{(-1)^m}{2^m m!} \int \left( \psi^a M_{ab} \psi^b \right)^{2m} \\
     &= \frac{(-1)^m}{2^m m!} \eps^{a_1 b_1 a_2 b_2 \dots a_m b_m} M_{a_1 b_1} M_{a_2 b_2} \dots M_{a_n b_n} \\
     &= \sqrt{\det M} \equiv \Pfaff(M)
 \end{align*}
-(c.f. for bosons we have $\int e^{-\frac{1}{2} x^a M_{ab} x^b} d^{2m} x = \frac{(2\pi)^m}{\sqrt{\det M}} $)
+(c.f. for bosons we have $\int e^{-\frac{1}{2} x^a M_{ab} x^b} \, d^{2m} x = \frac{(2\pi)^m}{\sqrt{\det M}} $)
 
 \subsection{Supersymmetric Integrals and Localisation}
-Consider a $d=0$ theory of one bosonic variable, and 2 fermions  $\psi^1,\psi^2$. Take $S(x,\psi) = V(x)-\psi^1 \psi^2 U(x)$ as our action. Even in $d=0$, for generic $V,U$ the integral $\int e^{-S(x,\psi^i)}dxd\psi^2 d\psi^2$ is difficult. \\
-However, suppose we choose a polynomial $W(x)$ and take $S(x,\psi) = \frac{1}{2} (\del W)^2 - \bar{\psi} \psi \del^2 W$ (taking $\psi = \psi^1 + i \psi^2, \bar{\psi} = \psi^1 -i \psi^2$. This $S(x,\psi \bar{\psi})$ is invariant under 
+Consider a $d=0$ theory of one bosonic variable, and 2 fermions  $\psi^1,\psi^2$. Take $S(x,\psi) = V(x)-\psi^1 \psi^2 U(x)$ as our action. Even in $d=0$, for generic $V,U$ the integral $\int e^{-S(x,\psi^i)}\, dx \, d\psi^1 d\psi^2$ is difficult. \\
+However, suppose we choose a polynomial $W(x)$ and take $S(x,\psi) = \frac{1}{2} (\del W)^2 - \bar{\psi} \psi \del^2 W$ (taking $\psi = \psi^1 + i \psi^2, \bar{\psi} = \psi^1 -i \psi^2$. This $S(x,\psi,  \bar{\psi})$ is invariant under 
 \begin{align*}
 \delta x &= \eps \psi - \bar{\eps} \bar{\psi} \\
 \delta \psi &= \bar{\eps} \del W \\
@@ -167,9 +167,9 @@ Or
 \end{align*}
 These Generators obey $\acomm[Q]{\bar{Q}}=0$. Note $H=0$ in $d=0$ so this is a supersymmetry algebra.
 
-The supersymmetric 'path' integral $\int e^{-S(x,\psi,\bar{\psi}} dx d\psi d\bar{\psi}$ in fact \bam{localises}. Suppose we rescale $W \to \lambda W $ for $\lambda \in \mbb{R}_{\geq 0}$ both $S \to S_\lambda$ and in the susy transform $Q\to Q_\lambda, \bar{Q} \to \bar{Q}_\lambda $. Then 
+The supersymmetric 'path' integral $\int e^{-S(x,\psi,\bar{\psi})} \, dx \, d\psi d\bar{\psi}$ in fact \bam{localises}. Suppose we rescale $W \to \lambda W $ for $\lambda \in \mbb{R}_{\geq 0}$ both $S \to S_\lambda$ and in the susy transform $Q\to Q_\lambda, \bar{Q} \to \bar{Q}_\lambda $. Then 
 \[
-I(\lambda) = \int e^{-S_\lambda(x,\psi,\bar{\psi}} dx d^2 \psi
+I(\lambda) = \int e^{-S_\lambda(x,\psi,\bar{\psi})} \, dx \, d^2 \psi
 \]
 actually obeys $\frac{dI}{d\lambda}=0$
 \begin{proof}
@@ -181,9 +181,9 @@ actually obeys $\frac{dI}{d\lambda}=0$
 \end{align*}
 Since $\bar{Q}_\lambda = \bar{\psi} \pd{x} + (\lambda \del W) \pd{\psi}$, this vanishes. 
 \end{proof}
-Thus $I(1) = \lim_{\lambda \to \infty} I(\lambda)$. As $\lambda \to \infty$, $e^{-\frac{\lambda^2}{2}(\del W)^2}$ suppreses the integral except near where $\del W = 0$. The integral localises to critical points of $W(x)$. 
+Thus $I(1) = \lim_{\lambda \to \infty} I(\lambda)$. As $\lambda \to \infty$, $e^{-\frac{\lambda^2}{2}(\del W)^2}$ suppresses the integral except near where $\del W = 0$. The integral thus localises to critical points of $W(x)$. 
 
-Suppose we have a group $G$ acting freely\footnote{This means something, and isn't just a turn of phrase} on our space of fields, and suppose the action and integration measure are $G$-invariant. 
+Suppose we have a group $G$ acting freely\footnote{A group $G$ acts on a set $X$ freely if $\forall x \in X \; g(x)=x \Rightarrow g=e=id_G$, i.e. all the stabilisers are trivial.} on our space of fields, and suppose the action and integration measure are $G$-invariant. 
 
 \begin{example}
 \eq{
@@ -192,15 +192,15 @@ Suppose we have a group $G$ acting freely\footnote{This means something, and isn
 with $G=SO(2)$ and $S$ just a function of $r=\sqrt{x^2+y^2}$. 
 \end{example}
 In this case decompose $\mc{C}$ as $G \times \faktor{\mc{C}}{G}$ and integrate over $G$ to obtain $\vol G$. \\
-If $G$ is a fermionic group, then $\vol G = 0$ since $0 = \int_G 1 d^{\dim G} \theta$.\\
-More generally, if $G \circlearrowleft \mc{C}$ has some fixed points, we can only get contributions form a nbhd of these fixed points. In our case $\delta \psi = \bar{\eps} \del W, \delta \bar{\psi} = -\eps \del W$ so fixed points of our SUSY are critical points of $W(x)$. Away from such critical points define 
+If $G$ is a fermionic group, then $\vol G = 0$ since $0 = \int_G 1 \, d^{\dim G} \theta$.\\
+More generally, if $G \circlearrowleft \mc{C}$ has some fixed points, we can only get contributions from a neighbourhood of these fixed points. In our case $\delta \psi = \bar{\eps} \del W, \delta \bar{\psi} = -\eps \del W$ so fixed points of our SUSY are critical points of $W(x)$. Away from such critical points define 
 \eq{
-y = x - \frac{\bar{\psi}\psi}{\del W} \\
-\chi = \psi \sqrt{\del W} \\
- \bar{\chi} = \bar{\psi}
+y &= x - \frac{\bar{\psi}\psi}{\del W} \\
+\chi &= \psi \sqrt{\del W} \\
+ \bar{\chi} &= \bar{\psi}
 }
 \begin{ex}
-Show $dxd^2 \psi = \sqrt{\del W(y)} dy d^2\chi$
+Show $dx\, d^2 \psi = \sqrt{\del W(y)} dy \, d^2\chi$
 \end{ex}
 The point is
 \begin{itemize}
@@ -243,19 +243,18 @@ Hence
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{d=0 Landua Ginzburg Theory}
+\subsection{d=0 Landua Ginzburg Theory}
 Now take $z\in\mbb{C}$ and two fermions $\psi_1,\psi_2$. Choose a holomorphic $W(z)$
 \eq{
 S(z,\psi) = |\del W|^2 + \del^2 W \psi_2 \psi_2 - \bar{\del^2 W} \bar{\psi_1} \bar{\psi_2}
 }
 This is invariant under 
 \eq{
-\delta z &= \eps_1 \psi_1 + \eps_2 psi_ 2 \\
+\delta z &= \eps_1 \psi_1 + \eps_2 \psi_ 2 \\
 \delta \psi_1 &= \eps_2 \bar{\del W } \\
 \delta \psi_2 &= -\eps_1 \bar{\del W} \\
-\bar{\delta} \bar{z} &= \bar{\eps}_1 \bar{\psi}_1 + \bar{\eps}_2 \bar{psi}_ 2 \\
-\bar{delta} \bar{\psi}_1 &= \bar{\eps}_2 \del W \\
+\bar{\delta} \bar{z} &= \bar{\eps}_1 \bar{\psi}_1 + \bar{\eps}_2 \bar{\psi}_ 2 \\
+\bar{\delta} \bar{\psi}_1 &= \bar{\eps}_2 \del W \\
 \bar{\delta} \bar{\psi}_2 &= -\bar{\eps}_1 \del W
 }
 and 
@@ -263,7 +262,7 @@ and
 \bar{\delta} z &= 0 = \bar{\delta} \psi_i \\
 \delta \bar{z} &= 0 =\delta \bar{\psi}_i
 }
-You may check $\acomm[Q_i]{\bar{Q}_j}=0$ and $\acomm[Q_i]{Q_j}=0=\acomm[\bar{Q}_i]{\bar{Q}_j}$ %only holds "on shell", i.e. $\del^2 W = 0 = \bar{\del^2 W}$.\\
+You may check $\acomm[Q_i]{\bar{Q}_j}=0$ and $\acomm[Q_i]{Q_j}=0=\acomm[\bar{Q}_i]{\bar{Q}_j}$ only holds "on shell", i.e. $\del^2 W = 0 = \bar{\del^2 W}$.\\
 Again by rescaling $W \to \lambda W$ for $\lambda \in \mbb{R}_{\geq 0}$, localise $I = \int e^{-S} d^2z d^4\psi$ to its critical points of $W$ where 
 \eq{
 W(z) = W(z_\ast) + \frac{\alpha_\ast}{2} (z-z_\ast)^2 + \dots
@@ -273,15 +272,15 @@ S^{(2)}(z,\psi_i) = |\alpha_\ast|^2 |z-z_\ast|^2 + \alpha_\ast \psi_1 \psi_2 - \
 }
 so 
 \eq{
-I &= \frac{1}{2\pi} \int e^{-S} d^2z d^4\psi \\
-&= \sum_{z_\ast} \frac{1}{2\pi} \int e^{-|\alpha_\ast (z-z_ast)|^2} |\alpha_\ast|^2 \psi_1 \psi_2 \bar{\psi}_1 \bar{\psi}_2 d^2z d^4\psi \\
+I &= \frac{1}{2\pi} \int e^{-S} \, d^2z \, d^4\psi \\
+&= \sum_{z_\ast} \frac{1}{2\pi} \int e^{-|\alpha_\ast (z-z_ast)|^2} |\alpha_\ast|^2 \psi_1 \psi_2 \bar{\psi}_1 \bar{\psi}_2 \, d^2z \, d^4\psi \\
 &= \sum_{z_\ast} \frac{|\alpha_\ast|^2}{|\alpha_\ast|^2} = \sum_{z_\ast} 1
 }
 counting the critical points. More generally let $f(z)$ be any holomorphic functions, then 
 \eq{
 \braket{f(z)} = \int e^{-S} f(z) d^2z d^4\psi
 }
-is still invariant under $\bar{\delta}$ transform, to again localises to critical points of $\bar{W}$. Then 
+is still invariant under $\bar{\delta}$ transform, to again localise to critical points of $\bar{W}$. Then 
 \eq{
 \braket{f(z)} &= \sum_{z_\ast} f(z_\ast) \frac{1}{2\pi} \int e^{-S^{(2)}} d^2z d^4\psi \\
 &= \sum_{z_\ast} f(z_\ast) 
@@ -289,18 +288,18 @@ is still invariant under $\bar{\delta}$ transform, to again localises to critica
 the sum of the values at critical points. The key fact was $\bar{\delta}f=0$. Since $\bar{Q}_i^2=0$, one way to construct a $\bar{Q}_i$-invariant function is to take $\bar{Q}_i \Lambda(z,\bar{z},\psi_i,\bar{\psi}_j)$ for some general $\Lambda$ . However, if $F=\bar{Q}\Lambda$, 
 \eq{
 \braket{F} &= \braket{ \bar{Q}\Lambda } \\
-&= \int (\bar{Q}\Lambda) e^{-S} \frac{d^2zd^4\psi}{2\pi} \\
-&= \int \bar{Q} (\Lambda e^{-S} ) \frac{d^2zd^4\psi}{2\pi} = 0
+&= \int (\bar{Q}\Lambda) e^{-S} \frac{d^2z \, d^4\psi}{2\pi} \\
+&= \int \bar{Q} (\Lambda e^{-S} ) \frac{d^2z \, d^4\psi}{2\pi} = 0
 }
 So interesting functions are in 
 \eq{
 H_{\bar{Q}} = \faktor{\ker \bar{Q}}{\image \bar{Q}}
 }
-Now 
+\footnote{$H_{\bar{Q}}$ represents the fact that $\bar{Q}\bar{Q}\Lambda = 0$, so $\image \bar{Q} \leq \ker \bar{Q}$, and moreover $\braket{F + \bar{Q} \Lambda} =  \braket{F}$ so we extract the relevant information by quotienting out (under addition) this subspace.} Now 
 \eq{
 \braket{F + \bar{Q} \Lambda} = \braket{F} + \braket {\bar{Q} \Lambda} = \braket{F} 
 }
-and supposing $F_i = \bar{Q} \Lambda$
+and supposing $F_1 = \bar{Q} \Lambda$
 
 \eq{
 \braket{\prod_{i=1}^n F_i } &= \braket{\bar{Q} \Lambda \prod_{i=2}^n F_i } \\
@@ -316,12 +315,15 @@ Non trivial correlators from $O \in H_{\bar{Q}}$
 
  the transform $\bar{\delta}\bar{\psi}_i = \bar{\eps}_i \del W$ shows that $\delta W$ is itself $\bar{Q}(\dots)$. Hence if our operator contain $\delta W$ as a factor, their correlators vanish 
 
-For example $W(z) = \frac{1}{n} z^{n-1}-az$, $\del W = z^n - a$
+For example $W(z) = \frac{1}{n+1} z^{n+1}-az$, $\del W = z^n - a$
 
 Then we have non trivial $\bar{Q}$ invariant operators that are polynomials subject to $z^n = a$. Hence the operators form a \bam{ring} generated by $\set{1,z,\dots,z^n}$. 
-\end{example}
 
 The ring of non trivial supersymmetric operators is often called the \bam{chiral ring}. 
+
+\end{example}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -336,7 +338,7 @@ where $h=h(x(t))$ plays the role of a potential. $S$ is invariant under
 \eq{
 \delta x &= \eps \bar{\psi} - \bar{\eps} \psi \\
 \delta \psi &= \eps (i\dot{x} + \delta h) \\
-\delta \bar{\psi} = \bar{\eps} ( -i\dot{x} + \del h)
+\delta \bar{\psi} &= \bar{\eps} ( -i\dot{x} + \del h)
 }
 By the Noether procedure, promoting $\eps \to \eps(t)$. find that 
 \eq{
@@ -353,10 +355,10 @@ and they obey
 &= -Q \psi + \bar{Q} \bar{\psi} \\
 &= - (i\dot{x} + \del h ) + (-i \dot{x} + \del h ) \\
 &= -2i\dot{x} \\
-\acomm[Q]{\bar{Q}} \psi = \bar{Q}(i\dot{x} + \del h) \\
+\acomm[Q]{\bar{Q}} \psi &= \bar{Q}(i\dot{x} + \del h) \\
 &= -i\dot{\psi} - \psi \del^2 h \\
-&= -2i\dot{\psi} \quad \text{on e.o.m} \dot{\psi} = - i \psi \del^2 h \\
-\acomm[Q]{\bar{Q}} \bar{\psi} \approx -2i\dot{\bar{\psi}}
+&= -2i\dot{\psi} \; \text{on e.o.m } \dot{\psi} = - i \psi \del^2 h \\
+\acomm[Q]{\bar{Q}} \bar{\psi} &\approx -2i\dot{\bar{\psi}}
 }
 Then, up to fermionic e.o.m, the anticommutator of the supercharges generates time translation, so must be $\propto H$. \\
 To canonically quantise, have 
@@ -371,12 +373,12 @@ H = p\dot{x} + \pi \dot{\psi} - L = \frac{1}{2}p^2 + (\del h )^2 + \frac{1}{2}\d
 From quantisation, we have 
 \eq{
 \comm[\hat{x}]{\hat{p}} &= i \\
-\acomm[\hat{\psi}]{\hat{\bar{\psi}}} = 1
+\acomm[\hat{\psi}]{\hat{\bar{\psi}}} &= 1
 }
-For $x$ as usual take the Hilbert space $\mc{H} = L^2 ( \mbb{R}, dx)$ in which case $\hat{x} \Psi(x) = x\Psi(x)$ and $\hat{p} \Psi(x) = -i \pd[\Psi]{x}$. The relations $\acomm[\hat{\psi}]{\hat{\bar{\psi}}}$ are reminiscent of $\comm[a]{a^\dagger}=1$ in a SHO. Lets define a fermionic number operator $\hat{F} = \hat{\bar{\psi}}\hat{\psi}$. Then 
+For $x$ as usual take the Hilbert space $\mc{H} = L^2 ( \mbb{R}, dx)$ in which case $\hat{x} \Psi(x) = x\Psi(x)$ and $\hat{p} \Psi(x) = -i \pd[\Psi]{x}$. The relations $\acomm[\hat{\psi}]{\hat{\bar{\psi}}}$ are reminiscent of $\comm[a]{a^\dagger}=1$ in a SHO. Let's define a fermionic number operator $\hat{F} = \hat{\bar{\psi}}\hat{\psi}$. Then 
 \eq{
 \comm[\hat{F}]{\hat{\psi}} &= -\hat{\psi} \\
-\comm[\hat{F}]{\hat{\bar{\psi}}} = \hat{\bar{\psi}}
+\comm[\hat{F}]{\hat{\bar{\psi}}} &= \hat{\bar{\psi}}
 }
 We also let the vacuum of the fermionic system be $\ket{0}$ defined by $\hat{\psi}\ket{0}=0$. The 1st excited state is $\hat{\bar{\psi}}\ket{0} = \ket{1}$, but since $\acomm[\hat{\bar{\psi}}]{\hat{\bar{\psi}}}=0$, there are no other excited states. Hence 
 \eq{
@@ -387,7 +389,7 @@ In the quantum theory, we have
 \eq{
 \hat{Q} &= \hat{\bar{\psi}}(i\hat{p} +\del h ) \\
 \hat{\bar{Q}} &= \hat{\psi} ( -i\hat{p} + \del h ) \\
-\hat{H} = \frac{1}{2}\hat{p}^2 + (\del h )^2 + \frac{1}{2} \del^2 h (\hat{\bar{\psi}} \hat{\psi} - \hat{\psi} \hat{\bar{\psi}} )
+\hat{H} &= \frac{1}{2}\hat{p}^2 + (\del h )^2 + \frac{1}{2} \del^2 h (\hat{\bar{\psi}} \hat{\psi} - \hat{\psi} \hat{\bar{\psi}} )
 }
 We have immediately, (dropping hats from now on )
 \eq{
@@ -406,7 +408,7 @@ This is why we chose the particular ordering in $H$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Supersymmetric ground state}
-As before $\braket{\Psi|H|\Psi}\geq = 0$ with equality iff $Q\ket{\Psi}=0=\bar{Q}\ket{\Psi}$, so a ground state of zero energy in SQM must be supersymmetrically invariant and will then be a ground state. If we represent 
+As before $\braket{\Psi|H|\Psi}\geq 0$ with equality iff $Q\ket{\Psi}=0=\bar{Q}\ket{\Psi}$, so a ground state of zero energy in SQM must be supersymmetrically invariant and will then be a ground state. If we represent 
 \[
 \ket{0} = \begin{pmatrix} 1 \\ 0 \end{pmatrix} \quad \ket{1} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}
 \]
@@ -423,13 +425,13 @@ We want a normalisable state, so
 \begin{itemize}
     \item $\lim_{|x|\to\infty} h(x) = \infty \Rightarrow B=0 \Rightarrow \ket{\Psi} = \begin{pmatrix} A e^{-h(x)} \\ 0 \end{pmatrix}$ 
     \item $\lim_{|x|\to\infty} h(x) = -\infty \Rightarrow A=0 \Rightarrow \ket{\Psi} = \begin{pmatrix} 0 \\ B e^{h(x)} \end{pmatrix}$ 
-    \item $\lim_{x\to\infty} h(x) = \pm\infty \; \lim_{x\to -\infty} h(x) = \mp\infty\Rightarrow A=0=B \Rightarrow \ket{\Psi} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}$ 
+    \item $\lim_{x\to\infty} h(x) = \pm\infty$ and $\lim_{x\to -\infty} h(x) = \mp\infty\Rightarrow A=0=B \Rightarrow \ket{\Psi} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}$ 
 \end{itemize}
 In the third case the is no zero energy state, so the ground state will have higher energy and SUSY is \bam{spontaneously broken}. 
 
 Excite state $E>0$ come in pairs. If $\mc{H} = \bigoplus \mc{H}_n$ where 
 \eq{
-\forall \ket{\Psi_n} \in \mc{H}_n \; H \ket{\Psi_n} = E_n \ket{\Psi_n}
+\forall \ket{\Psi_n} \in \mc{H}_n \quad H \ket{\Psi_n} = E_n \ket{\Psi_n}
 }
 then we can further split each $\mc{H}_n$ into bosonic and fermionic states
 \eq{
@@ -457,6 +459,7 @@ I_w = \dim \mc{H}_{B,0} - \dim\mc{H}_{F,0} = \tr_{\mc{H}} (-1)^F = \tr_\mc{H} \l
 }
 where the last two expression follows because excited states come in pairs so cancel out. The final expression is thus independent of $\beta$. We include it to regularise the trace and to make the connection to the path integral. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{Path integrals in QM}
 Consider a free particle travelling on $\mbb{R}$, Time evolution operator $e^{-iHt}$ becomes $e^{-H\tau}$ under Wick rotation $t\to -i\tau$. If our particle is located at $y_0$ at $t=0$ the amplitude to find the particle at $y_1$ at $t=\beta$ is 
 \eq{
@@ -464,9 +467,9 @@ Consider a free particle travelling on $\mbb{R}$, Time evolution operator $e^{-i
 }
 We break this evolution into steps of length $\Delta \tau = \frac{\beta}{N}$ 
 \eq{
-\braket{y_1 | e^{-\beta H} | y_0 } &= \int \braket{y_1 | e^{-\Delta \tau H} | x_{N-1} }\braket{x_{N-1} | e^{-\Delta \tau H} | x_{N-2} }\dots \braket{x_1 | e^{-\Delta \tau H} | y_0 } d^{N-1}x \\
-&= \int K_{\Delta \tau}(y_1,x_{N-1}) \dots K_{\Delta \tau}(x_1,y_0) d^{N-1}x \\
-&= \highlight{\frac{1}{\sqrt{2\pi \Delta \tau}}} \int \exp \left[ -\sum_{i=0}^N \frac{\Delta \tau}{2} \left( \frac{x_{i+1} - x_i}{\Delta \tau}\right)^2 \right] \prod_{i=1}^{N-1} \frac{dx_i}{\sqrt{2\pi\Delta \tau}} \\
+\braket{y_1 | e^{-\beta H} | y_0 } &= \int \braket{y_1 | e^{-\Delta \tau H} | x_{N-1} }\braket{x_{N-1} | e^{-\Delta \tau H} | x_{N-2} }\dots \braket{x_1 | e^{-\Delta \tau H} | y_0 } \, d^{N-1}x \\
+&= \int K_{\Delta \tau}(y_1,x_{N-1}) \dots K_{\Delta \tau}(x_1,y_0) \, d^{N-1}x \\
+&= \frac{1}{\sqrt{2\pi \Delta \tau}} \int \exp \left[ -\sum_{i=0}^N \frac{\Delta \tau}{2} \left( \frac{x_{i+1} - x_i}{\Delta \tau}\right)^2 \right] \prod_{i=1}^{N-1} \frac{dx_i}{\sqrt{2\pi\Delta \tau}} \\
 }
 Taking the limit as $N\to\infty$, $\Delta \tau \to 0$
 \eq{
@@ -491,13 +494,13 @@ Z(\beta) = \tr_{\mc{H}} \left( e^{-\beta H} \right) &= \int_\mbb{R} \braket{y | 
 &= \int_{\mc{C}_{S^1}} e^{-S[x]} \, \mc{D}x
 }
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{Path integrals for fermions}
 Have Fermion coherent state $\ket{\eta} = e^{\hat{\bar{\psi}}\eta}\ket{0}$ obeying $\hat{\psi}\ket{\eta} = \eta\ket{\eta}$ which satisfy 
 \eq{
-1_\mc{H} = \int e^{-\bar{\eta}\eta} \ket{\bar{\eta}}\bra{\eta} \, d^2\eta \\
-\tr(\hat{A}) = \int \braket{-\bar{\eta}|\hat{A}|\eta} e^{-\bar{\eta}\eta} \, d^2 \eta \\
-S\tr(A) = \tr_\mc{H} \left( (-1)^F A \right) = \int \braket{\bar{\eta}|\hat{A}|\eta} e^{-\bar{\eta}\eta} \, d^2 \eta
+1_\mc{H} &= \int e^{-\bar{\eta}\eta} \ket{\bar{\eta}}\bra{\eta} \, d^2\eta \\
+\tr(\hat{A}) &= \int \braket{-\bar{\eta}|\hat{A}|\eta} e^{-\bar{\eta}\eta} \, d^2 \eta \\
+S\tr(A) &= \tr_\mc{H} \left( (-1)^F A \right) = \int \braket{\bar{\eta}|\hat{A}|\eta} e^{-\bar{\eta}\eta} \, d^2 \eta
 }
 Using these and following the same procedure as for bosons we have 
 \eq{
@@ -505,8 +508,8 @@ Using these and following the same procedure as for bosons we have
 }
 Let's order the Hamiltonian so that all $\hat{\psi}$s appear to the RHS of all $\hat{\bar{\psi}}$s. Then 
 \eq{
-\lim_{\Delta\tau\to 0} \braket{\bar{\eta}_{i+1} | e^{-\Delta \tau H} | \eta_i} &= \braket{\bar{\eta}_{i+1} | 1-\Delta \tau H(\hat{\bar{\psi}},\hat{\psi}  | \eta_i} \\
-\braket{\bar{\eta}_{i+1} | 1-\Delta \tau H(\bar{\eta}_{i+1},\eta_i  | \eta_i}
+\lim_{\Delta\tau\to 0} \braket{\bar{\eta}_{i+1} | e^{-\Delta \tau H} | \eta_i} &= \braket{\bar{\eta}_{i+1} | 1-\Delta \tau H(\hat{\bar{\psi}},\hat{\psi}) | \eta_i} \\
+&= \braket{\bar{\eta}_{i+1} | 1-\Delta \tau H(\bar{\eta}_{i+1},\eta_i) | \eta_i}
 }
 so 
 \eq{
@@ -516,11 +519,11 @@ using this we have
 \eq{
 \braket{\bar{\chi}^\prime | e^{-\beta H} | \chi } &= \lim_{N\to \infty} \int \exp \left( \sum_{k=1}^N \bar{\eta}_k \eta_{k-1} - \Delta \tau H(\bar{\eta}_k, \eta_{k-1}) \right) \prod_{k=1}^{N-1} e^{-\bar{\eta}_k \eta_k} d^2 \eta_k \\
 &=\lim_{N\to \infty} \int \exp \left( -\sum_{k=1}^N \left[ \bar{\eta}_k \frac{\eta_k - \eta_{k-1}}{\Delta \tau} - H(\bar{\eta}_k,\eta_{k-1})\right] \Delta \tau \right) e^{\bar{\eta}_N \eta_N} \prod_{k=1}^{N-1} d^2\eta_k \\
-&= \int e^{-S[\bar{\eta},\eta]} e^{\bar{\eta}(\beta) \eta(\beta)} \, \mc{D}\eta ], \mc{D} \bar{\eta}
+&= \int e^{-S[\bar{\eta},\eta]} e^{\bar{\eta}(\beta) \eta(\beta)} \, \mc{D}\eta \, \mc{D} \bar{\eta}
 }
 where $\eta(0) = \chi$, $\eta(\beta)= \chi^\prime$, and 
 \eq{
-S[\bar{\eta},\eta] = \int_0^\beta \bar{\eta} \dot{\eta} - H(\bar{\eta},\eta) d\tau
+S[\bar{\eta},\eta] = \int_0^\beta \bar{\eta} \dot{\eta} - H(\bar{\eta},\eta) \, d\tau
 }
 so 
 \eq{
@@ -529,7 +532,7 @@ Z(\beta) = \tr_\mc{H} ( e^{-\beta H} ) &= \int \braket{-\bar{\chi}^\prime | e^{-
 }
 and 
 \eq{
-I_wS\tr  ( e^{-\beta H} ) = \tr_\mc{H} ( (-1)^F e^{-\beta H} ) &= \int \int \braket{\bar{\chi}^\prime | e^{-\beta H} | \chi } e^{-\bar{\chi}\chi} d^2\chi \\
+I_w S\tr  ( e^{-\beta H} ) = \tr_\mc{H} ( (-1)^F e^{-\beta H} ) &= \int \int \braket{\bar{\chi}^\prime | e^{-\beta H} | \chi } e^{-\bar{\chi}\chi} d^2\chi \\
 &= \underbrace{\int \exp\left( - S_E[\bar{\psi},\psi] \right) \, \mc{D} \psi \, \mc{D} \bar{\psi}}_{\text{periodic boundary conditions}}
 }
 is the path integral for the Witten index, where 
@@ -538,9 +541,9 @@ S_E = \oint \left[ \frac{1}{2} \dot{x}^2 + \bar{\psi} \dot{\psi} + \frac{1}{2} (
 }
 is the Euclidean action, that is invariant under the SUSY transform 
 \eq{
-\delta x = \eps \bar{\psi} - \bar{\eps} \psi \\
-\delta \psi = \eps( - \dot{x} + \del h) \\
-\del \bar{\psi} = \bar{\eps}(\dot{x} + \del h)
+\delta x &= \eps \bar{\psi} - \bar{\eps} \psi \\
+\delta \psi &= \eps( - \dot{x} + \del h) \\
+\del \bar{\psi} &= \bar{\eps}(\dot{x} + \del h)
 }
 Note these transformations only make sense globally on $S^1$, since $(x,\psi,\bar{\psi})$ are all periodic. and $\eps,\bar{\eps}$ constants. \\
 
@@ -557,7 +560,7 @@ so this insertion is Q-exact and we conclude
 \eq{
 \frac{dI_w}{d\lambda}(\lambda) = 0 
 }
-as expected from the canonical calculation. In particular, as $\lambda \to \infty$ the term $\exp\left( -\frac{\lambda}{2} \oint (\del h)^2 d\tau \right)$ suppresses all maps $x:S^2\to\mbb{R}$ except in a neighbourhood of constant maps to critical point og $h$. \\
+as expected from the canonical calculation. In particular, as $\lambda \to \infty$ the term $\exp\left( -\frac{\lambda}{2} \oint (\del h)^2 d\tau \right)$ suppresses all maps $x:S^2\to\mbb{R}$ except in a neighbourhood of constant maps to critical point of $h$. \\
 Near such critical points, we expand $x(\tau) = x_\ast + \delta x (\tau)$. Then to quadratic order 
 \eq{
 S_E^{(2)} = \oint \frac{1}{2}\delta x \left( -\frac{d^2}{dx^2} + h^{\prime\prime}(x_\ast)^2 \right) \delta x + \bar{\psi}\left( \frac{d}{d\tau} + h^{\prime\prime}(x_\ast) \right)\psi d\tau 
@@ -571,7 +574,7 @@ we $\delta x_n = (\delta x_n)^\ast $ since $\delta x \in \mbb{R}$. We now find n
 \eq{
 \int e^{S_E^{(2)}} \, \mc{D} \delta x \, \mc{D} \psi \, \mc{D} \bar{\psi} &= \frac{\det(\del_\tau+h^{\prime\prime}(x_\ast))}{\sqrt{\det(-\del_\tau^2 + +h^{\prime\prime}(x_\ast)^2)}} \\
 &= \frac{\prod_{m\in\mbb{Z}}(\frac{2\pi i n }{\beta}+h^{\prime\prime}(x_\ast))}{\sqrt{\prod_{m\in\mbb{Z}}((\frac{2\pi n}{\beta})^2+h^{\prime\prime}(x_\ast)^2)}} \\
-\frac{h^{\prime\prime}(x_\ast)}{|h^{\prime\prime}(x_\ast)|} \quad \text{only $n=0$ terms don't cancel}
+&= \frac{h^{\prime\prime}(x_\ast)}{|h^{\prime\prime}(x_\ast)|} \; \text{(only $n=0$ terms don't cancel)}
 }
 Hence 
 \eq{
@@ -603,11 +606,11 @@ so we have canonical quantisation relations
 \eq{
 \comm[\hat{x}^a]{\hat{p}_b} = i \delta^a_b
 }
-We can choose the Hilbert space to be $\mc{H} = L^2(N, \sqrt{g}d^n x)$ using the Riemannian volume element $\sqrt{g} d^n x$ on $N$. However, there's no preferred choice of Hamiltonian. Classically, as usual
+We can choose the Hilbert space to be $\mc{H} = L^2(N, \sqrt{g} \, d^n x)$ using the Riemannian volume element $\sqrt{g} d^n x$ on $N$. However, there's no preferred choice of Hamiltonian. Classically, as usual
 \eq{
 H = p_a \dot{x}^a - L = \frac{1}{2} g^{ab}(x) p_a p_b
 }
-but there's an ordering ambiguity in turning this into a quantum operator on $L^2(N,\sqrt{g} d^n x)$. It is reasonable to require 
+but there's an ordering ambiguity in turning this into a quantum operator on $L^2(N,\sqrt{g} \, d^n x)$. It is reasonable to require 
 \begin{itemize}
     \item $\hat{H}$ should be generally covariant. 
     \item $\hat{H}$ should reduce to $-\frac{1}{2}\pds{x}$ in the case $(N,g)=(\mbb{R}^n,d^n x)$.
@@ -625,9 +628,9 @@ where $R[g]=R_g$ is the Ricci scalar. There's no preferred choice of $\alpha$ an
 \subsection{Supersymmetric NLSM}
 
 \eq{
-\alpha : M \to N \\
-\psi^a \in \Pi \Omega^0 \left( M, x^\ast T_N \right) \\
-S[x,\psi] = \int_g \left[ \frac{1}{2} g_{ab} \dot{x}^a \dot{x}^b + i g_{ab} \bar{\psi}^a \left( \nabla_t \psi \right)^b - \frac{1}{2} R_{abcd} \psi^a \bar{\psi}^b \psi^c \bar{\psi}^d \right] \, dt
+&\alpha : M \to N \\
+&\psi^a \in \Pi \Omega^0 \left( M, x^\ast T_N \right) \\
+&S[x,\psi] = \int_g \left[ \frac{1}{2} g_{ab} \dot{x}^a \dot{x}^b + i g_{ab} \bar{\psi}^a \left( \nabla_\tau \psi \right)^b - \frac{1}{2} R_{abcd} \psi^a \bar{\psi}^b \psi^c \bar{\psi}^d \right] \, d\tau
 }
 where 
 \begin{itemize}
@@ -636,31 +639,31 @@ where
     \item $\Pi$ indicates that $\psi$ is fermionic 
     \item $\Omega^0(M,\dots)$ are the functions on the worldline
     \item $x^\ast$ is the tangent space target index 
-    \item $\nabla_t \psi^a = \frac{d\psi^a}{dt} + \Gamma^a_{bc} \frac{dx^b}{dt} \psi^c$ is the pullback of the connection on $N$. 
+    \item $\nabla_\tau \psi^a = \frac{d\psi^a}{d\tau} + \Gamma^a_{bc} \frac{dx^b}{d\tau} \psi^c$ is the pullback of the connection on $N$. 
 \end{itemize}
 The action is invariant under the SUSY transform 
 \eq{
-\delta x^a = \eps \bar{\psi}^a - \bar{\eps} \psi^a \\
-\delta \psi^a = \eps (i \dot{x}^a - \Gamma^a_{bc} \bar{\psi}^b \psi^c ) \\
-\delta \bar{\psi}^a = \bar{\eps} ( -i \dot{x}^a - \Gamma^a_{bc} \bar{\psi}^b \psi^c )
+\delta x^a &= \eps \bar{\psi}^a - \bar{\eps} \psi^a \\
+\delta \psi^a &= \eps (i \dot{x}^a - \Gamma^a_{bc} \bar{\psi}^b \psi^c ) \\
+\delta \bar{\psi}^a &= \bar{\eps} ( -i \dot{x}^a - \Gamma^a_{bc} \bar{\psi}^b \psi^c )
 }
 generated by the Noether charges $Q,\bar{Q}$ with 
 \eq{
-Q = i \bar{\psi}^a ( g_{ab} \dot{x}^b + ig_{bc} \bar{\psi}^b \Gamma^c_{ad} \psi^d ) \\
-\bar{Q} = -i \psi^a ( g_{ab} \dot{x}^b + i g_{bc} \psi^b \Gamma^c_{ad} \bar{\psi}^d ) 
+Q &= i \bar{\psi}^a ( g_{ab} \dot{x}^b + ig_{bc} \bar{\psi}^b \Gamma^c_{ad} \psi^d ) \\
+\bar{Q} &= -i \psi^a ( g_{ab} \dot{x}^b + i g_{bc} \psi^b \Gamma^c_{ad} \bar{\psi}^d ) 
 }
 It is also invariant under $\psi^a \to e^{i\alpha} \psi^a$, $\bar{\psi}^a \to e^{-i\alpha} \bar{\psi}^a$, generated by the charge $F=g_{ab} \psi^a \bar{\psi}^b$. Conservation of $F$ in the quantum theory implies no fermionic excitations created/ destroyed by time evolution. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{Quantise}
 \eq{
-p_a = \frac{\delta L}{\delta \dot{x}^a} = g_{ab}  \dot{x}^b + i g_{bc} \bar{\psi}^b \Gamma^c_{ad} \psi^d \\
-\pi_a = \frac{\delta L}{\delta \dot{\psi}^a} = ig_{ab} \bar{\psi}^b
+p_a &= \frac{\delta L}{\delta \dot{x}^a} = g_{ab}  \dot{x}^b + i g_{bc} \bar{\psi}^b \Gamma^c_{ad} \psi^d \\
+\pi_a &= \frac{\delta L}{\delta \dot{\psi}^a} = ig_{ab} \bar{\psi}^b
 }
 Thus have canonical commutables 
 \eq{
-\comm[\hat{x}^a ]{\hat{p}_b} = i\delta^a_b \\
-\acomm[\hat{\psi}^a]{\hat{\bar{\psi}}^b}
+\comm[\hat{x}^a ]{\hat{p}_b} &= i\delta^a_b \\
+\acomm[\hat{\psi}^a]{\hat{\bar{\psi}}^b} &= \delta^{ab}
 }
 and all others trivial. For the bosonic field, choose $\mc{H} = L^2(N, \sqrt{g}d^n x )$ with $\hat{p}_a \to -i \pd{x^a}$. For the fermions, again choose $\bar{psi}$ to be raising operators and the $\psi$ to be lowering operators. Pick a vacuum state $\ket{0}$ defined by $\forall a \, \psi^a \ket{0}=0$, then for all other states of the fermionic system are generated by acting with $\bar{\psi}$ on $\ket{0}$. Each $\bar{\psi}^a$ can only act once, since $\acomm[\bar{\psi}^a]{\bar{\psi}^b}=0$. We can thus interpret these as \emph{forms} on $N$ 
 \eq{
@@ -711,7 +714,7 @@ This follows since $\psi^a$ is the adjoint of $\bar{\psi}^a$ so
 \braket{\alpha|\beta} &= \int_N \alpha_{a_1 \dots a_p} \beta_{b_1 \dots b_p} \sqrt{g} \, d^n x \,  \braket{0 | \psi^{a_1} \dots \psi^{a_p} \bar{\psi}^{b_1} \dots \bar{\psi}^{b_p}} \\
 &= \int_N \bar{\alpha}^{a_1 \dots a_p} \beta_{a_1 \dots a_p} \sqrt{g} \, d^n x 
 }
-Furthermore, in the quantume theory 
+Furthermore, in the quantum theory 
 \eq{
 Q = i\bar{\psi}^a \hat{p}_a \rightarrow dx^a \pd{x^a} = d \quad \text{exterior derivative}
 }
@@ -723,6 +726,299 @@ the adjoint with respect to $\braket{,} $
 \eq{
 d^\dagger : \Omega^p(N) \to \Omega^{p-1}(N) \\
 \alpha \in \Omega^p \, \beta \in \Omega^{p-1} \; \braket{\alpha, d^\dagger \beta} = \braket{d\alpha,\beta}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{SQM Non-linear Sigma Models}
+Define the operator 
+\eq{
+\star \omega = \sqrt{g} \eps\indices{^{a_1}^\dots^{a_p}_{b_{p+1}}_\dots_{b_n}} \omega_{a_1 \dots a_p} dx^{b_{p+1}} \wedge \dots \wedge dx^{b_n}
+}
+We can deal with the ordering ambiguity by demanding the SUSY algebra 
+\eq{
+2\hat{H} = \acomm[\hat{Q}]{\hat{\bar{Q}}} 
+}
+still holds in the quantum theory. This fixes 
+\eq{
+H = \frac{1}{2} \left( d^\dagger d + d d^\dagger \right) = -\frac{1}{2}
+}
+Defining $\Delta : \Omega^p \to \Omega^p$, $\Delta = -d d^\dagger - d^\dagger d$ the \bam{Laplacian}. For $f \in \Omega^0(N)$
+\eq{
+-\Delta f &= \underbrace{d d^\dagger f}_{=0} + d^\dagger d f \\
+&= d^\dagger d f 
+}
+using 
+\eq{
+d^\dagger \omega = \frac{1}{(n+1)!} g^{ab} \del_a \omega_{[bc\dots d]} dx^c \wedge \dots \wedge dx^d
+}
+Hence 
+\eq{
+-\Delta f &= d^\dagger \left( \del_a f dx^a \right) \\
+&= \star d(\star df) \\
+&= \star d \left( \frac{\sqrt{g}}{(n-1)!} g^{ab} \del_a f \eps_{bc\dots d} \underbrace{dx^c \wedge \dots \wedge dx^d}_{n-1 here} \right) \\
+&= \star \left[ \frac{1}{(n-1)!} \del_m \left( \sqrt{g} g^{ab} \del_a f \right) \eps_{bc\dots d} \underbrace{dx^m \wedge dx^c \wedge \dots \wedge dx^d}_{n here} \right] \\
+&= -\frac{1}{g} \del_a \left( g^{ab} \sqrt{g} \del_b f \right) \star (dx^1 \wedge \dots \wedge dx^n) \\
+&= - \frac{1}{\sqrt{g}} \del_a \left( g^{ab} \del_b f \sqrt{g} \right)
+}
+Acting on any form $\omega$ 
+\eq{
+2 \braket{\omega | \hat{H} | \omega} &= \braket{\omega | d d^\dagger | \omega} + \braket{\omega | d^\dagger d | \omega} \\
+&= || d^\dagger \ket{\omega} ||^2  + || d \ket{\omega} ||^2 \geq 0 
+}
+A from which obeys $\Delta \omega = 0 $ is said to be \bam{harmonic}. 
+So supersymmetric ground states are in 1-1 correspondence with harmonic forms, of any degeneracy on $N$. 
+\eq{
+\Harm^\ast (N) = \bigoplus_{p=0}^n \Harm^p(N)
+}
+$\forall \omega \in \Harm^p$, $\omega$ must be \bam{closed} (i.e. $d\omega = 0$) and \bam{coclosed} (i.e. $d^\dagger \omega = 0$). 
+
+\begin{theorem}[Hodge's Theorem]
+Letting 
+\eq{
+H_{dR}^p(N) &= \faktor{\ker\left(d: \Omega^p \to \Omega^{p+1}\right)}{\image\left( d : \Omega^{p-1} \to \Omega^p \right)} \\
+&= \faktor{\set{\omega\in\Omega^p : d\omega= 0}}{\set{\omega\in\Omega^p:\exists \alpha \in \Omega^{p-1} , \omega = d\alpha}}
+}
+be the \bam{de Rham cohomohlogy}, Hodge's theorem states 
+\eq{
+\Harm^p(N) \cong H_{dR}^p(N)
+}
+\end{theorem}
+
+Note in the de Rham cohomology $\forall \alpha \; \omega \sim \omega + d\alpha$. The role of the coclosure condition is to select a unique representation 
+\eq{
+d\omega = 0 = d^\dagger \omega \Rightarrow d^\dagger d \alpha = 0 
+}
+is the only freedom of choice of $\alpha$, and the only solution is 0.\footnote{This is analogous to choosing $d^\dagger A = \del^\mu A_\mu = 0 $ in EM }
+
+Thus the space of SUSY ground states $\cong H_{dR}^\ast (N) \Rightarrow$ the Wittend index 
+\eq{
+I_w &= \tr ((-1)^F e^{-\beta H} \\
+&=n_B - n_F \\
+&= \sum_{p=0}^n (-1)^p \dim H_{dR}^p(N) \\
+&= \chi(N)
+}
+$\chi$ the \bam{Euler characteristic} of $N$. 
+
+Now, suppose $C_p$ is a p-cycle in in $N$ with no boundary. Stokes' theorem gives 
+\eq{
+\int_{D_{p+1}} d\omega = \int_{C_p} \omega
+}
+where $C_p = \del D_{p+1}$. However, if $\omega \in H_{dR}^0$ then $d\omega = 0$ 
+\eq{
+\Rightarrow \int_{C_p} \omega = 0
+}
+if $\exists D_{p+1}$. Further 
+\eq{
+\int_{C_p} \omega + d\alpha = \int_{D_{p+1}} d\omega 
+}
+
+\begin{theorem}[de Rham's Theorem]
+Letting 
+\eq{
+H_p(N) &= \faktor{\set{\text{p-cycles with no boundary}}}{\set{\text{p-cycles that are the boundary of a (p+1)-cycle}}} \\
+&= \faktor{\set{C_p : \del C_p = 0}}{\set{C_p : \exists D_{p+1},  C_p = \del D_{p+1}}}
+}
+be the \bam{p\textsuperscript{th} homology group}, de Rham's theorem states 
+\eq{
+H_{dR}^p(N) \cong H_p(N)
+}
+\end{theorem}
+
+\begin{example}
+Take $N= S^n$. 
+\eq{
+\dim H_{dR}^p(S^n) = \left\{ \begin{array}{cc} 1 & p=0,n \\ 0 & p \neq 0,n \end{array} \right. 
+}
+\end{example}
+
+Consider a general genus $g$ surface $\Sigma_g$. We have 
+\eq{
+\dim H_{dR}^p(\Sigma_g) = \left\{ \begin{array}{cc} 1 & p = 0,2 \\ 2g & p=1 \end{array} \right. 
+}
+
+It is also known 
+\eq{
+\chi(S^n) &= \left\{ \begin{array}{cc} 2 & \text{n even} \\ 0 & \text{n odd} \end{array} \right.  \\
+\chi(\Sigma_g) &= 2-2g
+}
+
+Now from the path integral 
+\eq{
+\chi(N) = \int e^{-S[x,\psi]} \, \mc{D}x \, \mc{D}\psi \, \mc{D}\bar{\psi}
+}
+where all fields are periodic with period $B$. In fact, the whole action is supersymmetrically trivial 
+\eq{
+S &= \oint \left( \frac{1}{2} g_{ab} \dot{x}^a \dot{x}^b + \frac{1}{2}g_{ab} \bar{\psi}^a \nabla_\tau \psi^b + \frac{1}{4} R_{abcd} \bar{\psi}^a \psi^b \bar{\psi}^c \psi^d \right) \, d\tau \\
+&= \bar{Q} \left[ \oint \frac{g_{ab} \bar{\psi}^a}{\highlight{2}} \left( i \dot{x}^b \highlight{+} \Gamma^b_{cd} \bar{\psi}^c \psi^d \right)\right] \, d\tau
+}
+consequently the path integral is independent of $\hat{p}$, and so independent of  the circumference $\beta$ of $S^1$. In particular, if we expand 
+\eq{
+x^a (\tau) = x_0^a + \delta x^a ( \tau) 
+} 
+with 
+\eq{
+\oint \delta x^a(\tau) d\tau = 0
+}
+then as $\beta \to 0$ all the $\psi^a(\tau) = \psi_0^a + \delta \psi^a(\tau)$ contributions form the non-zero modes are highly suppressed, e.g. 
+\eq{
+\delta x^a(\tau) = \sum_{k \neq 0} \delta_k^a(\tau) e^{\frac{2\pi i k \tau}{\beta}} 
+}
+the derivatives being as $\frac{1}{\beta} \to \infty$. In fact the contributions from $\delta x, \delta \psi$ precisely cancel one another, leaving us just with an integral over the zero modes, that is the path integral localises to constant maps $x : S^1 \to N$, but there's no preffered point in $N$ so we still need to integrate over $N$. Thus 
+\eq{
+\chi(N) &= \int e^{-S[x_0, \psi_0]} \, d^n x_0 \, d^n \psi_0 \, d^n \bar{\psi}_0 \\
+&= \int \exp -\left[ \frac{1}{2} R_{abcd}(x_0) \bar{\psi}^a_0 \bar{\psi}^b_0 \psi_0^c \psi_0^d \right] \, d^n x_0 \, d^n \psi_0 \, d^n \bar{\psi}_0 \\ 
+&= \int_N \tr\left( R \wedge R \wedge \dots \wedge R \right) \quad \text{where } R\indices{^a_b} = R\indices{_c_d^a_b} \, dx^c \wedge dx^d \text{ is the curvature 2 form}
+}
+This is the \bam{Gauss-Bonnet formula}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Atiyah Singer Index Theorem}
+We take $\dim N = n = 2m$. We can then restrict $\psi^a$ to be real, giving the action
+\eq{
+S[x, \psi] = \oint \frac{1}{2} g_{ab} \dot{x}^a \dot{x}^b + \frac{1}{2} g_{ab} \psi^a \nabla_\tau \psi^b \, d\tau 
+}
+since $R_{a[bcd]}=0$ (Bianchi). \\
+This action is still invariant under susy transforms with $ \eps = - \bar{\eps}$ and 
+\eq{
+\delta x^a = \eps \psi^a \\ 
+\delta \psi^a = - \eps \dot{x}^a
+}
+(This is sometimes called $\mc{N}=\frac{1}{2}$ susy). We have momenta 
+\eq{
+p_a = \frac{\delta L}{\delta \dot{x}^a} = g_{ab}\dot{x}^b + \frac{i}{2} \psi_c \Gamma^c_{ab} \psi^b \\ 
+\pi_a = \frac{\delta L}{\delta \dot{\psi}^a} = g_{ab} \psi^b 
+}
+Thus we canonical commutation relations $\comm[\hat{x}^a]{\hat{p}_b} = i \delta^a_b$, $\acomm[\hat{\psi}^a]{\hat{\psi}^b} = 2g^{ab}$. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Spinors in n=2m Dimensions}
+THe Dirac $\gamma$ matrices obey $(\gamma^i)^\dagger = \gamma^i$ and $\acomm[\gamma^i]{\gamma^j} = 2\delta^{ij}$. We construct $m= \frac{n}{2}$ raising and lowering operators over $\mbb{C}$ by 
+\eq{
+\gamma_\pm^I = \frac{1}{2} \left( \gamma^{2I} \pm i \gamma^{2I-1} \right)
+}
+These obey 
+\eq{
+\acomm[\gamma^I_+]{\gamma^J_-} = \delta^{IJ} \\
+\acomm[\gamma^I_+]{\gamma^J_+} = 0=\acomm[\gamma^I_-]{\gamma^J_-} 
+}
+Starting from a spinor $\chi$ that obeys $\forall I \; \gamma_-^I \chi = 0$ we construct a basis of the space $S$ of spinors by acting with any combination of the $\gamma_+^I$. Since $(\gamma_+^I)^2 = 0$, each component can act at most once, so $\dim S = 2^{\frac{n}{2}} = 2^m$. The group $Spin(n)$, the double cover of $SO(n)$, acts on these spinors via the generators $\Sigma^{ij} = -\frac{1}{4} \comm[\gamma^i]{\gamma^j}$ which obey 
+\eq{
+\comm[\Sigma^{ij}]{\Sigma^{kl}} = i \left( \delta^{ik} \Sigma^{jl} + \delta^{jl}\Sigma^{ik} - \delta^{jk} \Sigma^{il} - \delta^{il} \Sigma^{jk} \right]
+}
+This representation is not irreducible. To see this let $\gamma^{n+1} = i^{\frac{n}{2}} \gamma^1 \gamma^2 \dots \gamma^n$. This obeys 
+\eq{
+(\gamma^{n+1})^2 = 1 \\
+\acomm[\gamma^{n+1}]{\gamma^i} = 0 \\ 
+\comm[\gamma^{n+1}]{\Sigma^{ij}} = 0 
+}
+We can thus decompose $S = S^+ \oplus S^-$ where $S^\pm$ are the $\pm1$ eigenspaces of $\gamma^{n+1}$, and correspond to states constructed from an even/odd number of raising operators.  \\
+The Dirac operator $i \slashed{\del} $ anticommutes with $\gamma^{n+1}$ and thus decomposes into 
+\eq{
+i \slashed{\del} = \begin{pmatrix} 0 & \del^+ \\ \del^- & 0 \end{pmatrix}
+}
+where $\del^\pm : S^\pm \to S^\mp$. Note that $\delta^\pm$ annihilates $S^\mp$, so $(\del^\pm)^2 = 0$. We define 
+\eq{
+\ind(i\slashed{\del}) = \dim \ker (\del^+) - \dim \ker (\del^-)
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Susy QM}
+In our quantisation of $S = \int \frac{1}{2} g_{ab} \dot{x}^a \dot{x}^b + \frac{i}{2} g_{ab} \psi^a \nabla_\tau \psi^b \, d\tau$
+the Hilbert space is thus naturally $L^2(S(N),\sqrt{g} \, d^n x)$, and the supercharge 
+\eq{
+Q = \psi^a \left( i g_{ab} \dot{x}^b + \underbrace{\psi_c \Gamma^{c}_{ab} \psi^b}_{=\frac{1}{2}\Gamma^c_{ab} g_{cd} \comm[\psi^c]{\psi^d}}  \right)
+}
+corresponds to the covariant Dirac operator $i \slashed{\nabla}$. The Witten index $\tr \left( (-1)^F e^{-\beta H} \right) = \dim \ker (\nabla^+) - \dim \ker (\nabla^-)$
+The path integral is again independent of circumference $\beta$, Splitting 
+\eq{
+x^a (\tau) = x^a_0 \delta x^a(\tau) \\
+\psi^a(\tau) = \psi^a_0 + \delta \psi^a(\tau) 
+}
+with $\oint \delta x \, dt = 0$. We use Riemann normal coordinate near $x_0 \in N$ to write 
+\eq{
+g_{ab}(x) = \delta_{ab} = \frac{1}{3} R_{abcd}\delta x^c \delta x^d + \mc{O}(\delta x^2) \\
+\Gamma^a_{bc} (x) = \del_d \Gamma^a_{bc}(x_0) \delta x^d = - \frac{1}{3} \left[ R\indices{^a_b_c_d} (x_0) + R\indices{^a_c_b_d}(x_0) \right] \delta x^d + \mc{O}(\delta x^2)
+}
+To second order in the fluctuations, the actions becomes 
+\eq{
+S^{(2)}[x_0, \psi_0, \delta x, \delta \psi] = \oint - \frac{1}{2} \delta x_a \frac{d^2}{dt^2} \delta x^a + \frac{1}{2} \delta \psi_a \frac{d}{dt} \delta \psi^a - \frac{1}{4} R_{abcd} \psi_0^a \psi_0^b \delta x^c \delta \dot{x}^d \, dt
+}
+For any fixed values of $(x_0,\psi_0)$ this is a free action, so the path integral over fluctuations gives 
+\eq{
+\int e^{-S[x_0,\psi_0,\delta x, \delta \psi]} \, \mc{D}(\delta x) \, \mc{D}(\delta \psi) = \frac{\sqrt{\det^\prime ( \del_t \delta_b^a)}}{\sqrt{\det^\prime\pround{-\del_t^2 - \mc{R}\indices{^a_b}(x_0,\psi_0) \del_t}}}
+}
+where $\mc{R}\indices{^a_b}(x_0,\psi_0) = R\indices{^a_b_c_d}(x_0) \psi_0^c \psi_0^d$ and $\det^\prime$ indicates the determinant without the zero modes. 
+
+\eq{
+&= \frac{\sqrt{\det^\prime ( \del_t \delta_b^a)}}{\sqrt{\det^\prime ( \del_t \delta_b^a)} \sqrt{\det^\prime \pround{-\delta_a^b \del_t - \mc{R}_a^b}}}  
+}
+The matrix $ \mc{R}\indices{^a_b}$ is an antisymmetric $n\times n$ matrix, and $n=2m$. We decompose the tangent space $T_{x_0} N$ into 2-dimensional subspaces on which 
+\eq{
+\mc{R}\indices{^a_b}|_i = \begin{pmatrix} 0 & \omega_i \\ -\omega_i & 0 \end{pmatrix} \quad i = 1, \dots, m
+}
+Let $-D_i$ be the restriction of $-\delta^a_b \del_t - \mc{R}\indices{^a_b}$ to the i\textsuperscript{th} subsapce. We expand 
+\eq{
+\delta x^a(t) = \sum_{k \neq 0} \delta x_k^a e^{2\pi i k t}
+}
+Then the eigen values of $-D_i$ on this subspace are $-2\pi i k \pm \omega_i$ for $k\in \mbb{Z}\setminus\set{0}$. THerefor 
+\eq{
+\det (-D_i) &= \prod_{k \neq 0} (-2\pi i k + \omega_i )(-2\pi i k - \omega_i ) \\
+&= \prod_{k \neq 0} \psquare{-(2\pi k)^2 - \omega_i^2} \\
+&= \prod_{k = 1}^{\infty} (2\pi k)^4 \prod_{k = 1}^\infty \psquare{1 + \frac{\omega_i^2}{(2\pi k)^2}}^2 
+}
+This is clearly divergent. We can regularise this this by using zeta function regularisation 
+\eq{
+\prod_{k=1}^\infty (2\pi k)^4 = (4\pi^2)^{2\zeta(0)} e^{-2 \zeta^\prime(0)} = 1 
+}
+Hence the important factor is 
+\eq{
+\prod_{k = 1}^\infty \psquare{1 + \frac{\omega_i^2}{(2\pi k)^2}}^2
+}
+we recall 
+\eq{
+\sinh(z) = \prod_{k = 1}^\infty \psquare{1 + \frac{z^2}{\pi^2 k^2}}^2
+}
+so we have 
+\eq{
+\sqrt{\det^\prime ( -D_i)} = \frac{\sinh\pround{\frac{\omega_i}{2}}}{\pround{\frac{\omega_i}{2}}}
+}
+Hence the whole regularised path integral gives 
+\eq{
+I_w = \ind(\underbrace{\slashed{\nabla}}_{\substack{\text{Dirac op} \\ \text{on N}}}) &= \int \prod_{i=1}^m \frac{\pround{\frac{\omega_i}{2}}}{\sinh\pround{\frac{\omega_i}{2}}} \\
+&= \int \det \pround{\frac{\frac{\mc{R}\indices{^a_b}(x_0,\psi_0)}{2}}{\sinh\pround{\frac{\mc{R}\indices{^a_b}(x_0,\psi_0)}{2}}}} \, d^nx_0 \, d^n\psi_0 \\
+&= \int_N \det \pround{\frac{\frac{\mc{R}}{2}}{\sinh \frac{\mc{R}}{2}}}
+}
+where $\mc{R}\indices{^a_b} = R\indices{^a_b_c_d} dx^c \wedge dx^d$
+This is the \bam{Atiyah Singer Index Theorem}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Supersymmetric QFT}
+If we have a d dimensional theory that is Lorenz invariant, we must complete the supersymmetry algebra $\acomm[Q]{Q^\dagger} = 2H$. The Hamiltonian is part of the d-momentum multiplet of $P_\mu$, i.e. we need further supercharges. If we want to preserve $Q^\dagger = (Q)^\dagger$ then these supercharges must have the same spin and so must each have spin $\frac{1}{2}$. Specifically, the SUSY algebra in d-dimensions is 
+\eq{
+\acomm[Q_\alpha]{Q^\dagger_\beta} = 2 \gamma^\mu_{\alpha\beta} P_\mu
+}
+where $\alpha,\beta$ are spinor indices and $\gamma^\mu$ is a Dirac $\gamma$ matrix. We'll mostly be concerned with $d=2$ where Dirac spinors have $2^\frac{d}{2} = 2$ complex components $\psi = \begin{psmallmatrix} \psi_- \\ \psi_+ \end{psmallmatrix}$. With coordinates $(t,s) \in \mbb{R}^2$ and Minkowski metric $\eta_{\mu\nu} = \diag(1,-1)$, we can represent the Dirac $\gamma$s 
+\eq{
+\gamma^t &= \begin{pmatrix}  0 & 1 \\ 1 & 0 \end{pmatrix} \\
+\gamma^s &= \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}
+}
+These obeys $\acomm[\gamma^\mu]{\gamma^\nu} = 2\eta^{\mu\nu}$. The action for a free massless Dirac spinor in $d=2$ is 
+\eq{
+S[\psi] = \frac{1}{2\pi} \int_{\mbb{R}^2} i  \bar{\psi} \slashed{\del} \psi \, d^2x
+}
+where $\slashed{\del} = \gamma^\mu \del_\mu$ and $\bar{\psi} = \psi^\dagger \gamma^t$. So 
+\eq{
+S[\psi] = \frac{1}{2\pi} \int_{\mbb{R}^2} i \bar{\psi}_- \pround{\del_t + \del_s} \psi_- +  i \bar{\psi}_+ \pround{\del_t - \del_s} \psi_+  \, dt\, ds
+}
+Classically, 
+\eq{
+\pround{\del_t + \del_s} \psi_- &= 0 \Rightarrow \psi_-(t,s) = f(t-s) \quad \text{(right - moving)} \\ 
+\pround{\del_t - \del_s} \psi_+ &= 0 \Rightarrow \psi_+(t,s) = g(t+s)\quad \text{(left - moving)}
+}
+Under a $SO(1,1)$ transformation $\psi_\pm \mapsto e^{\pm \frac{\gamma}{2}}\psi_\pm$, $\bar{\psi}_\pm \mapsto e^{\pm \frac{\gamma}{2}}\bar{\psi}_\pm$, so 
+\eq{
+\begin{pmatrix} t \\ s \end{pmatrix} \mapsto \begin{pmatrix} \cosh\gamma & \sinh\gamma \\ \sinh\gamma & \cosh\gamma \end{pmatrix} \begin{pmatrix} t \\ s \end{pmatrix}
 }
 
 \end{document}

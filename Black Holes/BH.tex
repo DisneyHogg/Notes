@@ -601,11 +601,11 @@ Let
 \end{example}
 
 \begin{definition}
-A geodesic is \bam{complete} if an affine parametrisation of the geodesic exists to $\pm\infty$. A spacetime is geodesically complete if all inextensible causal geodesic are complete. 
+A geodesic is \bam{complete} if an affine parametrisation of the geodesic exists to $\pm\infty$. A spacetime is geodesically complete if all inextendible causal geodesic are complete. 
 \end{definition}
 
 \begin{theorem}
-All geodesically incomplete, inextensible manifolds are \bam{singular}
+All geodesically incomplete, inextendible manifolds are \bam{singular}
 \end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1013,6 +1013,410 @@ solutions to this equation are called \bam{Jacobi fields}
 Let $\mc{U} \subset \mc{M}$ be open. A geodesic congruence in $\mc{U}$ is a family of geodesics such that exactly one geodesic passes through each $p \in \mc{U}$. 
 \end{definition}
 
+Consider a congruence with all geodesics of the same type. We then may always choose an affine parametrisation such that 
+\eq{
+U^a U_a = \pm 1   \quad \text{timelike/spacelike} \\
+\text{or } U^a U_a = 0 \quad \text{null}
+}
+Now consider a 1 parameter family of geodesics in such congruence 
+\eq{
+\comm[S]{U} = 0 \Leftrightarrow U^b \nabla_b S^a = B\indices{^a_b} S^b 
+}
+where 
+\eq{
+B\indices{^a_b} = \nabla_b U^a \footnote{Note the order here, this is important}
+}
+This matrix has the properties 
+\begin{itemize}
+    \item $B\indices{^a_b} U^b = 0 $
+    \item $U_a B\indices{^a_b} - \frac{1}{2} \nabla_b (U^2) = 0$
+\end{itemize}
+
+Look at 
+\eq{
+U \cdot \nabla(U \cdot S) = \underbrace{(U\cdot \nabla U^a)}_{=0} S_a + \underbrace{U^a U\cdot\nabla S_a}_{=U^a B_{ab} S^b = 0} = 0
+}
+In parametrisation we can still change
+\eq{
+\lambda^\prime = \lambda - a(s)
+}
+which preserves $U$ but changes $S$ by 
+\eq{
+{S^\prime}^a = S^a + \frac{da}{ds}U^a \\
+\Rightarrow U \cdot S^\prime = U \cdot S + \frac{da}{ds} U^2
+}
+For timelike or spacelike congruences we have $U^2 = \pm 1$ so we can choose $a$ s.t. 
+\eq{
+U \cdot S^\prime = 0
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Null Geodesic Congruences} 
+If $U^2 = 0$ then $U \cdot S = U \cdot S^\prime$. So instead pick a spacelike hypersurface $\Sigma$ which intersect each geodesic once.\footnote{This you can always choose do to our definition of a congruence} Let $N^a$ be a vector field define on $\Sigma$ obeying $N^2 = 0$ and $N \cdot U = -1$ on $\Sigma$. Now extend $N^a$ off $\Sigma$ by parallel transport along the geodesics. 
+\eq{
+U \cdot \nabla N^a = 0
+}
+\footnote{Here we should note that this is not unique, so we must work with equivalence classes of $N^a$ (Wald) but we will not deal with this subtely here. }
+This implies that $N^2 = 0 $, $N \cdot U = -1$, and $U \cdot \nabla N^a = 0$ everywhere. 
+\begin{ex}
+Prove the above statement
+\end{ex}
+
+Take a deviation vector, and decompose uniquely as 
+\eq{
+S^a = \alpha U^a + \beta N^a + \hat{S}^a 
+}
+where 
+\eq{
+U \cdot \hat{S} = 0 = N \cdot \hat{S}
+}
+\begin{ex}
+$\hat{S}$ must be spacelike or 0, prove this. To do this prove it locally in Minkowski and then extend to GR via normal coordinates. 
+\end{ex}
+
+Note that 
+\eq{
+U \dot S = - \beta \quad \text{constant}
+}
+Si we can write a deviation vector $S^a$ as the sum or a part 
+\eq{
+\alpha U^a + \hat{S}^a 
+}
+orthogonal to $U^a$ and a part 
+\eq{
+\beta N^a
+}
+that is parallely transported along each geodesic. We are intereested in congruences containing the generatros of a null hypersurface $\mc{N}$. In this case i we pick a 1 parameter family of geodesics contained in $\mc{N}$ then the deviation vector $S^a$ will be tangent to $\mc{N}$ and hence 
+\eq{
+U \cdot S = 0
+}
+since $U^a$ is normal to $\mc{N}$, i.e. $\beta = 0$. \\
+We can write 
+\eq{
+\hat{S}^a = P\indices{^a_b} S^b 
+}
+where
+\eq{
+P\indices{^a_b} = \delta^a_b + N^a U_b + U^a N_b
+}
+is a projection, i.e. $P\indices{^a_b} P\indices{^b_c} = P\indices{^a_c}$, of the tangent space at $p$ onto $T_\perp$ \\
+You can check 
+\eq{
+U \cdot \nabla P\indices{^a_b} = 0
+}
+
+\begin{prop}
+A deviation vector for which $U\cdot S = 0$ satisfies 
+\eq{
+U \cdot \nabla \hat{S}^a = \hat{B}\indices{^a_b} \hat{S}^b
+}
+where 
+\eq{
+\hat{B}\indices{^a_b} = P\indices{^a_c} B\indices{^c_d} P\indices{_b^d}
+}
+\end{prop}
+\begin{proof}
+\eq{
+U \cdot \nabla \hat{S}^a &= U \cdot \nabla \left( P\indices{^a_b} S^b \right) \\
+&= P\indices{^a_c} U \cdot \nabla S^c \\
+&= P\indices{^a_c} B\indices{^c_d} S^d \\
+&= P\indices{^a_c} B\indices{^c_d} P\indices{^d_e} S^e
+}
+where we used $U \cdot S = 0 $ and $B\indices{^c_d} U^d = 0$. Finally we can use $P^2 = P$ on the right and we are done. 
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Expansion, Rotation, and Shear}
+
+Note that $\hat{B}$ can be regarded as a matrix that acts on the 2d space $T_\perp$. 
+
+\begin{definition}
+Define 
+\eq{
+\theta = \hat{B}\indices{^a_a} \quad \text{(expansion)}\\
+\hat{\sigma}_{ab} = \hat{B}_{(ab)} - \frac{1}{2} P_{ab} \theta \quad \text{(shear)} \\
+\hat{\omega}_{ab} = \hat{B}_{[ab]} \quad \text{(rotation) }\\
+}
+\end{definition}
+
+From this definition we get 
+\eq{
+\hat{B}\indices{^a_b} = \frac{1}{2} \theta P\indices{^a_b} \hat{\sigma}\indices{^a_b} \hat{\omega}\indices{^a_b}
+}
+so 
+\eq{
+\theta = g^{ab} \hat{B}_{ab} = g^{ab} B_{ab} = \nabla_a U^a 
+}
+This is independent of $N$, so this is in some way physical. This is true for the eigenvalues of the shear, as is $\hat{\omega}^{ab} \hat{\omega}_{ab}$ (though we do not prove this). 
+
+\begin{prop}
+If the congruence contains the generators of the null heprsurface $\mc{N}$ then $\hat{\omega}_{ab} = 0$ on $\mc{N}$. Conversely, if $\hat{\omega}_{ab} = 0 $ on $\mc{N}$ hten $U^a$ is everywhere hypersurface orthogonal. 
+\end{prop}
+\begin{proof}
+The definition of $\hat{B}$ and the fact that $U \cdot U = 0 = B \cdot U $ implies 
+\eq{
+\hat{B}\indices{^b_c} = B\indices{^b_c} + U^b N_d B\indices{^d_c} + U_c B\indices{^b_d} N^d + U^b U_c N_d B\indices{^d_e} N^e
+}
+suing this we have 
+\begin{align}\label{eq:BH:2}
+U_{[a}\hat{\omega}_{bc]} = U_{[a}\nabla_c U_{b]} = -\frac{1}{6} (U \wedge dU)_{abc} 
+\end{align}
+If $U^a$ is normal to $\mc{N}$ then $U \wedge dU = 0$ on $\mc{N}$ and hence on $\mc{N}$
+\eq{
+0 = U_{[a}\hat{\omega}_{bc]} = \frac{1}{3} ( U_a \hat{\omega}_{bc} + U_b \hat{\omega}_{ca} + U_c \hat{\omega}_{ab} ) 
+}
+Contracting with $N^a$ gives 
+\eq{
+\hat{\omega}_{bc} = 0
+}
+om $\mc{N}$ where we use $U \cdot N = -1$ and $\hat{\omega} \cdot N = 0$. Conversely if $\hat{\omega} = 0$ everywhere the \ref{eq:BH:2} implies that $U$
+is hypersurface orthogonal using Frobenius theorem.  
+ \end{proof}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Gaussian Null coordinates}
+Take a 2d surface with coordinates $y^i$ on $\mc{N}$. Take another vector null field $V$ on $\mc{N}$ satisfying 
+\eq{
+V \cdot \pd{y^i} = 0
+}
+and $V \cdot U = 1$. Assign coordinates $(r,\lambda,y^i)$ to the point affine parameter distance $r$ along the null geodesic which stars at the point on $\mc{N}$ with coordinate $(\lambda,y^i)$ and has tangent vector $V^a$ there. This defines a coordinate neighbourhood of $\mc{N}$ such that $\mc{N}$ is at $r=0$, with $U = \pd{\lambda}$ on $\mc{N}$, and $\pd{r}$ tangent to affinely parameterised null geodesics. \\
+
+The latter condition gives that $g_{rr} = 0 $ \emph{everywhere}. It also follows from the geodesic equation for $\pd{r}$ 
+\eq{
+g_{r\mu,r} = 0
+}
+At $r=0$, we have $g_{r\lambda} = U.V= 1$, and $g_{ri} = V \cdot \pd{y^i} = 0$. We also know that $g_{\lambda\lambda} = 0$ at $r=0$ as $U$ null and $g_{\lambda i} = 0$ at $r=0$ as $\pd{y^i} \parallel \mc{N} \perp U$. Hence
+\eq{
+g_{\lambda\lambda} = rF \\
+g_{\lambda i} = r h_i
+}
+So far 
+\eq{
+ds^2 = 2 dr \, d\lambda + rF d\lambda^2 + 2r h_i d\lambda \, dy^i + h_{ij} dy^i \, dy^j
+}
+Note that at $r=0$, $F$ must vanish. To see this, we use the fact that 
+\eq{
+\lambda \to (0,\lambda y^i)
+}
+are affinely parameterised null geodesics. For the the only non-vanishing component of the geodesic equation is the $r$ component
+\eq{
+\del_r (rF) = 0 
+}
+Hence $F=0$ at $r=0$ so we can write $F = r \hat{F}$
+\eq{
+\Rightarrow ds^2 = 2 dr \, d\lambda + r^2 \hat{F} d\lambda^2 + 2r h_i d\lambda \, dy^i + h_{ij} dy^i \, dy^j
+}
+Then on $\mc{N}$ the metric is 
+\begin{align}\label{eq:BH:10}
+g|_\mc{N} =  2 dr \, d\lambda + h_{ij} dy^i \, dy^j
+\end{align}
+so $U^\mu = (0,1,0,0)$ on $\mc{N}$ which implies $U_\mu= (1,0,0,0)$. Recalls 
+\eq{
+U \cdot B = B \cdot U = 0 \Rightarrow B\indices{^r_\mu} = 0 = B\indices{^\mu_\lambda} \; \theta = B\indices{^\mu_\mu}
+}
+Hence on $\mc{N}$
+\eq{
+\theta = B\indices{^i_i} &= \nabla_i U^i = \del_i U^i + \Gamma^i_{i\mu} U^\mu \\
+&= \Gamma^i_{i \lambda} = \frac{1}{2} h^{ij} \pround{ g_{ji,\lambda} + g_{j\lambda,i} - g_{i\lambda,j}} \\
+&= \frac{\del_i \sqrt{h}}{\sqrt{h}} \quad h = \det h_{ij}
+}
+Hence 
+\eq{
+\pd[\sqrt{h}]{\lambda} = \theta \sqrt{h}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Trapped Surface}
+
+Consider a 2d spacelike surface $S$ i.e. a 2d submanifold for which all tangent vectors are spacelike. For any $p \in S$ there will be \emph{precisely} two future directed null vectors $U_1^a, U_2^a$ orthogonal to $S$ up to freedom to rescale. 
+
+\begin{example}
+Let $S$ be a 2-sphere $U=U_0$, $V=V_0$ in the Kruskal spacetime. By symmetry, the generators of $\mc{N}$ will be radial null geodesics. Hence, $\mc{N}$ must be surface of constant $U$ on moving $V$ with generators tangent to $dU$
+ and $dV$. Raising 
+ \eq{
+ U_1^a = r e^{\frac{r}{2M}} \pround{pd{v}}^a \\
+U_2^a  = r e^{\frac{r}{2M}} \pround{pd{u}}^a
+}
+We fixed symmetry such that both are future directed  
+\eq{
+\theta_1 = \nabla_a U_1^a = \frac{1}{\sqrt{\zeta}} \del_a \pround{\sqrt{\zeta} U_1^a} = - \frac{8M^2}{r} U \\
+\theta_2 = - \frac{8M^2}{r} V
+}
+For $S$ in regions I, 
+\eq{
+\theta_1 > 0, \theta_2 <0
+}
+and in region II
+\eq{
+\theta_1 < 0, \theta_2 > 0
+}
+\end{example}
+
+\begin{definition}[Trapped Surface]
+A compact, orientable spacelike 2-surface $S$ is \bam{trapped} is both families of null geodesics orthogonal to $S$ have negative expansion eveywhere on $S$.
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Raychaudhuri Equation}
+
+\begin{prop}
+\eq{
+\frac{d\theta}{d\lambda} = - \frac{1}{2} \theta^2  + \hat{\sigma}^{ab} \hat{\sigma}_{ab} + \hat{\omega}^{ab} \hat{\omega}_{ab} - R_{ab} U^a U^b
+}
+\end{prop}
+\begin{proof}
+\eq{
+\frac{d\theta}{d\lambda} &= U \cdot \nabla \pround{B\indices{^a_b} P\indices{^b_a}} \\
+&= P\indices{_a^b} U \cdot \nabla B\indices{^a_b} \\
+&= P\indices{_a^b} U^c \nabla_c \nabla_b U^a \\
+&= P\indices{_a^b} U^c \pround{\nabla_b \nabla_c U^a + R\indices{^a_b_c_d} U^d} \\
+&= P\indices{_a^b} \psquare{\nabla_b \psquare{U^c \nabla_c U^a} - (\nabla_b U^c) (\nabla_c U^a)} + P\indices{_a^b}R\indices{^a_b_c_d} U^d \\
+&= - B\indices{^c_b} P\indices{^b_a} B\indices{^a_c} - R_{cd} U^c U^d \\
+&= - \hat{B}\indices{^c_a} \hat{B}\indices{^a_c} - R_{ab} U^a U^b
+}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Energy Conditions}
+Suppose $u^a$ is the 4-velocity of an observer. Let
+\eq{
+j^a = - T^a_b u^b
+}
+
+\begin{definition}[Dominant Energy Condition]
+The \bam{dominant energy condition (DEC)} is the $-T^a_b V^a$ is a future directed causal vector (or zero) for all future directed timelike vectors $V^a$. 
+\end{definition}
+
+\begin{definition}[Weak Energy Condition]
+The \bam{weak energy condition (WEC)} is $T_{ab} V^a V^b \geq 0$ for all causal vectors $V^a$. 
+\end{definition}
+
+\begin{definition}[Null Energy Condition]
+The \bam{null energy condition (NEC)} is $T_{ab} V^a V^b \geq 0$ for all null vectors $V^a$. 
+\end{definition}
+
+\begin{definition}[Strong Energy Condition]
+The \bam{strong energy condition (SEC)} is $\pround{T_{ab} - \frac{1}{2} g_{ab} T^c_c }V^a V^b \geq 0$ for all causal vectors $V^a$. 
+\end{definition}
+
+\footnote{The SEC is really a condition on the Riemann tensor, mainly that gravity is attractive. In this course we will only need the NEC, which is the weakest condition.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Conjugate Points}
+
+\begin{lemma}
+In a spacetime satisfying Einstein's equations with matter satisfying the NEC, the generators of the null hypersurface satisfy \eq{
+\frac{d\theta}{d\lambda} \leq - \frac{\theta^2}{2}
+}
+\end{lemma}
+
+\begin{corollary}
+If $\theta = \theta_0 < 0$ at a point $p$ on a generator $\gamma$ of a null hypersurface, then $\theta \to -\infty$ along $\gamma$ within finite parameter distance $\frac{2}{|\theta_0|}$ provided $\gamma$ extends this far. 
+\end{corollary}
+\begin{proof}
+Let $\lambda = 0$ at $p$. Then 
+\eq{
+\frac{d(\theta^{-1})}{d\lambda} \geq \frac{1}{2} &\Rightarrow \theta^{-1} - \theta_0^{-1} \geq \frac{\lambda}{2} \\
+&\Rightarrow \theta \leq \frac{\theta_0}{1+\frac{\lambda\theta_0}{2}}
+}
+The RHS tends to $-\infty$ when $\lambda \to \frac{2}{|\theta_0|}$
+\end{proof}
+
+\begin{definition}[Conjugate Points]
+Points $p,q$ on a geodesic $\gamma$ are \bam{conjugate} is there exists a jacobi\footnote{Recall this a solution to the geodic deviation equation} field along $\gamma$ that vanishes at $p,q$ but is not identically 0. 
+\end{definition}
+
+\begin{theorem}\label{thm:BH:1}
+Consider a null geodesic congruence\footnote{This congruence is necessarily singular (the curvature corresponding to the submanifold is singular) (why?) but we will not think too much about this. } which includes all of the null geodesics through $p$. If $\theta \to \infty$ at a point $q$ on a null geodesic $\gamma$ through $p$ then $q$ is conjugate to $p$ along $\gamma$. 
+\end{theorem}
+\begin{proof}
+Look at Hawking and Ellis to get these proofs
+\end{proof}
+
+\begin{theorem}
+Let $\gamma$ be a causal curve with $p, q \in \gamma$ a null geodesic. Then there does not exist a  parameter family of causal curves $\gamma_s$ connecting $p,q$ with $\gamma_0 = \gamma$ and $\gamma_s$ timelike for $ s > 0$ iff $\gamma$ is a null geodesic with no point conjugate to $p$ along $\gamma$. 
+\end{theorem}
+
+\begin{example}
+Take the Einstein static universe 
+\eq{
+ds^2 = -dt^2 + d\Omega_2^2
+}
+Null geodesics emitted near the south pole at time $t=0$ all reconverge at the north pole $R$ at time $t= \pi$. If $q$ lies beyond $R$ along one of these geodesics, then by deforming that great circle into a shorter path one can travel from $p$ to $q$ with a velocity less than that of light, then there exists a timelike curve from $p$ to $q$. 
+\end{example}
+
+Consider a 2d spacelike surface $S$. We have seen that we can introduce two future directed null vector fields $U_1^a, U_2^a$ on $S$ that are normal to $S$ and consider the null geodesics which have one of these vectors as their tangent 
+
+We then have the analogue of theorem \ref{thm:BH:1}, $p$ is conjugate to $S$ if $\theta\to -\infty$ at $p$ along one of the geodesics we discussed. 
+
+\begin{definition}[Chronological Future/Past]
+Let $(\mc{M},g)$ be a time orientable spacetime, $U\subset \mc{M}$. The \bam{chronological future/past} of $U$, denoted by $I^\pm(U)$ is the set of point of $\mc{M}$ which can be reached by a future/past directed \emph{timelike} curve. starting on $U$. 
+\end{definition}
+
+\begin{definition}[Causal Future/Past]
+The \bam{causal future/past} of $U$, denoted $\mc{J}^\pm(U)$ is the union of $U$ with the set of points in $\mc{M}$ that can be reached by a future directed causal curve starting on $U$. 
+\end{definition}
+
+\begin{theorem}\label{thm:BH:2}
+Let $S$ be a 2d spacelike orientable submanifold of a globally hyperbolic spacetime $(\mc{M},g)$. Then every point $p \in \dot{\mc{J}}^+ (S)$ lies on a future directed null geodesic starting from $S$ which is orthogonal to $S$ and has no point conjugate to $S$ between $S$ and $p$. Furthermore $\dot{\mc{J}}^+(U)$  is a submanifold of $\mc{M}$ and achronal (i.e. no two points on $\dot{\mc{J}}^+(U)$ are connected by a timelike curve) for $U\subset \mc{M}$. 
+\end{theorem}
+
+
+\begin{theorem}[Penrose Singularity Theorem (1965)]
+Let $(\mc{M},g)$ be a globally hyperbolic spacetime with a non-compact Cauchy surface. Assume the Einstein equation and the null energy condition, and that $\mc{M}$ contains a trapped surface $T$. Let $\theta_0<0$ be the maximum value of $\theta$ on $T$ for both sets of geodesics orthogonal to $T$. Then at least one of these geodesics is future directed inextendible and has a finite length no greater than $\frac{2}{|\theta_0|}$. 
+\end{theorem}
+\begin{proof}
+Assume that all inextendible null geodesics orthogonal to $T$ have affine length $>\frac{2}{|\theta_0|}$. Then along any of these geodesics, by the Raychaudhuri equation, we will have $\theta \to -\infty$, hence a point conjugate to $T$ with an affine parameter distance no greater than $\frac{2}{|\theta_0|}$. Let $p\in \dot{\mc{J}}^+(T)$, $p\not\in T$. From theorem \ref{thm:BH:2}, we know that $p$ lies on a future directed null geodesic $\gamma$ starting from $T$ which is orthogonal to $T$ and has no point conjugate to $T$ between $T$ and $p$. It follows that $p$ cannot lie beyond the point on $\gamma$ conjugate to $T$ on $\gamma$. Therefore, $\dot{J}^+(T)$ is a subset of a compact set consisting of the set of points along the null geodesics orthogonal to $T$ with affine parameter $\leq \frac{2}{|\theta_0|}$. We also know that $\dot{J}^+(T)$ is a boundary, so is closed, hence compact\footnote{Closed subset of a compact set is compact, recall this proof}. Now recall that $\dot{J}^+(T)$ is a manifold, which implies that is cannot have a boundary. Now recall $\Sigma$ is a non-compact Cauchy surface. So we can pick a timelike vector field $T^a$. By global hyperbolicity, integral curves of $T^a$ intersect $\Sigma$ exactly once. Further, these integral curves will intersect $\dot{J}^+(T)$ at most once as it is achronal. This defines a continuous bijective map $\alpha : \dot{J}^+(T) \to \Sigma $. This establishes a homeomorphism between $\dot{J}^+(T)$ and $\image \alpha \subset \Sigma$. Since $\alpha$ is a homeomorphism and $\dot{J}^+(T)$ closed, $\alpha\pround{\dot{J}^+(T)}$ is closed in $\Sigma$. Now $\dot{J}^+(T)$ is a 3d submanifold, hence $\forall p \in \dot{J}^+(T)$ we can find an open neighbourhood $V\subset \dot{J}^+(T)$ containing $p$. Then $\alpha(V)$ gives a neighbourhood of $\alpha(p)$ in $\alpha\pround{\dot{J}^+(T)}$, hence $\alpha\pround{\dot{J}^+(T)}\subset\Sigma$ is open. As $\alpha\pround{\dot{J}^+(T)}$ is both open and closed in $\Sigma$, provided $\Sigma$ is connected (ensured in GR) $\alpha\pround{\dot{J}^+(T)}=\Sigma$, contradiction as $\alpha\pround{\dot{J}^+(T)}$ compact, $\Sigma$ is not. 
+\end{proof}\footnote{We see that trapped surfaces are pretty generic in GR, and from Cauchy stability if you have a trapped surface, and change you change initial data slightly, you will keep this trapped surface. It was also shown that with sufficiently many gravitons scattering, a trapped surface will necessarily form. }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Asymptotic Flatness}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Conformal Compactification}
+Given a spacetime $(\mc{M},g)$ we can define a new metric 
+\eq{
+\bar{g} = \Omega^2 g
+}
+\begin{idea}
+We want to choose $\Omega$ such that our spacetime $(\mc{M},\bar{g})$ is extendible to $(\bar{\mc{M}},\bar{g})$. This kind of transfrom preserves the causality of the spacetime. 
+\end{idea}
+
+\begin{example}[Mikowski Space]
+Let $(\mc{M},g)$ be Minkowski in spherical coordinates
+\eq{
+ds^2 = - dt^2 + dr^2 + r^2 d\omega^2
+}
+\footnote{In this section only, we will use $\omega$ for the angular part of the metric to avoid confusion with $\Omega$ that is scaling $g \to \bar{g}$}
+Define 
+\eq{
+u &= t - r \\
+v &= t + r \\
+\Rightarrow ds^2 &= -du dv + \frac{1}{4} (u-v)^2 d\omega^2
+}
+Now define 
+\eq{
+u &= \tan p \\
+v &= \tan q 
+}
+The coordinate range we then cover in $(p,q)$ is $-\frac{\pi}{2} < p \leq q < \frac{\pi}{2}$ \\
+Thus
+\eq{
+ds^2 = \frac{1}{(2\cos p \cos q)^2} \psquare{- 4 dp dq + \sin^2(q-p) d\omega^2}
+}
+Choose 
+\eq{
+\Omega &= 2\cos p \cos q \\
+\Rightarrow d\bar{s}^2 &= - 4 dp dq + \sin^2(q-p) d\omega^2 = \Omega^2 ds^2 
+}
+Formally 
+\eq{
+T &= q+p \in (-\pi,\pi) \\
+\chi &= q-p \in [0,\pi) \\
+d\bar{s}^2 &= -dT^2 + \underbrace{d\chi^2 + \sin^2 \chi d\omega^2}_{S^3}
+}
+\hl{See diagram} This embeds our original spacetime in the cylinder of the Einstein static universe. We call the future/past directed boundaries $\mc{I}^\pm$ (Scri $\pm$). This can be projected down to a \bam{Penrose diagram}. 
+\end{example}
 
 
 \end{document}

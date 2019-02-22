@@ -1022,5 +1022,413 @@ S = \int d^4 x \, \left[ \frac{1}{2} ( \del\varphi)^2 + \frac{1}{2}m^2 \varphi^2
 }
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Dimensional Regularisation}
+Work in $d$ dimensions, and let $\eps=4-d$. Suppose $\eps$ is small $0<\eps\ll 1$, then as $\eps \to 0$ we arrive in 4 dimensions. \\
+Work in $\phi^4$ theory 
+\eq{
+S = \int d^d x \, \left[ \frac{1}{2} ( \del\phi)^2 + \frac{1}{2} m^2 \phi^2  + \frac{\lambda}{4!} \phi^4 \right]
+}
+we can perform dimensional analysis. Given $[S]=0$, $[\del]= [m] = [x^{-1}] = 1$, we have $[m^2 \phi^2]=d \Rightarrow [\phi] = \frac{d-2}{2}$, so we know $[\lambda] = 4-d = \eps$. Hence as we move away from 4 dimension, $\lambda$ picks up a dimension. \\
+
+Introduce a mass scale $\mu$, which will be arbitrary as $\Lambda$ was, and introduce the dimensionless coupling $g(\mu)$ via 
+\eq{
+\lambda = \mu^\eps g(\mu)
+}
+If we return to the one-loop diagram, which doesn't depend on external momenta, we find 
+\eq{
+\Pi^{1-loop} &= -\frac{1}{2} g(\mu) \mu^\eps \int \frac{d^d k}{(2\pi)^d} \frac{1}{k^2+m^2} \\
+&= -\frac{1}{2} g(\mu) \mu^\eps \frac{S_{d-1}}{2(2\pi)^d} \int_0^\infty \frac{k^{d-1} \, dk}{k^2+m^2}
+}
+
+Note the following mathematical observations: 
+\begin{itemize}
+    \item We can define $S_{d-1}$ for $d \not\in\mbb{Z}$ by analytic continuation. Note 
+    \eq{
+    (\sqrt{\pi})^d &= \underbrace{\int \prod_{i=1}^d e^{-x_i^2} \, dx_i}_{\text{spherically symmetric}} = S_{d-1} \int_0^\infty e^{-r^2} r^{d-1} \, dr \\
+    \Rightarrow &= \frac{S_{d-1}}{2} \Gamma(\frac{d}{2})
+    }
+    Hence 
+    \eq{
+    S_{d-1} = \frac{2\pi^{\frac{d}{2}}}{} \Gamma(\frac{d}{2})
+    }
+    we take this to be the definition of $S_{d-1}$ for $d\in\mbb{C}$. 
+    \item We can also analytically continue the $\Gamma$ function 
+    \eq{
+    \Gamma(\alpha) = \int_0^\int dx \, x^{\alpha-1} e^{-x} = \frac{1}{\alpha} \left[ x^{-\alpha} e^{-x} \right]_0^\infty + \frac{1}{\alpha}
+    }
+    If $\Re(\alpha) > 0$, the boundary term is 0 so 
+    \eq{
+    \Gamma(\alpha) = \frac{1}{\alpha} \Gamma(\alpha +1)
+    }
+    We analytically continue and define 
+    \eq{
+    \Gamma(\alpha) = \frac{1}{\alpha} \Gamma(\alpha +1) \quad \Re(\alpha)>-1
+}
+iterating 
+\eq{
+\Gamma(\alpha) = \frac{\Gamma(\alpha +n)}{\alpha (\alpha+1) \dots (\alpha +n)} \quad \Re(\alpha)>-n, \; \alpha\neq 0, -1, \dots, -n+1
+}
+We can see we can thus analytically continue $\Gamma$ to $\mbb{C}\setminus -\mbb{N}$
+
+\item The gamma function has an expansion for small $\alpha$ 
+\eq{
+\log \Gamma (\alpha+1) = -\gamma \alpha = \sum_{k=2}^\infty (-1)^k \frac{1}{k} \zeta(k) \alpha^k
+}
+where $\gamma \approx 0.577216$ is the Euler Mascheroni constant and
+\eq{
+\zeta(k) = \sum_{n=1}^\infty \frac{1}{n^k}
+}
+we will typically use this as the argument as $\Gamma$ approaches a pole 
+\eq{
+\Gamma(\eps) = \frac{1}{\eps} - \gamma + \mc{O}(\eps)
+}
+\item Recall the beta function 
+\eq{
+B(s,t) = \int_0^1 du \, u^{s-1} (1-u)^{t-1} = \frac{\Gamma(s)\Gamma(t)}{\Gamma(s+t)}
+}
+\end{itemize}
+
+Let's return to our integral 
+\eq{
+\Pi^{1-loop} = -\frac{1}{2} g(\mu) \mu^\eps \frac{S_{d-1}}{2(2\pi)^d} \int_0^\infty \frac{k^{d-1} \, dk}{k^2 + m^2}
+}
+we have 
+\eq{
+\mu^\eps \int_0^\infty \frac{k^{d-1} \, dk}{k^2 + m^2} &= \frac{\mu^\eps}{2} \int_0^\infty \frac{(k^2)^{\frac{d}{2}-1} \, dk^2}{k^2+m^2} \\
+&= \left(\frac{\mu}{m}\right)^\eps \frac{m^2}{2} \int_0^1 du \, (1-u)^{\frac{d}{2}-1} u^{-\frac{d}{2}} \\
+&= \left(\frac{\mu}{m}\right)^\eps \frac{m^2}{2} \frac{\Gamma(\frac{d}{2})\Gamma(1-\frac{d}{2})}{\Gamma(1)}
+}
+Hence as $d \to 4$
+\eq{
+\Pi^{1-loop} = -g(\mu) \left(\frac{\mu}{m}\right)^\eps \frac{m^2}{2(4\pi)^\frac{d}{2}} \Gamma(1-\frac{d}{2})
+}
+Now 
+\eq{
+\Gamma(1-\frac{d}{2}) &= \Gamma(\frac{\eps}{2}-1) \\
+&= \frac{-1}{(1-\frac{\eps}{2})} \Gamma(\frac{\eps}{2}) \\
+&= -(1-\frac{\eps}{2})^{-1} \left( \frac{2}{\eps} - \gamma + \mc{O}(\eps) \right) \\
+&= - ( 1 + \frac{\eps}{2} + \mc{O}(\eps^2) )\left( \frac{2}{\eps} - \gamma + \mc{O}(\eps) \right) 
+}
+Also collecting we get 
+\eq{
+\left( \frac{4\pi \mu^2}{m^2} \right)^\frac{\eps}{2} = 1 + \frac{\eps}{2} \log \left( \frac{4\pi \mu^2}{m^2} \right) + \mc{O}(\eps^2)
+}
+Hence we find that 
+\eq{
+\Pi^{1-loop} = - \frac{g(\mu)m^2}{32\pi^2} \left( \frac{2}{\eps} - \gamma +1 + \log \left( \frac{4\pi \mu^2}{m^2} \right) \right) + \mc{O}(\eps)
+}
+so divergence appears as a pole when $\eps \to 0$. \\
+We now proceed in the same way as we did with the cutoff. We introduce a counterterm to cancel the pole $\frac{\delta m^2}{2}\phi^2$. Choose a scheme:
+\begin{itemize}
+    \item Minimal subtraction scheme (MS): $\delta m^2 = - \frac{g(\mu) m^2}{16 \pi^2 \eps}$. This removes the pole and nothing else. 
+    \item Modified Minimal subtraction scheme ($\overline{MS}$) : $\delta m^2 = -\frac{g(\mu) m^2}{32 \pi^2}\left(\frac{2}{\eps} -\gamma + \log 4\pi \right)$. This is not better or worse from a physical point of view, but is mathematically convenient as it removes the commonly occuring terms. This scheme is the one which is used widely in practice. 
+    \item On shell scheme: $m^2 + \delta m^2 = m_{phys}^2$. This scheme is also possible, but not widely used. 
+\end{itemize}
+
+We find that final result 
+\eq{
+\Pi^{1-loop, \overline{MS}} = \frac{g(\mu) m^2}{32 \pi^2} \left( \log\left( \frac{\mu^2}{m^2} \right) - 1 \right)
+}
+This is finite as $\eps \to 0$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Renormalisation of the quartic terms}
+
+In four dimensions, we get the various diagrams 
+\eq{
+\underbrace{\frac{\lambda^2}{2} \int \frac{d^4k}{(2\pi)^4} \frac{1}{k^2+m^2} \frac{1}{(p_1 + p_2 + k)^2 + m^2}}_{\text{s channel}} + \text{ t channel } + \text{ u channel }
+}
+In $d$ dimensions $\left[ \frac{d^4 k }{k^4} \right] = d-4 = -\eps$. The 1-loop contribution to the renormalisation of the dimensionless coupling $g(\mu) = \lambda \mu^{-\eps}$ is 
+\eq{
+\frac{g^2 \mu^\eps}{2} \int \frac{d^4k}{(2\pi)^4} \frac{1}{k^2+m^2} \frac{1}{(p_1 + p_2 + k)^2 + m^2}+ \text{ t channel } + \text{ u channel }
+}
+Setting $p_i=0$, we find the pure $\phi^4$ coupling in the effective action $\Gamma[\phi]$
+going through the steps as before we get the integral 
+\eq{
+\mu^\eps \int_0^\infty \frac{k^{d-1} \, dk}{(k^2+m^2)^2} = \frac{1}{2} \left( \frac{\mu}{m} \right)^\eps \frac{\Gamma(2-\frac{d}{2}) \Gamma(\frac{d}{2}) }{\Gamma(2)}
+}
+The result of the full 1-loop correction is thus 
+\eq{
+&\frac{3g^2 S_{\highlight{d-1}}}{2(2\pi)^d} \cdot \frac{1}{2} \left( \frac{\mu}{m} \right)^\eps \frac{\Gamma(2-\frac{d}{2}) \Gamma(\frac{d}{2}) }{\Gamma(2)} \\
+=& \frac{3g^2}{32 \pi^2} \left( \frac{2}{\eps} - \gamma + \log \left( \frac{4\pi \mu^2}{m^2} \right) \right) + \mc{O}(\eps)
+}
+The counter term used for renormalisation in the $\overline{MS}$ scheme is 
+\eq{
+\delta g = \frac{3g^2}{32 \pi^2} \left( \frac{2}{\eps} - \gamma + \log 4\pi \right)
+}
+we get an effective coupling 
+\eq{
+g_{eff}(\mu) = g(\mu) - \frac{3g(\mu)^2}{32 \pi^2} \log \left( \frac{\mu^2}{m^2} \right) + \dots 
+}
+This is finite in the $d\to 4$ limit. $g_{eff}(\mu)$ is an \emph{experimental} observable, so it should be independent of the scale $\mu$. 
+\eq{
+\Rightarrow 0 &= \mu \frac{d g_{eff}}{d\mu} \\
+&= \mu \frac{d}{d\mu} \left[ g(\mu) - \frac{3g(\mu)^2}{32 \pi^2} \log \left( \frac{\mu^2}{m^2} \right) \right]
+}
+We call the the \bam{Running} of the renormalisation coupling $g(\mu)$ the \emph{beta function} 
+\eq{
+\beta(g) = \mu \frac{dg}{d\mu} = \frac{3\hbar g^2}{16\pi^2} + \mc{O}(\hbar^2)
+}
+We note that $\beta(g) > 0$ here, so integrate the ODE 
+\eq{
+\frac{1}{g(\mu^\prime)} &= \frac{1}{g(\mu)} + \frac{3\hbar}{16 \pi^2} \log \frac{\mu}{\mu^\prime} \\
+\Rightarrow g(\mu^\prime) &= \frac{g(\mu)}{1+ \frac{3\hbar g }{16 \pi^2} \log \frac{\mu}{\mu^\prime}} \\
+&\approx g(\mu) - \frac{3\hbar g(\mu)^2 }{16 \pi^2} \log \frac{\mu}{\mu^\prime} \quad \text{if g small}
+}
+We see for $\mu^\prime >  \mu, g(\mu^\prime) > g(\mu)$. \\
+Note there is a special scheme dependent mass scale $\Lambda_{\varphi^4}$ such that when $\mu^\prime \to \Lambda_{\varphi^4}$, $g(\mu^\prime) \to \infty$. This scale is given by 
+\eq{
+\frac{3\hbar g(\mu) }{16 \pi^2} \log \frac{\mu}{\Lambda_{\varphi^4}} = -1
+} 
+valid up to 1 loop considerations. 
+\eq{
+\Rightarrow g(\mu) = \frac{16 \pi^2}{3\hbar} \frac{1}{\log \left( \frac{\Lambda_{\varphi^4}}{\mu} \right) }
+}
+Exchanging dimensionless coupling for dimensionful scale is called \emph{ dimensionful transmutation}. $\Lambda_{\varphi^4}$ is the scale at which perturbation theory breaks down. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quantum Electrodynamics}
+In Euclidean space, the classical action is 
+
+\eq{
+S[\psi,\bar{\psi},A] = \int d^4 x \, \left[ \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + \bar{\psi} ( \slashed{D} + m ) \psi \right]
+}
+where $\slashed{D} = \gamma^\mu (\del_\mu - ieA_\mu)$ and $\psi,\bar{\psi}$ are 4 spin component Grassman variables, $F_{\mu\nu} = \del_\mu A_\nu - \del_\nu A_\mu$. \\
+The partition function is
+\eq{
+Z = \int \mc{D} \psi \, \mc{D} \bar{\psi} \, \mc{D}A \, e^{-S}
+}
+as usual. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Electromagnetic field. }
+
+Fourier transform 
+\eq{
+A_\mu(x) = \int \frac{d^4 k }{(2\pi)^4} e^{ik\cdot x} \tilde{A}_\mu(k)
+}
+Then 
+\eq{
+\frac{1}{4} \int d^4  \, F_{\mu\nu} F^{\mu\nu} = \frac{1}{2} \int \frac{d^4 k }{(2\pi)^4} \tilde{A}_\mu(-k) (k^2 \delta^{\mu\nu} - k^\mu k^\nu) \tilde{A}_\nu(k)
+}
+Note that for fields values $\tilde{A}_\mu(k) = k_\mu \tilde{\alpha}(k)$ where $\tilde{\alpha}$ is a scalar function, the integral vanished and $Z$ diverges badly. In position space $A_\mu = \del_\mu \alpha$. Recalling gauge transforms are $A_\mu \to A_\mu + \frac{1}{e} \del_\mu \alpha$, troublesome modes are gauge equivalent to $A_\mu$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Faddeev Popov method for gauge fixing} 
+
+\begin{example}
+Simple example, consider a function $f : \mbb{R}^2 \to \mbb{R}$ and is rotationally invariant. i.e 
+\eq{
+f=f(r ; \rho) \quad r^2 = x^2 + y^2
+}
+where $\rho$ are other parameters. Start with 
+\eq{
+Z(\rho) &= \int d^2 x \, f(r ; \rho)  \\
+&= \int_0^{2\pi} d\varphi \int_0^\infty r \, dr \, f(r;\rho) \\
+&= 2\pi \int_0^\infty dr \, rf(r;\rho)
+}
+Let's say we want to integrate only along a line, say x-axis. Introduce $\delta(y)$ which breaks rotational invariance
+\eq{
+y_\theta = y\cos\theta -x\sin\theta \\
+\Rightarrow \delta(y) \to \delta(y_\theta) = \frac{\delta(\theta-\arctan\frac{y}{x})}{|y\sin\theta - x\cos\theta|}
+}
+Then 
+\eq{
+1 &= \int_0^\pi d\theta \, \delta(\theta - \arctan \frac{y}{x} ) \\
+&= \int_0^\pi d\theta \, \delta(y\cos\theta - x\sin\theta) | y\cos\theta + x\sin\theta | \\
+&= \int_0^\pi d\theta \, \delta(y_\theta) |\pd[y_\theta]{\theta}|
+}
+so
+\eq{
+Z(\rho) &= \int d^2 x \, \int_0^\pi d\theta \, \delta(y_\theta) \underbrace{|\pd[y_\theta]{\theta}|}_{\text{Faddeev Popov determinant}} f(r;\rho)\\
+&= \int d^2 x \, \int_0^\pi d\theta \, \delta(y) |\pd[y_\theta]{\theta}|_{\theta=0} f(r;\rho)
+}
+Then 
+\eq{
+|\pd[y_\theta]{\theta}|_{\theta=0} &= |x| \\
+\Rightarrow Z(\rho) &= \pi \int_{\mbb{R}^2} d^2 x \, \delta(y) |x| f(r;\theta) \\
+&= 2\pi \int_0^\infty dx \, x f(x;\rho) 
+}
+as before. 
+\end{example}
+
+In $N$ variables, with $N-1$ rotation with angles $\theta_{1i}$ we find 
+\eq{
+1 = \int d\theta_{1i} \, \delta(x_{\theta i }^i) |\frac{d x_{\theta i }^i}{d\theta_{1i}} | 
+}
+In our gauge theory we fix the gauge with some functional of $A_\mu$ $G[A]=0$. E.g. $G[A] = \del_\mu A^\mu$ gives the Lorenz gauge. Consider gauge transformations of the form $A_\mu^\alpha = A_\mu + \frac{1}{e} \del_\mu \alpha$. Then use 
+\eq{
+1 = \int \mc{D} \alpha (x) \,  \delta(G[A]) \det \frac{\delta G[A]}{\delta \alpha}
+}
+For the $G[A]$ we will use, determinant will be independent of $A$
+\begin{example}
+The condition for the Lorenz gauge is 
+\eq{
+G[A^\alpha] = \del_\mu A^\mu + \frac{1}{e} \del^a \alpha \\
+\Rightarrow \det \left( \frac{\delta G[A^\alpha]}{\delta \alpha} \right) = \det \left( \frac{\del^2}{e} \right)
+}
+Now 
+\eq{
+\int \mc{D}A \, e^{-S_g [A]} &= \det \left( \frac{\delta G[A^\alpha]}{\delta \alpha} \right) \int \mc{D} \alpha \, \int \mc{D} A \, e^{-S_g [A]} \delta( G[A^\alpha] ) \\
+&= \det \left( \frac{\delta G[A]}{\delta \alpha} \right) \underbrace{\left( \int \mc{D} \alpha \right)}_{\substack{\text{ still divergent} \\ \text{but now a factor}}} \int \mc{D} A \, e^{-S_g [A]} \delta( G[A] ) \quad \text{relabelling}
+}
+\end{example}
+
+Now let $G[A] = \del_\mu A^\mu - w(x) \Rightarrow G[A^\alpha] = \del_mu A^\mu - w + \frac{1}{e} \del^2 \alpha$. Integrate over $w$ with Gaussian weight, mean 0, weight $\xi$. 
+\eq{
+& \int \mc{D} w \, \exp\left[ - \int d^4x \, \frac{w^2}{2\xi} \right] \det \left( \frac{\del^2}{e} \right) \int \mc{D} \alpha \, \int \mc{D} A \, e^{-S[A]} \delta(\del_mu A^\mu - w) \\ 
+=& \det \left( \frac{\del^2}{e} \right) \left( \int \mc{D} \alpha \right) \int \mc{D} A \, e^{-S_g[A] - \underbrace{\int d^4 x \, \frac{1}{2\xi} (\del_\mu A^\mu)^2}_{=S_{gf}[A]} }
+}
+The gauge fixed action is then 
+\eq{
+S_g[A] + S_{gf}[A] = \frac{1}{2} \int \frac{d^4 k }{(2\pi)^4} \tilde{A}_\mu(-k) \left[ k^2 \delta^{\mu\nu} - \left(1-\frac{1}{\xi}\right) k^\mu k^\nu \right] \tilde{A}_\nu(k)
+}
+The propagator solves 
+\eq{
+\left[ k^2 \delta^{\mu\nu} - \left(1-\frac{1}{\xi}\right) k^\mu k^\nu \right] \tilde{D}_{\nu\rho}(k) = \delta^\mu_\rho \\
+\Rightarrow \tilde{D}^{\mu\nu}(k) = \frac{1}{k^2} \left[\delta^{\mu\nu} - \left(1-\xi\right) \frac{k^\mu k^\nu}{k^2} \right]
+}
+Note $\xi = 0$ is the Lorenz/Landau gauge, while $\xi = 1$ is the Feynmann gauge. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Free Fermions (electrons)}
+Take the actions 
+\eq{
+S[\psi,\bar{\psi}] = \int d^4 x \, \bar{\psi} (\slashed{\del} + m ) \psi
+}
+We are in Euclidean space with $\slashed{\del} = \gamma_\mu \del^\mu$, $\acomm[\gamma_\mu]{\gamma_\nu} = 2 \delta_{\mu\nu}$. The $\gamma$ are Hermitian, i.e. $\gamma_\mu^\dagger = \gamma_\mu$ and we take $\gamma_5 = \gamma_1 \gamma_2 \gamma_3 \gamma_4$. 
+
+\begin{example}
+\eq{
+\gamma_j = \begin{pmatrix} 0 & -i\sigma_j \\ i\sigma_j & 0 \end{pmatrix} \\
+\gamma_4 = \begin{pmatrix} 1 & 0 \\0 & -1 \end{pmatrix} \text{ or } \begin{pmatrix} 0 & 1 \\1 & 0 \end{pmatrix}
+}
+\end{example}
+
+Fourier transform using 
+\eq{
+\psi(x) &= \int_p e^{ip \cdot x} \tilde{\psi}(p) \\
+\bar{\psi} &= \int_p e^{-ip \cdot x} \tilde{\bar{\psi}}(p) \\
+\int_p &= \int \fmeas \\
+\Rightarrow S[\psi,\bar{\psi}] &= \int_p \tilde{\bar{\psi}} (i \slashed{p} +m ) \tilde{\psi} 
+}
+The generating functional is 
+\eq{
+Z[\tilde{\eta},\tilde{\bar{\eta}}] &= \int \mc{D} \tilde{\psi} \, \mc{D} \tilde{\bar{\psi}} \, \exp - \int_p \left[ \tilde{\bar{\psi}} (i \slashed{p} +m ) \tilde{\psi}  - \tilde{\bar{\eta}} \tilde{\psi} + \tilde{\bar{\psi}} \tilde{\eta} \right] \\ 
+&= Z[0,0] e^{-\int_p \tilde{\bar{\eta}} ( i \slashed{p} + m)^{-1} \tilde{\eta}} 
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Feynmann Rules}
+In addition to propagators and vertices, we have the fact that fermion loops pick up a minus sign. \\
+The position space propagator is 
+\eq{
+S_F^{\alpha\beta}(x-y) = \braket{\psi^\alpha(x) \bar{\psi}^\beta (y) } = \int_p e^{ip \cdot (x-y)} \left( \frac{1}{i \slashed{p}+m} \right)^{\alpha\beta}
+}\footnote{In practice we rationalise this denominator, but this is schematic}. Expand $e^{-S_{QED}}$ to second order electron photon vertex
+\eq{
+&(-ie^2)\braket{\left( \int d^4 x \, \bar{\psi} \slashed{A} \psi \right)\left( \int d^4 y \, \bar{\psi} \slashed{A} \psi \right) } \\
+= & (-ie^2) \int d^4 x \, d^4 y \, \braket{\slashed{A}^{\alpha\beta}(x) \slashed{A}^{\gamma\delta}(y) \bar{\psi}^\alpha(x) \psi^\beta(x) \bar{\psi}^\gamma(y) \psi^\delta(y) }
+}
+We need to anticommute $\psi,\bar{\psi}$ to form propagators, so one term is 
+\eq{
+\underbrace{(-)}_{\substack{\text{anti} \\ \text{commute}}} (-ie^2) \int d^4 x \, d^4 y \, \braket{\slashed{A}^{\alpha\beta}(x) \slashed{A}^{\gamma\delta}(y) \underbrace{\psi^\beta(x) \bar{\psi}^\gamma(y)}_{S_F^{\beta\gamma}(x-y)} \underbrace{\psi^\delta(y) \bar{\psi}^\alpha(x)}_{S_F^{\delta \alpha}(y-x)}}
+}
+
+So the Feynmann rules are 
+\begin{itemize}
+    \item Fermion propagator : Oriented line with factor $\tilde{S}_F(p) = \frac{1}{i\slashed{p}+m}$ 
+    \item Photon propagator : $\tilde{D}^{\mu\nu}(k) = \frac{1}{k^2} \left( \delta^{\mu\nu} - (1-\xi) \frac{k^\mu k^\nu}{k^2} \right)$
+    \item Vertex : $-ie \gamma^\mu $
+    \item Factor of $(-1)^{l_F}$, $l_F$ the number of fermion loops. 
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Vacuum Polarisation}
+
+In d-dimensions, write $e^2 = \mu^\eps g^2(\mu)$ where $g$ dimensionless and $\eps = 4-d$. Then 
+\eq{
+\Pi_{1-loop}^{\mu\nu}(q) &= \underbrace{-}_{\substack{\text{fermion} \\ \text{loop}}}  \mu^\eps (i g)^2 \int \frac{d^d p}{(2\pi)^d} \tr \pround{\frac{1}{i\slashed{p}+m} \gamma^\mu \frac{1}{i(\slashed{p}-\slashed{q})+m} \gamma^\nu} \\
+&= -\mu^\eps (i g)^2 \int_p \frac{\tr \psquare{(-i\slashed{p}+m)\gamma^\mu[-i(\slashed{p}-\slashed{q})+m]\gamma^\nu}}{(p^2+m^2)[(p-q)^2+m^2]}
+}
+First the denominator, using Feynmann's trick that 
+\eq{
+\frac{1}{AB} = \int_0^1 dx \int_0^1 dy \frac{\delta(x+y-1)}{[xA+yB]^2}
+}
+gives 
+\eq{
+\int+0^1 \frac{dx}{\pbrace{(p^2+m^2)(1-x)+[(p-q)^2+m^2]x}^2} = \int_0^1 \frac{dx}{\psquare{(p-qx)^2 + m^2 + q^2 x(1-x)}^2} 
+}
+Shifting th integration by letting $p^\prime = p - qx$ and dropping the prime gives 
+\eq{
+\Pi_{1-loop}^{\mu\nu}(q) = \mu^\eps g^2 \int_p \int_0^1 dx \frac{\tr\pbrace{[-i(\slashed{p}+\slashed{q}x)+m]\gamma^\mu[-i(\slashed{p}-\slashed{q}(1-x))+m]\gamma^\nu}}{(p^2 + \Delta)^2}
+}
+where $\Delta = m^2 + q^2x(1-x)$ is shorthand . \\
+Now the numerator gives 
+\eq{
+\tr \gamma^\mu \gamma^\nu = 4 \delta^{\mu\nu} \\
+\tr \gamma^\mu \gamma^\rho \gamma^\nu \gamma^\sigma = 4(\delta^{\mu\rho}\delta^{\nu\sigma} - \delta^{\mu\nu}\delta^{\rho\sigma} + \delta^{\mu\sigma}\delta^{\nu\rho} ) \\
+\Rightarrow \tr\pbrace{\dots} = 4\pbrace{-(p+qx)^\mu [p-q(1-x)]^\nu + (p+qx) \cdot [p-q(1-x)]\delta^{\mu\nu} - (p+qx)^2 [p-q(1-x)]^\mu + m^2\delta^{\mu\nu}}
+}
+As $d \to 4$, integrals with odd powers of $p_\mu$ vanish, so neglect them here. Also only diagonal parts of $p^\mu p^\nu$ have non zero integral. Non vanishing terms can be obtained via 
+\eq{
+p^\mu p^\nu \to \frac{1}{d} \delta^{\mu\nu} p^2 \\
+p^\mu p^\nu p^\rho p^\sigma \to \frac{(p^2)^2}{d(d+2)} (\delta^{\mu\nu}\delta^{\rho\sigma} + \delta^{\mu\rho}\delta^{\nu\sigma} + \delta^{\mu\sigma} \delta^{\nu\rho} )
+}
+Now integral is rotationally invariant, so 
+\eq{
+\int_p \to S_{d-1} \int \frac{p^{d-1} \, dp}{(2\pi)^d} = \int_0^\infty \frac{(p^2)^{\frac{d}{2}-1} \, dp^2}{(4\pi)^\frac{d}{2} \Gamma\pround{\frac{d}{2}}} \\
+\Rightarrow \Pi_{1-loop}^{\mu\nu}(q) = \frac{4 \mu^\eps g^2}{(4\pi)^\frac{d}{2} \Gamma\pround{\frac{d}{2}}} \int_0^1 dx \int_0^\infty dp^2 (p^2)^{\frac{d}{2}-1} \frac{1}{p^2 + \Delta} \times \psquare{p^2\pround{1-\frac{2}{d}}\delta^{\mu\nu}+\pround{2q^\mu q^\nu - q^2 \delta^{\mu\nu}}x(1-x) + m^2\delta^{\mu\nu}} 
+}
+These are Euler Beta function (letting $u = \frac{\Delta}{p^2 + \Delta}$ 
+\eq{
+\int_0^\infty dp^2 \frac{(p^2)^{\frac{d}{2}-1}}{p^2 + \Delta} &= \pround{\frac{1}{\Delta}}^{2-\frac{d}{2}} \frac{\Gamma\pround{2-\frac{d}{2}}\Gamma\pround{\frac{d}{2}}}{\Gamma(2)} \\
+\int_0^\infty dp^2 \frac{(p^2)^{\frac{d}{2}}}{p^2 + \Delta} &= \pround{\frac{1}{\Delta}}^{1-\frac{d}{2}}
+\frac{\Gamma\pround{1-\frac{d}{2}}\Gamma\pround{1+\frac{d}{2}}}{\Gamma(2)}
+}
+
+So 
+\eq{
+\Pi_{1-loop}^{\mu\nu}(q) =(q^2 \delta^{\mu\nu} - q^\mu q^\nu) \pi_{1-loop}(q^2)
+}
+where 
+\eq{
+\pi_{1-loop}(q^2) = - \frac{8g^2 \Gamma\pround{\frac{\eps}{2}}}{(4\pi)^\frac{d}{2}} \int_0^1 dx \, x(1-x) \pround{\frac{\mu^2}{\Delta}}^\frac{\eps}{2}
+}
+Note that the Lorentz structure is the same as for the free propagator in the Lorenz gauge. i.e.
+\eq{
+q_\mu \Pi_{1-loop}^{\mu\nu}(q) = 0
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ward Identity in brief}
+\begin{itemize}
+    \item Gauge invariance implies we have a massless photon (A $\frac{1}{2}m^2 A^2$ term breaks gauge invariance)
+    \item Massless implies only 2 polarisations
+    \eq{
+    \eps^\mu(p) = c_1 \eps_1^\mu(p) + c_2 \eps_2^\mu(p) 
+    }
+    \item Lorentz boost gives 
+    \eq{
+    \eps^\mu(p) \to c_1^\prime \eps_1^\mu(p^\prime) + c_2^\prime \eps_2^\mu(p^\prime) + c_3 {p^\mu}^\prime
+    }
+    \item Consider a scattering amplitude $\mc{M}$ with at least one photon in the initial and final state. This depends on $\eps^\mu$
+    \eq{
+    \mc{M} = \eps^\mu \mc{M}_\mu
+    }
+    \item After boost 
+    \eq{
+    \mc{M} &\to (c_1^\prime \eps_1^\mu(p^\prime) + c_2^\prime \eps_2^\mu(p^\prime) + c_3 {p^\mu}^\prime) \mc{M}_\mu^\prime \\
+    &= {\eps^\mu}^\prime \mc{M}_\mu^\prime
+    }
+    As a photon in boosted frame still only has two polarisations, $p^\mu \mc{M}_\mu = 0$, i.e. no longitudinal polarisations. 
+    \item Tree level propagators $\tilde{D}^{\mu\nu}(k)$ satisfy 
+    \eq{
+     k_\mu \tilde{D}^{\mu\nu}(k) = \frac{k_\mu}{k^2} \psquare{\delta^{\mu\nu} - (1-\xi) \frac{k^\mu k^\nu}{k^2}} = \xi \frac{k^\nu}{k^2}
+    }
+    so the longitudinal term will no be renormalised by loop diagrams. $\xi$ dependence will cancel out of gauge invariant quantities. 
+\end{itemize}
+
 
 \end{document}

@@ -36,6 +36,7 @@
 \newtheorem{example}{Example}[subsection]
 \newtheorem{prop}{Proposition}[subsection]
 \newtheorem{ex}{Exercise}[subsection]
+\newtheorem*{aside}{Aside}
 
 %Text math operators.
 \DeclareMathOperator{\spn}{Span}
@@ -47,6 +48,9 @@
 \DeclareMathOperator{\Pfaff}{Pfaff}
 \DeclareMathOperator{\image}{Im}
 \DeclareMathOperator{\vol}{Vol}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Harm}{Harm}
+\DeclareMathOperator{\ind}{index}
 
 %Symbolic shortcuts 
 \newcommand{\eps}{\epsilon}
@@ -69,6 +73,10 @@
 \newcommand{\mc}[1]{\mathcal{#1}}
 \newcommand{\highlight}[1]{%
   \colorbox{red!50}{$\displaystyle#1$}}
+\newcommand{\secmath}[1]{\texorpdfstring{$ #1 $}{T}}
+\newcommand{\pround}[1]{\left( #1 \right)}
+\newcommand{\psquare}[1]{\left[ #1 \right]}
+\newcommand{\pbrace}[1]{\left\{ #1 \right\} }
 
 %Functions shortcuts.
 \newcommand{\comm}[2][]{\left[ #1, #2 \right]} %Commutator .
@@ -77,6 +85,9 @@
 \newcommand{\pds}[2][]{\frac{\partial^2 #1}{\partial #2^2}} %Second partial derivative.
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert} %absolute value. 
 \newcommand{\pb}[2][]{\left\{ #1, #2 \right\}_{PB}} %Poisson bracket, different from acomm
+\newcommand{\upwick}[1]{\overbracket[0.5pt]{#1}} % Bracket for a Wick contraction
+\newcommand{\downwick}[1]{\underbracket[0.5pt]{#1}} % Bracket for a Wick contraction 
+
 
 
 \newcommand{\be}{\begin{equation}}  

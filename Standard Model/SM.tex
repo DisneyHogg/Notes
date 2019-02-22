@@ -592,7 +592,7 @@ We have either
 \end{itemize}
 In the second case $\phi$ has a acquired a non zero \bam{Vacuum Expectation Value (vev)}. Wlog we may study small excitations about $\phi=v$ 
 \eq{
-\phi(x) = v + f(x) ]]
+\phi(x) = v + f(x) \\
 \mc{L} = \frac{1}{2} \del_\mu f \del^\mu f - \lambda ( v^2 f + vf^3 + \frac{1}{4} f^4) + \text{ constant}
 }
 Hence $f$ is a scalar field with mass $m_f = \sqrt{2\lambda v^2}$. This $\mc{L}$ is \emph{not} invariant under $f \to -f$. The symmetry of the original $\mc{L}$ is broken by the VEV of $\phi$. 
@@ -791,7 +791,7 @@ Note we've assumed Lorentz invariance in our theory with $>2$ spacetime dimensio
 \subsection{Abelian Higgs Mechanism}
 Gauge theories can violate this theorem, e.g. in QED, imposing a Lorentz invariance gauge condition (Lorentz gauge) can lead to states with a negative norm. Hence a gauge with no negative norm states breaks Lorentz invariance. \\
 
-Consider scalar electrodynamics with complex scalar $\phi(x)$ nad photon $A_\mu(x)$ 
+Consider scalar electrodynamics with complex scalar $\phi(x)$ and photon $A_\mu(x)$ 
 \eq{
 \mc{L} &= -\frac{1}{4} F_{\mu\nu}F^{\mu\nu} + (D_\mu \phi)^\ast (D^\mu \phi) - V(\phi^\ast \phi) \\
 F_{\mu\nu} &= \del_\mu A_\nu - \del_\nu A_\mu \\
@@ -810,7 +810,7 @@ Then
 Wlog expand around real $\phi_0$ 
     \eq{
     \phi(x) &= \frac{1}{\sqrt{2}} e^{i\frac{\theta(x)}{v}} \left( v + \eta(x) \right) \\
-    \Rightarrow \mc{L} = \frac{1}{2}\left( \del_\mu \eta \del^\mu \eta - 2\lambda v^2 \eta^2 \right) + \frac{1}{2} (\del_\mu \theta) (\del^\mu \theta) - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + qv A_\mu \del^\mu \theta + \frac{q^2 v^2}{2} A_\mu A^\mu + \mc{L}_{int}
+    \Rightarrow \mc{L} &= \frac{1}{2}\left( \del_\mu \eta \del^\mu \eta - 2\lambda v^2 \eta^2 \right) + \frac{1}{2} (\del_\mu \theta) (\del^\mu \theta) - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + qv A_\mu \del^\mu \theta + \frac{q^2 v^2}{2} A_\mu A^\mu + \mc{L}_{int}
     }
 where $\mc{L}_{int}$ are terms with $>2$ fields. Appear to have mass for $\eta,A_\mu$ but not $\theta$. Transform to unitary gauge $\alpha(x) = -\frac{1}{v} \theta(x) $
 \eq{
@@ -889,9 +889,9 @@ F_{\mu\nu}^B = \del_\mu B_\nu - \del_\nu B_\mu
 }
 SSB occurs when $\mu^2 = -\lambda v^2 < 0$, and the scalar acquires a VEV, wlog $\phi_0 = \begin{psmallmatrix} 0 \\ \frac{v}{\sqrt{2}} \end{psmallmatrix}$. Hence we get $U(1)_{EM}$ $(\alpha^1 = 0 = \alpha^2, \alpha^3 = \beta)$. Some gauge fields get mass: $(D_\mu \phi)^\dagger (D^\mu \phi)$ contains 
 \eq{
-\frac{1}{2} \frac{v^2}{4} \;eft[ g^2 (W^\prime)^2 + g^2 (W^2)^2 + (-gW^3+g^\prime B)^2]
+\frac{1}{2} \frac{v^2}{4} \left[ g^2 (W^\prime)^2 + g^2 (W^2)^2 + (-gW^3+g^\prime B)^2 \right]
 }
-Define $W_\mu^\pm = \frac{1}{\sqrt{2}} (W_\mu^1 \pm iW_\mu^2)$, then these get mass $m_Q = \frac{vg}{2}$ 
+Define $W_\mu^\pm = \frac{1}{\sqrt{2}} (W_\mu^1 \mp iW_\mu^2)$, then these get mass $m_Q = \frac{vg}{2}$ 
 \eq{
 \begin{pmatrix} Z_\mu^0 \\ A_\mu \end{pmatrix} = \begin{pmatrix} \cos\theta_W & -\sin\theta_W \\ \sin\theta_W & \cos\theta_W \end{pmatrix} \begin{pmatrix} W_\mu^3 \\ B_\mu \end{pmatrix} \\
 \Rightarrow \cos\theta_W = \frac{g}{\sqrt{g^2 + {g^\prime}^2}} \\
@@ -915,7 +915,312 @@ The Higgs boson get mass $m_H = \sqrt{2\lambda v^2}$ ($\lambda$ and so $m_H$ not
 Leptons to start with (quarks similar but some complications). 
 \eq{
 D_\mu &= \del_\mu + ig W_\mu^a T^a + i g^\prime Y B_\mu \\
-&= \del_\mu + \frac{ig}{\sqrt{2}} (W_\mu^= T^+ + W_\mu^- T^-) + \frac{ig Z_\mu}{\cos\theta_W} ( \cos^2 \theta_W T^3 - \sin^2 \theta_W Y) + ig \sin\theta_W A_\mu \underbrace{(T^3 + Y)}_{Q}
+&= \del_\mu + \frac{ig}{\sqrt{2}} (W_\mu^- T^+ + W_\mu^- T^-) + \frac{ig Z_\mu}{\cos\theta_W} ( \cos^2 \theta_W T^3 - \sin^2 \theta_W Y) + \underbrace{ig \sin\theta_W}_{=e} A_\mu \underbrace{(T^3 + Y)}_{Q} \\
+&= \del_\mu + \frac{ig}{\sqrt{2}} (W_\mu^- T^+ + W_\mu^- T^-) + \frac{ig Z_\mu}{\cos\theta_W} (T63 - \sin^2 \theta_W Q) + ig\sin\theta_W A_\mu (T^3 + Y)
 }
 with $T^\pm = T^1 \pm i T^2$.
+
+note
+\begin{itemize}
+    \item Experimentally $W^\pm$ only conuple to LH leptons and quarks, hence RH fermions are in the trivial/scalar representation of $SU(2)$ where $T^a=0$, e.g. $R(X) = e_R(X)$ where 
+    \eq{
+    e_{R/L} = \frac{1}{2} (1 + \pm \gamma^5) e(X)
+    }
+    and LH fermions in the fundamental representation of $SU(2)$ where $T^a = \tau^a = \frac{\sigma^a}{2}$, e.g.
+    \eq{
+    L(X) = \begin{pmatrix} \nu_{eL}(X) \\ e_L(X) \end{pmatrix}
+    }
+    where $\nu_{eL}(X), e_L(X)$ are 4-component Dirac spinors. 
+    \item Assuming (for now) neutrinos are massless and LH only, then for $R(X)$
+    \eq{
+    Q = Y = -1 
+    }
+    and for $L(X)$ 
+    \eq{
+    Q = \begin{pmatrix} 0 & 0 \\ 0 & -1 \end{pmatrix} \; Q = \tau^3 + YI \Rightarrow Y = - \frac{1}{2}
+    }
+\end{itemize}
+\eq{
+\mc{L}_{lept}^{EW} = \bar{L} i \slashed{D} L + \bar{R} i \slashed{D} R
+}
+fermion mass terms explicitly break $SU(2)_L \times U(1)_Y$ gauge invariance, but consider the Higgs-fermion interactions 
+\eq{
+\mc{L}_{lept, \phi} = -\sqrt{2} \lambda_e (\bar{L} \phi R + \bar{R} \phi^\dagger L ) \quad \lambda_e = \text{ Yukawa coupling}
+}
+We may check $\sum Y = 0$ for each term, and $SU(2)$ gauge invariance for each term. Working in the unitary gauge and expanding 
+\eq{
+\phi = \frac{1}{\sqrt{2}} \begin{pmatrix} 0 \\ v+h(x) \end{pmatrix} \\
+\Rightarrow \mc{L}_{lept,\phi} = -\lambda_e (v+h) ( \bar{e}_L e_R + \bar{e}_R e_L ) = -\underbrace{m_e}_{=\lambda_e v}\bar{e} e - \lambda_e h \bar{e}e
+}
+The second term is a fermion Higgs coupling $\alpha$ mass of fermion. The gauge-fermion interactions are 
+\eq{
+\mc{L}_{lept}^{EM,int} &= -g \bar{L} \gamma^\mu T^a W_\mu^a L - g^\prime (-\frac{1}{2} \bar{L} \gamma^\mu L - \bar{R} \gamma^\mu R ) B_\mu \\
+&= - \frac{g}{2\sqrt{2}}( J^\mu W_\mu^+ + {J^\mu}^\dagger W_\mu^- ) - e J_{EM}^\mu A_\mu - \frac{g}{2\cos \theta_W} J_n^\mu Z_\mu
+}
+where 
+\eq{
+J_{EM}^\mu = \frac{1}{2} \bar{L} \gamma^\mu (\sigma^3 - I) L - \bar{R}\gamma^\mu R = -\bar{e} \gamma^\mu e  \quad \text{(EM current)} \\
+J^\mu = \bar{\nu}_{eL} \gamma^\mu (1 - \gamma^5) e \quad \text{(charged weak current)} \\
+J_n^\mu = \frac{1}{2} \left[ \bar{\nu}_{eL} \gamma^\mu (1-\gamma^5) \nu_{eL} - \bar{e} \gamma^\mu ( 1 - \gamma^5 - 4\sin^2 \theta_W ) e \right] \quad \text{(neutral weake current)}
+}
+The standard model has \emph{three} generations of leptons, $e,\mu,\tau$. 
+\eq{
+L^1 &= \begin{pmatrix} \nu_e \\ e \end{pmatrix}_L \\
+L^2 &= \begin{pmatrix} \nu_\mu \\ \mu \end{pmatrix}_L \\
+L^3 &= \begin{pmatrix} \nu_\tau \\ \tau \end{pmatrix}_L \\
+R^1 &= e_R \\
+R^2 &= \mu_R \\
+R^3 &= \tau_R
+}
+\eq{
+\mc{L}_{lept,\phi} = -\sqrt{2}(\lambda^{ij} \bar{L}^i \phi R^j - (\lambda^\dagger)^{ij}\bar{R}^i \phi^\dagger L^j )
+}
+Note $\lambda^{ij}$ (3x3 matrices) are \emph{not} predicted by SM. Now $\lambda \lambda^\dagger$ is a Hermitian matrix with non-negative eigenvalues, so $\exists K$ a unitary matrix s.t 
+\eq{
+\lambda \lambda^\dagger = K \Lambda^2 K^\dagger
+}
+where $\Lambda^2$ is diagonal with non negative eigenvalues. Choose  
+\eq{
+S = \lambda^\dagger K \Lambda^{-1} \quad \text{unitary} \\
+\Rightarrow \lambda^\dagger \lambda = S \Lambda^2 S^\dagger \\
+\Rightarrow \lambda = K \Lambda S^\dagger
+}
+If $L^i \to K^{ij} L^j, R^i \to S^{ij} R^j \Rightarrow \mc{L}_{lept,\phi}$ diagonalised and $\mc{L}_{lept}^{EW}$ unchanged. Simultaneous diagonaliseability implies mass eigenstates are also weak eigenstates.  
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Quark Flavour}
+There are 6 flavours of quark in nature (as we know it). 
+\begin{itemize}
+    \item RH are in $SU(2)$ singlets : $u_R^i = (u_R, c_R, t_R)$, $Y = Q = \frac{2}{3}$, $d_R^i = (d_R, s_R, b_R)$, $Y = Q = -\frac{1}{3}$. 
+    \item LH are in $SU(2)$ doublets : 
+    \eq{
+    Q_L^i = \begin{pmatrix} u_L^i \\ d_L^i \end{pmatrix} = \left( \begin{pmatrix} u_L \\ d_L \end{pmatrix}, \begin{pmatrix} c_L \\ s_L \end{pmatrix}, \begin{pmatrix} t_L \\ b_L \end{pmatrix}\right) 
+    }
+    $Y = \frac{1}{6}$ and $Q = T_3 + Y$. 
+\end{itemize}
+
+Then 
+\eq{
+\mc{L}_{quark}^{EW} = \bar{Q}_L^i i \slashed{D} Q_L^i + \bar{u}_R^i i \slashed{D} u_R^i + \bar{d}_R^i i \slashed{D} d_R^i \\
+\mc{L}_{quark, \phi} = -\sqrt{2} \left[ \lambda_d^{ij} \bar{Q}_L^i \phi d_R^i + \lambda_u^{ij} \bar{Q}_L^i \phi^c u_R^j + \text{hermitian conjugate} \right]
+}
+where 
+\eq{
+(\phi^c)^\alpha = \eps^{\alpha\beta}{\phi^\dagger}^\beta
+}
+transforms in the fundamental representation of $SU(2)$. This term is needed to ensure gauge invariance. Note each term has $\sum Y = 0$. \\
+Diagonalising $\lambda_u$ and $\lambda_d$ as for letptons 
+\eq{
+\lambda_u &= K_u \Lambda_u S_u^\dagger \\
+\lambda_d &= K_d \Lambda_d S_d^\dagger
+}
+with $\Lambda$ diagonal, $K,S$ unitary. Then the quark fields transform as 
+\eq{
+u_i \to K_u u_i \\
+d_i \to K_d d_L \\
+u_R \to S_u u_R \\
+d_R \to S_d d_R
+}
+\eq{
+\lambda_d^{ij} Q_L^i \phi d_R^i \to \bar{Q}_L^i \phi \Lambda_d^{ij} d_R^j 
+}
+(recall $ \phi = \frac{1}{\sqrt{2}} \begin{psmallmatrix} 0 \\ v+h(x) \end{psmallmatrix}$) and the $\phi = \phi_0$ term gives 
+\eq{
+-\sum_i  ( m_d^i \bar{d}_L^i d_R^i + m_i^i \bar{u}_L^i u_R^i + \text{hermitian conjugate} ) 
+}
+where $m_q^i = \Lambda_q^{ii} v$ (no sum). \\
+In this basis, $\mc{L}_{quark, phi}$ is C, P, T invariant, as is $\mc{L}_{gauge,\phi}$. As originally written, $\mc{L}_{quark}^{EW}$ violates C and P but conserves CP and T. \emph{However}, this basis transform has an effect on $|mc{L}_{quark}^{EW}$, $\bar{u}_R^i i \slashed{D} u_R^i $ and $\bar{d}_R^i i \slashed{D} d_R^i $ are unchanged but the $W_\mu^\pm$ piece in $\bar{Q}_L^i i \slashed{D} Q_L^i$ is transformed (in $-\frac{g}{2\sqrt{2}} J^{\mu \pm} W_\mu^{\pm}$
+\eq{
+J^{\mu\pm} \propto \bar{u}_L^i  \gamma^\mu d_L^i \to \bar{u}_L^i \gamma^\mu  \underbrace{(K_u^\dagger K_d)^{ij}} d_L^i
+}
+Interactions with $W^\pm$ lead to inter-generational quark couplings, weak eigenstates are linear combinations of mass eigenstates. \\
+The \bam{Cabibbo-Kobyashi-Maskawa} (CKM) matrix is 
+\eq{
+V_{CKM} = K_u^\dagger K_d = \begin{pmatrix} V_{ud} & V_{us} & V_{ub} \\ V_{cd} & V_{cs} & V_{cb} \\ V_{td} & V_{ts} & V_{tb} \end{pmatrix}.
+}
+$V_{CKM}$ is unitary 
+\begin{itemize}
+    \item For 2 generations (Cabibbo mixing) there are 4 parameters, one angle and three phases. However, redefining each of the 4 quark fields (u,d,s,c) with a global $U(1)$ transform we can remove 3 phases (relative phases) so we end up with one angle $\theta_c = \text{Cabibbo angle}$. Then 
+    \eq{
+    V = \begin{pmatrix} \cos \theta_c & \sin \theta_c \\ -\sin\theta_c & \cos\theta_c \end{pmatrix}
+    }
+    Experimentally $\sin\theta_c \approx 0.22$. That V is real implies CP conservation. 
+    \eq{
+    \frac{1}{2} J^{\mu\pm} = \cos\theta_c \bar{u}_L \gamma^\mu d_L + \sin\theta_c \bar{u}_L \gamma^\mu s_L - \sin\theta_c \bar{c}_L \gamma^\mu d_L + \cos\theta_c \bar{c}_L \gamma^\mu s_L
+    }
+    \item For 3 generations, there are 9 parameters, 3 angles and 6 phases. We can remove 5 phases through $U(1)$ transform giving $V_{CKM}$ in terms of 3 angles and 1 phases, so in general $V_{CKM} $ is no real, giving CP and T violation. 
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Neutrino oscillations and mass}
+We have known since the start of the Millennium that weak and mass eigenstates for neutrinos are not equivalent, so at least some neutrinos has mass. The analogous mixing matrix is $U_{PMNS}$. If neutrinos are 
+\begin{itemize}
+    \item Dirac fermions : 3 angles and 1 phase (CP violation) 
+    \item Majorana fermions : 3 angles and 3 phases (CP violation)
+\end{itemize}
+
+\subsubsection*{Dirac Fermions }
+\eq{
+N^i = \mc{V}_R^i = (\mc{V}_{eR},\mc{V}_{\mu R}, \mc{V}_{\tau R} )
+}
+must occur and modify 
+\eq{
+\mc{L}_{lept,\phi} = -\sqrt{2} ( \lambda^{ij} \bar{L}^i \phi P^j + \lambda_\nu^{ij} \bar{L}^i \phi^c N^j + \text{ hermitian conjugate})
+}
+This has the same structure as for quarks, so neutrinos would get mass terms 
+\eq{
+- \sum_i m^i_\nu (\bar{\mc{V}}_R^i \mc{V}_L^i + \bar{\mc{V}}_L^i \mc{V}_R^i )
+}
+
+\subsubsection*{Majorana fermions}
+Because $\mc{V}$ are neutral, they could be their own antiparticle, i.e. $d^s(p) = b^s(p)$
+\eq{
+\mc{V} = \sum_{p,s} \left[ b^s(p) u^s(p) e^{-ip\cdot x} + {b^s}^\dagger(p) v^s(p) e^{ip \cdot x} \right]
+}
+Taking intrinsic c-partiy to be 1 wlog, 
+\eq{
+\mc{V}^c = C \bar{\mc{V}}^T  = C(C^{-1} \mc{V}) = \mc{V}
+}
+and so 
+\eq{
+\mc{V}_R = \frac{1}{2} ( 1 + \gamma^5) \mc{V} = \frac{1}{2} ( 1 + \gamma^5) \mc{V}^c = \mc{V}_L^c 
+}
+Hence the RH neutrino field is not an independent field.
+
+Mass terms are 
+\eq{
+- \frac{1}{2} \sum_i m_\nu^i ( {{{\bar{\mc{V}}}_L^i}^c} {\mc{V}}_L^i + {\bar{\mc{V}}}_L^i {{\mc{V}}_L^i}^c )
+}
+To arise form a Higgs VEV, need term 
+\eq{
+\sim - \frac{Y^{ij}}{M} \left( {L^i}^T \phi^c \right) C \left( {\phi^c}^T L^j \right) + \text{ Hermitian conjugate}
+}
+The 5-dimensional operator is non renormalisable, so we need $M$ to have dimensions of mass. This is still ok as long as we think of SM as an effective field theory, valid for physics below some energy cutoff
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Summary of EW theory}
+\begin{itemize}
+    \item $\mc{L}_{gauge, \phi}$ - Masses for $W^\pm, Z$ and Higgs bosons, as well as $W,Z$-Higgs, and Higgs-Higgs interactions. 
+    \item $\mc{L}_{lept, \phi}$ - Lepton masses and lepton-Higgs interactions 
+    \item $\mc{L}_{lept}^{EW}$ - Lepton interactions with $W,Z,\gamma$ bosons ( PMNS matrix : $\mc{V}$ mixing and CP violation possibly) 
+    \item $\mc{L}_{quark, \phi}$ - Quark masses and quark-Higgs interactions 
+    \item $\mc{L}_{quark}^{EW}$ - Quark interactions with $W,Z,\gamma$ boson ( CKM matrix : flavour mixing and CP violation)
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Weak Interactions}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Effective Lagrangian}
+We'll consider some processes due to weak interactions where energies, momenta $ \ll m_W, m_Z$ so we can use an effective field theory ( Fermi weak $\mc{L}$)\\
+The weak interaction part of the $EW$ theory $\mc{L}$ is 
+\eq{
+\mc{L}_W = - \frac{g}{2\sqrt{2}} ( {J^\mu} W_\mu^+ {J^\mu}^\dagger W_\mu^-) - \frac{g}{2\cos\theta_W} J_n^\mu Z_\mu
+} 
+and the S-matrix is 
+\eq{
+S = \mc{T} \exp \left[ i \int d^4 x \, \mc{L}_W (x) \right]
+}
+For small $g$ we can expand in a Taylor series 
+\eq{
+\braket{f | S | i} = \braket{f | \mc{T} \left\{ 1 - \frac{g^2}{8} \int d^4 x \, d^4 x^\prime \left[ {J^\mu}^\dagger(x) D_{\mu\nu}^W(x-x^\prime) J^\nu (x^\prime) + \frac{1}{\cos^2 \theta_W} {J_n^\mu}^\dagger(x) D_{\mu\nu}^2(x-x^\prime) J_n^\mu(x^\prime) \right] + \mc{O}(g^4) \right\} | i }
+}
+where we've \hl{assumed} that W,Z are not in the initial final state, used wicks theorem and 
+\eq{
+D_{\mu\nu}^W(x-x^\prime) &= \braket{0 | T\pbrace{W_\mu^-(x) W_\nu^+(x^\prime)}|0} \\
+D_{\mu\nu}^Z(x-x^\prime) &= \braket{0 | T\pbrace{Z_\mu(x) Z_\nu(x^\prime)}|0}
+}
+In terms of an integral, we have: 
+\eq{
+D_{\mu\nu}^{Z/W} (x-x^\prime) = \int \fmeas e^{-ip\cdot(x-x^\prime)}\tilde{D}_{\mu\nu}^{Z/W}(p)
+}
+where 
+\eq{
+\tilde{D}_{\mu\nu}^{Z/W}(p) = \frac{i}{p^2 - m_{Z/W}^2 + i\eps} \pround{-g_{\mu\nu}+\frac{p_\mu p_\nu}{m_{Z/W}^2}} 
+}
+At low energies (for example decays of leptons or quarks, except for the top quark which has mass comparable to $m_{Z/W}$) $m_{Z/W}^2 \gg p^2$ where $p$ is any combination of initial and final state momenta. In this regime, we can approximate the propagators by 
+\eq{
+\tilde{D}_{\mu\nu}^{Z/W}(p) &\approx \frac{ig_{\mu\nu}}{m_{Z/W}^2} \\
+\Rightarrow D_{\mu\nu}^{Z,W}(x-x^\prime) &\approx \frac{ig_{\mu\nu}}{m_{Z/W}^2} \delta^4(x-x^\prime)
+}
+Therefore we can descirbe the interactions in the Lagrangian by a 4-fermion interaction called a \bam{contact interaction}
+
+\begin{example}
+\eq{
+- \frac{g^2}{8} {J^\mu}^\dagger(x)  D_{\mu\nu}^{Z,W}(x-x^\prime) J^\nu(x^\prime) \to - \frac{ig^2 g_{\mu\nu}}{8m_W^2} {J^\mu}^\dagger(x) J^\nu(x^\prime)\delta^4(x-x^\prime)
+}
+Similarly for the neutral current $J_n^\mu$ part. 
+\end{example}
+
+The effective weak Lagrangian is 
+\eq{
+i \mc{L}_W^{eff} (x) = -\frac{i G_F}{\sqrt{2}} ({J^\mu}^\dagger(x) J_\mu(x) + \rho {J_n^\mu}^\dagger(x) {J_n}_\mu(x) )
+}
+where $\frac{G_F}{\sqrt{2}} = \frac{g^2}{8m_W^2}$ is the \bam{Fermi constant} and $\rho = \frac{m_W^2}{m_Z^2 \cos^2 \theta_W}$\footnote{Tree level value of this is 1, loop effects correct this}. This theory descibres Fermi nuclear beta decay, and was discovered long before the standard model. \\
+
+We can write 
+\eq{
+\rho = 1 + \underbrace{\Delta \rho}_{\substack{\text{quantum} \\ \text{loop effects}}}
+}
+Re exponentiating the S matrix we get that 
+\eq{
+\braket{f| S |i} &\approx \braket{f | T\pbrace{1 + i \int d^4x \, \mc{L}_W^{eff} (x) }|i} \\
+&= \braket{f | T \exp\pround{i\int d^4x \, \mc{L}_W^{eff} (x)}|i}
+}
+\begin{itemize}
+    \item Note the dimensions, $[G_f]=-2$ to compensate for having a $(\text{mass})^6$ operator. So this theory is non-renormalisable. In particular, we can't think of this theory as valid to arbitrary high energy scales. This is fine at energies much less than $m_W$. The $\frac{1}{m_W}$ in $G_F$ indicates that Fermi theory breaks down at scales $\sim m_W$, which is what we'd expect from how we constructed the theory.  
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Decay Rates and Cross Section}
+The questions we can ask of particle physics experiments boil down to  
+\begin{itemize}
+    \item How frequently does $X$ decay to $A_1 + A_2 + \dots$
+    \item Given $N$ collision between two things $A,B$ how many times do we produce $X_1 + X_2 + \dots$
+\end{itemize}
+
+\begin{definition}[Decay Rate]
+The \bam{decay rate} $\Gamma_X$ is the number of decays of $X$ per unit time in the rest frame of $X$, divided by the number of $X$ present. 
+\end{definition}
+
+\begin{definition}[Lifetime]
+The \bam{lifetime} is defined by $\tau_X = \frac{1}{\Gamma_X}$. 
+\end{definition}
+
+We can write $\Gamma_X = \sum_i \Gamma_{X \to f_i}$ where $f_i$ are the possible final states and $\Gamma_{X \to f_i}$ is the \bam{partial decay rate} to final state $f_i$. \\
+
+We need $\braket{f | S | i}$ with initial state $\ket{i} = \ket{X}$. Removing the boring $1$ from the S matrix, corresponding to the case where nothing happens, we define the \bam{invariant amplitude} 
+\eq{
+\braket{f | S-I | i} = (2\pi)^4 \delta^4(p_f - p_i) i \underbrace{\mc{M}_{fi}}_{\substack{\text{invariant} \\ \text{amplitude}}}
+}
+
+The probability of decay is given by 
+\eq{
+P(i \to f) = \frac{|\braket{f | S-I | i}|^2}{\braket{f|f} \braket{i|i}}
+}
+In an infinite volume, $\ket{i},\ket{f}$ are typically not normalisable. It is possible to take $\ket{i},\ket{f}$ as wavepackets but we'll opt instead to work in a finite spatial volume $V$ with finite temporal extent $T$ (to avoid the subtleties of non-renormalisable states). This means we must turn delta functions into finite numbers 
+\eq{
+(2\pi)^3 \delta^3(0) \to V \\
+(2\pi)^4 \delta^4(0) \to VT 
+}
+We normalise the initial state as 
+\eq{
+\braket{i|i} = (2\pi)^3 \cdot 2 p_i^0 \delta^3(0) \to 2p_i^0 V 
+}
+The final state is normalised as 
+\eq{
+\braket{f|f} = \prod_r (2 p_r^0 V)
+}
+Then 
+\eq{
+P(i \to f) = \frac{|\mc{M}_{f,i}|^2 (2\pi)^4 \delta^4 (p_f - p_i) VT}{2 \underbrace{m_i}_{\substack{ p_i^0 = m_i \\ \text{in rest frame}}} V \cdot \prod_r (2 p_r^0 V)}
+}
+We never measure with infinite precision, 
+\eq{
+\Gamma_{i \to f} = \frac{1}{T} \int P(i \to f) \prod_r \pround{\frac{V}{(2\pi)^3} d^3 p_r}
+}
+
 \end{document} 

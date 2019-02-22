@@ -803,7 +803,7 @@ independent, and consider
 \eq{
 \int d^2 \theta d^2 \bar{\theta} \exp(-\bar{\theta}^a M_{ab} \theta^b ) 
 }
-where $M$ is a 2x2 matrix independent of $\theta,\bar{\theta}$. Then 
+where $M$ is a $2\times2$ matrix independent of $\theta,\bar{\theta}$. Then 
 \eq{
 \int d^2 \theta d^2 \bar{\theta} \exp(-\theta^a M_{ab} \theta^b ) &= \frac{\del^4}{\del\theta_1 \del\theta_2 \del\bar{\theta}_1 \del\bar{\theta}_2} \left\lbrace  (\bar{\theta}_1 M_{11}\theta_1)(\bar{\theta}_2 M_{22}\theta_2) + (\bar{\theta}_1 M_{12}\theta_2)(\bar{\theta}_2 M_{21}\theta_1)  \right\rbrace
  \\
@@ -819,7 +819,7 @@ compare this to $z, \bar{z}$ real, where
 \eq{
 \int d^2 z d^2 \bar{z} \exp(-\bar{z} M z ) = \frac{1}{\det M_{ab}}
 }
-The effect og inverting the determinant when we replace commuting with Grassmann variables carries over to the functional case. 
+The effect of inverting the determinant when we replace commuting with Grassmann variables carries over to the functional case. 
 
 In our expression for $\Delta_{FP}^{-1}$ we replace 
 \eq{
@@ -853,7 +853,7 @@ where
 S[b,c] = \int_\Sigma \sqrt{\hat{h}} b^{ab}(Pc)_{ab} = 2 \int_\Sigma \sqrt{\hat{h}} b^{ab} \nabla_a c_b 
 }
 \\
-$c^a$ and $b_{ab}$ are Grassmann fields that obey Fermi statistics, but they also have integer spin. They are note observables, and so we call them \bam{Faddeev-Popov ghosts}
+$c^a$ and $b_{ab}$ are Grassmann fields that obey Fermi statistics, but they also have integer spin. They are not observables, and so we call them \bam{Faddeev-Popov ghosts}
 
 Now 
 \eq{
@@ -1070,10 +1070,10 @@ Integrate by parts so
 \eq{
 \frac{1}{2\pi} \int_\Sigma d^2 \sigma \, (\del^a v^b) \braket{T_{ab} \phi_1 \dots \phi_n} = \frac{1}{2\pi} \int_\Sigma d^2 \sigma \, \del^a \left( v^b \braket{T_{ab} \phi_1 \dots \phi_n} \right) - \frac{1}{2\pi} \int_\Sigma d^2 \sigma \, v^b \del^a \braket{T_{ab} \phi_1 \dots \phi_n}
 }
-It is usedul to write the surface term in $(z,\bar{z})$ coordinates. 
+It is useful to write the surface term in $(z,\bar{z})$ coordinates. 
 \eq{
 &= \frac{1}{2\pi i} \oint_{C_1} dz \, v(z) \braket{T_{zz} \phi_1 \dots \phi_n} - \frac{1}{2\pi i} \oint_{C_1} d\bar{z} \, \bar{v}(z) \braket{T_{\bar{z}\bar{z}} \phi_1 \dots \phi_n} - \frac{1}{2\pi}\int_\Sigma d^2 \sigma \, v^b \del^a \braket{T_{ab} \phi_1 \dots \phi_n} \\
-= \braket{\phi_1 \dots \delta_v \phi_k \dots \phi_n}
+&= \braket{\phi_1 \dots \delta_v \phi_k \dots \phi_n}
 }
 writing $T(z) = T_{zz}(z,\bar{z})$ and $\bar{T}(\bar{z}) = T_{\bar{z}\bar{z}}(z,\bar{z})$. We see that 
 \eq{
@@ -1124,8 +1124,441 @@ for a chiral field. If we define
 \eq{
 Q = \oint_{C(\omega)} \frac{dz}{2\pi i} v(z) T(z) 
 }
-Then we could define a braket $\comm[]{}$ as 
+Then we could define a bracket $\comm[]{}$ as 
 \eq{
 \delta_v \phi(\omega) = \comm[Q]{\phi(\omega)}
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Mode Expansions}
+Recall we havd the exapnsion in $\sigma,\tau$ 
+\eq{
+X^\mu(\sigma^\pm) &= x^\mu +p^\mu \cst \tau +  i\sqrt{\frac{\cst}{2}} \sum_{n\neq0} \frac{1}{n} \left( \alpha^\mu_n e^{in\sigma^-} + \bar{\alpha}^\mu_n e^{-in\sigma^+} \right)
+}
+and 
+\eq{
+\del_- X^\mu(\sigma^-) = \sqrt{\frac{\cst}{2}} \sum_{n}  \alpha^\mu_n e^{-in\sigma^-}
+}
+We could look at the same object for a worldesheet with Euclidean signature $\omega = \tau + i \sigma $
+\eq{
+\del_\omega X^\mu (\omega) = -i \sqrt{\frac{\cst}{2}} \sum_{n}  \alpha^\mu_n e^{-n\omega}
+}
+We want to consider the theory on $\mbb{C}^\ast = \mbb{C} \cup \set{\infty}$ with coordinates $z = e^\omega$. \\
+Consider a chiral primary $\phi_{cyl}(\omega)$ of weighted $(h,\bar{H}) = (h,0)$ defined on the cylinder. We expand 
+\eq{
+\phi_{cyl}(\omega) = \sum_n \phi_n e^{-n\omega}
+}
+On the plane 
+\eq{
+\phi(z) &= \left( \pd[\tau]{\omega} \right)^{-h} \phi_{cyl}(\omega) \\
+&= z^{-h} \phi_{cyl}(\omega) \\
+&= z^{-h} \sum_n \phi_n z^{-n}
+}
+So a natural mode expansion for $\phi(z)$ is 
+\eq{
+\phi(z) = \sum_n \phi_n z^{-n-h}. 
+}
+More generally, for a field of weight $(h,\bar{h})$
+\eq{
+\phi(z,\bar{z}) = \sum_{m,n} \phi_{mn} z^{-m-h} \bar{z}^{-n-\bar{h}}
+}
+
+\begin{example}
+$T(z)$ and $\bar{T}(\bar{z})$ have $(h,\bar{h}) = (2,0), (0,2)$ respectively, so 
+\eq{
+T(z) &= \sum_n L_n z^{-n-2} \\
+\bar{T}(\bar{z}) &= \sum_n \bar{L}_n \bar{z}^{-n-2}
+}
+\end{example}
+
+Also 
+\eq{
+\del X^\mu (z) = -i \sqrt{\frac{\cst}{2}} \sum_n \alpha_n^\mu z^{-n-1}
+}
+where 
+\eq{
+X^\mu(z,\bar{z}) = x^\mu -i\frac{\cst}{2} p^\mu \log |z|^2 + i \sqrt{\frac{\cst}{2}} \sum_{n\neq0} \frac{1}{n} \left( \alpha_n^\mu z^{-n} + \bar{\alpha}_n^\mu \bar{z}^{-n} \right)
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{States and Operators}
+For a given physical operator $\Phi(z)$ there is a physical state $\ket{\Phi}$ given by 
+\eq{
+\ket{\Phi} = \lim_{z\to0}\Phi(z) \ket{0}
+}
+Consider 
+\eq{
+i \sqrt{\frac{2}{\cst}} \del X^\mu(z) \ket{0} = ( \dots + i \alpha_{-2}^mu z + \alpha_{-1}^\mu + \frac{\alpha_0^\mu}{z} + \dots ) \ket{0}
+}
+For this to make sense in the limit, we at least require 
+\eq{
+\forall n \geq 0 \; \alpha_n^\mu \ket{0} = 0 
+}
+and then 
+\eq{
+\lim_{z=0} i \sqrt{\frac{2}{\cst}} \del X^\mu(z) \ket{0} = \alpha_{-1}^\mu \ket{0} 
+}. 
+A more interesting example is 
+\eq{
+\lim_{z\to0, \bar{z}\to0} - \frac{2}{\cst} h_{\mu\nu} \del X^\mu(z) \bar{\del} X^\nu(\bar{z}) e^{ik\cdot X(z,\bar{z})} \ket{0}
+}
+where $k_\mu$ is a momentum vector in spacetime and $h_{\mu\nu}=h_{\nu\mu}$ is a spacetime sector. In the limit we get 
+\eq{
+h_{\mu\nu} \alpha_{-1}^\mu \bar{\alpha}_{-1}^\nu \ket{k} \quad \text{graviton state}
+}
+Note that for a field of weight $(h,\bar{h})$ we require 
+\eq{
+\forall n > -h \; \phi_n \ket{0} = 0 
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Normal and Radial Ordering}
+
+We shall focus on the chiral field 
+\eq{
+j^\mu(z) = \del X^\mu(z) = -i \sqrt{\frac{\cst}{2}} \sum_n \alpha_n^\mu z^{-n-1}
+}
+Split $j^\mu$ into creation and annihilation parts 
+\eq{
+j_+^\mu(z) &= -i \sqrt{\frac{\cst}{2}} \sum_{n>0} \alpha_n^\mu z^{-n-1} \\
+j_-^\mu(z) &= -i \sqrt{\frac{\cst}{2}} \sum_{n\geq0} \alpha_{-n}^\mu z^{-n-1} 
+}
+Then $j^\mu = j_+^\mu + J_-^\mu$. Normal ordering 
+\eq{
+: j^\mu(z) j^\nu(w) : &= j_+^\mu(z) j_+^\nu(w) + j_-^\mu(z) j_+^\nu(w) + j_-^\nu(w) j_+^\mu(z) + j_-^\mu(z) j_-^\nu(w) \\
+&= j^\mu(z) j^\nu(w) + \comm[j_-^\nu(w)]{j_+^\mu(z)}
+}
+We may evaluate the commutator to be 
+\eq{
+\comm[j_-^\nu(w)]{j_+^\mu(z)} = -\frac{\cst}{2} \frac{\eta^{\mu\nu}}{(z-w)^2}
+}
+We required $|z| > |w|$ for the series expansions to converge. Hence we find that 
+\eq{
+\mc{R}(j^\mu(z) j^\nu(w) ) = :j^\mu(z) j^\nu(w):  \highlight{-} \frac{\cst}{2} \frac{\eta^{\mu\nu}}{(z-w)^2}
+}
+As in QFT, it is useful to introduce contraction notation 
+\eq{
+\overbracket[0.5pt]{j^\mu(z) j^\nu(w)} = -\frac{\cst}{2} \frac{\eta^{\mu\nu}}{(z-w)^2}
+}
+This is a \emph{Green's function} on $\Sigma$. Up to arbitrary functions of $z$ and $\bar{z}$ we integrate to find 
+\eq{
+\overbracket[0.5pt]{X^\mu(z)X^\nu(w)} = -\frac{\cst}{2} \log(z-w)
+}
+Writing 
+\eq{
+X^\mu(z,\bar{z}) = X^\mu(z) + \bar{Z}^\mu(\bar{z})
+}
+we can also show 
+\eq{
+\overbracket[0.5pt]{\bar{X}^\mu(\bar{z}) \bar{X}^\nu(\bar{w})} &= -\frac{\cst}{2} \log(\bar{z}-\bar{w}) \\
+\overbracket[0.5pt]{X^\mu(z) \bar{X}^\nu(\bar{w})} &= 0 
+}
+so we find 
+\begin{align}
+\overbracket[0.5pt]{X^\mu(z,\bar{z})X^\nu(w,\bar{w})} &= \left( -\frac{\cst}{2} \log(z-w) - \frac{\cst}{2} \log(\bar{z}-\bar{w} ) \right) \eta^{\mu\nu} \\
+&= -\frac{\cst}{2} \eta^{\mu\nu} \log|z-w|^2 \label{eq:ST:5}
+\end{align}
+This tells us the Green's function immediately 
+\eq{
+\braket{\mc{R}\left( X^\mu(z,\bar{z})X^\nu(w,\bar{w}) \right)} = - \frac{\cst}{2} \eta^{\mu\nu} \log|z-w|^2
+}
+We can use \ref{eq:ST:5} to build contractions of more complicated operators via Wick's theorem. 
+
+\subsubsection*{Composite Operators}
+We can use Wick's theorem and our knowledge of contractions to define composite operators: 
+\begin{example}
+We found that 
+\eq{
+\overbracket[0.5pt]{\del X^\mu(z) \del X^\nu(w)} = -\frac{\cst}{2} \frac{\eta^{\mu\nu}}{(z-w)^2}
+}
+This gives a natural definition for our stress tensor 
+\eq{
+T(z) = \lim_{w \to z} - \frac{1}{\cst} \left( \del X^\mu(z) \del X_\mu (w) + \frac{\cst}{2}\frac{\eta^\mu_\mu}{(z-w)^2} \right)
+}
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Operator Product Expansions (OPEs)}
+Operator product expansions encode what happens when we bring two operators close together. Given a set of operators $\mc{O}_i$. 
+\eq{
+\text{As } w\to z, \; \; \mc{O}_i (w) \mc{O}_j (z) \sim \sum_k f_{ij}^k(z-w) \mc{O}_k(z)
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\texorpdfstring{$T(z) X^\mu(w)$}{T} OPE and conformal transformations}
+
+We are interested in 
+\eq{
+T(z) X^\mu(w) \text{ as } w \to z
+}
+Writing 
+\eq{
+T(z) X^\mu(w) = -\frac{1}{\cst} : \del X^\nu (z) \del X_\nu (w) : X^\mu(w)
+}
+we have 
+\eq{
+\upwick{\del X^\mu(z) X^\nu(w)} = - \frac{\cst}{2} \frac{\eta^{\mu\nu}}{z-w} \\
+\Rightarrow \del X^\mu(z) X^\nu(w) = - \frac{\cst}{2} \frac{\eta^{\mu\nu}}{z-w} + \underbrace{\dots}_{\mc{O}(z-w)}
+}
+and so  
+\eq{
+T(z) X^\mu(w)  &=  -\frac{2}{\cst} : \upwick{\del X^\nu(z) \del X_\nu(w) : X^\mu(w)} + \dots \\
+&= - -\frac{2}{\cst} \del X_\nu (z) \left( - \frac{\cst}{2} \frac{\eta^{\mu\nu}}{z-w} \right) + \dots \\
+&= \frac{\del X^\mu(z)}{z-w} + \dots 
+}
+We expand $\del X^\mu (z) $ around $z=w$ 
+\eq{
+\del X^\mu (z) = \del X^\mu(w) + \mc{O}(z-w)
+}
+so 
+\eq{
+T(z) X^\mu(w) = \frac{\del X^\mu(w)}{z-w} + \dots 
+}
+Recall the conformal transformation of $X^\mu(w) $ may be given by 
+\eq{
+\delta_v X^\mu(w) \oint_{|z| = |w|} \frac{dz}{2\pi i} \mc{R} \left( v(z) T(z) X^\mu(w) \right)
+}
+Substituting in out OPE 
+\eq{
+\delta_v X^\mu(w) &= \oint_{|z| = |w|} \frac{dz}{2\pi i} \left( v(z) \left[ \frac{\del X^\mu(w)}{z-w} + \dots  \right]\right) \\
+&= v(w) \del X^\mu(w) 
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Transformations of Primary fields}
+Consider a chiral primary $\phi(z)$ where $\bar{h}=0$. We know that 
+\eq{
+\delta_v \phi(z) = \oint_{c(z)} \frac{dw}{2\pi i }\mc{R} \left( v(w) T(w) \phi(z) \right) 
+}
+We want to retain the idea that  primary field transforms as a conformal tensor of weight $(h,\bar{h})$. We will require that, for $\phi$ to be a primary field the OPE with $T$ is such that 
+\eq{
+\delta_v \phi(z) = v(z) \del \phi(z) + h \del v(z) \phi(z) 
+}
+Using the residue theorem 
+\eq{
+\frac{1}{(n-1)!} \del_z^{n-1} f(z) = \oint \frac{dw}{2\pi i} \frac{f(w)}{(w-z)^n}
+}
+so we find 
+\eq{
+\mc{R} \left( T(w) \phi(z) \right) = \frac{h}{(z-w)^2} \phi(w) + \frac{1}{z-w} \del \phi(w) + \dots
+}
+We could take this OPE with the stress tensor to define what we mean by a chiral primary of weight $(h,0)$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\texorpdfstring{$T(z) : e^{ik \cdot X(w)} :$}{T} OPE }
+Here $k \cdot X(w) = k_\mu X^\mu (w)$, where $k_\mu$ is some constant spacetime vector. 
+
+We think of $:e^{ik \cdot X(w)}:$ as the the series expansion
+\eq{
+\sum_{n \geq 0} \frac{i^n}{n!} k_{\mu_1} \dots k_{\mu_n} : X^{\mu_1}(w) \dots X^{\mu_n}(w) : 
+}
+We might wonder what the weight of $e^{ik \cdot X(w)}$ is 
+\eq{
+T(z) :e^{ik \cdot X(w)}: = -\frac{1}{\cst} : \del X^\mu(z) \del X_\mu (z) : \sum_{n \geq 0} \frac{i^n}{n!} k_{\mu_1} \dots k_{\mu_n} : X^{\mu_1}(w) \dots X^{\mu_n}(w) :
+}
+
+Single contractions contribute 
+\eq{
+& \sum_{n > 0} \frac{i^n}{n!} n \left( k \cdot X(w) \right)^{n-1} k_\mu \frac{1}{z-w} \del X^\mu(w) \\
+= & \sum_{m \geq 0} \frac{i^m}{m!}\left( k \cdot X(w) \right)^m   \frac{ i k_\mu \del X^\mu(w)}{z-w}  \\
+= & \frac{1}{z-w} \del_w \left( e^{i k \cdot X(w)} \right)
+}
+Double contractions contribute 
+\eq{
+& - \frac{1}{\cst} : \downwick{\del X^\mu(z) \upwick{\del X_\mu (z) : \sum_{(i,j)} \sum_{n \geq 0} \frac{(i)^n}{n!} k_{\mu_0} \dots k_{\mu_i} \dots k_{\mu_j} \dots  k_{\mu_n}: : X^{\mu_0}(w) \dots X^{\mu_i}(w)} \dots X^{\mu_j}(w)} \dots X^{\mu_n}(w) : \\
+= & - \frac{1}{\cst} \sum_{n \geq 2} k_{\mu_2} \dots k_{\mu_n} \frac{(i)^n}{n!} n(n-1) \left( -\frac{\cst}{2} \right)^2 \frac{k^2}{(z-w)^2} X^{\mu_2} X^{\mu_n} \\
+= & - \frac{\cst}{4} \frac{k^2}{(z-w)^2} \sum_{n\geq 2} : \left( k \cdot X(w) \right)^{n-2} :  i^2 i^{n-2} \frac{n!}{n! (n-2)!} \\
+= & - \frac{\cst}{4} \frac{k^2}{(z-w)^2 } : e^{i k \cdot X(w)} : 
+}
+
+In total we have 
+\eq{
+T(z) : e^{i k \cdot X(w) }: = \left( \frac{\cst}{4} \frac{k^2}{(z-w)^2} + \frac{\del_w}{z-w} \right) : e^{i k \cdot X(w)} : \dots 
+}
+
+We see that $: e^{i k \cdot X(w) }:$ has conformal weight $h = \frac{\cst}{4} k^2$
+
+More generally, $: e^{i k \cdot X(w,\bar{w}) }:$ has weight 
+\eq{
+(h,\bar{h}) = ( \frac{\cst}{4} k^2, \frac{\cst}{4} k^2)
+}
+It is now useful to separate the notion of a primary field from the definitions of $h,\bar{h}$. WE will say a primary field has OPE with $T$ 
+\eq{
+T(z) \phi(w) = \frac{h}{(z-w)^2} \phi(w) + \frac{1}{(z-w)} \del \phi(w)
+}
+Now the $(z-w)^2$ coefficient will be called the \bam{weight}, regardless of the presence of higher order poles. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\secmath{T(z)T(w)} OPE and the Virasoro Algebra}
+Recall 
+\eq{
+T(z) = - \frac{1}{\cst} : \del X^\mu (z) \del X_\mu (z): \\
+\upwick{\del X^\mu (z) \del X_\mu (z)} = - \frac{\cst}{2} \frac{\eta^{\mu\nu}}{(z-w)^2}
+}
+Then 
+\eq{
+T(z)T(w) = & 4 \times \left( - \frac{1}{\cst} \right)^2  : \del X^\mu (z) \upwick{\del X_\mu (z):  : \del X^\mu (w)} \del X_\mu (w):  \\
+& +2 \times \left( - \frac{1}{\cst} \right)^2  \downwick{ : \del X^\mu (z) \upwick{\del X_\mu (z):  : \del X^\mu (w)} \del X_\mu (w):} + \dots
+}
+We thus find 
+\eq{
+T(z)T(w) = - \frac{2}{\cst} \frac{\eta_{\mu\nu}}{(z-w)^2 }  : \del X^\mu (z) \del X^\nu (w): + \frac{1}{2} \frac{\delta^\mu_\nu}{(z-w)^2} \frac{\delta_\mu^\nu}{(z-w)^2} + \dots 
+}
+We expand $\del X^\mu(z)$ about $z=w$. 
+\eq{
+\del X^\mu(z) = \del X^\mu(w) + (z-w) \del^2 X^\mu(w) + \dots
+}
+
+Also, $\delta^\mu_\nu \delta_\mu^\nu = D$ the number of spacetime dimensions. 
+\eq{
+T(z) T(w) &= \frac{\frac{D}{2}}{(z-w)^4} - \frac{2}{\cst} \frac{1}{(z-w)^2} : \del X^\mu (w) \del X^\nu (w): - \frac{2}{\cst} \frac{1}{(z-w)} : \del^2 X^\mu(w) \del X_\mu(w) : + \dots \\
+&= \frac{\frac{D}{2}}{(z-w)^4} + \underbrace{\frac{2}{(z-w)^2}T(w)}_{\Rightarrow h = 2} + \frac{1}{z-w} \del T(w) + \dots 
+}
+So $T(z)$ has weight $(2,0)$, but the field is only primary if $D=0$. 
+
+\subsection{The Virasoro Algebra}
+$T(z)$ has $h=2$ so we expand it in the modes as 
+\eq{
+T(z) &= \sum_n L_n z^{-n-2} \\
+\bar{T}(\bar{z}) &= \sum_n \bar{L}_n \bar{z}^{-n-2}
+}
+We can invert these expressions 
+\eq{
+L_m = \oint_{z=0} \frac{dz}{2\pi i} z^{m+1} T(z)
+}
+Consider the commutator of two $L_n$s , 
+\eq{
+\comm[L_m]{L_n} = \oint_{w=0}  \frac{dw}{2\pi i} w^{n+1} \oint_{z=0}  \frac{dz}{2\pi i} z^{m+1} \comm[T(z)]{T(w)} 
+}
+Now we think
+\eq{
+ \oint_{z=0}  \frac{dz}{2\pi i} z^{m+1} \comm[T(z)]{T(w)}  &=  \oint_{z=0}  \frac{dz}{2\pi i} z^{m+1} T(z)T(w) -  \oint_{|z|<|w|}  \frac{dz}{2\pi i} T(w) T(z)z^{m+1}  \\
+ &= \oint_{z=w}  \frac{dz}{2\pi i} \mc{R} \pround{T(z) T(w)} z^{m+1} \\
+}
+so 
+\eq{
+\comm[L_m]{L_n} &= \oint_{w=0}  \frac{dw}{2\pi i} w^{n+1} \oint_{z=0}  \frac{dz}{2\pi i} z^{m+1} \pround{\frac{\frac{D}{2}}{(z-w)^4} + \frac{2T(w)}{(z-w)^2} + \frac{\del T(w)}{z-w} + \underbrace{\dots}_{\substack{\text{will give 0} \\ \text{when integrated}}}} \\
+&= \oint_{w=0}  \frac{dw}{2\pi i} w^{n+1} \pround{\frac{\frac{D}{2}}{3!} \frac{\del^3}{\del z^3} z^{m+1} + 2T(w) \pd[(z^{m+1})]{z} + z^{m+1} \del T(w)}_{z=w} \\
+&=  \oint_{w=0}  \frac{dw}{2\pi i} \pround{ \frac{D}{12} (m^3 - m) w^{n+m-1} + 2(m+1) w^{m+n+1} T(w) - w^{m+n+2} \del T(w) } \\
+&=  \oint_{w=0}  \frac{dw}{2\pi i} \pround{ \frac{D}{12} (m^3 - m) w^{n+m-1} + (m-n) w^{m+n+1} T(w)} \quad \text{(boundary term is 0)} \\
+&= \frac{D}{12}(m^3 - m) \delta_{m+n,0} + (m-n) L_{m+n}
+}
+If $D=0$, this is the Witt algebra. In general this is the \bam{Virasoro algebra}, where the additional term is called the \bam{central extension}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The b,c Ghost System}
+To make sense of the path integral over $h_{ab}$ we introduced ghosts $b,c$ via the F-P method. 
+\eq{
+S[b,c] = \frac{1}{2\pi} \int_\Sigma d^2 \sigma \, \sqrt{-\hat{h}} \hat{h}^{ac} b_{ab} \nabla_c c^b
+}
+We could take $\hat{h}_{ab}$ as arbitrary $(h_{ab})$ and reimpose $S[\hat{h}-h]$ on the path integral. The stress tensor for the ghosts is 
+\eq{
+T_{ab}^{gh} = -i \pround{\frac{1}{2} c^c \nabla_{(a} b_{b)c} + (\nabla_{(a}c^c)b_{b)c} - h_{ab}\text{trace}}
+}
+We will now work with a flat euclidean metric and use $(z,\bar{z})$ coordinate on $\mbb{C}$. The action becomes 
+\eq{
+S[b,c] = \frac{1}{2\pi} \int_\Sigma d^2z \, \pround{b_{zz} \del_{\bar{z}} c^z + b_{\bar{z}\bar{z}} \del_z c^{\bar{z}}}
+}
+where $b_{z\bar{z}}=0$ since $b$ traceless. Take the notation $b_{zz} = b, b_{\bar{z}\bar{z}}=\bar{b}, c^z = c, c^{\bar{z}} = \bar{c}$. Then 
+\eq{
+S = \frac{1}{2\pi} \int_\Sigma d^2z \, \pround{b \bar{\del} c + \bar{b} \del \bar{c}} - \frac{1}{2\pi\cst} \int_\Sigma \del X^\mu \bar{\del} X^\nu \eta_{\mu\nu}
+}
+Now the total stress tensor is 
+\eq{
+T(z) = T_X(z) + T_{gh}(z)
+}
+where 
+\eq{
+T_X(z) &= - \frac{1}{\cst} : \del X^\mu \del X_\mu : \\
+T_{gh}(z) &= : \del b(z) c(z) : - 2 \del\pround{: b(z) c(z) :}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ghost OPEs}
+The ghosts are free, so Wick's theorem gives: 
+\eq{
+\mc{R} \pround{b(z) c(w)} = :b(z) c(w): + \upwick{b(z) c(w)}
+}
+The Green's function for $\bar{\delta}$ gives $\upwick{b(z) c(w)}$ exactly. Using the result 
+\eq{
+\pd{\bar{z}} \pround{\frac{1}{z-w}} = 2\pi \delta^2(z-w)
+}
+we then have 
+\eq{
+\upwick{b(z) c(w)} = \frac{1}{z-w}
+}
+so the OPE is 
+\eq{
+b(z)c(w) = \frac{1}{z-w} + \dots = c(z) b(w)
+}
+We can then use this to remove the poles from composite operators 
+\eq{
+T_{gh}(z) = \lim_{w\to z}\pround{-2b(w) \del c(z) - \del b(w) c(z) + \frac{1}{(z-w)^2}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Conformal Transformations of Ghosts}
+
+Consider 
+\eq{
+T_{gh}(z) b(w) &= :\del_z b(z) \upwick{c(z) b(w)}: - 2: \del_z (b(z) \upwick{c(z)) b(w)}: + \dots \\
+&= \frac{\del b(z)}{z-w} - 2 \del_z \pround{\frac{b(z)}{z-w}} + \dots \\
+&= \frac{2}{(z-w)^2}b(z) - \frac{1}{z-w} \del b(z) + \dots 
+}
+Expand $b(z)$ about $z=w$, $b(z) = b(w) + (z-w) \del b(w) + \dots$
+\eq{
+\Rightarrow T_{gh}(z) b(w) &= \frac{2}{(z-w)^2}b(w) + \frac{2}{z-w} \del b(w) - \frac{1}{z-w} \del b(w) + \dots \\
+&= \frac{1}{(z-w)^2}b(w) + \frac{1}{z-w} \del b(w) +\dots
+}
+so this is a primary field of weight $(2,0)$. Similarly for $c$ 
+\eq{
+T_{gh}(z) c(w) = \frac{-1}{(z-w)^2} c(w) + \frac{1}{z-w} \del b(w) +\dots
+}
+so $c$ has weight $(-1,0)$. 
+We can now compute 
+\eq{
+T_{gh}(z) T_{gh}(w) = -\frac{\frac{26}{2}}{(z-w)^4} + \frac{2}{(z-w)^2} T_{gh}(w) + \frac{1}{z-w} \del T_{gh}(w) + \dots
+}
+which leads to the OPE for the total stress tensor
+\eq{
+T(z) T(w) = \frac{\frac{D-26}{2}}{(z-w)^4} + \frac{2}{(z-w)^2} T(w) + \frac{1}{z-w} \del T(w) + \dots
+}
+Hence, if $D=26$, there is no conformal anomaly, i.e. $T(z)$ transforms as it should. We could introduce modes for $T(z)$, 
+\eq{
+T(z) = \sum_n \mc{L}_n z^{-n-2}
+}
+and then $\mc{L}_n$ would satisfy the Witt algebra in $D=26$ dimensions. 
+\eq{
+\comm[\mc{L}_n]{\mc{L}_m} = (n-m) \mc{L}_{n+m}
+}
+From here on in, we will assume $D=26$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Mode Expansions}
+
+$b$ has weight $(2,0)$ and $c$ has weight $(-1,0)$ so 
+\eq{
+b(z) &= \sum_n b_n z^{-n-2} \\
+c(z) &= \sum_n c_n z^{-n+1}
+}
+what is $\acomm[b_m]{c_n}$? We want to see if we can get this from the OPE. \\
+We can invert the mode expansions to get 
+\eq{
+b_m &= \oint_{z=0} \frac{dz}{2\pi i} z^{m+1} b(z) \, dz \\
+c_n &= \oint_{z=0} \frac{dz}{2\pi i} z^{n-2} c(z) \, dz 
+}
+Thus 
+\eq{
+\acomm[b_m]{c_n} &= \oint_{z=0} \frac{dz}{2\pi i} z^{m+1} \oint_{w=0} \frac{dw}{2\pi i} w^{n-2} \acomm[b(z)]{c(w)} \\
+&= \oint_{w=0} \frac{dw}{2\pi i} \oint_{z=w} \frac{dz}{2\pi i}  \mc{R} \pround{b(z) c(w)}z^{m+1}  w^{n-2}  \\
+&=  \oint_{w=0} \frac{dw}{2\pi i} \oint_{z=w} \frac{dz}{2\pi i}z^{m+1}  w^{n-2} \pround{\frac{1}{z-w}+ \dots} \\
+&= \oint_{w=0} \frac{dw}{2\pi i} w^{m+n-1} = \delta_{m+n,0} 
+}
+so 
+\eq{
+\acomm[b_m]{c_n} = \delta_{m+n,0} 
+}
+
+
 \end{document}
