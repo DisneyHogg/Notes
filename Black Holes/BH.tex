@@ -1365,7 +1365,7 @@ Let $S$ be a 2d spacelike orientable submanifold of a globally hyperbolic spacet
 Let $(\mc{M},g)$ be a globally hyperbolic spacetime with a non-compact Cauchy surface. Assume the Einstein equation and the null energy condition, and that $\mc{M}$ contains a trapped surface $T$. Let $\theta_0<0$ be the maximum value of $\theta$ on $T$ for both sets of geodesics orthogonal to $T$. Then at least one of these geodesics is future directed inextendible and has a finite length no greater than $\frac{2}{|\theta_0|}$. 
 \end{theorem}
 \begin{proof}
-Assume that all inextendible null geodesics orthogonal to $T$ have affine length $>\frac{2}{|\theta_0|}$. Then along any of these geodesics, by the Raychaudhuri equation, we will have $\theta \to -\infty$, hence a point conjugate to $T$ with an affine parameter distance no greater than $\frac{2}{|\theta_0|}$. Let $p\in \dot{\mc{J}}^+(T)$, $p\not\in T$. From theorem \ref{thm:BH:2}, we know that $p$ lies on a future directed null geodesic $\gamma$ starting from $T$ which is orthogonal to $T$ and has no point conjugate to $T$ between $T$ and $p$. It follows that $p$ cannot lie beyond the point on $\gamma$ conjugate to $T$ on $\gamma$. Therefore, $\dot{J}^+(T)$ is a subset of a compact set consisting of the set of points along the null geodesics orthogonal to $T$ with affine parameter $\leq \frac{2}{|\theta_0|}$. We also know that $\dot{J}^+(T)$ is a boundary, so is closed, hence compact\footnote{Closed subset of a compact set is compact, recall this proof}. Now recall that $\dot{J}^+(T)$ is a manifold, which implies that is cannot have a boundary. Now recall $\Sigma$ is a non-compact Cauchy surface. So we can pick a timelike vector field $T^a$. By global hyperbolicity, integral curves of $T^a$ intersect $\Sigma$ exactly once. Further, these integral curves will intersect $\dot{J}^+(T)$ at most once as it is achronal. This defines a continuous bijective map $\alpha : \dot{J}^+(T) \to \Sigma $. This establishes a homeomorphism between $\dot{J}^+(T)$ and $\image \alpha \subset \Sigma$. Since $\alpha$ is a homeomorphism and $\dot{J}^+(T)$ closed, $\alpha\pround{\dot{J}^+(T)}$ is closed in $\Sigma$. Now $\dot{J}^+(T)$ is a 3d submanifold, hence $\forall p \in \dot{J}^+(T)$ we can find an open neighbourhood $V\subset \dot{J}^+(T)$ containing $p$. Then $\alpha(V)$ gives a neighbourhood of $\alpha(p)$ in $\alpha\pround{\dot{J}^+(T)}$, hence $\alpha\pround{\dot{J}^+(T)}\subset\Sigma$ is open. As $\alpha\pround{\dot{J}^+(T)}$ is both open and closed in $\Sigma$, provided $\Sigma$ is connected (ensured in GR) $\alpha\pround{\dot{J}^+(T)}=\Sigma$, contradiction as $\alpha\pround{\dot{J}^+(T)}$ compact, $\Sigma$ is not. 
+Assume that all inextendible null geodesics orthogonal to $T$ have affine length $>\frac{2}{|\theta_0|}$. Then along any of these geodesics, by the Raychaudhuri equation, we will have $\theta \to -\infty$, hence a point conjugate to $T$ with an affine parameter distance no greater than $\frac{2}{|\theta_0|}$. Let $p\in \dot{\mc{J}}^+(T)$, $p\not\in T$. From theorem \ref{thm:BH:2}, we know that $p$ lies on a future directed null geodesic $\gamma$ starting from $T$ which is orthogonal to $T$ and has no point conjugate to $T$ between $T$ and $p$. It follows that $p$ cannot lie beyond the point on $\gamma$ conjugate to $T$ on $\gamma$. Therefore, $\dot{\mc{J}}^+(T)$ is a subset of a compact set consisting of the set of points along the null geodesics orthogonal to $T$ with affine parameter $\leq \frac{2}{|\theta_0|}$. We also know that $\dot{\mc{J}}^+(T)$ is a boundary, so is closed, hence compact\footnote{Closed subset of a compact set is compact, recall this proof}. Now recall that $\dot{\mc{J}}^+(T)$ is a manifold, which implies that is cannot have a boundary. Now recall $\Sigma$ is a non-compact Cauchy surface. So we can pick a timelike vector field $T^a$. By global hyperbolicity, integral curves of $T^a$ intersect $\Sigma$ exactly once. Further, these integral curves will intersect $\dot{\mc{J}}^+(T)$ at most once as it is achronal. This defines a continuous bijective map $\alpha : \dot{\mc{J}}^+(T) \to \Sigma $. This establishes a homeomorphism between $\dot{\mc{J}}^+(T)$ and $\image \alpha \subset \Sigma$. Since $\alpha$ is a homeomorphism and $\dot{\mc{J}}^+(T)$ closed, $\alpha\pround{\dot{\mc{J}}^+(T)}$ is closed in $\Sigma$. Now $\dot{\mc{J}}^+(T)$ is a 3d submanifold, hence $\forall p \in \dot{\mc{J}}^+(T)$ we can find an open neighbourhood $V\subset \dot{\mc{J}}^+(T)$ containing $p$. Then $\alpha(V)$ gives a neighbourhood of $\alpha(p)$ in $\alpha\pround{\dot{\mc{J}}^+(T)}$, hence $\alpha\pround{\dot{\mc{J}}^+(T)}\subset\Sigma$ is open. As $\alpha\pround{\dot{\mc{J}}^+(T)}$ is both open and closed in $\Sigma$, provided $\Sigma$ is connected (ensured in GR) $\alpha\pround{\dot{\mc{J}}^+(T)}=\Sigma$, contradiction as $\alpha\pround{\dot{\mc{J}}^+(T)}$ compact, $\Sigma$ is not. 
 \end{proof}\footnote{We see that trapped surfaces are pretty generic in GR, and from Cauchy stability if you have a trapped surface, and change you change initial data slightly, you will keep this trapped surface. It was also shown that with sufficiently many gravitons scattering, a trapped surface will necessarily form. }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1417,6 +1417,609 @@ d\bar{s}^2 &= -dT^2 + \underbrace{d\chi^2 + \sin^2 \chi d\omega^2}_{S^3}
 }
 \hl{See diagram} This embeds our original spacetime in the cylinder of the Einstein static universe. We call the future/past directed boundaries $\mc{I}^\pm$ (Scri $\pm$). This can be projected down to a \bam{Penrose diagram}. 
 \end{example}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Penrose Diagrams}
+A \bam{Penrose diagram} is a bounded subset of $\mbb{R}^2$ with a flat Lorentzian metric 
+\eq{
+-d\tau^2 + d\chi^2
+}
+Take the massless Klein Gordon equation
+\eq{
+\nabla^a \nabla_a \psi = 0
+}
+for $\psi=\psi(t,r)$. The most general solution reads 
+\eq{
+\psi(t,r) = \frac{1}{r}\psquare{f(t-r) + g(t+r)} 
+}
+Since \hl{ $\psi = \frac{\pi}{r}$ have an equaion fo $\pi$.} Now regularity at $r=0$ gives
+\eq{
+\psi &= \frac{1}{r}\frac{1}{r}\psquare{f(u) - f(v)} \\
+\Rightarrow \psi &= \frac{1}{r} \psquare{F(p) - F(q)}
+}
+where $F(x) = f(\tan x)$. Let $F_0(q)$ denote the limiting value of $r\psi$ on $\mc{I}^-$ i.e. where $p=-\frac{\pi}{2}$
+\eq{
+\Rightarrow F_0(q) &= F(-\frac{\pi}{2}) - F(q) \\
+\Rightarrow \psi(t,r) &= \frac{1}{r} \psquare{F_0(p) - F_0(q)} 
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{example}
+See pictures of Kruskal, Schwarzschild AdS, and collapse
+\end{example}
+\begin{ex}
+Draw the Penrose diagram for Schwarzschild dS
+\end{ex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Asymptotic Flatness}
+\begin{definition}{Manifold with Boundary}
+Let $\mc{M}$ be a second countable Hausdorff space with open cover $\set{\mc{U}_\alpha}$. Then it is a \bam{manifold with boundary} if $\forall \alpha \, \exists \phi_\alpha : \mc{U}_\alpha \to V_\alpha \subset \mbb{H}^n$ a homeomorphism for some $V_\alpha$ open in the subspace topology of $\mbb{H}^n = \set{\bm{x} \in \mbb{R}^n : x_n \geq 0}$. The \bam{boundary} is $\del \mc{M} = \phi_\alpha^{-1} (\set{x_n = 0})$
+\end{definition}
+
+\begin{definition}[Asymptotically Flat]
+A time orientable spacetime $(\mc{M},g)$ is \bam{asymptotically flat} at null infinity if $\exists (\bar{\mc{M}},\bar{g})$ a spacetime s.t. 
+\begin{itemize}
+    \item $\exists \Omega$ a positive function on $\mc{M}$ s.t. $(\bar{\mc{M}},\bar{g})$ is an extension of $(\mc{M},\Omega^2 g)$
+    \item Within $\bar{\mc{M}}$, $\mc{M}$ can be extended to obtain a manifold with boundary $\mc{M} \cup \del \mc{M}$. 
+    \item $\Omega$ can be extended to a function on $\bar{\mc{M}}$ s.t. $\Omega|_{\del \mc{M}}=0$ and $d\Omega|_{\del \mc{M}} \neq 0$.
+    \item $\del\mc{M}$ is a disjoint union of 2 components of $\mc{I}^+$ and $\mc{I}^-$, each diffeomorphic to $\mbb{R}\times S^2$
+    \item No past/future directed causal curve starting in $\mc{M}$ intersects $\mc{I}^+ / \mc{I}^-$ 
+    \item $\mc{I}^\pm$ are complete. 
+\end{itemize}
+\end{definition}
+
+You've seen 
+\eq{
+R_{ab} = \bar{R}_{ab} + 2\Omega^{-1} \bar{\nabla}_a \bar{\nabla}_b \Omega + \bar{g}_{ab} \bar{g}^{cd} \psquare{\Omega^{-1} \bar{\nabla}_c \bar{\nabla}_d \Omega - 3\Omega^{-2} \bar{\nabla}_c \Omega \bar{\nabla}_d \Omega }
+}
+For pure gravity, $R_{ab]}=0$
+\eq{
+\Rightarrow \Omega\bar{R}_{ab} + 2 \bar{\nabla}_a \bar{\nabla}_b \Omega + \bar{g}_{ab} \bar{g}^{cd} \psquare{ \bar{\nabla}_c \bar{\nabla}_d \Omega - 3\Omega^{-1} \bar{\nabla}_c \Omega \bar{\nabla}_d \Omega } = 0
+}
+Then regularity at $\Omega=0$ gives $\bar{\nabla}_c \bar{\nabla}_d \Omega = \mc{O}(\Omega)$. Hence $\bar{\nabla}_c
+Omega $ is null when $\Omega = 0$ ($\mc{I}^+)$. We deduce that $\mc{I}^+$ is a null hypersurface. \\
+We can equivalently \hl{conclude}  $\Omega^\prime = \omega^2 \Omega$. Choose $\omega$ s.t. 
+\eq{
+{\Omega^\prime}^{-1} \bar{g}^{cd} \nabla_c \Omega^\prime \nabla_d \Omega^\prime = 0
+}
+on $\mc{I}^+$
+In this gauge 
+\eq{
+\bar{\nabla}_a \bar{\nabla}_b \Omega = 0 \text{ on } \mc{I}^+ 
+}
+and hence $\bar{\nabla}_a n^b = 0$ on $\mc{I}^+$, so the congruence foliating $\mc{I}^+$ has 0 rotation, shear, enlargement. We introduce coordinated near $\mc{I}^+$ as follows : 
+
+Gaussian Normal coordinates 
+\eq{
+\bar{g}|_{r=0} = 2 du d\Omega + d\theta^2 + \sin^2 \theta d\phi^2
+}
+For some $\Omega \neq 0$, the metric components will differ from the above by $\mc{O}(\Omega)$. Introduce $r= \frac{1}{\Omega}$, so 
+\eq{
+g = - 2 du dr + r^2 (d\theta^2 + \sin^2 \theta d\phi^2)
+}
+$\mc{I}^+$ complete gives that the geodesic of $n^a$ are complete. $\mc{I}^\pm$ are complete if $u \in\mbb{R}$. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Definition of Black Hole}
+\eq{
+\mc{B} = \mc{M} \setminus [\mc{M}\cap \mc{J}^-(\mc{I}^+)] \\
+\mc{H}^+ = \dot{\mc{B}} = \mc{M} \cap\dot{\mc{J}}^-(\mc{I}^+)
+}
+$B$ is the black hole, while $\mc{H}^+$ is the black hole future event horizon, where 
+\eq{
+\dot{\mc{J}}^- (\mc{I}^+) = \overline{\mc{J}(\mc{I}^+)} \setminus {\mc{J}(\mc{I}^+)}^\circ
+}
+
+\eq{
+\mc{B} = \mc{M} \setminus [\mc{M}\cap \mc{J}^-(\mc{I}^+)] \\
+\mc{H}^+ = \dot{\mc{B}} = \mc{M} \cap\dot{\mc{J}}^-(\mc{I}^+)
+}
+$\mc{H}^+$ are null hypersurfaces, and the generations of $\mc{H}^+$ cannot have future end points. 
+
+\begin{definition}
+An asymptotically flat spacetime $(\mc{M},g)$ is \bam{strongly asymptotically predictable} if $\exists$ an open region $\bar{V}\subset \bar{\mc{M}}$ such that $\mc{M}\cap \mc{J}^- (\mc{I}^+)\subset \bar{V}$ and $(\bar{V},g)$ is globally hyperbolic.
+\end{definition}
+
+\begin{theorem}
+Let $(\mc{M},g)$ be strongly asymptotically predictable and let $\Sigma_1, \Sigma_2$ be Cauchy surfaces for $\bar{V}$ with $\Sigma_2 \subset \mc{I}^+(\Sigma_1)$. Let $B$ be the connected component of $B \cap \Sigma_1$. Then $\mc{J}^+(B) \cap \Sigma_2$ is contained with a connected component of $B \cap \Sigma_2$. 
+\end{theorem}
+\begin{proof}
+Global hyperbolicity implies that a causal curve from $\Sigma_1$ will intersect $\Sigma_2$. Note that $\mc{J}^+(B) \subset B$, hence $\mc{J}^+(B) \cap \Sigma_2 \subset B\cap \Sigma_2$. Assume that $\mc{J}^+(B)\cap\Sigma_2$ is \emph{not} contained within a single connected component of $B\cap\Sigma_2$. Then we can find disjoint open sets $O,O^\prime \subset \Sigma_2$ such that $\mc{J}^+(B) \cap\Sigma_2 \subset O\cup O^\prime$ and $\mc{J}^+(B) \cap O \neq \empty \neq \mc{J}^+(B) \cap O^\prime$. Then $B \cap \mc{I}^-(O), B\cap \mc{I}^-(O^\prime) \neq \empty$, and $B\subset \mc{I}^-(O) \cup \mc{I}^-(O^\prime)$. Now $p \in B$ cannot lie in both $\mc{I}^-(O)$ and $\mc{I}^-(O^\prime)$ as then we could divide future directed timelike geodesics (...) into two set according to whether they intersect $O$ or $O^\prime$, and hence divide future directed timelike vector at $p$ into two disjoint open sets, contradicting connectedness of the future light cone at $p$. 
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Weak Cosmic Censorship}
+
+\begin{conjecture}
+Let $(\Sigma,h,K)$ be a geodesically complete, asymptotically flat initial data set. Let the matter filed obey hyperbolic equation and satisfy the dominant energy condition. Then \emph{generically} the the maximal development of this initial data is an asymptotically flat spacetime
+\end{conjecture}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Apparent Horizon}
+
+\begin{theorem}
+Let $T$ be a trapped surface in a strongly asymptotically predictable spacetime obeying the null energy condition. Then $T\subset B$. 
+\end{theorem}
+\begin{proof}
+Assume that $\exists$ $p \in T$ such that $p \not\in B$, i.e. $p\in\mc{J}^-(\mc{I}^+)$. Then $\exists$  a causal curve from $p$ to $\mc{I}^+$. One can use strong asymptotic predictability to show that this implies $\dot{\mc{J}}^+(T)$ must intersect $\mc{I}^+$, i.e. there exists a $q \in \mc{I}^+$ with $q \in \dot{\mc{J}}^+(T)$. But by theorem (...) we have seen that $q$ lies on a null geodesic $\gamma$ from $r\in T$ that is orthogonal to $T$ and has no part conjugate to $r$ along $\gamma$. Since $T$ is trapped, the expansion of the null geodesic orthogonal to $T$ is negative at $r$ and hence $\theta \to - \infty$ within affine parameter long $\gamma$ so $\exists$ a point $s$ conjugate to $r$ along $\gamma$, contradiction. 
+\end{proof}
+
+\begin{definition}
+Let $\Sigma_t$ be a Cauchy surface in a globally hyperbolic spacetime $(\mc{M},g)$. The trapped region $\mc{T}_t$ of $\Sigma_t$ is the set of points $o\in\Sigma_t$ from which there exists a trapped surface $S$ with $p\in S\subset\Sigma_t$. The apparent horizon $A_t$ is the boundary of $\mc{T}_t$. 
+\end{definition}
+\footnote{Apparent horizon are foliation dependent, and so numerical results finding apparent horizon must be taken with a grain of salt. There exists a way to choose these in Schwarzschild such that an apparent horizon only appears at $r=0$. }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Reissner Nordstrom SOlution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Einstein Maxwell}
+Take the action 
+\eq{
+S = \frac{1}{16\pi G} \int d^4 x \, \sqrt{-g} (R - F_{ab} F^{ab})
+}
+where $F= dA$ with $A$ a 1-form. We get 
+\eq{
+R_{ab} - \frac{1}{2}Rg_{ab} = 2 \pround{F_{ac} F\indices{_b^c} - \frac{1}{4} g_{ab} F^{cd} F_{cd}} 
+}
+and 
+\eq{
+\nabla^b F_{ab} = 0 (dF = 0)
+}
+
+\begin{theorem}
+The unique spherically symmetric solution of Einstein Maxwell equation with a non-constant raidus function $r$ is the Reissner Nordstrom solution 
+\eq{
+ds^2 = - \pround{1 - \frac{2m}{r} + \frac{e^2}{r^2}}dt^2 +  \pround{1 - \frac{2m}{r} + \frac{e^2}{r^2}}^{-1} dr^2 + r^2 d\Omega_2^2 \\
+A = - \frac{Q}{r} dt = P\cos\theta d\phi \\
+e = \sqrt{Q^2 + P^2} 
+}
+\end{theorem}
+Not that the solution has some similarities to Schwarzschild, in particular $\pround{\pd{t}}^a = K^a$ is a Killing vector field. 
+
+To discuss the properties of the solution, let 
+\eq{
+\Delta(r) = r^2 - 2mr + e^2 
+}
+with roots 
+\eq{
+r_\pm = m \pm \sqrt{m^2 -e^2}
+}
+\begin{itemize}
+    \item If $m < |e|$, $r_\pm \in \mbb{C}, Delta(r) > 0$. By weak cosmic censorship we are going to neglect this case. 
+    \item $m = |e|$ will be seen later, these are \bam{extremal black holes} 
+    \item We will investigate the case $m > |e|$, giving $0 < r_- < r_+$. 
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Eddington Finkelstein Coordinates}
+write 
+\eq{
+ds^2 = - \frac{\Delta}{r^2} + \frac{r^2 dr^2}{\Delta^2} + r^2 d\Omega_2^2
+}
+Introduce 
+\eq{
+dr_\ast = \frac{r^2}{\Delta}dr \Rightarrow r_\ast = r + \frac{1}{2K_+}\log | \frac{r-r_+}{r_+}| + \frac{1}{2K_-}\log | \frac{r-r_-}{r_-}| + \text{const}
+}
+where $K_\pm = \frac{r_\pm - r_\mp}{2r_\pm^2}$. Now let
+\eq{
+u = t-r_\ast \\
+v = t + r_\ast
+ }
+ giving 
+ \eq{
+ ds^2 = - \frac{\Delta}{r^2} dv^2 + 2dv dt + r^2 d\Omega_2^2 
+ }
+We can extend this solution for $r \in (0,r_+)$. A surface of constant $r$ has maximal 
+\eq{
+n = dr \\
+n^2 = g^{rr} = \frac{\Delta}{r^2} \\
+\Rightarrow r=r_\pm \text{ a null hypersurface}. 
+}
+One can show that $r=r_+$ is the future event horizon. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Kruskal-like Coordinates }
+
+let 
+\eq{
+U^\pm = -e^{-K_\pm u} \\
+V^\pm = \pm e^{K_\pm v}
+}
+Start in $r> r_+$, and we get 
+\eq{
+ds^2 = - \frac{r_+ r_-}{K_+^2 r^2} e^{-2K_+ r} \pround{\frac{r-r_-}{r_-}}^{1 + \frac{K_+}{|K_-|}} dU^+ dV^+ + r^2 d\Omega_2^2
+}
+where 
+\eq{
+U^+V^+ = e^{2K_+ r} \pround{\frac{r-r_+}{r_+}} \pround{\frac{r_-}{r-r_-}}^{\frac{K_+}{|K_-|}}
+}
+The right hand side is a monotonically increasing function of $r$ for $r > r_-$. 
+
+
+Consider now the case $m = |e|$
+\eq{
+ds^2 = - \pround{1-\frac{m}{r}}^2 dt^2 + \pround{1-\frac{m}{r}}^{-2} + r^2 d\Omega_2^2
+}
+
+\eq{
+\int_m^{r_0} \frac{1}{1-\frac{m}{r}} dr = \infty
+}
+For $r = m(1 + \lambda)$, the metric becomes 
+\eq{
+ds^2 \approx \underbrace{-\lambda^2 dt^2 + m^2 \frac{d\lambda^2}{\lambda^2}}_{AdS_2} + m^2 d\Omega_2^2
+}
+to leading order
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Majumdra Papapetrou Solutions }
+Let $\rho = r-m$ and $p=0$. we get 
+\eq{
+ds^2 = - H^{-2} dt^2 + H^2(d\rho^2 + \rho^2 d\Omega_2^2) 
+}
+where $H = 1 + \frac{m}{\rho}$ and $A = H^{-1}dt$. So consider
+\eq{
+ds^2 = -H(\bm{x})^{-2} dt^2 + H(\bm{x})^2 d\bm{x}^2 + H(\bm{x})^{-1} dt^2 
+}
+Now $\nabla_{\bm{x}}^2 H = 0$, so we can take 
+\eq{
+H(\bm{x}) = 1 + \sum_i^N \frac{m_i}{|\bm{x}-\bm{x}_i|}
+}
+a linear combination that is harmonic. Hence we can construct a solution that contains any number of black holes at some positions. These are called BPS black holes. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Uniqueness Theorems}
+\begin{definition}
+A spacetime asymptotically flat at null infinity is \bam{stationary} if it admits a Killing vector field $K^a$ that is timelike in a neighbourhood of $\mc{I}^+$. It is convenient to normalise $K^2 = -1$ at $\mc{I}^+$
+\end{definition}
+
+\begin{definition}
+A spacetime asymptotically flat at null infinity is stationary and axisymmetric if 
+\begin{itemize}
+    \item It is stationary
+    \item It admits a Killing vector field $m^a$ that is spacelike near $\mc{I}^+$
+    \item $m^a$ generates a 1 parameter group of isometries isomorphic to $U(1)$
+    \item $\comm[K,m]=0$.
+\end{itemize}
+\end{definition}
+
+\begin{theorem}[1967 ,Bunting Massood 1987]
+If $(\mc{M},g)$ is a static, asymptotically flat, vacuum black holes spacetime that is suitably regular on and outside the event horizon, then $(\mc{M},g)$ is isometric to the Schwarzschild solution
+\end{theorem}
+
+\begin{theorem}[Hawking 1973, Walk 1991]
+If $(\mc{M},g)$ is stationary, non-static, asymptotically flat, analytic solution of the Einstein Maxwell equation that is suitably regular on and outside the event horizon, then $(\mc{M},g)$ is stationary and axisymmetric
+\end{theorem}
+
+\begin{theorem}[1971 ,Robinson 1975]
+If $(\mc{M},g)$ is a stationary, axisymmetric, asymptotically flat vacuum spacetime regular on and outside a connected event horizon, then $(\mc{M},g)$ is a member of the 2-parameter Kerr (1963) family of solutions. The parameters are mass $M$ and angular momentum $J$. 
+\end{theorem}
+
+The most general solution is the \bam{Kerr-Newmann Soltuion}. It has four parameters $(a,M,P,Q)$. 
+\eq{
+\highlight{insert}
+}
+This has Killing vector fields 
+\eq{
+K^a = \pround{\pd{t}}^a \\
+m^a = \pround{\pd{\phi}}^a
+}
+It has the symmetry $(t,\phi) \to (-t, -\phi)$. It has the parameter $a=\frac{J}{M}$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Kerr Solution}
+Setting $P = 0 = Q$ in the Kerr-Newmann metric gives the \bam{Kerr solution}. We have 
+\eq{
+\Delta = (r - r_-)(r-r_+) \\
+r_\pm = M \pm \sqrt{M^2 - a^2}
+}
+\begin{itemize}
+    \item $M^2 < a^2 \Rightarrow$ naked singularity (W.C.C.C).
+    \item $M^2 > a^2 \Rightarrow$ black hole.
+    \item $M = |a| \Rightarrow$ extremal case. 
+\end{itemize}
+
+The metric looks singular when $\Delta = 0$, i.e. $r = r_\pm$ or where $\Sigma = 0$ (i.e. $r=0, \theta=0,\frac{\pi}{2}$. 
+
+\subsubsection*{Kerr Coordinates}
+Take 
+\eq{
+dv &= dt + \frac{r^2 + a^2}{\Delta} dr \\
+d\chi = d\phi + \frac{a}{\Delta}dr
+}
+In these coordinates, the Killing vector fields are $K = \pd{v}$, $m = \pd{\chi}$, and there is no coordinate singularity when $\Delta = 0$, so we can extend the solution to $0<r<r_+$
+
+\begin{prop}
+The surface $r=r_+$ is a null hypersurface with normal $xi^a = K^a + \Omega_H m^a$ where $\Omega_H = \frac{a}{r_+^2 + a^2}$. 
+\end{prop}
+\begin{proof}
+First compute $\xi_\mu$ in Kerr coordinates. 
+\eq{
+\xi_\mu dx^\mu|_{r=r_+} \propto dr \\
+\xi^\mu \xi_\mu|_{r=r_+} = 0
+}
+In Boyer-Lidquist coordinates 
+\eq{
+\xi = \pd{t}+ \Omega_H \pd{\phi} 
+}
+and hence
+\eq{
+\xi^\mu \del_\mu (\phi - \Omega_H t) = 0 \Rightarrow \phi = \text{ const } + \Omega_H t
+}
+So $\Omega_H$ is angular momentum. 
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Maximal Analytic Extension}
+The Kerr solution is \emph{not} spherically symmetric. We can draw the $\theta=0, \theta=\pi$ submanifold
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Ergosurface and Penrose Process}
+\eq{
+K^2 = g_{tt} = - \psquare{1- \frac{2Mr}{r^2+a^2\cos^2\theta}}
+}
+Then 
+\eq{
+K^2 < 0 \Rightarrow r > M + \sqrt{M^2 - a^2 \cos^2 \theta} \geq r_+
+}
+The surface $r = M + \sqrt{M^2 - a^2 \cos^2 \theta}$ is called the \bam{ergosphere}, and inside this region $K^2$ is timelike. Now a stationary observer is a timelike trajectory that follows the integral curves of $K$. Hence an observer inside the ergosphere has to be moving. 
+
+\subsubsection{Penrose process}
+Consider a particel with 4-momentum 
+\eq{
+p^a = \mu U^a
+}
+$\mu$ the rest mass. Let 
+\eq{
+K = \pd{t} \\
+\xi = K -\Omega_H m
+}
+Then energy $E = -k \cdot p$ along each geodesic is conserved. Now suppose the particel enters the ergosphere and splits, sending some mass out and some mass in. Assume  the split is 
+\eq{
+p^a = p_1^a + p_2^a \\
+\Rightarrow E = E_1 + E_2
+}
+Since $K$ is spacelike, $E_1<0$. Hence 
+\eq{
+E_2 = E + |E_1| > E
+}
+this is called a \bam{Penrose process}
+
+A particel that crosses $\mc{H}^+$ must have 
+\eq{
+-p \cdot \xi \geq 0 \quad \text{(both causal vectors)} \\
+\Rightarrow E_1 - L\Omega_H \geq 0 \\
+\Rightarrow E_1 \geq \Omega_H L \quad (p \cdot m = L)
+}
+After the system settles, $\delta M = E_1, \delta J = L$. 
+\eq{
+\delta J \leq \frac{\delta M}{\Omega_H} = \frac{2M(M^2 + \sqrt{M^4-J^2})}{J} \delta M \\
+\Leftrightarrow \delta M_{irr} \geq 0 
+}
+where 
+\eq{
+M_{irr} = \frac{1}{2} \psuare{M^2 + \sqrt{M^4 - J^2}}^\frac{1}{2}
+}
+is the \bam{irreducible mass}. Then 
+\eq{
+M^2 = M_{irr}^2 + \frac{J^2}{4M_{irr}^2} \geq M_{irr}^2 
+}
+The area of the intersection of a partial Cauchy surface $t=\text{const}$ with $\mc{H}^+$ is 
+\eq{
+A = 16\pi M_{irr}^2 \Rightarrow \delta A \geq 0
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Mass, Charge, Angular Momentum}
+Let us start with electromagnetism. 
+\eq{
+\nabla^a F_{ab} = -4\pi j_b \\
+\nabla_{[a} F_{bc]} = 0
+}
+Define the \bam{Hodge dual} of a p-form $\omega_p$ by 
+\eq{
+(\star \omega_p)^{a_1 \dots a_{d-p}} = \frac{1}{p!}\frac{1}{\sqrt{-g}} \eps^{a_1 \dots a_{d-p} b_1 \dots b_p} (\omega_p)_{b_1 \dots b_p}
+}
+Interms of differential forms Maxwell's equations become
+\eq{
+d \star F = - 4\pi \star j \\
+d_D F = 0 \quad \text{(only holds in Minkowski)}
+}
+Note $dF = 0 \Rightarrow$ locally, by Poincare's lemma, $F = dA$ for some 1 forms $A$. Now consider a spacelike surface $\Sigma$. The total charge is 
+\eq{
+Q = -\int_\Sigma \star j
+}
+Maxwell's equations thus give 
+\eq{
+Q = \frac{1}{4\pi}\int_\Sigma d \star F = \frac{1}{4\pi} \int_{\del\Sigma} \star F
+}
+by Stokes' theorem. 
+
+\begin{definition}
+Let $(\Sigma,h,k)$ be an asymptotically flat end. Then the electric and magnetic charges associated with this end are 
+\eq{
+Q = \frac{1}{4\pi} \lim_{r \to \infty} \int_{S_r^2} \star F \\
+P = \frac{1}{4\pi} \lim_{r \to \infty} \int_{S_r^2} F
+}
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Komar Integrals}
+If $(\mc{M},g)$ is stationary, then there exists a conserved energy momentum current 
+\eq{
+J_a = -T_{ab} k^b \Rightarrow \nabla_a j^a = 0 \Rightarrow d\star J = 0
+}
+Hence, we can define the total energy of matter on a spacelike hypersurface $\Sigma$ as 
+\eq{
+E(\Sigma) = -\int_\Sigma \star J
+}
+Then for a region $R$ with $\del R = \Sigma \cup \Sigma^\prime$
+\eq{
+E(\Sigma^\prime) - E(\Sigma) &= - \int_{\del R} \star J \\
+&= -\int_R d(\star J) \\
+&= - \frac{1}{4\pi} \int_R d^2(\star F) =0
+}
+
+In EM, $\star J = dX$ but in GR, this does not hold. Look at 
+\eq{
+(\star d \star dk)_a &= - \nabla^b( dk)_{ab} \\
+&= - \nabla^b \nabla_a k_b + \nabla^b \nabla_b k_a \\
+&= 2 \nabla^b \nabla_b k_a \quad \text{as k Killing}
+}
+
+\begin{lemma}
+% Insert notes here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Insert notes here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Laws of Black Holes Mechanics}
+
+We have seen that if $\mc{H}^+$ is a Killing horizon with Killing vector field $\xi^a$ then 
+\eq{
+\xi^a \nabla_a \xi^b |_{\mc{H}^+} = \mc{K} \xi^b
+}
+where $\mc{K}$ is the \bam{surface gravity}. For RN and KN mectric $\mc{K}$ is constant.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Zeroth Law}
+
+\begin{prop}
+Consider a null geodesic congruence that contains the generators of a Killin horizon $\mc{N}$. Then $\theta = \hat{\sigma} = \hat{\omega} = 0$. 
+\end{prop}
+\begin{proof}
+We know that $\hat{\omega}=0$. Let $\xi^a$ be a Killing field normal to $\mc{N}$. On $\mc{N}$ we can write $\xi^a = h U^a$ where $U^a$ is affinely parametrise and $h$ is a function on $\mc{N}$. Let $\mc{N}$ be specified by an equation $f=0$. Then we can write 
+\eq{
+U^a = h^{-1}\xi^a + f V^a 
+}
+where $V^a$ is is a smooth vector field. We can calculate 
+\eq{
+B_{ab} = \nabla_b U_a = (\nablaba h^{-1}) \xi_a + h^{-1} \nabla_b \xi_a + (\nabla_b f) V_a + f \nabla_b U_a
+}
+Evaluating on $\mc{N}$ and using the Killing equation for $\xi$ gives 
+\eq{
+B_{(ab)}|_\mc{N} = \xi_{(a} \nalba_{b)} h^{-1} + V_{(a}\nabla_{b)}f|_\mc{N}
+}
+But both $\xi_a$ and $\nabla_b f$ are parallel to $U$ on $\mc{N}$, Hence when we project onto $T_\perp$ 
+\eq{
+B_{(ab)}|_\mc{N} = P\indices{_a^c}B_{(c,d)} P\indices{_b^d} = 0
+}
+\end{proof}
+
+\begin{theorem}[O\textsuperscript{th} law of black hole mechanics]
+$\mc{K}$ is a constant on the future event horizon of a stationary black hole spacetime obeying the dominant energy condition 
+\end{theorem}
+\begin{proof}
+Note that Hawking's theorem implies that $\mc{H}^+$ is Killing with respect to some Killing vector field $\xi^a$. We have just seen that $\theta=0$ along the generators of $\mc{H}^+$. Hence, $\frac{d\theta}{d\lambda}=0$ and $\hat{\sigma} = 0 = \hat{\omega}$. The Raychaudhuri equation then becomes 
+\eq{
+0 = R_{ab} \xi^a \xi^b |_{\mc{H}^+} = 8\pi T_{ab} \xi^a \xi^b|_{\mc{H}^+}
+}
+This implies 
+\eq{
+J \cdot \xi |_{\mc{H}^+} = 0
+}
+where $J_a = -T_{ab} \xi^b$. Now, $\xi^a$ is a future directed causal vector. By the dominant energy condition $J_a$ is also future directed. Hence, the above equation ensures $J_a$ is paralle to $\xi^a$ on $\mc{H}^+$. Hence 
+\eq{
+0 = \xi_{[a} J_{b]}|_{\mc{H}^+} = - \frac{1}{8\pi} \xi_{[a}R_{b]c} \xi^c |_{\mc{H}^+}
+}
+Now using (from example sheet 4) 
+\eq{
+0 = -\frac{1}{8\pi} \xi_{[a} \nabla_{b]} \mc{K}|_{\mc{H}^+}
+}
+but this means that $\nabla_a \mc{K}$ is proportional to $\xi_a$. Hence 
+\eq{
+t \cdot \nabla \mc{K} = 0
+}
+for any tangent vector to $\mc{H}^+$. 
+\end{proof}\footnote{You can weaken the dominant energy condition, but this is harder}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{First Law}
+
+Look at Kerr. 
+\eq{
+\frac{\mc{K}}{8\pi} \delta A = \delta M - \Omega_H \delta J
+}
+where $A$ is the area of the intersection of $\mc{H}^+$ with a partial Cauchy surface of constant $t$. It is also the area of the bifurcating Killing horizon. 
+Consider some mattler with a stress energy tensore of order $\eps$. Let 
+\eq{
+J^a = - T\indices{^a_b}k^b \\
+L^a = T\indices{^a_b} m^b
+}
+where $k$ is the staionary KVF and $m$ is the axises KVF. Now 
+\eq{
+\nabla_a J^a = \mc{O}(\eps^2) \\
+\nabla_a L^a= \mc{O}(\eps^2)
+}
+From example sheet 3 we know 
+\eq{
+\delta M  = \int_\mc{N} \star J \\
+\delta J = -\int_\mc{N} \star L
+}
+Take Gaussian null coordinates $(r,\lambda,y^i)$. Choose s,t, $B = \set{r = 0 = \lambda}$. In these coordinates, $\mc{H}^+$ is the surface $r=0$ and the metrci on $\mc{H}^+$ is 
+\eq{
+ds^2|_{\mc{H}^+} = 2dr d\lambda + h_{ij}(\lambda,y) dy^i dy^j 
+}
+using $\sqrt{-g} = \sqrt{h}$ and taking $\eta = \sqrt{h} d\lambda \wedge dr \wedge dy^i \wedge dy^j$. The orientation of $\mc{N}$ used in defining $\delta M$ and $\delta J$ is the one used in Stokes' theorem, viewing $\mc{N}$ as the boundary of the region with $r>0$. This is 
+\eq{
+d\lambda \wedge dy^i \wedge dy^j
+}
+Hence on $\mc{N}$ 
+\eq{
+(\star J)_{\lamdba 12} = \sqrt{h} J^r = \sqrt{h} J_\lambda  = \sqrt{h} U \cdot J
+}
+where $U = \pd{\lambda}$. We can evaluate everything on Kerr as the deviation will be $\mc{O}(\eps^2)$. Hence $\mc{N}$ is Killing, $\xi = k + \Omega_H m$ on $\mc{N}$. We also have
+\eq{
+\xi = fU \\
+\xi \cdots \nabla( \log\abs{f}) = \mc{K} \\
+\Rightarrow f = \mc{K} \lambda + f_0(y)
+}
+so 
+\eq{
+\xi^a = [\mc{K}\lambda + f_0(y)]U
+}
+As $\lambda=0$ is the bifurcating surface 
+\eq{
+f_0(y) = 0 \Rightarrow \xi^a = \mc{K}\lambda U \quad \text{on } \mc{N}
+}
+From the definition of $\delta M$
+\eq{
+\delta M &= \int_\mc{N} d\lambda \, d^2y \, \sqrt{h} T_{ab} U^a (\xi^b - \Omega_H m^b) \\
+&=\int_\mc{N} d\lambda \, d^2y \, \sqrt{h} T_{ab} U^a U^b \mc{K} \lambda - \Omega_H \underbrace{\int_\mc{N} d\lambda \, d^2y \, \sqrt{h} U \cdot L}_{=-\delta J}
+}
+We have not used the Einstein equation 
+\eq{
+8\pi T_{ab} U^a U^b = R_{ab} U^a U^b
+}
+so 
+\eq{
+\delta M - \Omega_H \delta J = \frac{\mc{K}}{8\pi} \int_\mc{N}  d\lambda \, d^2y \, \sqrt{h} \lambda R_{ab} U^a U^b \\
+\Rightarrow \delta M - \Omega_H \delta J = -\frac{\mc{K}}{8\pi} \int d^2y \int_0^\infty \sqrt{h} \lambda \frac{d\theta}{d\lambda} \, d\lambda
+}
+from the Raychaudhuri equation, recalling $\theta, \hat{\sigma}$ are $\mc{O}(\eps)$. So 
+\eq{
+\delta M - \Omega_H \delta J = -\frac{\mc{K}}{8\pi} \int d^2y \pbrace{[\sqrt{h}\lambda \theta]_0^\infty - \int_0^\infty \pround{\sqrt{h} + \lambda \frac{d\sqrt{h}}{d\lambda}}\theta d\lambda}
+}
+Now recall 
+\eq{
+\frac{d\sqrt{h}}{d\lambda} = \theta \sqrt{h} = \mc{O}(\eps)
+}
+We will assume the final states exist, and as $\lambda \to \infty$ $\sqrt{h}$ is finite. 
+\eq{
+\int_0^\infty \sqrt{h} \theta \, d\lambda = \int_0^\infty \frac{d\sqrt{h}}{d\lambda} \, d\lambda = \delta(\sqrt{h})
+}
+Finiteness then gives $\theta = o(\frac{1}{\lambda})$. We show 
+\eq{
+\delta M - \Omega_H \delta J = \frac{\mc{K}}{8\pi} \delta A.
+}
+
+
 
 
 \end{document}

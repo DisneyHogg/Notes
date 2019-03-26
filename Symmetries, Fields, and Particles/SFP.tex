@@ -874,5 +874,165 @@ gives that
 \]
 \end{fact}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Symmetries in QM}
+
+Consider a Hamiltonian $\hat{H}$, and the associated Hilbert space corresponding to the sum of the energy eigenspaces 
+\eq{
+\mc{H} &= \bigoplus_{n \geq 0} \mc{H}_n \\
+\mc{H}_n &= \set{\ket{\psi} : \hat{H} \ket{\psi} = E_n \ket{\psi}}
+}
+
+\begin{definition}[Symmetry Transformation]
+A \bam{symmetry transformation} is a map 
+\eq{
+\ket{\psi} \mapsto \ket{\psi^\prime} = U\ket{\psi}
+}
+where $U$ is a unitary transform s.t. 
+\eq{
+U \hat{H} U^\dagger = \hat{H}
+}
+\end{definition}
+
+\begin{prop}
+A symmetry transformation 
+\begin{itemize}
+    \item preserves inner products : $\braket{\psi_1^\prime | \psi_2^\prime } = \braket{\psi_1 | \psi_2}$
+    \item preserves the energy eigenspaces : $\ket{\psi} \in \mc{H}_n \Leftrightarrow \ket{\psi^\prime} \in \mc{H}_n$
+\end{itemize}
+For a symmetry transform $U= e^{i \del}$, where $\del$ is a Hermitian operator, \
+\eq{
+\comm[\del]{\hat{H}} = 0
+}
+and so $\del$ corresponds to a conserved quantity. 
+\end{prop}
+
+Given a Hamiltonian system it is natural to consider 
+\eq{
+\set{\del^a : \comm[\del^a]{\hat{H}} = 0 }
+}
+the \emph{maximal} set of conserved quantities, which leads to the lie algebra 
+\eq{
+\mf{g}_\mbb{R} = \spn_\mbb{R} \set{i\del^a}
+}
+\begin{fact}
+The group $G = \exp \mc{g}_\mbb{R}$ will be unitary, so will have unitary representations. Hence the induced representations on $\mf{g}_\mbb{R}$ will be antihermitian. 
+\end{fact}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Gauge Theories}
+
+\begin{example}
+Consider the Lagrangian for scalar field $\phi$
+\eq{
+\mc{L} = \del_\mu \phi^\ast \del^\mu \phi - W(\phi^\ast \phi) \,.
+}
+This exhibits the \bam{global symmetry} 
+\eq{
+\phi &\to g \phi \,, \\
+\phi^\ast &\to g^{-1} \phi^\ast \,,
+}
+where $g \in U(1)$\footnote{We need $U(1)$ here so that $g^\ast = g^{-1}$}. This symmetry is global as it acts in the same way at all spacetime points.
+\end{example}
+
+\begin{definition}[Gauge Symmetry]
+A \bam{gauge symmetry} is a symmetry whose action varies in spacetime. i.e. let $G$ be a Lie group with representation $D$ and representation space $V$ 
+\eq{
+g &: \mbb{R}^{1,3} \to G \\
+g(x) &= \exp\pround{\eps X(x)} \\
+X &: \mbb{R}^{1,3} \to L(G)
+}
+which acts on field 
+\eq{
+\phi : \mbb{R}^{1,3} \to V
+}
+by 
+\eq{
+\phi(x) \to D(g(x)) \phi(x)
+}
+Recall $D$ induces a representation $R$ on $L(G)$. 
+\end{definition}
+
+We will take $D$ to have dimension $N$, so $V \cong \mbb{C}^N$, and take the standard inner product on $V$\footnote{Here $u,v \in V$ are vectors in our vector space and $\bm{u},\bm{v} \in \mbb{C}^N$ are their images under some isomorphism. }
+\eq{
+\forall u,v \in V, \;\; (u,v) = \bm{u}^\dagger \bm{v}
+}. We will also take $D$ to be a unitary representation.
+
+\begin{idea}
+By taking $D$ to be a unitary representation we tie back in with the idea of symmetries in quantum mechanics, which is what we will be aiming for here.  
+\end{idea}
+
+\begin{example}[$U(1)$ gauge symmetry]
+A $U(1)$ gauge symmetry is a gauge symmetry that takes values in $U(1)$, i.e. 
+\eq{
+g &: \mbb{R}^{1,3} \to U(1) \\
+g(x) &= \exp\pround{\eps X(x)} \\
+X &: \mbb{R}^{1,3} \to L(U(1))
+}
+Under this transform, to linear order, a scalar field $\phi$ transforms as  
+\eq{
+\phi \to \phi + \delta_X \phi \\
+\delta_X \phi = \eps X \phi
+}
+and
+\eq{
+\del_\mu \phi &\to \del_\mu \phi + \delta_X(\del_\mu \phi) \\
+\delta_X(\del_\mu \phi) &= \del_\mu (\delta_X \phi) = \eps (\del_\mu X) \phi + \eps X (\del_\mu \phi)
+}
+Hence the Lagrangian
+\eq{
+\mc{L} = \del_\mu \phi^\ast \del^\mu \phi - W(\phi^\ast \phi)
+}
+does not have $U(1)$ gauge symmetry if $\del_\mu X \neq 0$
+\end{example}
+
+\begin{definition}[Covariant Derivative]
+A \bam{covariant derivative} is \eq{
+D_\mu = \del_\mu + R(A_\mu) 
+}
+where
+\eq{
+A_\mu : \mbb{R}^{1,3} \to L(G)
+}
+is a \bam{gauge field} with defined variation 
+\eq{
+\delta_X A_\mu = - \eps \del_\mu X + \eps \comm[X]{A_\mu}
+}
+\end{definition}
+
+\begin{lemma}
+\eq{
+\delta_X (D_\mu \phi) = \eps R(X) D_\mu \phi
+}
+\end{lemma}
+\begin{proof}
+\eq{
+\delta_X( D_\mu \phi) &= \delta_X (\del_\mu \phi + R(A_\mu) \phi) \\
+&= \del_\mu ( \delta_X \phi) + R(A_\mu) (\delta_X \phi) + R(\delta_X A_\mu) \phi \\
+&= \del_\mu(\eps R(X) \phi) + \eps R(A_\mu)R(X)\phi- \eps R(\del_\mu X)\phi + \eps R(\comm[X]{A_\mu}) \phi \\
+&= \eps R(\del_\mu X) \phi + \eps R(X) \del_\mu \phi + \eps R(X) R(A_\mu)\phi + \eps \comm[R(A_\mu)]{R(X)}\phi-\eps R(\del_\mu X) \phi + \eps \comm[R(X)]{R(A_\mu)}\phi \\
+&= \eps R(X) (\del_\mu \phi + R(A_\mu) \phi)
+}
+\end{proof}
+\begin{corollary}
+The term 
+\eq{
+(D_\mu \phi)^\dagger (D^\mu \phi)
+}
+is gauge invariant. 
+\end{corollary}
+
+\begin{definition}[Field Strength Tensor]
+Define the \bam{field strength tensor} 
+\eq{
+F_{\mu\nu} = \del_\mu A_\nu - \del_\nu A_\mu + \comm[A_\mu]{A_\nu}
+}
+\end{definition}
+
+\begin{prop}
+\eq{
+\delta_X(F_{\mu\nu}) = \eps \comm[X]{F_{\mu\nu}}
+}
+\end{prop}
 
 \end{document}

@@ -1430,5 +1430,569 @@ q_\mu \Pi_{1-loop}^{\mu\nu}(q) = 0
     so the longitudinal term will no be renormalised by loop diagrams. $\xi$ dependence will cancel out of gauge invariant quantities. 
 \end{itemize}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{QED Counterterms}
 
+We add the QED counterterm 
+\eq{
+S^{CT}[\psi,\bar{\psi},A,\eps] = \int d^d x \, \psquare{\frac{\delta Z_3}{4} F_{\mu\nu}F^{\mu\nu} + \delta Z_x \bar{\psi} \slashed{D} \psi + \delta m \bar{\psi} \psi} 
+}
+Here, we have a single gauge invariant term $\bar{\psi} \slashed{D} \psi$, so the renormalisation procedure preserves gauge invariance. As $d\to 4, \eps \to 0 $, we have: 
+\eq{
+\Pi_{1-loop}(q^2) = - \frac{g^2(\mu)}{2\pi^2} \int_0^1 dx \, x(1-x) \pround{\frac{2}{\eps} - \gamma + \log \pround{\frac{2\pi\mu^2}{\Delta}}} +\mc{O}(\eps)
+}
+In the $\overline{MS}$ subtraction scheme we gind 
+\eq{
+\delta z_3 = - \frac{g^2(\mu)}{12\pi^2} \pround{\frac{2}{\eps} - \gamma + \log \pround{\frac{2\pi\mu^2}{\Delta}}}
+}
+so after renormalisation we find 
+\eq{
+\Pi_{1-loop}^{ren}(q^2) =  \frac{g^2(\mu)}{2\pi^2} \int_0^1 dx \, x(1-x) \log \pround{\frac{m^2 + x(1-x)q^2}{\mu^2}}
+}
+so $\Pi$ depends logarithmically on the momentum $q^2$. Note the branch cute for $m^2 + x(1-x)q^2 \leq 0$, For $x \in [0,1]$ we have $0 \leq x(1-x) \leq \frac{1}{4}$. With Minkowski signature $q_0 = iE$ the branch cut correspond to 
+\eq{
+x(1-x)(E^2 - |q|^2) \geq 0 
+}
+The smallest $E$ that satisfies this is $E^2 \geq (2m)^2 $. This is no accident. This is the threshold for producing particles of mass $m$ (these particles are real, on shell, electron positron paris ). Hence bound states of scattering correspond to poles $\cong$ branch cuts correspond to the threshold for producing particles. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{QED beta function} 
+It is siples to rescale $A_\mu \to \frac{A_\mu}{g}$ so that the action becomes 
+\eq{
+\frac{1}{4g_{eff}^2} \int d^4x \, F_{\mu\nu} F^{\mu\nu} &= \frac{\overbrace{1}^{\substack{\text{tree} \\ \text{level}}} - \overbrace{\Pi_{1-loop}^{ren}(0)}^{\substack{\text{one}\\ \text{loop}}}}{4g^2(\mu)} \cdot \int d^4 x \, F_{\mu\nu} F^{\mu\nu} \\
+&= \frac{1}{4} \pround{\frac{1}{g^2(\mu)} - \frac{hbar}{12\pi^2}\log \pround{\frac{m^2}{\mu^2}} + \mc{O}(\eps)} \int d^4 x \, F_{\mu\nu} F^{\mu\nu}
+}
+Recall $g_{eff}^2$ does not depend on $\mu$ so we can compute the beta function of QED to be 
+\eq{
+\beta(g) &= \frac{\hbar g^3(\mu)}{12\pi^2} + \mc{O}(\hbar^2) \\
+\Rightarrow \frac{1}{g^2(\mu^\prime)} &= \frac{1}{g^2(\mu)} + \frac{\hbar}{6\pi^2} \log \pround{\frac{\mu}{\mu^\prime}} + \mc{O}(\hbar^2)
+}
+We can see that the coupling grows as we move to a higher $\mu^\prime$. \\
+Let $\Lambda_{QED}$ be the scale at which the coupling diverges. Then 
+\eq{
+g^2(\mu) = \frac{6\pi^2}{\hbar} \frac{1}{\log\pround{\frac{\Lambda_{QED}}{\mu}}}
+}
+we can measure electric charge $g$ in experiments. This gives us an estimate of $\Lambda_{QED}$. Currently we have 
+\eq{
+\Lambda_{QED} \approx 10^{266} GeV
+}
+given $m_e = 0.511 MeV$, $\alpha = \frac{g^2(m_e)}{4\pi} \approx \frac{1}{137}$. After this scale, $\Lambda_{QED}$ becomes strongly coupled. The coupling is weak and perturbation theory is useful up to the scale $10^{266} GeV$. Note, at scales of about $100 GeV$ the mass of the W and Z bosons become important, and the electromagnetic and weak force unify to the electroweak force. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Renormalisation Group}
+
+We will now study renormalisation in a more general setting. We need renormalisation because.  
+\begin{itemize}
+\item QFT is not fully defined by the Lagrangian $\mc{L}$. We need to regulate QFT which causes use to introduce a regularisation scale. This scale is unphysical. 
+\item We need some renormalisation conditions to uniquely set the coupling constants of the theory. This requires experimental input. We can then make predictions, which must be independent of the unphysical scale, and must be independent of any sort of scheme we use for renormalisation theory. 
+\end{itemize}
+
+This concept is called \bam{universality} (it is the same in statistical field theory). The idea is that the same IR physics are seen regardless of the arbitrary and specific choices we maake in building the theory. We get the same physics from different families of theories, each with different regularisation scales $\Lambda$. \\
+
+The \bam{renormalisation group} helps us to study how these theories with different short distance details give the same long distance physics. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Real scalar theory in d dimensions}
+Let's work in a real d dimensional scalar theory with UV cutoff $\Lambda_0$ and action 
+\eq{
+S_{\Lambda_0}[\phi] = \int d6dx \, \pround{\frac{1}{2} \del_\mu \phi \del^\mu \phi + \frac{1}{2} m^2 \phi^2 + \sum_i \frac{g_{i0}}{\Lambda_0^{d_i - d}} \mc{O}_i(x)}
+}
+Here $d_i$ is the mass dimension of the operator $\mc{O}_i(x)$, so the coupling $g_{i0}$ are dimensionless. \\
+The operators $\mc{O}_i(x)$ are made up of field and their derivatives, e.g. 
+\eq{
+\mc{O}_i = (\del \phi)^{r_i} \phi^{s_i}
+}
+(with $d_i = 2r_i + s_i$, $r_i,s_i \in \mbb{Z}$ in 4 dimensions). In d dimensions $[\phi] = \frac{d-2}{2}$, $[\del] = 1$ 
+\eq{
+\Rightarrow d_i = \frac{d r_i}{2} + \pround{ \frac{d-2}{2}} s_i
+}
+The number of field in $\mc{O}_i$ is $n_i$, here $n_i = r_i + s_i$. Define the partition function 
+\eq{
+\mc{Z}_{\Lambda_0}(g_{i0}) = \int^{\Lambda_0} \mc{D}\phi \, e^{-S_{\Lambda_0}[\phi]}
+}
+where the integral is over all field configurations with $|\bm{p}| \leq \Lambda_0$. We'll integrate out high momentum modes to get an effective theory. i.e. integrate up to $|p|\leq \Lambda_0$, so the fields are 
+\eq{
+\phi(x) = \int_{|p|\leq \Lambda_0} \frac{d^dp}{(2\pi)^d} e^{ip\cdot x} \tilde{\phi}(p)
+}
+The point of the renormalisation group is to see how the parameters in the action change as we change the arbitrary cutoff $\Lambda_0$. We introduce a new scale $\Lambda < \Lambda_0$ and we spilt the integration in $\phi$ to 
+\eq{
+\phi(x) = \int_{|p| \leq \Lambda} \frac{d^dp}{(2\pi)^d} e^{ip\cdot x} \tilde{\phi}(p) + \int_{\Lambda \leq |p| \Lambda_0} \frac{d^dp}{(2\pi)^d} e^{ip\cdot x} \tilde{\phi}(p)
+}
+Define $\phi^+, \phi^-$ to be low/high momentum modes respectively. 
+\eq{
+\phi^-(x) &= \int_{|p| \leq \Lambda} \frac{d^dp}{(2\pi)^d} e^{ip\cdot x} \tilde{\phi}(p) \\
+\phi^+(x) &= \int_{\Lambda \leq |p| \Lambda_0} \frac{d^dp}{(2\pi)^d} e^{ip\cdot x} \tilde{\phi}(p)
+}
+Then $\phi = \phi^- + \phi^+$. hHese sets of modes have non-overlapping support, so we can write the measure as 
+\eq{
+\mc{D} \phi = \mc{D}\phi^- \, \mc{D}\phi^+
+}
+Integrating over $\phi^+$ then gives an effective action
+\eq{
+S_\Lambda^{eff}[\phi] = - \log \pround{\int_\Lambda^{\Lambda_0} \mc{D}\phi^+ \, e^{-S_{\Lambda_0}[\phi^-+\phi^+]}}
+}
+How do the couplings change? We know that $S_\Lambda^{eff}[\phi]$ has the same form as $S_{\Lambda_0}[\phi]$ since $S_{\Lambda_0}$ was completely general. A \bam{Renormalisation Group (RG) equation} tells us how to map the couplings such that 
+\eq{
+S_{\Lambda_0} \to S_\Lambda^{eff}
+}
+as the UV modes are integrated out. This can be iterated $\Lambda \to \Lambda^\prime \to \dots$. 
+
+\begin{idea}
+RG tells us how to go from one point in coupling constant space ti another point in coupling constant space
+\end{idea}
+
+Write 
+\eq{
+S_{\Lambda_0}p\phi^- + \phi^+] = S_0[\phi^-]+S_0[\phi^+] + S^{int}[\phi^-,\phi^+]
+}
+Here
+\eq{
+S_0[\phi] = \int d^d x \, \psquare{\frac{1}{2}(\del\phi)^2 + \frac{1}{2}m^2\phi^2}
+}
+There are not quadratic term in $S^{int}$ since $\phi^-,\phi^+$ have disjoint support in momentum space. In contrast, cubic and higher order terms may occur. 
+
+\subsubsection*{Effective interactions}
+Effective interactions, after integrating out high momentum modes, are given by 
+\eq{
+S_\Lambda^{int}[\phi^-] = - \log \psquare{\int \mc{D} \phi^+ \, \exp\pround{-S_0[\phi^+] - S_{\Lambda_0}^{int}[\phi^-,\phi^+]}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Running Couplings}
+Since the cutoffs are arbitrary we want our phhysics to be independent of cutoffs. Hence we require
+\eq{
+\mc{Z}_\Lambda = \int^\Lambda \mc{D} \phi \, e^{-S_\Lambda^{eff}[\phi]} = \int^{\Lambda_0} \mc{D} \phi \, e^{-S_{\Lambda_0}[\phi]} = \mc{Z}_{\Lambda_0}
+}
+Correlation functions obtained using either side must be the same. Note the couplings are different on both sides. The new coupkings on the LGS after we've integrated out high-momentum modes, will depend on $\Lambda$ so that the paertition function is 
+\eq{
+\mc{Z}_\Lambda (\underbrace{g_i(\Lambda)}_{\substack{\text{new} \\ \text{couplings}}}) = \mc{Z}_{\Lambda_0}(\underbrace{g_{i0}}_{\substack{\text{initial}\\ \text{couplings}}};A_0)
+}
+Since the RHS is independent of $\Lambda$, the LHS must also be independent of $\Lambda$. This gives us the \bam{Callan-Symanzik equation} 
+\eq{
+0 = \Lambda \frac{d\mc{Z}_\Lambda (g(\Lambda))}{d\Lambda} = \pround{\Lambda \pd{\Lambda}|_{g_i} + \Lambda \pd[g_i]{\Lambda} \pd{g_i}|_\Lambda }\mc{Z}_\Lambda(g(\Lambda))
+}
+$S_{\Lambda_0}$ is completely general, so $S_\Lambda^{eff}$ has the same form as $S_{\Lambda_0}$, so write 
+\eq{
+S_\Lambda^{eff}[\phi] = \in d^d x \, \psquare{\frac{Z_\Lambda}{2} \del_\mu \phi \del^\mu \phi + \sum_i \frac{Z_\Lambda^\frac{n_i}{2}}{\Lambda^{d_i-d}} g_i(\Lambda) \mc{O}_i(x)}
+}
+where $n_i$ counts the number of field operators occurring in the operator. \\
+Integrating may give $Z_\Lambda \neq 1$, but from the LSZ reduction formula we know that we want a canonically normalised kinetic term. Therefore, let $\phi^r = Z_\Lambda^\frac{1}{2}\phi$ be the \bam{renormalised field}. This is called \bam{wavefunction renormalisation} for historic reasons. The remaining variation describing the $\Lambda$ dependence are given by the $g_i$ only. \\
+\newline
+The Callan Symanzik equation has two contributions:
+\begin{itemize}
+    \item $\Lambda \pd{\Lambda}|_{g_i}$ - Corresponds to \emph{classical} changes in scale, from the fact we've define our coupling as dimensionless.
+    \item $\Lambda \pd[g_i]{\Lambda}$ - Actual \emph{quantum} running of couplings. 
+\end{itemize}
+
+we define the \bam{beta functions} for the runnings of the couplings as 
+\eq{
+\beta_i^\text{classical} &= (d_i - d) \\
+\beta_i^\text{quantum} &= \Lambda  \pd[g_i]{\Lambda}
+}
+
+\begin{example}
+Consider $\phi^4$ theory in 4 dimensions with cutoff $\Lambda$. The action is 
+\eq{
+S + S^{CT} = \int d^4x \, \psquare{\frac{1}{2}(1+\delta Z)(\del \phi)^2 + \frac{1}{2}(m^2 + \delta m^2)\phi^2 + \frac{1}{4}(\lambda + \delta \lambda)\phi^4}
+}
+At 1-loop, we choose the on shell renormalisation scheme with $\delta Z=0$, and choose $\delta m^2$ such that $m^2 = m_{phys}^2$, the physical mass of the field. In our new Wilsonian language  
+\eq{
+g_2(\Lambda_0)= \frac{1}{\Lambda_0}(m^2 + \delta m^2) = g_{20} - \frac{\lambda}{32\pi^2} \psquare{1 - g_{20}\log\pround{1 + \frac{1}{g_{20}}}}
+}
+where $g_{20} = m^2$. We find that the RHS is $\Lambda_0$ independent. This works because we used the on shell scheme. We also find
+\eq{
+g_4(\Lambda_0) = \lambda + \delta \lambda = g_{40} + \frac{3 g_{40}^2}{32 \pi} \psquare{\log \pround{\frac{\Lambda_0^2}{m^2}}-1}
+}
+where $g_{40}=\lambda$. This depends logarithmically on $\Lambda_0$. Recall that in general we need to perform wavefunction renormalisation $\phi^r = Z_\Lambda^\frac{1}{2} \phi$. Here $Z_\Lambda=1$, but this does not occur in general. We set 
+\eq{
+g_{eff} = \frac{\delta^4\Gamma[\tilde{\phi}^r]}{\delta \tilde{\phi}^2(p_1) \delta \tilde{\phi}^r(p_2) \delta \tilde{\phi}^r(p_3) \delta \tilde{\phi}^r(p_4)}|_{p_i = 0}
+}
+This should be physical. Recall we calculated this quantity in terms of Feynmann diagrams. We see that $\frac{dg_{eff}}{d\Lambda} = 0$, so the beta function is 0. 
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Anomalous dimensions}
+In general, $\delta Z \neq 0$. so $Z_\Lambda = 1 + \delta Z \neq 1$ in general. So we define the \bam{anomalous dimension} of the field $\phi$ by 
+\eq{
+\gamma_\phi = - \frac{\Lambda}{2} \pd{\Lambda} \log Z_\Lambda
+}
+This is a "beta function" for the kinetic terms. \\
+We look at the n point correlation functions 
+\eq{
+\braket{\phi(x_1) \dots \phi(x_n)} = Z_\Lambda^{-\frac{n}{2}} \braket{\phi^r(x_1) \dots \phi^r(x_n)}
+}
+We have 
+\eq{
+\Gamma_\Lambda^{(n)}(x_1,\dots,x_n;g_i(\Lambda)) = \frac{\delta^{(n)} \Gamma}{\delta \phi^r(x_1) \dots \delta \phi^r(x_n)}
+}
+Predictions are independent of $\Lambda$, so we need the same expectation values for scaled $\Lambda$, say $s\Lambda$, with $0<s<1$. So we need 
+\eq{
+Z_{s\Lambda}^{-\frac{n}{2}} \Gamma_{s\Lambda}^{(n)}(x_1,\dots,x_n;g_i(s\Lambda)) =Z_{\Lambda}^{-\frac{n}{2}} \Gamma_\Lambda^{(n)}(x_1,\dots,x_n;g_i(\Lambda))
+}
+As we make $s$ infinitesimally close so 1, i.e. $\delta s = 1-s \ll 1$, we get a differential equation 
+\eq{
+0 &= \Lambda \frac{d}{d\Lambda}\psquare{\Gamma_\Lambda^{(n)}(x_1,\dots,x_n;g_i(\Lambda))} \\
+&= \pround{\Lambda \pd{\Lambda}|_{g_i} + \Lambda \pd[g_i]{\Lambda} \pd{g_i}|_\Lambda } \Gamma_\Lambda^{(n)}(x_1,\dots,x_n;g_i(\Lambda)) \\
+&= \pround{\Lambda \pd{\Lambda}|_{g_i} + \beta_i^{qu} \pd{g_i}|_\Lambda + n\gamma_\phi } \Gamma_\Lambda^{(n)}(x_1,\dots,x_n;g_i(\Lambda))
+}
+The generalised Callan-Symanzik equation. 
+
+\begin{example}
+Let $\Lambda^\prime = s\Lambda$. Differentiating wrt $s$ 
+\eq{
+s\pd{s} Z_{s\Lambda}^{-\frac{n}{2}} &= -\frac{n}{2} Z^{-\frac{n}{2}} s \pd{s} \log Z_{s\Lambda} \\
+&= n\gamma_\phi
+}
+using 
+\eq{
+n \pd{s} = \Lambda^\prime \pd{\Lambda^\prime}
+}
+and dropping primes. 
+\end{example}
+
+the steps are 
+\begin{itemize}
+    \item Integrate out mpdes in $(s\Lambda,\Lambda)$
+    \item Rescale coordinates $x^\mu \to {x^\prime}^\mu = sx^\mu$. 
+\end{itemize}
+
+THe kinetic term should be invariant, 
+    \eq{
+    \frac{1}{2} \int d^dx \, \frac{1}{2} \del_\mu \varphi \del^\mu \varphi \\
+    \Rightarrow \varphi^r(sx) = s^{1-\frac{d}{2}} \varphi^r(x)
+    }
+    The rest of the action is invariant if $\Lambda \to \frac{\Lambda}{s}$
+THen
+\eq{
+\Gamma_\Lambda^{(n)}(x_1, \dots, x_n; g_i(\Lambda)) &= \pround{\frac{Z_\Lambda}{Z_{s\Lambda}}}^\frac{n}{2} \Gamma_{s\Lambda}^{(n)}(x_1, \dots, x_n; g_i(s\Lambda)) \\
+&= \pround{s^{2-d} \frac{Z_\Lambda}{Z_{s\Lambda}}}^\frac{n}{2} \Gamma_{\Lambda}^{(n)}(sx_1, \dots, sx_n; g_i(s\Lambda)) \\
+}
+Note the values of $g_i(s\Lambda)$ and $Z_{s\Lambda}$ do not change under rescaling. \\
+Reconsider initial point s.t. $x_i \to \frac{x_i}{s}$ then 
+\eq{
+\Gamma_\Lambda^{(n)}(\frac{x_1}{s}, \dots, \frac{x_n}{s}; g_i(\Lambda))\pround{s^{2-d} \frac{Z_\Lambda}{Z_{s\Lambda}}}^\frac{n}{2} \Gamma_\Lambda^{(n)}(x_1, \dots, x_n; g_i(s\Lambda))
+}
+As $s \to 0$, we are integrating out  more modes. 
+\begin{itemize}
+    \item LHS : separation between points $\frac{|x_i - x_j|}{s} \to \text{big}$ 
+    \item RHS : separation fixed but coupling running to lower energy scales. 
+\end{itemize}
+
+For infinitesimal $\delta s = 1-s$ 
+\eq{
+\pround{s^{2-d} \frac{Z_\Lambda}{Z_{s\Lambda}}}^\frac{1}{2} = 1 + \pround{\frac{d-2}{2} + \gamma_\phi} \delta s + \dots 
+}
+The fields scale with mass dimension 
+\eq{
+\frac{d-2}{2} + \gamma_\phi &= \Delta_\phi \\
+\text{"engineering dimension"} + \text{"anomalous dimension"} &= \text{"scaling dimension"}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{RG flow}
+Consider coupling constant space. RG trajectories are lines in this space traced out as momentum modes are integrated out. These are governed by the beta functions $\set{\beta_i(\set{g_j})}$. Thores on the same RG trajectories describe the same IR physics. 
+
+\subsubsection*{Fixed points (aka critical points)}
+Points in coupling constant space $\set{g_i = g_i^\ast : \beta_i|_{g_j^\ast}=0}$ are called \bam{fixed points}. Recall 
+\eq{
+\beta_i(\set{g_j}) = d_i - d + \Lambda \pd[g_i]{\Lambda}
+}
+\begin{example}
+Gaussian fixed points occur where 
+\eq{
+g_j^\ast = 0
+}
+for free theory, no interactions, no mass. 
+\end{example}
+\begin{example}
+Non trivial fixed points require cancellation between $\beta^{cl}$ and $\beta^{qu}$. 
+\end{example}
+
+\subsubsection*{Scale Invariance at Fixed Points}
+$g_i^\ast$ are independent of scale, as are dimensionless functions of $g_i^\ast$. 
+
+\begin{example}
+\eq{
+\gamma_\phi(g_i^\ast) = \gamma_\phi^\ast
+}
+are constant. In this case for $n=2$ the Callan Syzmanzik equation is 
+\eq{
+\Lambda \pd{\Lambda} \Gamma_\Lambda^{(2)}(x,y) = -2 \gamma_\phi^\ast \Gamma^{(2)}(x,y)
+}
+Lorentz $\Rightarrow $ a function of $|x-y|$. Like $\braket{\phi(x)\phi(y)}$, $\Gamma^{(2)}$ has mass dimensions of $d-2$ 
+\eq{
+\Rightarrow \Gamma_\Lambda^{(2)}(|x-y|;g_i^\ast) = \frac{\Lambda^{d-2}}{\Lambda^{2\Delta_\phi}} \frac{C(g_i^\ast)}{|x-y|^{2\Delta_\phi}}
+}
+where $C$ dimensionless function, and scaling dimension $\Delta_\phi = \frac{1}{2}(d-2) + \gamma_\phi$ such that C-S is satisfied. 
+\eq{
+\Gamma^{(2)} \sim \text{power law decay as} \; |x-y| \to \infty 
+}
+Power law $\Leftrightarrow $ scale invariant, i.e. massless, like EM and Newtonian gravity. Typically the mass scale $\Rightarrow $ correlation length, giving 
+\eq{
+\Gamma^{(2)} \sim \frac{e^{-m|x-y|}}{|x-y|^{2\Delta_\phi}}
+}
+\end{example}
+
+
+\subsubsection*{Near a Fixed Point}
+Linearise the RG equations, let $\delta g_j = g_j - g_j^\ast$. 
+\eq{
+\Lambda \pd[g_i]{\Lambda}|_{g_j^\ast + \delta g_j} = B_{ij} \delta g_j + \mc{O}(\delta g_j^2)
+}
+Let $B_{ij}$ have eigenvectors $\sigma_i$, $\Delta$ dependent vectors in coupling constant space, with eigenvalues $\Delta_i - d$, $\Delta_i$ the scaling dimension of $\sigma_i$. Note the $\sigma_i$ generally represent linear combinations of some operators in  the action. 
+\eq{
+\lambda\pd[\sigma_i]{\Lambda} = (\Delta_i - d) \sigma_i \\
+\Rightarrow \sigma_i(\Lambda) = \pround{\frac{\Lambda}{\Lambda_0}}^{\Delta_i - d} \sigma_i(\Lambda_0
+}
+Cases
+\begin{itemize}
+    \item $\Delta_i > d \Rightarrow \sigma_i(\Lambda) < \sigma_i(\Lambda_0)$, flow is back to the fixed point. These are called \bam{irrelevant} directions in coupling constant space. 
+    \item $\Delta_i < d \Rightarrow \sigma_i(\Lambda) > \sigma_i(\Lambda_0)$, flow is away from the fixed point. These are called \bam{relevant} directions. 
+    \item  $\Delta_i = d \Rightarrow $ direction is \bam{marginal}.
+\end{itemize}
+
+The subspace of irrelevant couplings is called the \bam{critical surface} $C$. $C$ is infinite dimensional, but the codimension of $C$ is finite and represents relevant directions. The \bam{rRenormalisation Trajectory (RT)} is the flow out of the fixed point. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Continuum Limit}
+We used the RG flow to give us an effective action 
+\eq{
+S_\Lambda^{eff}[\phi^-] = \log \int_\Lambda^{\Lambda_0} \mc{D} \phi^+ \exp \pround{- S_{\Lambda_0}[\phi^- \phi^+]}
+}
+which gave $\Lambda$ independent physics. As $\Lambda_0 \to \infty$, keeping $g_{i0}$ fixed,the $g_{i}(\Lambda)$ follow a trajectory tending towards the RT to $g_i^{ref}$, the distance of which depends on $\frac{\mu}{\Lambda_0}$, where $\mu$ is the scale at which $g_i(\mu) = g_i^{ref}$. If we have only irrelevant couplings, i.e. if $g_{i0}$ lies on $C$, then $\Lambda_0 \to \infty$ gives flow into the fixed point. Then 
+\eq{
+\lim_{\Lambda_0 \to \infty} S_{\Lambda}^{eff}[\phi^-]  
+}
+exists and corresponds to scale invariant theory with couplings $g_i^\ast$. 
+
+\subsubsection*{Continuum limit with relevant couplings}
+Let $g_i^{ref}$ be a point in coupling space "near" $g_i^\ast$. Let $\mu$ be the scale at which, for a given $\Lambda_0$, $g_i(\mu) = g_i^{ref}$. If we had started with $\Lambda^\prime = b\Lambda_0$, $b > 1$, then we would have had to run to $\mu^\prime = b\mu$. Hence $\mu = \Lambda_0 f(g_{i0})$. \\
+We want $\mu$ finite, so we change the initial action. Add counterterms
+\eq{
+S_{\Lambda_0}[\phi] = S_{\Lambda_0}[\phi] + S^{CT}[\phi,\Lambda_0]
+}
+This modifies $g_{i0} \to \tilde{g}_{i0}$ in a way such that the RG trajectory is closer to $C$ and the RT. Since the "flow" is "slower" nearer to the fixed point, the ration of cales $\frac{\tilde{\mu}}{\tilde{\Lambda}_0}$ can be made much smaller. Note the limits is taken after the path integral integrating our of modes 
+\eq{
+\lim_{\Lambda_0 \to \infty} S_\Lambda^{eff}[\phi]
+}
+Note that if the irrelevant operators are important for describing some physics e.g. 4-fermion operators describing beta decay
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Non Abelian Gauge Theory}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Lagrangian}
+Under a local $U(1)$ transformation of a fermion field $\psi(x) \to e^{i\alpha(x)} \psi(x)$, the free fermion Lagrangian $\bar{\psi}(i\slashed{\del}-m)\psi$ is not invariant because the derivative $\slashed{\del}$ does not act trivially on $e^{i\alpha(x)}$. Consider the derivative in the direction of $n^\mu$, some unit vector. Then 
+\eq{
+n^\mu \del_\mu \psi = \lim_{a\to 0} \frac{1}{a} \pround{\psi(x+an) - \psi(x)}
+}
+Define a \bam{parallel transporter} (in physics this is known as a \bam{Wilson line}) $u(y,x)$ to have the following gauge transformation 
+\eq{
+u(y,x) \to e^{i\alpha(y)} u(y,x) e^{-i\alpha(x)}
+}
+Also let $u(x,x) = 1$ for convenience. Then 
+\eq{
+u(y,x) = e^{i\phi(y,x)}
+}
+for some phase $\phi(y,x)$. In addition let $u(y,x)^\ast = u(x,y)$. \\
+With our parallel transporter we can define a \bam{gauge covariant derivative} $D_\mu$ via 
+\eq{
+n^\mu D_\mu \psi = \lim_{a\to 0} \frac{1}{a} \pround{\psi(x+an) - u(x+an,x) \psi(x)}
+}
+then 
+\eq{
+\bar{\psi} n^\mu D_\mu \psi = \lim_{a\to 0} \frac{1}{a} \psquare{(\bar{\psi}\psi)(x+an) - \bar{\psi}(x+an)\psi(x)}
+}
+We see that $\bar{\psi}D_\mu \psi$ is gauge invariant. \\
+In the small $a$ limit, it's useful to define 
+\eq{
+u(x+an,x) = \exp \pround{-ie a n^\mu A_\mu(x+\frac{1}{2}an) + \mc{O}(a^2)}
+}
+Expanding we see 
+\eq{
+u(x+an,x) = 1 - iean^\mu A_\mu(x+\frac{1}{2}an) + \mc{O}(a^2) \\
+\Rightarrow D_\mu \psi(x) (\del_\mu +ie A_\mu (x)) \psi(x)
+}
+Under gauge transformations 
+\eq{
+A_\mu \to A_\mu - \frac{1}{e} \el_\mu \alpha \\
+D_\mu \psi \to e^{i\alpha} D_\mu \psi
+}
+The second equation is particularly nice because $D_\mu \psi$ transforms in the same way that $\psi$ does. So, if we apply another derivate, the transform will still be the same. Hence 
+\eq{
+\comm[D_\mu]{D_\nu}\psi \to e^{i\alpha}\comm[D_\mu]{D_\nu}\psi
+}
+under a gauge transform. Working out qe find 
+\eq{
+\comm[D_\mu]{D_\nu} = ie (\del_\mu A_\nu - \del_\nu A_\mu) = ie F_{\mu\nu}
+}
+$F_{\mu\nu}$ is a gauge invariant object.\\
+We can use $F_{\mu\nu}$ to construct two possible terms in the Lagrangian:
+\begin{itemize}
+    \item $F_{\mu\nu}F^{\mu\nu}$
+    \item $\eps^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}$. This breaks parity and time reversla symmetry though, so normally not included. 
+\end{itemize}
+In terms of the $u$s, the $F_{\mu\nu}$ appears from the gauge invariant \bam{Wilson loop} (closed wilson line)
+
+\begin{example}[The Plaquette]
+Consider 4 paths from the square with corners $y_i, i=1,\dots,4$. 
+\eq{
+P_{12}(x) &= u(y_1,y_4) y(y_4,y_2) u(y_3,y_2) u(y_2,y_1) \\
+&\to e^{i\alpha(y_1)}u(y_1,y_4) e^{-i\alpha(y_y)}e^{i\alpha(y_4)} \dots u(y_2,y_1) e^{-i\alpha(y_1)} \\
+&= P_{12}(x)
+}
+so gauge invariant. Expanding around small $a$ we have 
+\eq{
+P_{12}(x) = 1 - iea^2 F_{12}(x) + \mc{O}(a^2)
+}
+\end{example}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Generalisations to Lie group G, e.g. SU(N)}
+Now our local transformations are such that 
+\eq{
+\psi \to V\psi 
+}
+for $V\in G$ a Lie group. We won't specify the represenation or the fermion fields, but in the standard model $\psi$ are in teh fundamental rep. Define a wilson line by 
+\eq{
+u(y,x) \to V(y) u(y,x) V^T(x)
+}
+with $u(x,x)=1$. This makes things gauge invariant as in QED. For small $a$ get 
+\eq{
+u(x+an,x) = 1 + igan^\mu A_\mu^a t^a + \mc{O}(a^2)
+}
+where $it^a$ are the generators of the Lie algebra of $G$. THe commutation relations are 
+\eq{
+\comm[t^a]{t^b} = i f^{abc} t^c
+}
+where $f^{abc}$ are the structure constant of the Lie algebra $\mf{g}$. We take them to be antisymmetric in their indices\footnote{Why can we always do this?}. The commutator obeys the Jacobi identity. To find the gauge transformation of the $A^a$ fields we expand 
+\eq{
+V(x+an)V^\dagger(x) &= \psquare{(1+an^\mu \del_\mu \mc{O}(a^2)) V(x) } V^\dagger(x) \\
+&= 1 + an^\mu (\del_\mu V) V^\dagger + \mc{O}(a^2) \quad \text{using } VV^\dagger =1  \\
+&= 1 - a n^\mu V(\del_\mu V^\dagger) + \mc{O}(a^2) \quad \text{using } \del_\mu(VV^\dagger) = 0
+}
+The terms $an^\mu$ in the transformation of $u$ gives us 
+\eq{
+A_\mu^a(x) t^a \to V(x) \psquare{A_\mu^a(x) t^a + \frac{i}{g} \del_\mu } V^\dagger(x)
+}
+The covariant derivative is 
+\eq{
+D_\mu = \del_\mu -ig A_\mu^a t^a
+}
+for infinitesimal transformations 
+\eq{
+V = 1 + i\alpha^a t^a + \mc{O}(\alpha^2)
+}
+so 
+\eq{
+\psi \to (1 + i\alpha^a t^a)\psi \\
+A_\mu^a \to A_\mu^a + \frac{1}{g} \del_\mu \alpha^a + f^{abc}A_\mu^b \alpha^c
+}
+We can write this as 
+\eq{
+A_\mu^a \to A_\mu^a + \frac{1}{g}D_\mu \alpha^a
+}
+Again we can define the field strength tensore through 
+\eq{
+\comm[D_\mu]{D_\nu} = -ig F_{\mu\nu}^a t^a
+}
+such that 
+\eq{
+F_{\mu\nu}^a = \del_\mu A_\nu^a = \del_\nu A_\mu^a + g f^{abc} A_\mu^b A_\nu^c
+}
+Under a gauge transformation now 
+\eq{
+F_{\mu\nu}^a \to F_{\mu\nu}^a - f^{abc} \alpha^b F_{\mu\nu}^c
+}
+However, the combination 
+\eq{
+F_{\mu\nu}^a F^{a\mu\nu} = \tr(F_{\mu\nu}F^{\mu\nu})
+}
+\emph{is} gauge invariant. The $g f^{abc} A_\mu^b A_\nu^c$ leads to self interactions between the gauge fields, even at tree level, unlike QED.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Gauge Fixing}
+We now wish to carry out gauge fixing in the path inntegral as we did with QED. Recall 
+\eq{
+\int \mc{D}A \, \exp \pround{-\frac{1}{4} \int d^4x \, \tr F_{\mu\nu} F^{\mu\nu}}
+}
+is not well defined. To quantise, we must avoid integrating over all field configurations that are gauge equivalent to $A_\mu = 0$. We do this using the Faddeev Popov method. We have some gauge fixing condition $G[A]=0$ at each point $x$. we implemented this by introducing 
+\eq{
+1 = \int \mc{D} \alpha(x) \, \delta\pround{G[A^\alpha]} \det\pround{\frac{\delta G[A^\alpha]}{\delta \alpha}}
+}
+where the gauge transformed fields are written as 
+\eq{
+A^\alpha = A + \frac{1}{g} D\alpha
+}
+Note that as long as $G[A]$ is linear in the fields $A$, $\frac{\delta G[A^\alpha]}{\delta \alpha}$ will always be independent of $\alpha$. This makes thinks easier. Following the same steps as in QED
+\begin{itemize}
+    \item we interchange the order of integration $A \leftrightarrow \alph$ 
+    \item change integration variables $A^\prime = A^\alpha$, noting $\mc{D}A^\prime  = \mc{D}A$
+    \item Relabel and the integration of $\alpha$ has ebeen factored out. 
+\end{itemize}
+We are left with
+\eq{
+int \mc{D}\alpha \int \mc{D}A \, e^{-S[A]} \delta\pround{G[A^\alpha]} \det\pround{\frac{\delta G[A^\alpha]}{\delta \alpha}}
+}
+choose $G[A] = \del^\mu A_\mu^a(x) \omega^a(x)$. Integrate over $\omega^a$ with Gaussian weights $\frac{1}{2\xi}$
+\eq{
+\Rightarrow \int \mc{D}A \, e^{-S[A]}  \det\pround{\frac{\delta G[A^\alpha]}{\delta \alpha}} \exp\psquare{\int d^4x \, \frac{1}{2\xi} (\del^\mu A_\mu)^2}
+}
+Gauge transformed field is 
+\eq{
+(A^\alpha)^a_\mu = A^a_\mu + \frac{1}{g} D_\mu \alpha^a \\
+\frac{\delta G[A^\alpha]}{\delta \alpha} = \frac{1}{g} \del^\mu D_\mu
+}
+Faddeev-Popov express functional determinant as path integral over new Grassmann fields $c,\bar{c}$, transforming in adjoint representation. Anticommuting, but Lorentz scalar.$c,\bar{c}$ do note represent physical particles, and so are called \bam{Faddeev Popov ghosts}. This implies a ghost term in the Lagrangian. 
+\eq{
+\mc{L}_{gh} = \bar{c}^a \pround{\del^2 \delta^{ac} + g f^{abc} \del^\mu A_\mu^b} c^c
+}
+Ghost propagator is 
+\eq{
+\braket{c^a(x) \bar{c}^b(y)} = \int \frac{d^4k}{(2\pi)^4} \frac{\delta^{ab}}{k^2} e^{-ik\cdot(x-y)}
+}
+so the propagator factor in momentum space is $\frac{\delta^{ab}}{k^2}$ and the vertex term is $-gf^{abc}p^\mu$. We also get a factor of $-1$ for each closed ghost loop. \\
+Note that we need ghosts because 
+\begin{itemize}
+    \item The Feynmann rules for fermions and gauge bosons only lead to unphysical gauge field polarisations. At tree level we can neglect unphysical polarisation by focusing on physical in/out states, but loops are a problem.
+    \item Ghosts cancel the unphysical contributions.
+    \item It is possible to avoid the need for ghosts by using a Lorentz noninvariant gauge fixing condition e.g the acial gauge $n \cdot A^a = 0$. The gauge transform is then 
+    \eq{
+    n \cdot (A^\alpha)^a &= n \cdot A^a + \frac{1}{g} n \cdot \del\alpha^a + f^{abc} n \cdot A^b \alpha^c \\
+    &= \frac{1}{g} n \cdot \del\alpha^a \\
+    \Rightarrow \frac{\delta G[A^\alpha]}{\delta \alpha} \text{ independent of } A
+    }
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{BRST symmetry}
+Becchi Rouet Stroz Tyutin. Recall
+\eq{
+\mc{L} = \frac{1}{4} (F_{\mu\nu}^a)^2 + \bar{\psi} (\slashed{D} + m)\psi + \frac{1}{2\xi}(\del^\mu A_\mu^a)^2 + \bar{c} \del^\mu D_\mu c
+}
+Introduce an auxiliary field $B^a$, a commuting field such that 
+\eq{
+\mc{L} = \frac{1}{4} (F_{\mu\nu}^a)^2 + \bar{\psi} (\slashed{D} + m)\psi + \frac{1}{2\xi}(B^a)^2 - B^a \del^\mu A_\mu^a + \bar{c} \del^\mu D_\mu c
+}
+Completing the square and integrating out $B^a$ gives the original $\mc{L}$. $\mc{L}$ is invariant under the global BRST transofrmation, written in infinitesimal form 
+\eq{
+\delta A_\mu^a &= \eps D_\mu^{ac} c^c \\
+\delta \psi &= ig\eps c^a t^a \psi \\
+\delta c^a &= -\frac{1}{2}g \eps f^{abc} c^b c^c \\
+\delta \bar{c}^a &= \eps B^a \\
+\delta B^a &= 0
+}
+The transformation of $\psi, a_\mu$ is just a local gauge transformation with $\alpha = g\eps c$, so invariance of $F^2, \bar{\psi}(\slashed{D}+m)\psi$ is clear. Further $(B^a)^2$ is trivially invariant. The transformation of $\bar{c}$ cancels out the transformation of $A_\mu$ when combining with the last 2 terms. The remaining term gives 
+\eq{
+\delta (D_\mu^{ac}c^c) &= D_\mu^{ac} \delta c^c + gf^{abc}\delta A_\mu^b c^c \\
+&= - \frac{1}{2}g \eps \del_\mu (f^{abc}c^b c^c) - \frac{1}{2} g^2 \eps f^{abc} f^{cde} A_\mu^b c^d c^e  + g \eps f^{abc} (\del_\mu c^b) c^c + g^2 \eps f^{abc} f^{bde} A_\mu^d c^c c^e 
+}
+Order $g$ terms are 
+\eq{
+- \frac{1}{2}f^{abc} \del_\mu(c^b c^c) + f^{abc} (\del_\mu c^b) c^c  = 0 \quad \text{by anticommuting and product rule}
+}
+Similarly the order $g^2$ terms cancel, via the Jacobi identity. Hence $\mc{L}$ is BRST invariant. 
 \end{document}

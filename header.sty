@@ -21,6 +21,8 @@
 \usepackage{listings}
 \usepackage{soul} %Highlight text with \hl{}
 %\usepackage{xurl} %Put URLs in text that split lines \url{}
+\usepackage[colorinlistoftodos]{todonotes}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Definitions
@@ -37,6 +39,7 @@
 \newtheorem{prop}{Proposition}[subsection]
 \newtheorem{ex}{Exercise}[subsection]
 \newtheorem*{aside}{Aside}
+\newtheorem{conjecture}{Conjecture}[subsection]
 
 %Text math operators.
 \DeclareMathOperator{\spn}{Span}
@@ -51,6 +54,7 @@
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Harm}{Harm}
 \DeclareMathOperator{\ind}{index}
+\DeclareMathOperator{\cohom}{Cohom}
 
 %Symbolic shortcuts 
 \newcommand{\eps}{\epsilon}
@@ -77,13 +81,14 @@
 \newcommand{\pround}[1]{\left( #1 \right)}
 \newcommand{\psquare}[1]{\left[ #1 \right]}
 \newcommand{\pbrace}[1]{\left\{ #1 \right\} }
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert} %absolute value. 
 
 %Functions shortcuts.
 \newcommand{\comm}[2][]{\left[ #1, #2 \right]} %Commutator .
 \newcommand{\acomm}[2][]{\left\{ #1, #2 \right\}} %Anticommutator .
 \newcommand{\pd}[2][]{\frac{\partial#1}{\partial#2}} %Partial derivative. 
 \newcommand{\pds}[2][]{\frac{\partial^2 #1}{\partial #2^2}} %Second partial derivative.
-\newcommand{\abs}[1]{\left\lvert #1 \right\rvert} %absolute value. 
+
 \newcommand{\pb}[2][]{\left\{ #1, #2 \right\}_{PB}} %Poisson bracket, different from acomm
 \newcommand{\upwick}[1]{\overbracket[0.5pt]{#1}} % Bracket for a Wick contraction
 \newcommand{\downwick}[1]{\underbracket[0.5pt]{#1}} % Bracket for a Wick contraction 
@@ -104,3 +109,6 @@
 \definecolor{mygray}{rgb}{0.4,0.4,0.4}
 
 \lstset{basicstyle=\ttfamily\color{mygray}, commentstyle=\color{blue}, keywordstyle=\color{black}, language=Matlab }
+
+\newenvironment{claim}[1]{\par\noindent\underline{Claim:}\space#1}{}
+\newenvironment{claimproof}[1]{\par\noindent\underline{Proof:}\space#1}{\hfill $\blacksquare$}

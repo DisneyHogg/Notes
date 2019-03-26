@@ -1090,12 +1090,13 @@ Hence the RH neutrino field is not an independent field.
 
 Mass terms are 
 \eq{
-- \frac{1}{2} \sum_i m_\nu^i ( {{{\bar{\mc{V}}}_L^i}^c} {\mc{V}}_L^i + {\bar{\mc{V}}}_L^i {{\mc{V}}_L^i}^c )
+- \frac{1}{2} \sum_i m_\nu^i ( {{\overline{\mc{V}}}_L^i}^c {\mc{V}}_L^i + {\overline{\mc{V}}}_L^i {{\mc{V}}_L^i}^c )
 }
 To arise form a Higgs VEV, need term 
 \eq{
-\sim - \frac{Y^{ij}}{M} \left( {L^i}^T \phi^c \right) C \left( {\phi^c}^T L^j \right) + \text{ Hermitian conjugate}
+\sim - \frac{Y^{ij}}{M} \left( {L^i}^T \tilde{\phi} \right) C \left( {\tilde{\phi}}^T L^j \right) + \text{ Hermitian conjugate}
 }
+where $\tilde{\phi}_a = \eps_{ab} \phi_b$. 
 The 5-dimensional operator is non renormalisable, so we need $M$ to have dimensions of mass. This is still ok as long as we think of SM as an effective field theory, valid for physics below some energy cutoff
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1223,4 +1224,402 @@ We never measure with infinite precision,
 \Gamma_{i \to f} = \frac{1}{T} \int P(i \to f) \prod_r \pround{\frac{V}{(2\pi)^3} d^3 p_r}
 }
 
-\end{document} 
+This is the answer, but it is not manifestly Lorentz invariant. Recall that a Lorentz invariant integration measure is 
+\eq{
+d\rho_f = (2\pi)^4 \delta^4\pround{p_i - \sum_r p_f} \prod_r \pround{\frac{d^3 p_r}{(2\pi)^3 \cdot 2p_r^0}}
+}
+Thus 
+\eq{
+\Gamma_{i \to f} = \frac{1}{2 m_i} \int |\mc{M}_{fi}|^2 d \rho_f 
+}
+the total decay rate is then 
+\eq{
+\Gamma_i = \frac{1}{2m_i} \sum_f  \int |\mc{M}_{fi}|^2 d \rho_f 
+}
+The $\frac{1}{2m_i}$ means that this is defined \emph{only} in the rest frame of the decaying particle. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cross Section}
+Let $n$ be the number of scattering events per unit time per unit particle. The \bam{incident flux} is $F$, which is the number of incoming particles per unit area per unit time 
+\eq{
+F = \underbrace{|\bm{v}_a - \bm{v}_b |}_{\substack{\text{relative velocity} \\ \text{of incident} \\ \text{beam compared} \\ \text{to target}}} \rho_a
+}
+The \bam{cross section} is define to be 
+\eq{
+\sigma = \frac{n}{F}
+}
+This indeed has units of area. The total number of scattering events per unit time is then 
+\eq{
+N &= n \rho_b B \\
+&= F \sigma \rho_b V \\
+&= |\bm{v}_a - \bm{v}_b | \rho_a \rho_b V \sigma
+}
+Our normalisation corresponds to having 1 particle per unit volume, so $\rho_a = \rho_b = \frac{1}{V}$ so 
+\eq{
+N = \frac{|\bm{v}_a - \bm{v}_b | \sigma}{V}
+}
+Normally we think about \bam{differential cross sections} 
+\eq{
+dN =  \frac{|\bm{v}_a - \bm{v}_b |}{V} d\sigma
+}
+We now go through the same calculation as with the decay rate. The difference is the probability 
+\eq{
+\frac{|\braket{f | S-1 | i}|^2}{\braket{f|f} \braket{i|i}}
+}
+this will give a differential contribution since $\ket{i}$ now contains two particles, hence we get an extra factor $2E_b V$ in the denominator 
+\eq{
+\ket{i|i} \to (2E_a V)(2E_b V)
+}
+So, using the decay rate derivation, we find 
+\eq{
+dN &= \frac{1}{2E_a 2E_b V} |\mc{M}_{fi}|^2 d\rho_f \\
+\Rightarrow d\sigma |\bm{v}_a - \bm{v}_b| = \frac{1}{2E_a 2E_b} |\mc{M}_{fi}|^2 d\rho_f \\
+\Rightarrow d\sigma &= \frac{|\mc{M}_{fi}|^2}{4E_a E_b |\bm{v}_a - \bm{v}_b| } d\rho_f
+}
+
+\begin{remark}
+Cross sections are often measure in \bam{barns}. We have $1 \text{barn} = 10^{-28} m^{2}$
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Muon Decay}
+
+Consider the decay of a muon into an electron, neutrino, and anti-neutrino: $\mu^- \to e^- \bar{\nu}_e \nu_\mu$. In Fermi effective theory this is described by the tree level diagram 
+\eq{
+\highlight{diagram}
+}
+Recallthe Lagrangian is 
+\eq{
+\mc{L}_W^{eff} = -\frac{G_F}{\sqrt{2}} ({J^\alpha}^\dagger J_\alpha + \rho {J_N^\alpha}^\dagger J_{n\alpha})
+}
+Note that since this is a flavour changing interaction, no $Z$ bosons are involved, hence the entire interaction comes from the ${J^\alpha}^\dagger J_\alpha$ term.\footnote{More clearly, the Feynmann diagram we use in the full, non-Fermi theory is }.
+
+We assume the neutrinos are massless, $m_{\nu_e} = m_{\nu_\mu} = 0$. Then recalls 
+\eq{
+J^\alpha = \bar{\nu}_e \gamma^\alpha (1-\gamma^5) e + \bar{\nu}_\mu \gamma^\alpha (1-\gamma^5) \mu  + \bar{\nu}_\tau \gamma^\alpha(1-\gamma^5) \tau
+}
+We should also check we can validly apply Fermi theory here. Note $m_\mu\approx 106 MeV$ and $m_W \approx 80 GeV \Rightarrow m_W \gg m_\mu$. Thus Fermi theory indeed applies. The amplitude is given by 
+\eq{
+\mc{M} = \braket{e^-(k) \bar{\nu}_e(q) \nu_\mu (q^\prime) | \mc{L}_W^{eff}| \mu^-(p)}
+}
+We have 
+\eq{
+\mc{M} &= -\frac{G_F}{\sqrt{2}} \braket{e^-(k) \bar{\nu}_e(q) | \bar{e} \gamma^\alpha (1-\gamma^5) \nu_e | 0} \cdot \braket{\nu_\mu(q^\prime)| \bar{\nu}_\mu \gamma_\alpha (1-\gamma^5) \mu | \mu^-(p)} \\
+&= \dots \\
+&= -\frac{G_F}{\sqrt{2}} \psquare{\bar{u}_e(k) \gamma^\alpha (1-\gamma^5) v_{\nu_e}(q)} \psquare{\bar{u}_{\nu_\mu}(q^\prime) \gamma_\alpha (1-\gamma^5) u_\mu(p)}
+}
+We're not interested in particular final state spins, so we're going to sum over these. We also assume that we don't know the spin of the $\mu^-$ particle, but we will assume that $\pm \frac{1}{2}$ polarisations are produced with equal probability. So we average over the initial state spins. Hence we want 
+\eq{
+\frac{1}{2} \sum_{\text{spins}} |\mc{M}|^2 &= \frac{G_F^2}{4} \sum_\text{spins} \psquare{\bar{u}_e(k) \gamma^\alpha (1-\gamma^5) v_{\nu_e}(q) \bar{v}_{\nu_e} \gamma^\beta (1-\gamma^5) u_e(k)} \psquare{\bar{u}_{\nu_\mu}(q^\prime) \gamma_\alpha (1-\gamma^5) u_\mu(p) \bar{u}_\mu(p) \gamma_\beta (1-\gamma^5) u_{\nu_\mu}(q^\prime)} \\
+&= \frac{G_F^2}{4} S_1^{\alpha\beta} {S_{2}}_{\alpha\beta}
+}
+To calculate we use 
+\eq{
+\sum_s u^s(p) \bar{u}^s(p) &= \slashed{p}+m \\
+\sum_s v^s(p) \bar{v}^s(p) &= \slashed{p}-m
+}
+Then 
+\eq{
+S_1^{\alpha\beta} &= \tr \psquare{(\slashed{k}+m_e)\gamma^\alpha (1-\gamma^5) \slashed{q} \gamma^\beta (1-\gamma^5)} \\
+{S_{2}}_{\alpha\beta} &= \tr \psquare{\slashed{q}^\prime \gamma_\alpha (1-\gamma^5) (\slashed{p}+m_\mu) \gamma_\beta (1-\gamma^5)}
+}
+we now use the results of tracing over gamma matrices. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\eq{
+\tr(\gamma^{\mu_1} \dots \gamma^{\mu_n} = 0  \quad{(n odd)} \\
+\tr(\gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma) = 4(g^{\mu\nu}g^{\rho\sigma} - g^{\mu\rho} g^{\nu\sigma} +g^{\mu\sigma} g^{\nu\rho}) \\
+\tr(\gamma^5 \gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma) =-4i \eps^{\mu\nu\rho\sigma}
+}
+Then get 
+\eq{
+S_1^{\alpha\beta} = 8[k^\alpha q^\beta + k^\beta q^\alpha - (k\cdot q) g^{\alpha\beta} -i \eps^{\alpha\beta\mu\rho}k_\mu q_\rho]
+}
+and similarly 
+\eq{
+S_{2, \alpha\beta} =8[q_\alpha^\prime p_\beta + q_\beta^\prime p_\alpha - (p.q^\prime) g_{\alpha\beta} - i \eps_{\alpha\beta\mu\rho} {q^\prime}^\mu p^\rho]
+}
+so 
+\eq{
+\frac{1}{2} \sum_\text{spins} |M|^2 = G_F^2 \cdot 64(p \cdot q)(k \cdot q^\prime)
+}
+\\ Consider the case where $\theta^-, \nu_\mu$ go out along $+z$, and $\bar{\nu}_e$ along $-z$, $k\cdot q^\prime = \sqrt{m_e^2 + k_z^2} q_z^\prime - k_z^\prime \to 0$ as $m_e \to 0$. Weak interactions only couples to LH parts, so in a colinear decay $|S_Z| = \frac{3}{2} > S_\mu$, ie. can't conserve angular momentum, so this particular final state can't happen if $m_e = m_{\nu_\mu} = m_{\nu_e} = 0$.  If $m_e \neq 0$ then LH and RH components are coupled ($-\frac{1}{2}$ helicity not the same as LH chirality) so the decay may occur $|S_z| = \frac{1}{2} = S_\mu$ \\
+Now 
+\eq{
+\Gamma &= \frac{1}{2m_\mu} \int \frac{d^3k}{(2\pi)^3 2k^0 } \int \frac{d^3q}{(2\pi)^3 2q^0 } \int \frac{d^3q^\prime}{(2\pi)^3 2{q^\prime}^0 } (2\pi)^4 \delta^{(4)}(p - k - q -q^\prime) \frac{1}{2} \sum_\text{spins} |M|^2 \\
+&= \frac{G_F^2}{8 \pi^5 m_\mu} \int \frac{d^3k}{k^0} \int \frac{d^3q}{|\bm{q}|} \int \frac{d^3 q^\prime}{|\bm{q}^\prime|} \delta^{(4)}(p-k-q-q^\prime) (p \cdot q)(k \cdot q^\prime)
+}
+\eq{
+I_{\mu\nu}(p-k) &= \int \frac{d^3q}{|\bm{q}|} \int \frac{d^3 q^\prime}{|\bm{q}^\prime|} \delta^{(4)}(p-k-q-q^\prime) q_\mu q_\nu^\prime \\
+&= a (p-k)_\mu (p-k)_\nu +bg_{\mu\nu} (p-k) \cdot (p-k)
+}
+where a,b, depends on (p-k). Then 
+\eq{
+g^{\mu\nu} I_{\mu\nu} = \int \dots q \cdot q^\prime = a(p-k) \cdot (p-k) + 4b(p-k) \cdot (p-k) \\
+\Rightarrow a+4b = \frac{I}{2}
+}
+where 
+\eq{
+I = \int \frac{d^3 q}{|\bm{q}|} \frac{d^3 q^\prime}{|\bm{q}^\prime|} \delta^{(4)}(p - k - q - q^\prime)
+}
+Further 
+\eq{
+(p-k)^\mu (p-k)^\nu I_{\mu\nu} = a(p-k)^4 + b(p-k)^4  \\
+\Rightarrow a + b = \frac{I}{4}
+}
+so 
+\eq{
+a = \frac{I}{6}, \; b = \frac{I}{12}
+}
+$I$ is a Lorentz scalar, so evaluate it in a frame with $\bm{p}-\bm{k} = 0 \Rightarrow \bm{q} = - \bm{q}^\prime$. Then 
+\eq{
+I = \int \frac{d^3 q}{|\bm{q}|^2} \delta(p^0 - l^0 - 2|\bm{q}|) = 4\pi \int d|\bm{q}| \, \delta(p^0 -k^0 - 2|\bm{q}|) = 2\pi
+}
+so $a = \frac{\pi}{3}, b = \frac{\pi}{6}$. Back to $\Gamma$:
+\eq{
+\Gamma = \frac{G_F^2}{(2\pi)^4 3 m_\mu} \int \frac{d^3k}{k^0} \psquare{2p \cdot (p-k) k \cdot(p-k) + (p\cdot k) (p-k)^2}
+}
+Recall that $\Gamma$ is given in the rest frame of the decaying particle, so $p\cdot k = m_\mu E (E-k^0), p\cdot p = m_\mu^2, k \cdot k = m_e^2$. Note $\frac{m_e}{m_\mu} \approx 0.0048 \ll 1$, so approximating $m_e = 0$ is reasonable. \\
+Hence
+\eq{
+\Gamma  = \frac{G_F^2 m_\mu}{3(2\pi)^4} \int d^3k \, (3m_\mu - 4E) = \frac{4\pi G_F^2 m_\mu}{3(2\pi)^4} \int_0^{\frac{m_\mu}{2}} dE \, E^2(3m_\mu - 4E)
+}
+(Note: we get the integration limits by saying at $E_{min}$, $e$ is at rest, so $E=m_e = 0$, and at $E_{max}$, $\nu_\mu, \bar{\nu}_e$ are in the same direction, but opposite to $e$, so 
+\eq{
+& E_{max} + (E_{\nu_\mu} + E_{\bar{\nu}_e}) = m_\mu \quad \text{(conservation of energy)} \\
+& E_{max} - (E_{\nu_\mu} + E_{\bar{\nu}_e}) = 0 \quad \text{(conservation of momentum)} \\
+\Rightarrow E_{max} = \frac{m_\mu}{2}
+}
+Finally. 
+\eq{
+\Gamma = \frac{G_F^2 m_\mu^5}{192 \pi^3}
+}
+is the decay rate of $\mu^- \to e \bar{\nu}_e \nu_\mu$. This is the only allowed decay of $\mu$, so no more calculations. The lifetime of a muon is 
+\eq{
+\tau_\mu = \frac{1}{\Gamma} \approx 2.1970 \times 10^{-6}s \\
+\Rightarrow G_F = 1.164 \times 10^{-5} GeV^2
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\eq{
+\Gamma = \frac{G_F^2 m_\mu^2}{192 \pi^3}
+}
+
+\begin{itemize}
+\item One loop corrections are $\sim 10^{-6}$ level
+\item Experimnetlaly, $G_F$ is consisten from $\tau \to e \bar{\nu}_e \nu_\tau, \mu \bar{\nu}_\mu \nu_\tau \Rightarrow$ lepton universality, 
+\end{itemize}
+
+Weak decays violate P as, in the massless limit, RH $\nu_\mu$ don't couple to W bosons. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Pion Decay}
+Consider
+\eq{
+\pi^-(\bar{u}d) \to e^- \bar{\nu}_e
+}
+with $m_\nu = 0 $. The $d$ and $\bar{u}$ do not propagate freely as they are bound in the $\pi^-$. Relevant currents are 
+\eq{
+J_{lept}^\alpha &= \bar{\nu}_e \gamma^\alpha (1-\gamma^5)e \\
+J_{had}^\alpha &= \bar{u} \gamma^\alpha (1-\gamma^5)(V_{ud} d + V_{us} s + V_{ub} b ) \\
+&= V_{had}^\alpha - A_{had}^\alpha
+}
+Amplitude is 
+\eq{
+M &= \braket{e^-(k) \bar{\nu}_e(q) | \mc{L}_W^{eff} | \pi^-(p)} \\
+&= - \frac{G_F}{\sqrt{2}}\braket{e^-(k) \bar{\nu}_e(q) | \bar{e} \gamma_\alpha (1-\gamma^5) \nu_e | 0}\braket{0 | J_{had}^\alpha | \pi^-(p)} \\
+&= - \frac{G_F}{\sqrt{2}} \bar{u}_e(k) \gamma_\alpha (1-\gamma^5) V_{\nu_e}(q) \braket{0 | \underbrace{V_{had}^\alpha}_{\gamma^\alpha part} - \underbrace{A_{had}^\alpha}_{\gamma^\alpha \gamma^5 part}| \pi^-(p)}
+}
+Parametrise unknown non-perturbative QCD part in the pion decay constant $F_\pi$. 
+\eq{
+\braket{0 | \bar{u} \gamma^\alpha \gamma^5 d | \pi^-(p)} &= i \sqrt{2} F_\pi p^\alpha 
+}
+However
+\eq{
+\braket{0 | \bar{u} \gamma^\alpha d | \pi^-(p)} &= - \mbb{P}\indices{^\alpha_\beta}\braket{0 | \bar{u} \gamma^\beta d | \pi^-(p_P)}
+}
+so if 
+\eq{
+\braket{0 | \bar{u} \gamma^\alpha d | \pi^-(p)} = Ap^\alpha \Rightarrow - \mbb{P}\indices{^\alpha_\beta}\braket{0 | \bar{u} \gamma^\beta d | \pi^-(p_P)}
+ = Ap^\alpha \\
+ \Rightarrow -\braket{0 | \bar{u} \gamma^\alpha d | \pi^-(p_P)} = Ap_P^\alpha \\
+ \Rightarrow A=0
+}
+Hence 
+\eq{
+M &= i G_F F_\pi V_{ud} \bar{u}_e(k) \slashed{p}(1-\gamma^5) V_{\nu_e}(q) \\
+&=i G_F F_\pi m_e V_{ud} \bar{u}_e(k)(1-\gamma^5) V_{\nu_e}(q)
+}
+as $p = q+k, \slashed{q} V_{\nu_e} = 0, \bar{u}_e \slashed{k} = m_e \bar{u}_e$. This again shows a \bam{helicity suppression}. Spin 0 $\pi$ decay conserves angular momentum. $\pi^-$ decays to positive spin $\bar{\nu}_e$ and positive helicity $e^-$. If $m_e=0$, this is Rh chirality of $e^-$, which is forbidden. \\
+Sum over final spin states gives 
+\eq{
+\sum_\text{spins} |M|^2 &= \sum_\text{spins} |G_F F_\pi m_e V_{ud}|^2 \psquare{\bar{u}_e(k) (1-\gamma^5) V_{\nu_e}(q) \times \bar{V}_{\nu_e}(q) (1\highlight{-}\gamma^5) u_e(k)} \\
+&= 8 |G_F F_\pi m_e V_{ud}|^2 (k \cdot q) \\
+\Rightarrow \Gamma_{\pi \to e\bar{\nu}_e} &= \frac{1}{2m_\pi}\int \frac{d^3 k}{(2\pi)^3 2k^0}\int \frac{d^3 q}{(2\pi)^3 2q^0} (2\pi)^4 \delta^{(4)}(p - k - q)  8 |G_F F_\pi m_e V_{ud}|^2 (k \cdot q)  \\
+&= \frac{|G_F F_\pi m_e V_{ud}|^2}{4 m_\pi \pi^2} \int \frac{d^3 k}{E |\bm{k}|}\delta(m_\pi - E - |bm{k}|) \pround{E|\bm{k}| + |\bm{k}|^2}
+}
+where $E = k^0 =$ energy of $e^-$ and $q^0 = |\bm{q}| = |\bm{k}|$. So 
+\eq{
+\Gamma = \frac{|G_F F_\pi m_e V_{ud}|^2}{4 m_\pi \pi^2} \int \frac{4\pi |\bm{k}|^2 \, d|\bm{k}|}{E\pround{1 + \frac{k^0}{E}}} (E+ |\bm{k}|) \delta(|\bm{k}|-k^0)
+}
+where $k^0 = \frac{m_\pi^2 - m_e^2}{2m_\pi}$. Then 
+\eq{
+\Gamma = \frac{|G_F F_\pi V_{ud}|^2 m_e^2}{\pi m_\pi} \pround{ \frac{m_\pi^2 - m_e^2}{2m_\pi}}^2
+}
+
+Recall we were studying 
+\eq{
+\pi^-(\bar{u}d)(p) \to e^-(k) \bar{\nu}_e(q)
+}
+We found that 
+\eq{
+\sum_\text{spins} |\mc{M}|^2 = \dots = \sum_\text{spins} |\dots|^2 \psquare{\bar{u}_e (k) (1-\gamma^5) v_{\nu_e}(q) \bar{v}_{\nu_e}(q) (1+\gamma^5) u_e(k)} \\
+\Rightarrow \Gamma_{\pi^-\to e^- \bar{\nu}_e} = \frac{\abs{G_F F_\pi V_{ud}}^2}{4\pi} m_e^2 m_\pi \pround{1 - \frac{m_e^2}{m_\pi^2}}^2
+}
+The expression for $\pi^- \to \mu^- \bar{\nu}_\mu$ is the same, but with $m_e \to m_\mu$. We see 
+\eq{
+r = \frac{\Gamma_{\pi^-\to e^- \bar{\nu}_e}}{\Gamma_{\pi^-\to \mu^- \bar{\nu}_\mu}} = \frac{m_e^2}{m_\mu^2} \pround{\frac{m_\pi^2 - m_e^2}{m_\pi^2 - m_\mu^2}}^2 \approx 1.28 \times 10^{-4}
+}
+Experimentally we find 
+\eq{
+r = 1.230(4) \times 10^{-4}
+}
+This is reasonable agreement. We need quantum loop effects to make out prediction more accurate. o
+\begin{remark}
+The ratio $r \ll 1$. This is because $m_\mu \gg m_e \Rightarrow$ it has much less helicity suppressed.
+\end{remark}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\secmath{K^0 - \bar{K}^0} Mixing}
+A \bam{Kaon} contains a strange quark or antiquark. The lightest kaon flavour eigenstates are 
+\eq{
+K^0(\bar{s}d), \; \bar{K}^0(\bar{d}s), \; k^+(\bar{s}u), \; K^-(\bar{u}s)
+}
+These are all the possible mesons made an (anti)strange quark and a light quark (u or d). We'll mainly consider $K^0, \bar{K}^0$. These particles are pseudo scalars like pions. They have $J^p = 0^-$ (J spin, p intrinsic parity). \\
+For kaons at rest, we can take relative phases such that 
+\eq{
+\begin{array}{cc} \hat{C} \hat{P} \ket{K^0} = - \ket{\bar{K}^0} & \hat{C} \hat{P} \ket{\bar{K}^0} = - \ket{K^0} \end{array}
+}
+The CP eigenstates are 
+\eq{
+\begin{array}{cc} \ket{K_+^0} = \frac{1}{\sqrt{2}} ( \ket{K^0} - \ket{\bar{K}^0}) & \ket{K_-^0} = \frac{1}{\sqrt{2}} ( \ket{K^0} + \ket{\bar{K}^0}) \end{array}
+}
+Consider $K^0 \to \pi^0 \pi^0$ and $\pi^+ \pi^-$ (weak decays). We have the Feynmann diagrams (...) with mixing from the $V_{CKM}$ matrix. 
+From conservation of angular momentum (recall pions have $J^p = 0^-$ the total angular momentum of $\pi\pi$ must be spin 0. Hence the orbital angular momentum between the pions must be $L=0$. Hence 
+\eq{
+\hat{C} \hat{P} \ket{\pi^+\pi^-} = \hat{C} \ket{\pi^- \pi^+} = \ket{\pi^+ \pi^-} \\ 
+\hat{C}\hat{P} \ket{\pi^0 \pi^0} = \hat{C} (-1)^L \ket{\pi^0 \pi^0} = (-1)^L \ket{\pi^0 \pi^0} = \ket{\pi^0 \pi^0}
+}
+Therefor both final states have $\hat{C} \hat{P} = 1$. If $\hat{C} \hat{P}$ is conserved in this interaction, we expect $\ket{K^0_+}$ to decay to $\pi^0 \pi^0, \pi^+ \pi^-$, but not to see $\ket{K^0_-}$ to do this. We expect $\ket{K^0_+}$ to be short lived since there is a large phase space available for decay, and we expect $\ket{K^0_-}$ to be long lived. $\ket{K^0_-}$ must decay in the same way, so there is a smaller phase space available.
+Experimentally, we find $K_S^0$ has a \emph{short} lifetime ($\tau \approx 9 \times 10^{-11}s$) and $K_L^0$ as a \emph{long} lifetime ($\tau = \approx 5\times 10^{-8}s$). Defining the ratios 
+\eq{
+\eta_{+-} = \frac{\abs{\braket{\pi^+ \pi^- | H | K_L^0}}}{\abs{\braket{\pi^+ \pi^- | H | K_S^0}}} \\
+\eta_{00} = \frac{\abs{\braket{\pi^0 \pi^0 | H | K_L^0}}}{\abs{\braket{\pi^0 \pi^0 | H | K_S^0}}}
+}
+Experimentally, 
+\eq{
+\eta_{+-} = \eta_{00}\approx 10^{-3} \neq 0
+}
+so we have CP violation in the weak interaction.
+
+\subsubsection*{Two possible ways for CP violation}
+Write CP violation as $\not{CP}$. 
+\begin{itemize}
+    \item Direct : $\not{CP}$ of $s \to u$ due to a phase in $V_{CKM}$
+    \item Indirect : $\not{CP}$ due to $K^0 \leftrightarrow \bar{K}^0$ mixing, then decay. This ultimately comes from a phase in the $V_{CKM}$ matrix.
+\end{itemize}
+It turns out that indirect $\not{CP}$ is mainly responsible for this process. The dominant contribution to this are loops called \bam{box diagrams}. THey have $\Delta$strangeness = 2. $\bar{s}$ has strangeness 1, $s$ has strangeness -1. This is the next-to-leading order set of diagrams in perturbation theory. In the standard model there are $\emph{no}$ tree level diagrams for this process. Therefore 
+\eq{
+\ket{K^0_S} = \frac{1}{\sqrt{1+|\eps_1|^2}} \pround{\ket{K^0_+} + \eps_1 \ket{K^0_-} } \approx \ket{K^0_+} \quad \text{at tree level} \\  
+\ket{K^0_L} = \frac{1}{\sqrt{1+|\eps_2|^2}} \pround{\ket{K^0_-} + \eps_2 \ket{K^0_+} } \approx \ket{K^0_-} \quad \text{at tree level}
+}
+Here, $\eps_i\in\mbb{C}$ are small loop contributions. \\
+\newline
+Assume two state mixing and we can ignor details of the strong interactions 
+\eq{
+\ket{K^0_S(t)} =a_S(t)\ket{K^0} + b_s(t) \ket{\bar{K}^0} \\
+\ket{K^0_L(t)} = a_L(t) \ket{K^0} + b_L(t) \ket{\bar{K}^0}
+}
+The Schr\"odinger equation gives 
+\eq{
+i \frac{d}{dt} \ket{\psi(t)} = H^\prime \ket{\psi(t)}
+}
+where $H^\prime$ is the next-to-leading order weak Hamiltonian. So 
+\eq{
+i \frac{d}{dt} \begin{pmatrix} a_i(t) \\ b_i(t) \end{pmatrix} = \begin{pmatrix} \braket{K^0 | H^\prime | K^0} & \braket{K^0 | H^\prime | \bar{K}^0} \\ \braket{\bar{K}^0 | H^\prime | K^0} & \braket{\bar{K}^0 | H^\prime | \bar{K}^0} \end{pmatrix} \begin{pmatrix} a_i(t) \\ b_i(t) \end{pmatrix}
+}
+(Winger Weisskopf approximation)
+This off diagonal matrix elements are responsible for the mixing. Let 
+\eq{
+R = \begin{pmatrix} \braket{K^0 | H^\prime | K^0} & \braket{K^0 | H^\prime | \bar{K}^0} \\ \braket{\bar{K}^0 | H^\prime | K^0} & \braket{\bar{K}^0 | H^\prime | \bar{K}^0} \end{pmatrix}
+}
+Because $K$ decay, $R$ is not Hermitian, so can be written $R = M - \frac{i}{2}\Gamma$ where $M$ is the dispersive mass matrix and $\Gamma$ are Hermitian absorptive decay matrices. \\
+If $\hat{\Theta} = \hat{C} \hat{P} \hat{T}$, $\Theta H6\prime \Theta^{-1} = {H^\prime}^\dagger$. Then 
+\eq{
+\Theta \ket{K^0} &= -\ket{\bar{K}^0} \\
+\Theta \ket{\bar{K}^0} & - \ket{K^0} \\\
+\Rightarrow R_{11} &= \braket{K^0 | H^\prime K^0} \\
+&= (\Theta^{-1}\Theta K^0, H^\prime \Theta^{-1} \Theta K^0)\\
+&= (\Theta^{-1}\bar{K}^0, H^\prime \Theta^{-1} \bar{K}^0)\\
+&= (\bar{K}^0,\Theta H^\prime \Theta^{-1} \bar{K}^0)^\ast
+}
+i.e. $\Theta$ is antiunitary. Further 
+\eq{
+R_{11} = (\bar{K}^0,{H^\prime}^\dagger \bar{K}^0)^\ast = (\bar{K}^0, H^\prime \bar{K}^0) = \braket{\bar{K}^0 | H^\prime | \bar{K}^0} = R_{22}
+}
+CPT symmetry gives $R_{11} = R_{22}$. \\
+\subsubsection*{If CP a valid symmetry}
+If CP is a good symmetry, T is a good symmetry. 
+\eq{
+R_{12} = \braket{K^0 | H^\prime \bar{K}^0} &= (\hat{T}^{-1} \hat{T} K^0, H^\prime \hat{T}^{-1} \hat{T} \bar{K}^0) \\
+&= (\hat{T}^{-1} K^0, H^\prime \hat{T}^{-1}\bar{K}^0) \\
+&= (K^0, {H^\prime}^\dagger \bar{K}^0)^\ast \\
+&= (\bar{K}^0, H^\prime K^0) = R_{21}
+}
+Hence CP symmetry gives $R_{12} = R_{21}$. Hence 
+\eq{
+\eps_1 = \eps_2 = \eps = \frac{\sqrt{R_{12}}-\sqrt{R_{21}}}{\sqrt{R_{12}}+\sqrt{R_{21}}}
+}
+so CP symmetry gives $\eps_1 = \eps_2 = 0$
+Can show that
+\eq{
+\eta_{+-} = \eps+\eps^\prime \\
+\eta_{00} = \eps - 2\eps^\prime
+}
+$\eps^\prime$ a direct measure of CP violation. Other decyas can be use to probe $K^0_{i,s}$
+\begin{example}[Semileptonic decay]
+\eq{
+K^0 \to \pi^- e^+ \nu_e \\
+K^0 \not\to \pi^+ e^- \bar{\nu}_e \\
+\bar{K}^0 \to \pi^+ e^- \bar{\nu}_e \\
+\bar{K}^0 \not\to \pi^- e^+ \nu_e
+}
+If CP valid, then se expect 
+\eq{
+\Gamma(K_{L,S} \to \pi^- e^+ \nu_e) = \Gamma(K_{L,S} \to \pi^+ e^- \bar{\nu}_e)
+}
+If we define 
+\eq{
+A_{L,S} = \Gamma(K_{L,S} \to \pi^- e^+ \nu_e) - \Gamma(K_{L,S} \to \pi^+ e^- \bar{\nu}_e)
+}
+we find $A_L \approx 3.32 \pm 0.06 \times 10^{-3}$
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quantum Chromodynamics (QCD)}
+
+\begin{itemize}
+    \item Protons, Neutrons (Lightest baryons) have similar mas, hence have isospin $I= \frac{1}{2}$ in a doublet. 
+    \item $\pi^{0,\pm}$ are the lightest mesons, have $I=1$ in a triplet. 
+\end{itemize}
+Postulate a global symmetry $SU(2)_I$. $m_{neutron} \neq m_{proton}$, so symmetry is broken, but there is a good approximation. 
+\begin{itemize}
+    \item Strange Hadrons discovered later, so the symmetry extended to $SU(3)_F$ a global symmetry. This is not the gauge symmetry $SU(3)_c$. This is badly broken but still useful for classifying hadrons. Lightest mesons are pseudoscalars in $\bm{8} + \bm{1}$. Lightest baryons in $\bm{8} + \bm{10}$
+    \item Quark model : constituent quarks, spin-$\frac{1}{2}$ fermions u,d,s, form $\bm{3}$ rep. $m_u \approx m_d < m_s$. Baryons are $qqq$, mesons $\bar{q}q \Rightarrow \bm{3} \times \bar{\bm{3}} = \bm{8} + \bm{1}$. $\frac{1}{2} \times \frac{1}{2} = \undrbrace{0}_{\eta} + \underbrace{1}_{\pi}$.
+    \item $\Delta^{++}$ is $uuu$, spin-$\frac{3}{2}$, so w/f appears sym violation Fermi stats. Hence we need extra 'colour' quantum number (rgb). 
+\end{itemize}
+
+\end{document}

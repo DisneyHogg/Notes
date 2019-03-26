@@ -25,30 +25,44 @@ A brief overview of some key ideas, concepts, and facts that I find useful in re
 Given some suitable function $f:\Omega \to \mbb{C}$ that is $L_1$ and $L_2$, its \bam{Fourier transform} is 
 \eq{
 \hat{f} : \mbb{R} \to \mbb{C} \\
-\hat{f}(\lambda) = \int_\Omega e^{-i\lambda x} dx
+\hat{f}(\lambda) = \int_\Omega e^{-i\lambda x} f(x) \, dx
 }
 and the inverse transform is 
 \[
-f(x) = \frac{1}{2\pi} \int_\mbb{R} e^{i\lambda x} \hat{f}(\lambda)
+f(x) = \frac{1}{2\pi} \int_\mbb{R} e^{i\lambda x} \hat{f}(\lambda) \, d\lambda
 \]
 \end{definition}
 
 \begin{lemma}[Jordan's Lemma]
 Let $\gamma_R$ be the contour in $\mbb{C}$ for $R\in\mbb{R}_{geq 0}$
 \eq{
-\gamma_R : [0,\pi] \to \mbb{C}
-\gamma_R(t) = Re^{it}
+& \gamma_R : [0,\pi] \to \mbb{C} \\
+& \gamma_R(t) = Re^{it}
 }
 Then for $f:\mbb{C}\to\mbb{C}$ a holomorphic function satisfying 
 \eq{
-\forall z\in \gamma_R |f(z)| < K(R) 
+\forall z\in \gamma_R \quad |f(z)| < K(R) 
 }
 for some $K(R)$ s.t. $\lim_{R\to\infty} K(R) = 0$ then 
 \eq{
-\forall \lambda \in \mbb{R}_{>0} \lim_{R\to\infty} \int_{\gamma_R} e^{i\lambda z} f(z) dz = 0
+\forall \lambda \in \mbb{R}_{>0} \quad  \lim_{R\to\infty} \int_{\gamma_R} e^{i\lambda z} f(z) \, dz = 0
 }
 An analogous result hold for $\lambda <0$ for a semicircular contour in the LHP. 
 \end{lemma}
+
+\begin{theorem}\label{thm:BVP:AnalyticIntegral}
+Let $f : \mbb{C} \times \mbb{C} \to \mbb{C}, f=f(z,t)$ and $\gamma$ a contour in $\mbb{C}$. Define
+\eq{
+& F : \mbb{C} \to \mbb{C} \\
+& F(z) = \int_\gamma f(z,t) \, dt
+}
+Then the conditions for $F$ to be defined and analytic in $D \subset \mbb{C}$ are 
+\begin{itemize}
+    \item $f$ is continuous in $z,t$,
+    \item $F$ converges uniformly in $D$,
+    \item $\forall t \; f(z,t)$ is analytic in $z$. 
+\end{itemize}
+\end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Heat Equation}
@@ -69,44 +83,112 @@ u(x,0) &= u_0(x) \\
 (\del_x)^j u(0,t) &= g_j(t) \\
 (\del_x)^j u(L,t) &= h_j(t)
 }
+and it is always assumed that for fixed $t$, $u$ decays at spatial infinity.
 \end{definition}
 
-
-\subsection{Unified Transform}
-The typical approach to solving this problem is to initially convert the PDE into a \bam{global relation}. To do this, define
+\begin{theorem}
+The solution to the heat equation with boundary conditions $g_1, g_0$ and initial condition $u_0$ specified is 
 \eq{
-\hat{u}(\lambda,t) &= \int_\Omega e^{-i\lambda x}u(x,t) dx \\
-\tilde{g}_j(\lambda,t) &= \int_0^t e^{\lambda\tau} g_j(\tau) d\tau
+u ( x , t ) = \frac { 1 } { 2 \pi } \int _ { - \infty } ^ { \infty } e ^ { i \lambda x - \lambda ^ { 2 } t } \hat { u } _ { 0 } ( \lambda ) d \lambda - \frac { 1 } { 2 \pi } \int _ { \partial D ^ { + } } e ^ { i \lambda x - \lambda ^ { 2 } t } \left[ \tilde { g } _ { 1 } \left( \lambda ^ { 2 } , t \right) + i \lambda \tilde { g } _ { 0 } \left( \lambda ^ { 2 } , t \right) \right] \, d \lambda
 }
-for $\lambda \in \mbb{C}$. Note that both integral are only defined provided the exponential remains bounded over the integral. For $\tilde{g}_j$ this is ensure by the finite upper limit to integration. Now 
+where 
+\begin{itemize}
+    \item 
+    \eq{
+    \hat{u}_0(\lambda) &= \int_\mbb{R} e^{-i\lambda x}u_0(x) dx
+    }
+    \item 
+    \eq{
+    \tilde{g}_j(\lambda,t) &= \int_0^t e^{\lambda\tau} g_j(\tau) d\tau
+    }
+    \item 
+    \eq{
+    D^+ = \set{\lambda : \Im \lambda \geq 0, \Re \lambda^2 < 0 }
+    }
+\end{itemize}
+\end{theorem}
+\begin{proof}
+By assuming sufficient "niceness" of the initial and boundary conditions, we apply Theorem \ref{thm:BVP:AnalyticIntegral} to see
+\begin{itemize}
+    \item As the range of the integral is finite, $\tilde{g}_j(\lambda,t)$ is analytic $\forall \lambda,t$. 
+    \item As the integral for $\hat{u}_0$ is over all $x\in\mbb{R}$, for uniform convergence of the integral we require 
+    \eq{
+    \left| e ^ { - i \lambda x } \right| = \left| e ^ { - i \lambda _ { R } x + \lambda _ { I } x } \right| = e ^ { \lambda _ { I } x }
+    }
+    to remain bounded, which means
+    \eq{
+    \Im \lambda < 0 \,,
+    }
+    so $\hat{u}_0$ is analytic in the LHP. 
+\end{itemize}
+Now, we may utilise integration by parts to get 
 \eq{
-\left| e ^ { - i \lambda x } \right| = \left| e ^ { - i \lambda _ { R } x + \lambda _ { I } x } \right| = e ^ { \lambda _ { I } x }
-}
-so when $\Omega$ is the half line it is required that $\Im \lambda < 0$. With these definition, the PDE can be expressed via integration by parts. 
-
-\begin{example}[Heat equation on the Half Line]
-\eq{
-\hat(u)_t &= \int_0^\infty e^{-i\lambda x} u_t dx \\
-&= \int_0^\infty e^{-i\lambda x} u_{xx} dx \\
-&= \left[ u_x e^{-i\lambda x} \right]_0^\infty -(-i\lambda) \left[ u e^{-i\lambda x} \right]_0^\infty +(-1)^2 (-i\lambda)^2 \hat{u} }
+\hat{u}_t &= \int_0^\infty e^{-i\lambda x} u_t \, dx \\
+&= \int_0^\infty e^{-i\lambda x} u_{xx} \, dx \\
+&= \psquare{u_x e^{-i\lambda x} }_0^\infty - \int_0^\infty -i\lambda e^{-i\lambda x}u_x \, dx \\
+&= \psquare{u_x e^{-i\lambda x} }_0^\infty +i\lambda \psquare{ u e^{-i\lambda x}}_0^\infty - i\lambda\int_0^\infty -i\lambda e^{-i\lambda x}u \, dx\\
+&= \psquare{u_x e^{-i\lambda x} }_0^\infty +i\lambda \psquare{ u e^{-i\lambda x}}_0^\infty - \lambda^2 \hat{u} }
 and so 
 \eq{
-\Rightarrow&& \hat{u}_t - (-1)^2(-i\lambda)^2 \hat{u} &= -g_1 + (-i\lambda) g_0 \\
-\Rightarrow&& (\hat{u} e^{-(-i\lambda)^2 t} )_t &= -e^{-(-i\lambda)^2 t} [g_1 - (-i\lambda) g_0] \\
-\Rightarrow&&  e^{-(-i\lambda)^2 t}\hat{u}(\lambda,t) &= \hat{u}_0(\lambda) - \int_0^t e^{-(-i\lambda)^2 \tau} [g_1(\tau) - (-i\lambda) g_0(\tau)] d\tau
+\Rightarrow&& \hat{u}_t + \lambda^2 \hat{u} &= -g_1 -i\lambda g_0 \\
+\Rightarrow&& (\hat{u} e^{\lambda^2 t} )_t &= -e^{\lambda^2 t} [g_1 +i\lambda g_0] \\
+\Rightarrow&&  e^{\lambda^2 t}\hat{u}(\lambda,t) &= \hat{u}_0(\lambda) - \int_0^t e^{\lambda^2 \tau} [g_1(\tau) +i\lambda g_0(\tau)] \, d\tau \\
+\Rightarrow&& e^{\lambda^2 t}\hat{u}(\lambda,t) &= \hat{u}_0(\lambda) - \psquare{\tilde{g}_1(\lambda^2,t) +i\lambda \tilde{g}_0(\lambda^2,t)}
 }
-\end{example}
+This expression is called the \bam{Global Relation (GR)}. \\
+The GR can be inverted then to find 
+\eq{
+u(x,t) = \int_\mbb{R} e^{i\lambda x - \lambda^2 t}\hat{u}_0(\lambda) \, d\lambda - \frac{1}{2\pi} \int_\mbb{R} e^{i\lambda x - \lambda^2 t} \psquare{\tilde{g}_1(\lambda^2,t) +i\lambda \tilde{g}_0(\lambda^2,t)} \, d\lambda
+}
+We are now nearly done, except for the contour on the second integral.
+First consider 
+\eq{
+e^{i\lambda x - \lambda^2 t}\tilde{g}_1(\lambda^2,t) &= e^{i\lambda x - \lambda^2 t}\tilde{g}_1(\lambda^2,t)\int_0^t e^{\lambda^2 \tau} g_1(\tau) \, d\tau \\
+&= e^{i\lambda x} \int_0^t e^{-\lambda^2 (t-\tau)} g_1(\tau) \, d\tau \\
+\Rightarrow \; \abs{e^{i\lambda x - \lambda^2 t}\tilde{g}_1(\lambda^2,t)} &\leq e^{-x \Im \lambda }  \abs{\int_0^t g_1(\tau) \, d\tau} \sup_{\tau \in [0,t]} \pround{e^{- (t-\tau)\Re\lambda^2}}
+}
+It can be seen that, if $\Im \lambda \geq 0$ and $\Re \lambda^2 \geq 0$, then the term will be bounded as $\abs{\lambda} \to \infty$. Then integrating by parts
+\eq{
+\int_0^t e^{-\lambda^2 (t-\tau)} g_1(\tau) \, d\tau &=   \psquare{\frac{e^{-\lambda^2 (t-\tau)}}{\lambda^2} g_1(\tau)}_{\tau = 0}^{\tau = t}-\frac{1}{\lambda^2}\int_0^t e^{-\lambda^2 (t-\tau)} g_1^\prime(\tau) \\
+&= \frac{g_1(t) - g_1(0)e^{-\lambda^2 t}}{\lambda^2} - \psquare{\frac{e^{-\lambda^2 (t-\tau)}}{\lambda^4} g_1^\prime(\tau)}_{\tau = 0}^{\tau = t} + \frac{1}{\lambda^4}\int_0^t e^{-\lambda^2 (t-\tau)} g_1^{\prime\prime}(\tau) \\
+&\sim \frac{g_1(t)}{\lambda^2} \quad \text{as } \abs{\lambda}\to\infty
+}
+By the same argument, $e^{i\lambda x - \lambda^2 t} \cdot i\lambda\tilde{g}_0(\lambda^2,t)$ is bounded and has asymptotic expansion $\frac{ig_0(t)}{\lambda}$ as $\abs{\lambda}\to\infty$. 
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{idea}
+Note we deformed onto a new contour. The reason for this is that, when only some boundary conditions are given, this contour will be necessary for a substitution. See below. 
+\end{idea}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Generalisation 
+\section{Generalisation}
 This can be extended in general for a PDE on the half line
 \eq{
-\highlight{u_t &= \left[\sum_{i=0}^n a_i (\del_x)^i \right] u} \\
+u_t &= \psquare{\sum_{i=0}^n a_i (\del_x)^i} u
 }
-to 
+to \hl{FIX THIS BIT}
 \eq{
 \hat{u} &= \sum_{i=0}^n a_i \int_0^\infty  e^{-i\lambda x} (\del_x)^i u \\
-&= \sum_{i=0} a_i \sum_{j=1}^{i} -(-i\lambda)^ g_{}
+&= \sum_{i=0} a_i \sum_{j=1}^{i} -(-i\lambda)^j g_{}
 }
 gives some polynomial $\omega(-i\lambda)$. \\
-The solution for $u$ is then obtained via inverse fourier transform 
+The solution for $u$ is then obtained via inverse Fourier transform 
+\eq{
+u(x,t) = \frac{1}{2\pi} \int_{\mbb{R}} e^{i \lambda x} \hat{u}(\lambda,t) \, d\lambda
+}
 
+Subsequently, in many examples\footnote{is this numerical integration we are referring to?} it will be easier to deform onto a contour in the complex plane to complete the $\lambda$ integral. This is possible if 
+\begin{enumerate}
+    \item The integrand is analytic through the region it is deformed through (requirement for Cauchy's theorem)
+    \item The contribution from the end of the contours at $\infty$ is 0 (for which we use Jordan's lemma). 
+\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%r
 
 \end{document}
