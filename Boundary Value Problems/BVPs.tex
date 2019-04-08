@@ -31,24 +31,6 @@ The general problem considered will be a linear partial differential equation fo
 \section{Prerequisites}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Complex Tools}
-\begin{definition}[Fourier Transform]
-Given some suitable function $f:\Omega \to \mbb{C}$ that is $L_1$ and $L_2$, its \bam{Fourier transform} is 
-\eq{
-& \hat{f} : \mbb{C} \to \mbb{C} \\
-& \hat{f}(\lambda) = \int_\Omega e^{-i\lambda x} f(x) \, dx
-}
-and the inverse transform is 
-\[
-f(x) = \frac{1}{2\pi} \int_\mbb{R} e^{i\lambda x} \hat{f}(\lambda) \, d\lambda
-\]
-\end{definition}
-
-\begin{lemma}
-\eq{
-\frac{d^n \hat{f}}{d\lambda^n}(\lambda) &= (-i\lambda)^n \hat{f}(\lambda) \\
-\widehat{\frac{d^n f}{dx^n}}(\lambda) &= (i\lambda)^n \hat{f}(\lambda)
-}
-\end{lemma}
 
 \begin{lemma}[Jordan's Lemma]\label{lemma:BVP:JordansLemma}
 Let $\gamma_R$ be the contour in $\mbb{C}$ for $R\in\mbb{R}_{geq 0}$
@@ -94,8 +76,16 @@ Suppose $D\subset\mbb{C}$ is a open region with  $\del D = C$ a simple closed cu
 \oint_C f(z) \, dz = 2\pi i \sum_{i=1}^n \res\pround{f,z_i}
 }
 \end{theorem}
+
+\begin{theorem}\label{thm:BVPs:AccumulatingZeros}
+Let $F(z)$ be defined by 
+\eq{
+F(z) = e^z + a_1 e^{\lambda_1 z} + \dots + a_n e^{\lambda_n z}
+}
+for $a_i, \lambda_i \in \mbb{C}$. Assume the polygon $\subset \mbb{C}$ with vertices $\set{1,\lambda_i}$ is non-degenerate. Then the zeros of $F$ are clustered along the rays form the original orthogonal to the edges off the polygon. Further, these zeros accumulate at infinity along these rays. 
+\end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Classical Transforms}
+\subsection{Transforms}
 
 \begin{definition}[Sine Transform]
 Given a suitable real function $f : \mbb{R}_{>0} \to \mbb{R}_{>0}$ the \bam{sine transform} is 
@@ -109,6 +99,39 @@ f(x) = \frac{2}{\pi} \int_0^\infty \sin(\lambda x)\hat{f}_s(\lambda) \, d\lambda
 }
 \end{definition}
 
+\begin{definition}[Fourier Transform]
+Given some suitable function $f:\Omega \to \mbb{C}$ for $\Omega \subset \mbb{R}$ that is $L_1$ and $L_2$, its \bam{Fourier transform} is 
+\eq{
+& \hat{f} : D \to \mbb{C} \\
+& \hat{f}(\lambda) = \int_\Omega e^{-i\lambda x} f(x) \, dx
+}
+and the inverse transform is 
+\[
+f(x) = \frac{1}{2\pi} \int_\mbb{R} e^{i\lambda x} \hat{f}(\lambda) \, d\lambda
+\]
+$D\subset \mbb{C}$ is determined by requiring that the integral giving $\hat{f}$ is well defined, i.e $\sup_{x \in \Omega } \abs{e^{i\lambda x}} < \infty$. It can be seen from this that $\mbb{R} \subset D$, meaning the inverse transform is well defined. Some specific examples are shown below.
+\begin{table}[ht]
+\centering 
+\begin{tabular}{c|c} 
+$\Omega$ & $D$ \\ [0.5ex] 
+\hline\hline 
+$\mbb{R}$ &  $\mbb{R}$ \\
+\hline % inserting body of the table
+$\mbb{R}_{>0}$ & LHP \\
+\hline
+$[0,L]$ & $\mbb{C}$ \\ [1ex] %
+\end{tabular}
+\end{table}
+
+\end{definition}
+
+\begin{lemma}
+\eq{
+\frac{d^n \hat{f}}{d\lambda^n}(\lambda) &= (-i\lambda)^n \hat{f}(\lambda) \\
+\widehat{\frac{d^n f}{dx^n}}(\lambda) &= (i\lambda)^n \hat{f}(\lambda)
+}
+\end{lemma}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Heat Equation}
@@ -120,8 +143,9 @@ u_t = u_{xx}
 \]
 Typical domains $\Omega$ are 
 \begin{itemize}
+    \item The real line $\Omega = \mbb{R}$
     \item The half line $\Omega = [0,\infty)$
-    \item The  finite interval $\Omega = [0,L]$ for $L\in\mbb{R}$
+    \item The finite interval $\Omega = [0,L]$ for $L\in\mbb{R}$
 \end{itemize}
 The problem will come with conditions on the boundary $\del \Omega \times [0,\infty) \cup \Omega\times \set{0}$. Standard notation is 
 \eq{
@@ -141,10 +165,10 @@ Taking the Fourier transform of the heat equation with respect to $x$ gives
 \Rightarrow \hat{u}(\lambda,t) &= \hat{u}_0(\lambda) e^{-\lambda^2 t} \\
 \Rightarrow u(x,t) &= \frac{1}{2\pi} \int_{-\infty}^\infty e^{i\lambda x - \lambda^2 t} \hat{u}_0(\lambda) \, d\lambda
 }
-
+verification of this solution is easy as all $x,t$ dependence is in the exponential term, and evaluation at $t=0$ is just the inverse Fourier transform. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Half Line}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Classical Method}
 On the half line we may apply the sine transform to reduce the PDE to 
 \eq{
@@ -153,12 +177,12 @@ On the half line we may apply the sine transform to reduce the PDE to
 Solving this gives 
 \eq{
 e^{\lambda^2 t} \hat{u}_s(\lambda,t) &= \hat{u}_0^2(\lambda) + \lambda \int_0^t e^{\lambda^2 \tau} g_0(\tau) \, d\tau \\ 
-\Rightarrow u(x,t) &= \frac{2}{\pi} \int_0^\infty \sin(\lambda x) e^{-\lambda^2 t} \psquare{\hat{u}_0^2(\lambda) + \lambda \int_0^t e^{\lambda^2 \tau} g_0(\tau) \, d\tau}
+\Rightarrow u(x,t) &= \frac{2}{\pi} \int_0^\infty \sin(\lambda x) e^{-\lambda^2 t} \psquare{\hat{u}_0^2(\lambda) + \lambda \int_0^t e^{\lambda^2 \tau} g_0(\tau) \, d\tau} \, d\lambda
 }
 \begin{remark}
 In verifying this solution, we run into the fact that substituting in $x=0$ into the RHS does not give $g_0(t)$. Hence the integral and limit $x\to 0$ cannot be exchanged. This is evidence that the integral is not uniformly convergent, which makes numerical solutions unstable. It is also not as simple to check that the solution obeys the PDE.
 \end{remark}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Unified transform}
 \begin{theorem}
 The solution to the heat equation on the half line with boundary conditions $g_1, g_0$ and initial condition $u_0$ specified is 
@@ -169,11 +193,11 @@ where
 \begin{itemize}
     \item 
     \eq{
-    \hat{u}_0(\lambda) &= \int_\mbb{R} e^{-i\lambda x}u_0(x) dx
+    \hat{u}_0(\lambda) &= \int_0^\infty e^{-i\lambda x}u_0(x) \, dx
     }
     \item 
     \eq{
-    \tilde{g}_j(\lambda,t) &= \int_0^t e^{\lambda\tau} g_j(\tau) d\tau
+    \tilde{g}_j(\lambda,t) &= \int_0^t e^{\lambda\tau} g_j(\tau) \, d\tau
     }
     \item 
     \eq{
@@ -272,20 +296,63 @@ The $\hat{u}$ term will contribute an integral
 }
 Applying the integration by parts technique from the proof gives 
 \eq{
-\hat{u}(-\lambda,t) \sim \frac{-u(0,t)}{\lambda} \; \text{as } \abs{\lambda}\to\infty
+\hat{u}(-\lambda,t) \sim \frac{u(0,t)}{i\lambda} \; \text{as } \abs{\lambda}\to\infty
 }
-so \ref{lemma:BVP:JordansLemma} and \ref{thm:BVP:Cauchy} can again be applied in the case of Dirichlet or Neumann conditions, giving that this contribution is 0. In the case of Robin boundary conditions, there is a singularity at $\lambda = -i\gamma$. The case $\gamma > 0$ can be argued as before as the singularity will give no contribution to the contour integral. \\
+when $\Im \lambda \geq 0$, so \ref{lemma:BVP:JordansLemma} and \ref{thm:BVP:Cauchy} can again be applied in the case of Dirichlet or Neumann conditions, giving that this contribution is 0. In the case of Robin boundary conditions, there is a singularity at $\lambda = -i\gamma$. The case $\gamma > 0$ can be argued as before as the singularity will give no contribution to the contour integral. \\
 In the case $\gamma <0$, the singularity is removable, so it is fine to continue with the integral, and the contribution of the $\hat{u}$ term can be calculated to be the residue
 \eq{
 -\frac{1}{2\pi}\int_{\del D^+}e^{i\lambda x} \frac{\lambda - i\gamma}{\lambda + i\gamma} \hat{u}(-\lambda,t) \, d\lambda  &= -\frac{2\pi i}{2\pi} e^{\gamma x} \cdot -2i\gamma \cdot \hat{u}(i\gamma,t) \\
 &= -2\gamma e^{\gamma x + \gamma^2 t} \left[ \hat { u } _ { 0 } ( i \gamma ) - \tilde { g } _ { R } \left( - \gamma ^ { 2 } , t \right) \right]
 }
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Equivalence of methods}
+Writing the unified transform solution in terms of $g_0$ gives 
+\eq{
+u ( x , t ) = \frac { 1 } { 2 \pi } \int _ { - \infty } ^ { \infty } e ^ { i \lambda x - \lambda ^ { 2 } t } \hat { u } _ { 0 } ( \lambda ) d \lambda - \frac { 1 } { 2 \pi } \int _ { \partial D ^ { + } } e ^ { i \lambda x - \lambda ^ { 2 } t } \left[ \hat{u}_0(-\lambda) + 2i\lambda \tilde{g}_0(\lambda^2,t) \right] \, d \lambda
+}
 
+Integration by parts shows $\hat{u}_0(-\lambda)$ is bounded and $\mc{O}\pround{\frac{1}{\lambda}}$ in the UHP, and $e^{-\lambda^2 t}$ is bounded outside $D^+$ in the UHP. Hence we may deform the contour on the $\hat{u}_0$ term to the real line by Jordan's lemma and Cauchy's theorem. We have already shown this for the $g_0$ term so 
+\eq{
+\Rightarrow u ( x , t ) &= \frac { 1 } { 2 \pi } \int _ { - \infty } ^ { \infty } e ^ { i \lambda x - \lambda ^ { 2 } t } \psquare{ \hat{u}_0(\lambda) - \hat{u}_0(-\lambda) } \, d\lambda - \frac{i}{\pi} \int_{-\infty}^\infty \lambda e^{ i \lambda x - \lambda ^ { 2 } t } \tilde{g}_0(\lambda^2,t) \, d \lambda
+}
+Now 
+\eq{
+\hat{u}_0(\lambda) - \hat{u}_0(-\lambda) &= \int_0^\infty \psquare{e^{-i\lambda x} - e^{i\lambda x}} u_0(x) \, dx \\
+&= -2i \hat{u}_0^s (\lambda) 
+}
+and we may split the real integral at 0 so 
+\eq{
+u(x,t) =& \frac{-i}{\pi} \int_0^\infty e^{i\lambda x - \lambda^2 t } \hat{u}_0^s( \lambda) \, d\lambda - \frac{i}{\pi} \int_{0}^\infty \lambda e^{ i \lambda x - \lambda ^ { 2 } t } \tilde{g}_0(\lambda^2,t) \, d \lambda \\
+& -\frac{-i}{\pi} \int_{0}^\infty e^{-i\lambda x - \lambda^2 t } \hat{u}_0^s( \lambda) \, d\lambda - \frac{i}{\pi} \int_{0}^\infty -\lambda e^{ -i \lambda x - \lambda ^ { 2 } t } \tilde{g}_0(\lambda^2,t) \, d \lambda \\
+=& \frac{2}{\pi} \int_0^\infty \sin(\lambda x) e^{-\lambda^2 t} \psquare{ \hat{u}_0^s(\lambda) + \lambda \tilde{g}_0(\lambda^2, t)} \, d\lambda
+}
+recreating the classical solution. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Finite Time Interval}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Verification}
+Taking the form with only $u_0,g_0$ dependence, evaluating at $t=0$, and noting $\tilde{g}_0(\lambda^2,0)=0$ gives 
+\eq{
+u(x,0) = \frac{1}{2\pi} \int_{-\infty}^\infty e^{i\lambda x} \hat{u}_0(\lambda) \, d\lambda - \frac{1}{2\pi} \int_{\del D^+} e^{i\lambda x} \hat{u}_0(-\lambda) \, d\lambda
+}
+We may apply Jordan's lemma to close the contour integral in the second term, and then Cauchy's theorem gives that the contribution is 0. 
+\eq{
+\Rightarrow u(x,0) = u_0(x)
+}
+as required. \\
+Conversely, evaluating at $x=0$ gives 
+\eq{
+u(0,t) = \frac{1}{2\pi} \int_{-\infty}^\infty e^{-\lambda^2 t} \hat{u}_0(\lambda) \, d\lambda - \frac{1}{2\pi} \int_{\del D^+} e^{-\lambda^2 t} \psquare{\hat{u}_0(-\lambda) + 2i\lambda \tilde{g}_0(\lambda^2,t)} \, d\lambda
+}
+By deformation of the contour from $\del D^+$ to $\mbb{R}$ the first two terms cancel and 
+\eq{
+u(0,t) = -\frac{1}{2\pi} \int_{\del D^+} 2 i \lambda e^{-\lambda^2 t} \int_0^t e^{\lambda^2 \tau} g_0(\tau) \, d\tau \, d\lambda
+}
+Parametrising $\del D^+$ by $\lambda^2 = is$ gives 
+\eq{
+u(0,t) = \frac{1}{2\pi}\int_{-\infty}^\infty e^{-ist} \int_0^t e^{is\tau} g_0(\tau) \, d\tau \, ds = g_0(t)  
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Finite Time Interval}
 In the event that we restrict the time domain to $t \in [0,T]$ for some $T \in \mbb{R}_{>0}$, we may consider the transform 
 \eq{
 \tilde { g } _ { 0 } ( \lambda , t ) \longrightarrow \tilde { g } _ { 0 } ( \lambda ) = \tilde { g } _ { 0 } ( \lambda , T ) , \quad \tilde { g } _ { 1 } ( \lambda , t ) \longrightarrow \tilde { g } _ { 1 } ( \lambda ) = \tilde { g } _ { 1 } ( \lambda , T )
@@ -301,14 +368,13 @@ and likewise for $\tilde{g}_1$. Hence
 \end{align}
 
 Applying the standard argument of integrating by parts, applying Jordan's lemma and Cauchy's theorem gives that the final terms give 0 contribution. This is useful, as it makes the verification of the solution very easy, as the only $x$ or $t$ dependence is in the exponential terms. 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Finite Space Interval}
 Now in the restricted case of $x \in [0,L]$ the global relation is 
 \eq{
 e ^ { \lambda ^ { 2 } t } \hat { u } ( \lambda , t ) = \hat { u } _ { 0 } ( \lambda ) - \psquare{\tilde { g } _ { 1 } \left( \lambda ^ { 2 } , t \right) + i \lambda \tilde { g } _ { 0 } \left( \lambda ^ { 2 } , t \right)} + e ^ { - i \lambda L } \left[ \tilde { h } _ { 1 } \left( \lambda ^ { 2 } , t \right) + i \lambda \tilde { h } _ { 0 } \left( \lambda ^ { 2 } , t \right) \right]
 }
-As 
+where the $e^{-i\lambda L} \tilde{h}_j(\lambda^2,t)$ come from evaluating the by part terms at the upper limit.  As 
 \eq{
 \hat{u}(\lambda,t) = \int_0^L e^{-i\lambda x} u(x,t) \, dx
 }
@@ -327,31 +393,81 @@ u(x,t) =& \frac{1}{2\pi}\int_\mbb{R} e^{i\lambda x - \lambda^2 t}\hat{u}_0(\lamb
 & - \frac{1}{2\pi} \int_{\del D^-} e^{-i\lambda (L - x) - \lambda^2 t} \psquare{\tilde{h}_1(\lambda^2,t) +i\lambda \tilde{h}_0(\lambda^2,t)} \, d\lambda
 }
 Not the change of sign of the $h$ term integral, which comes from parametrising $\del D^-$ such that $D^-$ is the interior. \\
-In this equation we have 4 boundary conditions, and through the symmetry $\lambda \to -\lambda$ we have two equations valid in $D^+$ and $D^-$. Hence we require two of the boundary conditions to be provided to full determine the answer. It can be shown\footnote{how?} that for a regular solutions, one boundary condition must be specified at each end. The answer is then obtained by susbstitution.  
+In this equation we have 4 boundary conditions, and through the symmetry $\lambda \to -\lambda$ we have two equations valid in $D^+$ and $D^-$. Hence we require two of the boundary conditions to be provided to full determine the answer. It can be shown\footnote{how?} that for a regular solutions, one boundary condition must be specified at each end. The answer is then obtained by substitution.  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Dirichlet Problem}
+Consider the case where $g_0$ and $h_0$ are given. The global relations are 
+\eq{
+e^{\lambda^2 t} \hat{u}(\lambda,t) &= G(\lambda,t) - \tilde{g}_1(\lambda^2,t) + e^{-i\lambda L} \tilde{h}_1(\lambda^2,t) \\
+e^{\lambda^2 t} \hat{u}(-\lambda,t) &= G(-\lambda,t) - \tilde{g}_1(\lambda^2,t) + e^{i\lambda L} \tilde{h}_1(\lambda^2,t)
+}
+where 
+\eq{
+G(\lambda,t) = \hat{u}_0(\lambda) - i\lambda \tilde{g}_0(\lambda^2,t) + i\lambda e^{-i\lambda L} \tilde{h}_0(\lambda^2,t)
+}
+is a known quantity. These equations can be written as the matrix equation 
+\eq{
+\begin{pmatrix} 1 & -e^{-i\lambda L}\\ 1 & -e^{i\lambda L} \end{pmatrix} \begin{pmatrix} \tilde{g}_1(\lambda^2,t)  \\ \tilde{h}_1(\lambda^2,t) \end{pmatrix} = \begin{pmatrix} G(\lambda,t) - e^{\lambda^2 t} \hat{u}(\lambda,t)  \\ G(-\lambda,t) - e^{\lambda^2 t} \hat{u}(-\lambda,t) \end{pmatrix} 
+}
+This will not be invertible where the determinant of the matrix $\Delta(\lambda) = 0$, which occurs when $\lambda = \frac{n\pi}{L}$. This lies outside $D^+$ expect at $\lambda = 0$, which is a removable singularity as it is known that the boundary data is well behaved. Hence the solution requires inverting the matrix equation, and noting that, as has been argued before, the $\hat{u}$ terms will give 0 contribution in the UHP. 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Generalisation 
 \section{Generalisation}
-This can be extended in general for a PDE on the half line
-\eq{
-u_t &= \psquare{\sum_{i=0}^n a_i (\del_x)^i} u
-}
-to \hl{FIX THIS BIT}
-\eq{
-\hat{u} &= \sum_{i=0}^n a_i \int_0^\infty  e^{-i\lambda x} (\del_x)^i u \\
-&= \sum_{i=0} a_i \sum_{j=1}^{i} -(-i\lambda)^j g_{}
-}
-gives some polynomial $\omega(-i\lambda)$. \\
-The solution for $u$ is then obtained via inverse Fourier transform 
-\eq{
-u(x,t) = \frac{1}{2\pi} \int_{\mbb{R}} e^{i \lambda x} \hat{u}(\lambda,t) \, d\lambda
-}
+There are two natural extension of the heat equation which can be considered and treated similarly. Here we will discuss these. 
 
-Subsequently, in many examples\footnote{is this numerical integration we are referring to?} it will be easier to deform onto a contour in the complex plane to complete the $\lambda$ integral. This is possible if 
-\begin{enumerate}
-    \item The integrand is analytic through the region it is deformed through (requirement for Cauchy's theorem)
-    \item The contribution from the end of the contours at $\infty$ is 0 (for which we use Jordan's lemma). 
-\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Inhomogeneous Heat Equation}
+The heat equation on the half line can be modified to include a source term 
+\eq{
+u_t(x,t) - u_{xx}(x,t) = f(x,t)
+}
+This modifies the global relation to become 
+\eq{
+e^{\lambda^2 t}\hat{u}(\lambda,t) = \hat{u}_0(\lambda) - \psquare{\tilde{g}_1(\lambda^2,t) + i\lambda\tilde{g}_0(\lambda^2,t) } + \int_0^\infty e^{-i\lambda x} \int_0^t e^{\lambda^2 \tau} f(x,\tau) \, d\tau \, dx
+}
+Hence, if we replace $\hat{u}_0$ with  
+\eq{
+\hat{v}(\lambda,t) = \hat{u}_0(\lambda,t) + \int_0^\infty e^{-i\lambda x} \int_0^t e^{\lambda^2 \tau} f(x,\tau) \, d\tau \, dx
+}
+in the formula for the homogeneous problem, we get the correct solution. For different spatial domains, the term is different, but the process is similar. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Higher Order Homogeneous PDEs}
+Alternatively, the method can be extended in general for a PDE
+\eq{
+u_t &= \psquare{\sum_{j=0}^N c_j (\del_x)^j} u
+}
+$c_N \neq 0$. Defining 
+\eq{
+\omega(\lambda) = \sum_{j=0}^N c_j (i\lambda)^j
+}
+we see that the solution on the real line is 
+\eq{
+u(x,t) = \int_{-\infty}^\infty e^{i\lambda x + \omega(\lambda ) t} \hat{u}_0(\lambda) \, d\lambda
+}
+under the condition $\forall \lambda \in \mbb{R} \,, \Re \omega(\lambda) \leq 0 $. \\
+Alternatively, on the half line we may derive the global relation, valid in the LHP as before, and invert it on the real line. It will be of the form 
+\eq{
+u(x,t) = \frac{1}{2\pi} 
+\int_{\mbb{R}} e^{i\lambda x + \omega(\lambda) t} \hat{u}_0(\lambda) \, d\lambda - \frac{1}{2\pi} \int_{\mbb{R}} e^{i\lambda x + \omega(\lambda) t} \psquare{\underbrace{\text{ $\tilde{g}_j(-\omega(\lambda),t)$ terms }}_{g(\lambda,t)}} \, d\lambda
+}
+As with the heat equation we can then use integration by parts, Jordan's lemma, and Cauchy's theorem to deform the second real contour to $\del D^+$ where
+\eq{
+D^+ = \set{\lambda : \Im \lambda \geq 0, \Re \omega(\lambda) \leq 0 }
+}
+Now, $\omega(\lambda)$ will a degree $N$ polynomial, so the equation $\omega(\nu(\lambda)) = \omega(\lambda)$ will have $N$ solutions, one of which is $\nu(\lambda) = \lambda$. Thus if we call the solutions $\nu_i(\lambda)$, we have $N-1$ more global relations by substituting $\lambda \to \nu_i(\lambda)$. This substituting will preserve the form of the $\tilde{g}_j(-\omega(\lambda),t)$ in the GR, hence as we have $N$ boundary conditions we can solve for $g(\lambda,t)$ in terms of 1 given boundary condition. This will introduce $\hat{u}$ terms into the solution, but by the same argument as before, now that we are in the UHP these terms will have 0 contribution. \\
+Finally, on a finite spatial domain, we proceed as before to get an expression 
+\eq{
+u(x,t) =& \frac{1}{2\pi}\int_\mbb{R} e^{i\lambda x \omega(\lambda) t}\hat{u}_0(\lambda) \, d\lambda - \frac{1}{2\pi} \int_{\del D^+} e^{i\lambda x + \omega(\lambda) t} \psquare{\text{ $\tilde{g}_j(-\omega(\lambda),t)$ terms }} \, d\lambda \\
+& - \frac{1}{2\pi} \int_{\del D^-} e^{-i\lambda (L - x) + \omega(\lambda) t} \psquare{\text{ $\tilde{h}_j(-\omega(\lambda),t)$ terms }} \, d\lambda
+}
+When using the global relations to substitute in for known boundary conditions, again we will get a matrix that is generally invertible except at a few isolated zeros of its determinant. The determinant will be similar to the form 
+\eq{
+\Delta(\lambda) \sim e^{-i\lambda L} + a_1 e^{-i\nu_1(\lambda)L} + \dots +a_{N-1}e^{-i\nu_{N-1}(\lambda)L}
+}
+and so we may apply \ref{thm:BVPs:AccumulatingZeros} to argue that the equations will be invertible inside $D^\pm$, as the rays will lie outside these regions, except perhaps a removable singularity at the origin. 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%r
 
