@@ -32,6 +32,17 @@ The general problem considered will be a linear partial differential equation fo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Complex Tools}
 
+\begin{lemma}[Cauchy Riemann Equations]
+Let $f = u+iv$ be a complex analytic function of $z = x+iy$. Then $u,v$ obey the \bam{Cauchy Riemann equations} 
+\eq{
+\pd[u]{x} = \pd[v]{y} \,, \quad \pd[v]{x} = -\pd[u]{y}
+}
+\end{lemma}
+
+\begin{definition}[Schwarz Conjugation]
+Given a complex function $F$ of complex variable $z$ the \bam{Schwarz conjugate} of $F(z)$ is $\overline{F(\bar{z})}$, where $\bar{\phantom{z}}$ is the usual complex conjugation. 
+\end{definition}
+
 \begin{lemma}[Jordan's Lemma]\label{lemma:BVP:JordansLemma}
 Let $\gamma_R$ be the contour in $\mbb{C}$ for $R\in\mbb{R}_{geq 0}$
 \eq{
@@ -100,7 +111,7 @@ f(x) = \frac{2}{\pi} \int_0^\infty \sin(\lambda x)\hat{f}_s(\lambda) \, d\lambda
 \end{definition}
 
 \begin{definition}[Fourier Transform]
-Given some suitable function $f:\Omega \to \mbb{C}$ for $\Omega \subset \mbb{R}$ that is $L_1$ and $L_2$, its \bam{Fourier transform} is 
+Given some suitable function $f:I \to \mbb{C}$ for $I \subset \mbb{R}$ that is $L_1$ and $L_2$, its \bam{Fourier transform} is 
 \eq{
 & \hat{f} : D \to \mbb{C} \\
 & \hat{f}(\lambda) = \int_\Omega e^{-i\lambda x} f(x) \, dx
@@ -113,7 +124,7 @@ $D\subset \mbb{C}$ is determined by requiring that the integral giving $\hat{f}$
 \begin{table}[ht]
 \centering 
 \begin{tabular}{c|c} 
-$\Omega$ & $D$ \\ [0.5ex] 
+$I$ & $D$ \\ [0.5ex] 
 \hline\hline 
 $\mbb{R}$ &  $\mbb{R}$ \\
 \hline % inserting body of the table
@@ -137,17 +148,17 @@ $[0,L]$ & $\mbb{C}$ \\ [1ex] %
 \section{Heat Equation}
 In this section the standard approach to a PDE 1st order in time, and higher order in space is discussed. At all points the heat equation will be used as the "lab rat" PDE the method will be tried out on. \\
 \begin{definition}[Heat Equation]
-The \bam{heat equation} is the partial differential equation for $u:\Omega \times [0,\infty) \to \mbb{R}$ $u=u(x,t)$
+The \bam{heat equation} is the partial differential equation for $u:\Omega \to \mbb{R}$ $u=u(x,t)$
 \[
 u_t = u_{xx}
 \]
-Typical domains $\Omega$ are 
+Typical domains $\Omega$ are products of some spatial domain and a time domain. The spatial domains are often 
 \begin{itemize}
-    \item The real line $\Omega = \mbb{R}$
-    \item The half line $\Omega = [0,\infty)$
-    \item The finite interval $\Omega = [0,L]$ for $L\in\mbb{R}$
+    \item The real line $\mbb{R}$
+    \item The half line $[0,\infty)$
+    \item The finite interval $[0,L]$ for $L\in\mbb{R}_{>0}$
 \end{itemize}
-The problem will come with conditions on the boundary $\del \Omega \times [0,\infty) \cup \Omega\times \set{0}$. Standard notation is 
+The problem will come with conditions on the boundary $\del \Omega$. Standard notation is 
 \eq{
 u(x,0) &= u_0(x) \\
 (\del_x)^j u(0,t) &= g_j(t) \\
@@ -410,7 +421,28 @@ is a known quantity. These equations can be written as the matrix equation
 \begin{pmatrix} 1 & -e^{-i\lambda L}\\ 1 & -e^{i\lambda L} \end{pmatrix} \begin{pmatrix} \tilde{g}_1(\lambda^2,t)  \\ \tilde{h}_1(\lambda^2,t) \end{pmatrix} = \begin{pmatrix} G(\lambda,t) - e^{\lambda^2 t} \hat{u}(\lambda,t)  \\ G(-\lambda,t) - e^{\lambda^2 t} \hat{u}(-\lambda,t) \end{pmatrix} 
 }
 This will not be invertible where the determinant of the matrix $\Delta(\lambda) = 0$, which occurs when $\lambda = \frac{n\pi}{L}$. This lies outside $D^+$ expect at $\lambda = 0$, which is a removable singularity as it is known that the boundary data is well behaved. Hence the solution requires inverting the matrix equation, and noting that, as has been argued before, the $\hat{u}$ terms will give 0 contribution in the UHP. 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Global Relation}
+The global relation can be derived alternatively by considering the \bam{adjoint} of the heat equation 
+\eq{
+-v_t = v_{xx}
+}
+which corresponds to replace each derivative with its negative. This equation can be combined with the heat equation to get 
+\eq{
+(uv)_t = (vu_x - uv_x)_x
+}
+The particular solution for $v$ is 
+\eq{
+v(x,t) = e^{-i\lambda x + \lambda^2 t}
+}
+so substituting 
+\eq{
+\pround{e^{-i\lambda x + \lambda^2 t} u}_t - \psquare{e^{-i\lambda x + \lambda^2 t}\pround{u_x + i \lambda u}}_x = 0
+}
+We now apply Green's theorem to give 
+\eq{
+\int_{\del \Omega} \pround{e^{-i\lambda x + \lambda^2 t} u} \, dx + \int_{\del \Omega } \psquare{e^{-i\lambda x + \lambda^2 t}\pround{u_x + i \lambda u}} \, dt = 0
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Generalisation 
@@ -469,6 +501,131 @@ When using the global relations to substitute in for known boundary conditions, 
 and so we may apply \ref{thm:BVPs:AccumulatingZeros} to argue that the equations will be invertible inside $D^\pm$, as the rays will lie outside these regions, except perhaps a removable singularity at the origin. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%r
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Modified Helmholtz Equation}
+
+\begin{definition}[Modified Helmholtz Equation]
+The \bam{modified Helmholtz equation} is the PDE
+\eq{
+u_{xx}+u_{yy}-k^2 u = 0
+}
+for some function $u = u(x,y)$, $k\in\mbb{R}_{\geq0}$. 
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Laplace's Equation}
+
+\begin{definition}[Laplace's Equation]
+The special case of the modified Helmholtz equation with $k=0$ is called \bam{Laplace's equation}
+\eq{
+u_{xx} + u_{yy} = 0
+}
+A function that satisfies Laplace's equation is called \bam{harmonic}. 
+\end{definition}
+
+\begin{prop}
+The real and imaginary parts of an analytic function satisfy Laplace's equation
+\end{prop}
+\begin{proof}
+Follows immediately from the Cauchy Riemann equations. 
+\end{proof}
+
+\begin{prop}
+A function $u$ is harmonic iff $u_z$ is analytic.
+\end{prop}
+\begin{proof}
+Recall 
+\eq{
+\pd{z} &= \frac{1}{2}\pround{\pd{x}-i\pd{y}} \\
+\pd{\bar{z}} &= \frac{1}{2}\pround{\pd{x}+i\pd{y}} \\
+\Rightarrow \frac{\del^2}{\del \bar{z} \del z} &= \frac{1}{4}\pround{\pds{x}+\pds{y}}
+}
+so, as $f$ analytic $\Leftrightarrow f_{\bar{z}}=0$, $u_{z}$ analytic $\Leftrightarrow u_{xx}+u_{yy} = 0$. 
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Global Relation}
+The GR for Laplace's equation may be derived by the adjoint method. Laplace's equation is self adjoint, and so the equations can be combined to give the conservation form 
+\eq{
+(vu_x-uv_x)_x +(vu_y - uv_y)_y = 0
+}
+Now $v$ has two particular solutions 
+\eq{
+v(x,y) &= e^{-i\lambda x + \lambda y} \\
+v(x,y) &= e^{+i\lambda x + \lambda y}
+}
+obtained from one another by Schwarz conjugation, giving two conservation forms for $u$
+\eq{
+\int_{\del \Omega} e^{-i\lambda x + \lambda y}\psquare{\pround{u_x+i\lambda u} \, dy - \pround{u_y - \lambda u} \, dx} &= 0 \\
+\int_{\del \Omega} e^{i\lambda x + \lambda y}\psquare{\pround{u_x-i\lambda u} \, dy - \pround{u_y - \lambda u} \, dx} &= 0
+}
+We seek to reqrite this in terms of $u$ and $u_\omega$\footnote{I prefer $\pd[u]{n}$ for this notation, but as $u_\omega$ is more compact we will follow that convention}, the normal to the boundary. 
+\begin{claim}
+\eq{
+\int_{\del \Omega} e^{-i\lambda z}\psquare{u_\omega  + \lambda u  \frac{dz}{ds}}ds &= 0  \\
+\int_{\del \Omega} e^{i\lambda \bar{z}}\psquare{u_\omega  + \lambda u  \frac{d\bar{z}}{ds}}ds &= 0
+}
+where $s$ parametrises $\del \Omega$ by arclength. 
+\end{claim}
+\begin{proof}
+Write $u_T$ for the derivative of $u$ tangent to the boundary. Then 
+\eq{
+u_x \, dx + u_y \, dy = u_T \, ds 
+}
+The outward normal to $(dx, dy)$ is $(dy, -dx)$, so it must be that  
+\eq{
+u_x \, dy - u_y \, dx = u_\omega \, ds
+}
+and so we may substitute and rearrange. 
+\end{proof}
+These global relations may similarly be derived by noting 
+\eq{
+u_{z\bar{z}} &= 0 \\
+\Rightarrow \pround{e^{-i\lambda z} u_z}_{\bar{z}} &= 0 \\
+\Rightarrow \int_{\del \Omega} e^{-i\lambda z} u_z \, dz &=0
+}
+by Cauchy's theorem. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Polygonal Domain}
+Let $\Omega$ be the complex polygon with vertices $\set{z_1,\dots, z_n, z_{n+1} = z_1}$. Label the edges $L_j = z_{j+1}-z_j$. Define the transform of the Dirichlet and Neumann boundary conditions
+\eq{
+\hat{D}_j &= \int_{L_j} e^{-i\lambda z}  u \frac{dz}{ds} \, ds \\
+\hat{W}_j &= \int_{L_j} e^{-i\lambda z} u_\omega \, ds 
+}
+Then the global relation is 
+\eq{
+\sum_{j=1}^n \hat{W}_j + \lambda \hat{D}_j = 0
+}
+Suppose now that $\Omega$ is convex. Write 
+\eq{
+\hat{u}_j(\lambda) = \int_{L_j} e^{-i\lambda z} u_z \, dz 
+}
+This is defined for $\lambda$ where
+\eq{
+\forall t \in [0,1] \,, \quad \Im\pround{\lambda\psquare{z_j + tL_j}} \leq 0
+}
+Certainly the ray 
+\eq{
+l_j = \set{\arg\lambda = -\arg L_j = -\arg\pround{z_{j+1}-z_j}}
+}
+is contained in this domain, as then 
+\eq{
+\pi < \arg z_j -\arg(z_{j+1}-z_j)<\arg\pround{\lambda\psquare{z_j + tL_j}} 
+}
+Hence it is possible to write the global relation as 
+\eq{
+\sum_{j=1}^n \hat{u}_j(\lambda) = 0
+}
+which can be inverted to give
+\eq{
+u_z(z) = \frac{1}{2\pi} \sum_{j=1}^n \int_{l_j} e^{i\lambda z} \hat{u}_j(\lambda) \, d\lambda
+}
+
+\begin{example}[Quarter Plane]
+Consider the polygonal with three vertices, $z_1 = i\infty, z_2 = 0, z_3 = \infty$. The solution is then 
+\eq{
+u_z(z) = \int_0^\infty e^{i\lambda z} \hat{u}_1(\lambda) \, d\lambda + \int_0^\infty e^{i\lambda z} \hat{u}_2(\lambda) \, d\lambda 
+}
 
 \end{document}

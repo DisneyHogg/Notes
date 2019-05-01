@@ -21,12 +21,239 @@
 A brief overview of some key ideas, concepts, and facts that I find useful in revising GR.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Connections}
+\section{Preliminaries}
+
+\begin{definition}[Minkowski Metric]
+In these note the convention will be take that the Minkowski metric is 
+\eq{
+\eta_{ab} = \diag(-1,1,\dots,1)
+}
+\end{definition}
+
+\begin{definition}[Natural Units]
+We will take natural units in which 
+\eq{
+c = 1
+}
+\end{definition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Differential Geometry}
+In these notes, $\mc{M}$ will denote the spacetime manifold. Attention will not be paid to the strict definition of a manifold, or technicalities about coordinates on this manifold. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Tensors}
+\begin{definition}[Vectors]
+A \bam{vector} $V$ is a linear differential operator that acts on real functions on the manifold. Given coordinates $x^a$, $V$ can be written in components
+\eq{
+V = V^a \pd{x^a}
+}
+\end{definition}
+
+\begin{lemma}
+Given two sets of coordinates on the manifold $x^a$ and $\tilde{x}^a$, the components of a vector in the corresponding basis transform as 
+\eq{
+\tilde{V}^a = \pd[\tilde{x}^a]{x^b} V^b
+}
+\end{lemma}
+
+\begin{definition}[Commutator]
+The \bam{commutator} of two vectors $V,W$ is a vector $\comm[V]{W}$ with components 
+\eq{
+\comm[V]{W}^a = V^b \del_b W^a - W^b \del_B V^a
+}
+\end{definition}
+
+\begin{definition}[One Forms]
+A \bam{one form} $\omega$ is a real linear map that acts on vectors. Given a basis of vectors $E_a$, there is a corresponding dual basis of 1-forms $E^a$ such that 
+\eq{
+E^a(E_b) = \delta^a_b \,.
+}
+Hence a 1 form may be written as 
+\eq{
+\omega = \omega_a E^a \,.
+}
+The action of a one form on a vector can be written as 
+\eq{
+\omega(V) = \omega_a V^b E^a\pround{E_b} = \omega_a V^b \delta^a_b = \omega_a V^a
+}
+\end{definition}
+
+\begin{definition}[Differential]
+Given a real function on the manifold, the \bam{differential} of $f$, $df$, is a 1 form defined by 
+\eq{
+df(V) = Vf
+}
+\end{definition}
+
+\begin{lemma}
+The differentials of the coordinate functions, $dx^a$, for a dual basis to $\pd{x^a}$. 
+\end{lemma}
+
+\begin{lemma}
+Given two sets of coordinates on the manifold $x^a$, $\tilde{x}^a$, the components of a 1 form in the corresponding dual bases transform as 
+\eq{
+\tilde{\omega}_a = \pd[x^b]{\tilde{x^a}} \omega_b
+}
+\end{lemma}
+
+\begin{definition}[Exact]
+A 1 form $\omega$ is \bam{exact} if $\exists f$ such that $\omega = df$. 
+\end{definition}
+
+\begin{definition}[Tensor]
+A \bam{tensor} $T$ of type $(r,s)$ is a multilinear map of $r$ 1 forms and $s$ vectors. Given a basis and corresponding dual basis $E_a$, $E^a$, it will have the component expansion 
+\eq{
+T = T^{a_1 \dots a_r}_{b_1 \dots b_s} E_{a_1} \otimes \dots \otimes E_{a_r} \otimes E^{b_1} \otimes \dots \otimes E^{b_s}
+}
+\end{definition}
+
+\begin{lemma}
+Given two coordinate systems as before, the components of a tensor will transform as 
+\eq{
+\tilde{T}^{a_1 \dots a_r}_{b_1 \dots b_s} = \pd[\tilde{x}^{a_1}]{x^{c_1}} \dots \pd[\tilde{x}^{a_r}]{x^{c_r}} \pd[x^{d_1}]{\tilde{x}^{b_1}} \dots \pd[x^{d_s}]{\tilde{x}^{b_s}} T^{c_1 \dots c_r}_{d_1 \dots d_s}
+}
+\end{lemma}
+
+\begin{definition}[Metric]
+A \bam{metric} $g$ is a tensor of type $(0,2)$ that is 
+\begin{itemize}
+    \item Symmetric
+    \item Non-degenerate
+\end{itemize}
+The \bam{inverse metric} is a tensor of type $(2,0)$ that satisfies 
+\eq{
+g^{ab} g_{bc} = \delta^a_c
+}
+\end{definition}
+
+\begin{lemma}
+The metric tensor gives an isomorphism between vectors and one forms by transforming their components as 
+\eq{
+g_{ab} V^b = V_a
+}
+\end{lemma}
+
+\begin{definition}[Line Element]
+Given a metric, the \bam{line element} 
+\end{definition}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Differential Forms}
+
+\begin{definition}[Symmetrisation]
+Suppose a tensor $T$ has $n$ indices (it may have more, either raised of lowered). Then the \bam{symmetrisation} over these indices is 
+\eq{
+T_{(a_1 \dots a_n)} = \frac{1}{n!} \sum_{\sigma \in S_n} T_{\sigma(a_1 \dots a_n)} \,.
+}
+The \bam{antisymmetrisation} over the indices is 
+\eq{
+T_{[a_1 \dots a_n]} = \frac{1}{n!} \sum_{\sigma \in S_n} \sign(\sigma) T_{\sigma(a_1 \dots a_n)} \,.
+}
+\end{definition}
+
+\begin{definition}[Differential $p$ Form]
+A \bam{differential p-form} is a tensor $T$ of type $(0,p)$ such that $T$ is antisymmetric in each index, i.e. 
+\eq{
+T_{a_1 \dots a_p} = T_{[a_1 \dots a_p]}
+}
+\end{definition}
+
+\begin{definition}[Wedge Product]
+The \bam{wedge product} of a $p$ form $A$ and a $q$ form $B$ is $A \wedge B$ with components 
+\eq{
+(A\wedge B)_{a_1 \dots a_p b_1 \dots b_q} = A_{[a_1 \dots a_p} B_{b_1 \dots b_q]}
+}
+\end{definition}
+
+\begin{lemma}
+\eq{
+(B \wedge A) = (-1)^{pq} (A\wedge B)
+}
+\end{lemma}
+
+\begin{lemma}
+A differential $p$ form $A$ can be written as 
+\eq{
+A = A_{a_1 \dots a_p} E^{a_1} \wedge \dots \wedge E^{a_p}
+}
+\end{lemma}
+
+\begin{definition}[Exterior Derivative]
+The \bam{exterior derivative} of a $p$ form $A$ is a $(p+1)$ form $dA$ with components 
+\eq{
+(dA)_{b a_1 \dots a_p} = \del_{[b}A_{a_1 \dots a_p]}
+}
+\end{definition}
+
+\begin{lemma}
+\eq{
+d(A \wedge B) = dA \wedge B + (-1)^p A \wedge dB
+}
+\end{lemma}
+
+\begin{definition}
+\eq{
+d(dA)  = 0
+}
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Connections}
+
+\begin{definition}[Covariant Derivative]
+Given a vector $V$, a \bam{covariant derivative} is defined by 
+\eq{
+\nabla_b V^a  = \del_b V^a + \Gamma^a_{bc} V^c
+}
+$\Gamma^a_{bc}$ is called a \bam{connection}. The choice of connection defines the covariant derivative. It is also required that, for a scalar function $f$
+\eq{
+\nabla_a f = \del_a f 
+}
+\end{definition}
+
+\begin{lemma}
+Given a tensor $T$ of type $(r,s)$, its covariant derivative is 
+\eq{
+\nabla_c T^{a_1 \dots a_r}_{b_1 \dots b_s} = \del_c T^{a_1 \dots a_r}_{b_1 \dots b_s} + \Gamma^{a_1}_{cd} T^{d \dots a_r}_{b_1 \dots b_s} + \dots + \Gamma^{a_r}_{cd} T^{a_1 \dots d}_{b_1 \dots b_s} - \Gamma^d_{c b_1} T^{a_1 \dots a_r}_{d \dots b_s} - \dots - \Gamma^d_{c b_s} T^{a_1 \dots a_r}_{b_1 \dots d}
+}
+\end{lemma}
+
+\begin{idea}
+The covariant derivative is defined such that it transforms as a tensor. This means that the connection is \bam{not} a tensor, as the directional derivative is not a tensor. 
+\end{idea}
+
+\begin{definition}[Torsion Tensor]
+Given a connection $\Gamma$, the \bam{torsion tensor} $T$ is 
+\eq{
+T^a_{bc} = \Gamma^a_{bc} - \Gamma^a_{cb} = 2\Gamma^a_{[bc]}
+}
+It is required to be shown that it transforms as a tensor. 
+\end{definition}
+
+\begin{lemma}
+For a scalar $f$,
+\eq{
+(\nabla_b \nabla_a -\nabla_a \nabla_b) f = T^c_{ab} \nabla_c f 
+}
+\end{lemma}
+
+\begin{definition}[Metric Connection]
+Given a metric $g$, a metric connection $\Gamma$ is one such that 
+\eq{
+\nabla_c g_{ab} = 0
+}
+It can be calculated to be 
+\eq{
+\Gamma^a_{bc} = \frac{1}{2}g^{ad}\pround{ \del_c g_{bd} + \del_b g_{cd} - \del_d g_{bc}}
+}
+It is also called the \bam{Christoffel connection}. The connection is torsion free. 
+\end{definition}
 
 \begin{definition}[Vierbein Fields]
-The \bam{veirbein fields} are defined as $e^\mu_a$ such that, given a metric $g_{ab}$
+The \bam{veirbein fields} are defined as $e^\mu_a$ such that, given a metric $g_{ab}$,
 \[
-g_ab = e^\mu_a e^\nu_b \eta_{\mu\nu}
+g_{ab} = e^\mu_a e^\nu_b \eta_{\mu\nu}
 \]
 \end{definition}
 
@@ -42,7 +269,7 @@ e^a_\mu=g^{ab} \eta_{\mu\nu} e^\nu_b
 \end{definition}
 
 \begin{definition}[Pseudo-orthonormal Basis]
-Define the pseudo-orthonormal basis of one forms $\set{E^\mu}$ by 
+Define the \bam{pseudo-orthonormal basis} of one forms $\set{E^\mu}$ by 
 \[
 E^\mu = e^\mu_a dx^a
 \]
@@ -52,20 +279,24 @@ ds^2 = g_{ab} dx^a dx^b = \eta_{\mu\nu} E^{\mu} E^{\nu}
 \]
 \end{definition}
 
+
+
+
+
 \begin{definition}[Spin Connection]
 Define the \bam{spin connection} $\omega\indices{_\mu^\nu_\rho}$ with the covariant derivative 
 \[
 \nabla_\mu V^\nu = \del_\mu V^\nu + \omega\indices{_\mu^\nu_\rho} V^\rho
 \]
-subject to the constraints
+subject to the \bam{vierbein constraint}
 \[
 \nabla_a e^b_\nu = 0
 \]
-which gives the condition
+which gives
 \[
 \omega_{\lambda\tau\nu} =e_\lambda^a e_{b\tau}\left(\partial_a e_\nu^b+\Gamma_{ac}^b e_\nu^c \right)
 \]
-as well as having a vanishing torsion tensor 
+It is also required to have a vanishing torsion tensor 
 \[
 \nabla_\mu e^a_\nu - \nabla_\nu e^a_\mu = T\indices{^\rho_\mu_\nu} e^a_\rho
 \]
@@ -74,6 +305,74 @@ which gives
 \omega_{\mu\rho\sigma} = -\omega_{\mu\sigma\rho}
 \]
 \end{definition}
+
+\begin{definition}[Normal Coordinates]
+Given a point $x_0$, \bam{normal coordinates} at $x_0$ are coordinates such that 
+\eq{
+g_{ab} = C_{ab} + \mc{O}(x-x_0)^2
+}
+for some constants $C_{ab}$. This is equivalent to forcing $\Gamma = 0$ at $x_0$. 
+\end{definition}
+
+\begin{lemma}
+It is always possible to choose normal coordinates such that, at $x_0$, 
+\begin{itemize}
+    \item $g_{ab} = \eta_{ab}$.
+    \item $\del_c g_{ab} = 0$.
+\end{itemize}
+\end{lemma}
+
+\begin{idea}
+Any equation written entirely of terms of tensors that holds in one coordinate system will continue to hold in any other coordinate system, as all terms will transform the same. Often choosing normal coordinates s.t $g_{ab} = \eta_{ab}$ at a point will make calculations especially simple. 
+\end{idea}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Riemann Tensor}
+
+\begin{definition}[Riemann Tensor]
+The \bam{Riemann tensor} $R$ in spacetime indices is given by
+\eq{
+& (\nabla_a \nabla_b - \nabla_b \nabla_a) V^c = R\indices{^c_d_a_b} V^d \\
+\Leftrightarrow & R\indices{^c_d_a_b} = \del_a \Gamma^c_{db} - \del_b \Gamma^c_{da} + \Gamma^c_{ae} \Gamma^e_{db} - \Gamma^c_{be} \Gamma^e_{da}
+}
+\end{definition}
+
+\begin{theorem}[Symmetries of the Riemann Tensor]
+The Riemann tensor obeys 
+\begin{itemize}
+    \item $R_{abcd} = -R_{bacd}$
+    \item $R_{abcd} = R_{cdab}$
+    \item $R_{a[bcd]} = 0$ (First Bianchi Identity)
+\end{itemize}
+\end{theorem}
+
+\begin{definition}[Ricci Tensor]
+The \bam{Ricci tensor} is 
+\eq{
+R_{ab} = R\indices{^c_a_c_b}
+}
+\end{definition}
+
+\begin{definition}[Ricci Scalar]
+The \bam{Ricci scalar} is 
+\eq{
+R = R^a_a
+}
+\end{definition}
+
+\begin{definition}[Einstein Tensor]
+The \bam{Einstein tensor} $G_{ab}$ is defined by 
+\eq{
+G_{ab} = R_{ab} - \frac{1}{2} g_{ab} R 
+}
+\end{definition}
+
+\begin{lemma}[Second Bianchi Identity]
+\eq{
+0 = \nabla_a G^{ab}
+}
+\end{lemma}
+
 
 \begin{definition}[Riemann Tensor]
 Define the Riemann tensor in terms of $\omega$ as 
@@ -88,12 +387,18 @@ R_{abcd}(\Gamma) = e^\mu_a e^\mu_b e^\rho_c e^\sigma_d R_{\mu\nu\rho\sigma}(\ome
 \]
 \end{theorem}
 
-\begin{definition}[Ricci Spin Coefficients]
-Define the \bam{Ricci spin coefficients} $c\indices{^\mu_\rho_\sigma}$ by 
+\begin{definition}[Ricci Rotation Coefficients]
+Define the \bam{Ricci rotation coefficients} $c\indices{^\mu_\rho_\sigma}$ by 
 \[
 dE^\mu = \frac{1}{2} c\indices{^\mu_\rho_\sigma} E^\rho \wedge E^\sigma
 \]
 \end{definition}
+
+\begin{lemma}
+\eq{
+\omega_{\mu\nu\rho} = \frac{1}{2}\pround{c_{\mu\nu\rho} + c_{\rho\mu\nu} - c_{\nu\mu\rho}}
+}
+\end{lemma}
 
 \begin{definition}[Connection 1-form]
 Define the \bam{connection 1-form} by 
@@ -123,6 +428,226 @@ Cartan's first and second equations of structure are
     \item $\Omega\indices{^\mu_\nu} = d\omega\indices{^\mu_\nu} +  \omega\indices{^\mu_\rho} \wedge  \omega\indices{^\rho_\nu}$
 \end{itemize}
 \end{theorem}
+
+\begin{idea}
+Cartan's equations provide a more streamlined route to finding the Riemann tensor than computation using the Christoffel symbols. 
+\end{idea}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Geodesics}
+\begin{definition}[Proper Distance]
+Given an infinitesimal coordinate separation $dx^a$, the \bam{proper distance} is $ds$, where
+\eq{
+ds^2 = g_{ab} dx^a dx^b 
+}
+Given a coordinate path $x^a(\lambda)$, the proper distance along the path is 
+\eq{
+S[path] = \int \,ds = \int \sqrt{g_{ab} \frac{dx^a}{d\lambda} \frac{dx^b}{d\lambda}} \, d\lambda
+}
+\end{definition}
+
+\begin{definition}[Geodesic]
+Given fixed endpoints, a \bam{geodesic} is a path between the endpoints that extremises the proper distance functional. 
+\end{definition}
+
+\begin{definition}[Affine Parametrisation]
+Given a coordinate curve $x^a(\lambda)$, $\lambda$ is an \bam{affine parameter} if 
+\eq{
+\frac{d^2 \lambda}{ds^2} = 0 \Leftrightarrow \lambda = as + b
+}
+\end{definition}
+
+\begin{theorem}
+Extremising the proper distance functional is equivalent to extremising the functional 
+\eq{
+\int ds^2 = \int g_{ab} \frac{dx^a}{d\lambda} \frac{dx^b}{d\lambda} \, d\lambda \,.
+}
+for affine parameter $\lambda$. The Euler-Lagrange equations for this action then are 
+\eq{
+\frac{d^2 x^a}{d\lambda^2} + \Gamma^a_{bc} \frac{dx^b}{d\lambda} \frac{dx^c}{d\lambda}
+}
+These are often written as 
+\eq{
+V^b \nabla_b V^a = 0
+}
+for $V^b = \frac{dx^b}{d\lambda}$. 
+\end{theorem}
+
+\begin{lemma}
+Along an affinely parametrised geodesic, $\frac{dx}{d\lambda}^2$ is constant. 
+\end{lemma}
+
+\begin{theorem}[Geodesic Deviation Equation]
+Given a 1-parameter family of geodesics $x^a(t;s)$, where $t$ is the parameter along each geodesic and $s$ is the parameter of each geodesic, define 
+\eq{
+T^a(s) &= \frac{dx^a}{dt} \\
+S^a(t) &= \frac{dx^a}{ds}
+}
+Then 
+\eq{
+S^a \nabla_a T^b - T^a \nabla_a S^b =0
+}
+and 
+\eq{
+\frac{d^2 S^a}{dt^2} = R\indices{^a_b_c_d} T^b T^c S^d 
+}
+$\frac{d^2 S^a}{dt^2}$ is the \bam{relative acceleration of geodesics}. The force exerted in the case of $R \neq 0$ is called the \bam{tidal force}. 
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{definition}[Parallel Transport]
+Given a curve $x^a(\lambda)$ and a vector $V^a(\lambda_0)$ defined at $x^a(\lambda_0)$ the \bam{parallel transport} of $V$ along the curve is defined as as the solution $V(\lambda)$ to the ODE
+\eq{
+l^a \nabla_a V^b = 0
+}
+where $l^a = \frac{dx^a}{d\lambda}$. Expanding out this ODE is 
+\eq{
+\frac{dV^a}{d\lambda} + \Gamma^a_{bc} l^b V^c = 0
+}
+which has the general solution 
+\eq{
+V(\lambda) = V(\lambda_0) - \int_{\lambda_0}^\lambda \Gamma^{a}_{bc}(x(\lambda^\prime)) l^b(\lambda^\prime) V^c(\lambda^\prime) \, d\lambda^\prime
+}
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Integration}
+
+\begin{definition}[Levi-Civita Symbol]
+The \bam{Levi-Civita symbol} with n components is $\eta$ with components 
+\eq{
+\eta_{a_1 \dots a_n} = \sign(\sigma)
+}
+where
+\eq{
+a_1 \dots a_n = \sigma(1 \dots n)
+}
+for $\sigma \in S_n$. 
+\end{definition}
+
+\begin{lemma}
+Given a matrix $M^a_b$, 
+\eq{
+\eta_{a_1 \dots a_n} \det M = \eta_{b_1 \dots b_n} M^{a_1}_{b_1} \dots M^{a_n}_{b_n}
+}
+Applying to the coordinate change matrix $M^a_b = \pd[x^a]{\tilde{x}^b}$ gives 
+\eq{
+\eta_{a_1 \dots a_n} = \det\pround{\pd[\tilde{x}]{x}} \eta_{b_1 \dots b_n} \pd[x^{b_1}]{\tilde{x}^{a_1}} \dots \pd[x^{b_n}]{\tilde{x}^{a_n}}
+}
+so $\eta$ is a tensor density. 
+\end{lemma}
+
+\begin{definition}[Alternating Tensor]
+The \bam{alternating tensor} is 
+\eq{
+\eps_{a_1 \dots a_n} = g^\frac{1}{2} \eta_{a_1 \dots a_n}
+}
+where $g^\frac{1}{2} = \sqrt{\abs{\det g_{ab}}}$
+\end{definition}
+
+\begin{definition}[Invariant Volume Element]
+The \bam{invaraint volume element} in n dimensions is  
+\eq{
+g^\frac{1}{2} d^nx &= g^\frac{1}{2} dx^1 \wedge \dots \wedge dx^n \\
+&= g^\frac{1}{2} \frac{1}{n!} \eta_{a_1 \dots a_n} dx^{a_1} \wedge \dots \wedge dx^{a_n} \\
+&= \frac{1}{n!} \eps_{a_1 \dots a_n} dx^{a_1} \wedge \dots \wedge dx^{a_n}
+}
+\end{definition}
+
+\begin{theorem}[Stokes Theorem]
+Let $\Sigma$ be a volume with boundary $\del \Sigma$ whose normal is $n^a$. Let the invariant volume element on $\Sigma$ and $\del \Sigma$ be $g^\frac{1}{2} d^n x $ and $\gamma^\frac{1}{2} d^{n-1}x$ respectively. Then for $V^a$ a vector field on $\Sigma$ 
+\eq{
+\int_{\Sigma} \nabla_a V^a g^\frac{1}{2} d^n x = \int_{\del \Sigma} n_a V^a \gamma^\frac{1}{2} d^{n-1}x
+}
+\end{theorem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Spacetime Geometry}
+
+\begin{definition}[Timelike, Spacelike, and Null]
+Given a vector $V^a$ it is called 
+\begin{itemize}
+\item \bam{Timelike} if $V^2 < 0$.
+\item \bam{Spacelike} if $V^2 > 0$.
+\item \bam{Null} if $V^2 = 0$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Chronological/Causal Future/Past]
+The \bam{chronological future} of a point $p$ in the spacetime is $I^+(p)$, the set of points that can be reached from $p$ along future directed timelike curves. It is the interior of the future directed light cone. \\
+The \bam{causal future} of a point $p$ is $J^+(p)$, and is the set of point that can be reached from $p$ along future directed timelike or null curves. It it the union of the interior of the future directed light cone and the cone itself. \\
+Both of these definitions have past directed equivalents, labelled $I^-(p)$ and $J^-(p)$ respectively. 
+\end{definition}
+
+\begin{definition}[Lorentz Group]
+The \bam{Lorentz group} is the group of all transformations that preserve the Minkowski metric, i.e. 
+\eq{
+\eta &= \Lambda^T \eta \Lambda \\
+\Rightarrow \eta_{ab} &= \Lambda\indices{^c_a} \eta_{cd} \Lambda\indices{^d_b}
+}
+Lorentz transforms act on tensors of type $(r,s)$ as 
+\eq{
+T\indices{^{a_1}^\dots^{a_r}_{b_1}_\dots_{b_s}} \to \Lambda\indices{^{a_1}_{c_1}} \dots \Lambda\indices{^{a_r}_{c_r}} \Lambda\indices{^{d_1}_{b_1}} \dots \Lambda\indices{^{d_s}_{b_s}} T\indices{^{c_1}^\dots^{c_r}_{d_1}_\dots_{d_s}} 
+}
+\end{definition}
+
+\begin{definition}[Poincare Group]
+The \bam{Poincare group} consists of Lorentz transformations and translations. It is the group of symmetries of Mikowski spacetime. 
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{definition}[Einstein-Hilbert Action]
+The \bam{Einstein - Hilbert action} is 
+\eq{
+S_{EH} = \frac{1}{2}M_{pl}^2 \int (R-2\Lambda) g^{\frac{1}{2}} d^4 x
+}
+\end{definition}
+
+
+\begin{definition}[Energy Momentum Tensor]
+The \bam{energy momentum tensor} $T$ is defined such that the variation of the matter action $S_{Matter}$ under $g_{ab} \to g_{ab} + h_{ab}$ is given by 
+\eq{
+\delta S_{Matter} = \int \frac{1}{2} T_{ab} h^{ab} g^\frac{1}{2} \, d^4x
+}
+\end{definition}
+
+\begin{theorem}
+The Einstein equations are obtained from finding when the action 
+\eq{
+S = S_{EH} + S_{Matter}
+}
+is stationary, i.e. $\delta S = 0$ with respect to variations in the metric. 
+\end{theorem}
+
+\begin{definition}[Einstein Equations]
+The \bam{Einstein Equations} are a set of 10 non-linear PDEs for the metric in the presence of some energy momentum tensor, and they are 
+\eq{
+M_{pl}^2 ( R_{ab} - \frac{1}{2}R g_{ab} + \Lambda g_{ab}) = T_{ab}
+}
+$\Lambda$ is a cosmological constant, and is ignored typically in general relativity. 
+\end{definition}
+
+\begin{prop}[Trace Reversed Einstein Equations]
+In $D>2$ dimensions this can be written as 
+\eq{
+M_{pl}^2( R - \frac{D}{2}R + D\Lambda) = T
+}
+with $T=T\indices{^a_a}$. Hence 
+\eq{
+R &= \frac{2}{D-2}\left[ D\Lambda - M_{pl}^{-2} T \right] \\
+\Rightarrow R_{ab} &=  \frac{1}{D-2}\left[ D\Lambda - M_{pl}^{-2} T \right] g_{ab} -\Lambda g_{ab} + M_{pl}^{-2}T_{ab} \\
+&= \frac{2\Lambda}{D-2}g_{ab} + M_{pl}^{-2}\left[ T_{ab} - \frac{1}{D-2} T g_{ab} \right]
+}
+in $D=4$ this becomes 
+\eq{
+R_{ab} = \Lambda g_{ab} + M_{pl}^{-2} \left[ T_{ab} -\frac{1}{2}Tg_{ab} \right] 
+}
+\end{prop}
 
 
 
