@@ -76,7 +76,7 @@ M_{pl} = (8 \pi G)^{-\frac{1}{2}}
 \end{definition}
 
 \begin{definition}[Mostly plus signature]
-The signature that will be used throughout these notes will be the \bam{mostly plus signature}. As these notes will only consider 1+3 dimensional spacetime, as these are all the dimensions that have been observed, this take the form $(-,+,+,+)$. 
+The signature that will be used throughout these notes will be the \bam{mostly plus signature}. As these notes will only consider 1+3 dimensional spacetime, as these are all the dimensions that have been observed, this takes the form $(-,+,+,+)$. 
 \end{definition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1068,15 +1068,15 @@ so to ensure that $\eps$ remains small it is required $\eta \Delta N_{infl}, \et
 
 Consider the action
 \eq{
-S = \frac{1}{2} M_{pl}^2 \int \left[ R - M_{pl}^{-2}\left( -\del_\mu \phi \del^\mu \phi + 2V(\phi) \right) \right] g^\frac{1}{2} d^4 x 
+S = \frac{1}{2} M_{pl}^2 \int \left[ R + M_{pl}^{-2}\left( -\del_\mu \phi \del^\mu \phi - 2V(\phi) \right) \right] g^\frac{1}{2} d^4 x 
 }
 where $\phi$ is some scalar field. To ensure consistency with the symmetries of FLRW it must be that $\phi = \phi(t)$.  Note the similarity to the Einstein Hilbert action \ref{def:CSM:EinsteinHilbertAction} if 
 \eq{
-\Lambda = M_{pl}^2 \left( \frac{1}{2} \del_\mu \phi \del^\mu \phi - V(\phi) \right)
+\Lambda = M_{pl}^{-2} \left( \frac{1}{2} \del_\mu \phi \del^\mu \phi + V(\phi) \right)
 }
 The energy momentum tensor of this action is 
 \eq{
-T_{\mu\nu} &= \del_\mu \phi \del_\nu \phi - g_{\mu\nu} \left[ \frac{1}{2} \del_\sigma \phi \del^\sigma \phi - V(\phi) \right] \\
+T_{\mu\nu} &= \del_\mu \phi \del_\nu \phi + g_{\mu\nu} \left[ -\frac{1}{2} \del_\sigma \phi \del^\sigma \phi - V(\phi) \right] \\
 &= (\rho + p) u_\mu u_\nu + g_{\mu\nu}p
 }
 making the identifications 

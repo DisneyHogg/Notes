@@ -23,9 +23,118 @@ Let $q:\mbb{R}_{>0} \times [0,T] \to \mbb{R}$ satisfy
 \eq{
 q_t &= q_{xx} \\
 q|_{t=0} &= q_0 \\
+q_x |_{x=0} &= g_1
+}
+Assume the boundary conditions are compatible, and that $q_0$ has sufficient decay.\\
+Define $g_0 = q|_{x=0}$. Then we have the transforms for $\lambda \in \mbb{C}$
+\eq{
+\hat{q}(\lambda,t) &= \int_0^\infty e^{-i\lambda x} q(x,t) \, dx \\
+\tilde{g}_j(\lambda,t) &= \int_0^t e^{\lambda \tau} g_j(t) \, dt
+}
+Note that convergence of the integrals mean that $\hat{q}$ is defined only for $\Re(-i\lambda) \leq 0 \Rightarrow \Im \lambda \leq 0$, but $\tilde{g}_j$ are defined on all of $\mbb{C}$. \\
+We may now derive a global relation.
+\eq{
+\del_t \hat{q}(\lambda,t) &= \int_0^\infty e^{-i\lambda x} q_t(x,t) \, dx \\
+&= \int_0^\infty e^{-i\lambda x} q_{xx}(x,t) \, dx \\
+&= \psquare{e^{-i\lambda x} q_x(x,t)}_{x=0}^\infty - \int_0^\infty -i\lambda e^{-i\lambda x} q_x(x,t) \, dx \\
+&= -g_1(t) + i\lambda \pbrace{\psquare{e^{-i\lambda x} q(x,t)}_0^\infty- \int_0^\infty -i\lambda e^{-i\lambda x} q(x,t) \, dx}\\
+&= -g_1(t) - i\lambda g_0(t) - \lambda^2 \hat{q}(\lambda,t)
+}
+In these steps, we have used the domain on $\lambda$ and the niceness of $q$ to argue that the upper limits are 0. Hence 
+\eq{
+\del_t \pround{e^{\lambda^2 t} \hat{q}(\lambda,t)} &= -[g_1(t) + i\lambda g_0(t)] e^{\lambda^2 t} \\
+\Rightarrow e^{\lambda^2 t}\hat{q}(\lambda,t) - \hat{q}_0(\lambda) &= -\int_0^t e^{\lambda^2 \tau} [g_1(\tau) + i\lambda g_0(\tau)] \, d\tau \\
+\Rightarrow e^{\lambda^2 t} \hat{q}(\lambda,t) &= \hat{q}_0(\lambda) - [\tilde{g}_1(\lambda^2,t) + i\lambda \tilde{g}_0(\lambda^2,t)]
+}
+This global relation is defined on the Lower Half Plane (LHP). \\
+Now using the Fourier inversion theorem 
+\eq{
+q(x,t) &= \frac{1}{2\pi} \int_{-\infty}^\infty e^{i\lambda x} \hat{q}(\lambda,t) \, d\lambda \\
+&= \frac{1}{2\pi} \int_{-\infty}^\infty e^{i\lambda x - \lambda^2 t} \hat{q}_0(\lambda) \, d\lambda - \frac{1}{2\pi} \int_{-\infty}^\infty e^{i\lambda x - \lambda^2 t} [\tilde{g}_1(\lambda^2,t) + i\lambda \tilde{g}_0(\lambda^2,t)] \, d\lambda
+}
+We now wish to deform the second contour integral, as it will be convenient when we wish to remove $g_0$ from the solution. Note 
+\eq{
+e^{-\lambda^2 t }\tilde{g}_j(\lambda^2,t) &= \int_0^t e^{\lambda^2 (\tau-t)} g_j(\tau) \,d\tau \\
+&= \psquare{\frac{e^{\lambda^2 (\tau-t)}}{\lambda^2} g_j(\tau)}_0^t - \int_0^t \frac{e^{\lambda^2 (\tau-t)}}{\lambda^2} g_j^{(1)}(\tau) \, d\tau \\
+&= \frac{1}{\lambda^2}\psquare{g_j(t) - e^{-\lambda^2 t}g_j(0)} - \frac{1}{\lambda^4}\psquare{g_j^{(1)}(t) - e^{-\lambda^2 t}g_j^{(1)}(0)} + \dots 
+}
+so if $\Re \lambda^2 \geq 0$, $\tilde{g}_j(\lambda^2) = \mc{O}\pround{\frac{1}{\lambda^2}}$ as $\abs{\lambda}\to\infty$. Now we can deform the contour onto the contour in the UHP $\Re \lambda^2 = 0$. This is an application of Jordan's lemma (hence the requirement that we defrom in the UHP) and Cauchy's theorem. The contour can also be written $\del D^+$, where
+\eq{
+D^+ = \set{\lambda \in \mbb{C} : \Re\lambda^2 \leq 0, \Im \lambda \geq 0}
+}
+\eq{
+\Rightarrow  q(x,t) = \frac{1}{2\pi} \int_{-\infty}^\infty e^{i\lambda x - \lambda^2 t} \hat{q}_0(\lambda) \, d\lambda - \frac{1}{2\pi} \int_{\del D^+} e^{i\lambda x - \lambda^2 t} [\tilde{g}_1(\lambda^2,t) + i\lambda \tilde{g}_0(\lambda^2,t)] \, d\lambda
+}
+We now recognise
+\eq{
+\int_0^t \dots dt = \int_0^T \dots dt - \int_t^T \dots dt
+}
+so we can write 
+\eq{
+\tilde{g}_j(\lambda^2,t) = \tilde{g}_j(\lambda^2,T) - \int_t^T e^{\lambda^2 \tau} g_j(\tau) \, d\tau
+}
+By the same argument as before 
+\eq{
+e^{-\lambda^2 t} \int_t^T e^{\lambda^2 \tau} g_j(\tau) \, d\tau = \mc{O}\pround{\frac{1}{\lambda^2}}
+}
+provided $\Re \lambda^2 \leq 0$. Hence we apply Jordan's lemma and Cauchy's theorem again to get 
+\eq{
+q(x,t) = \frac{1}{2\pi} \int_{-\infty}^\infty e^{i\lambda x - \lambda^2 t} \hat{q}_0(\lambda) \, d\lambda - \frac{1}{2\pi} \int_{\del D^+} e^{i\lambda x - \lambda^2 t} [\tilde{g}_1(\lambda^2) + i\lambda \tilde{g}_0(\lambda^2)] \, d\lambda
+}
+labelling $\tilde{g}_j(\lambda^2,T) = \tilde{g}_j(\lambda^2)$. \\
+Recall now the global relation 
+\eq{
+e^{\lambda^2 t}\hat{q}(\lambda,t) = \hat{q}_0(\lambda) - \tilde{g}_1(\lambda^2,t) - i\lambda\tilde{g}_0(\lambda^2,t) \quad \Im\lambda \leq 0
+}
+By noting the symmetry $\lambda \to - \lambda$, we have the second global relation 
+\eq{
+e^{\lambda^2 t}\hat{q}(-\lambda,t) = \hat{q}_0(-\lambda) - \tilde{g}_1(\lambda^2,t) + i\lambda\tilde{g}_0(\lambda^2,t) \quad \Im\lambda \geq 0
+}
+This second global relation is valid along $\del D^+$, so we may substitute to give 
+\eq{
+q(x,t) = \frac{1}{2\pi} \int_{-\infty}^\infty e^{i\lambda x - \lambda^2 t} \hat{q}_0(\lambda) \, d\lambda - \frac{1}{2\pi} \int_{\del D^+} e^{i\lambda x - \lambda^2 t} [\tilde{g}_1(\lambda^2) + e^{\lambda^2 T}\hat{q}(-\lambda,T) - \hat{q}_0(-\lambda)+ \tilde{g}_1(\lambda^2)] \, d\lambda
+}
+As before, we may show 
+\eq{
+e^{\lambda^2 (T-t)} \hat{q}(-\lambda,T) = \mc{O}\pround{\frac{1}{\lambda}}
+}
+as $\abs{\lambda} \to \infty$ for $\Re\lambda^2 \leq 0$, so by Jordan's lemma and Cauchy's theorem we may say that the contribution og the $\hat{q}$ term in the integral is 0. We may then deform back the $\hat{q}_0$ contour to give 
+\eq{
+q(x,t) = \frac{1}{2\pi} \int_{-\infty}^\infty e^{i\lambda x - \lambda^2 t} \psquare{\hat{q}_0(\lambda) + \hat{q}_0(-\lambda)} \,d\lambda - \frac{1}{\pi}\int_{\del D^+} e^{i\lambda x - \lambda^2 t} \tilde{g}_1(\lambda^2) \, d\lambda
+}
+To verify that this is the solution, not that because all the $x$ and $t$ dependence is in the exponentials, certainly the solution obeys the PDE. Moreover, evaluating at $t=0$ we may use Jordan's lemma and Cauchy's theorem to remove the contribution from $\hat{q}_0(-\lambda)$ and $\tilde{g}_1$. What remains is the inverse FT of $\hat{q}_0$, as desired. In the case of $x=0$, once the derivative is taken the first integral cancels by symmetry. Parametrising $\del D^+$ as $\lambda^2 = is$ yields $g_1(t)$ in the latter integral. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Question 2}
+Let $q:\mbb{R}_{>0} \times [0,T] \to \mbb{R}$ satisfy the IBVP 
+\eq{
+q_t &= -q_{xxx}-q_x \\
+q|_{t=0} &= q_0 \\
+q |_{x=0} &= g_0
+}
+with compatibility and decay conditions. Preemptively defining 
+\eq{
+\omega(\lambda) = -(i\lambda)^3 - (i\lambda) = i\lambda(\lambda^2 - 1)
+}
+we can derive the global relation 
+\eq{
+\del_t \hat{q}(\lambda,t) &= g_2(t) +i \lambda g_1(t) +(i\lambda)^2 g_0(t) + (i\lambda)^3 \hat{q}(\lambda,t) + g_0(t) + (i\lambda)\hat{q}(\lambda,t) \\
+\Rightarrow  e^{\omega(\lambda)t} \hat{q}(\lambda,t) &= \hat{q}_0(\lambda) + \psquare{\tilde{g}_2(\omega(\lambda),t) + i\lambda \tilde{g}_1(\omega(\lambda),t) + (1-\lambda^2)\tilde{g}_0(\omega(\lambda),t)}
+}
+valid in the LHP. Again we may invert this to get 
+\eq{
+q(x,t) = \frac{1}{2\pi} \int_{\mbb{R}} e^{i\lambda x - \omega(\lambda)t} \hat{q}_0(\lambda) \, d\lambda + \frac{1}{2\pi} \int_{\mbb{R}} e^{i\lambda x - \omega(\lambda)t} \psquare{\tilde{g}_2(\omega(\lambda),t) + i\lambda \tilde{g}_1(\omega(\lambda),t) + (1-\lambda^2)\tilde{g}_0(\omega(\lambda),t)} \, d\lambda 
+}
+If we define 
+\eq{
+D^+ = \set{\lambda \in \mbb{C} : \Re \omega(\lambda) \leq 0 , \Im\lambda > 0}
+}
+then we may deform the contour of the $\tilde{g}$ terms by the same argument as before onto $\del D^+$. We now seek solutions $\nu(\lambda)$ to the equation 
+\eq{
+\omega(\nu(\lambda)) &= \omega(\lambda) \\
+\Rightarrow \nu(\lambda)^3&=
 
 }
-
-
 
 \end{document}

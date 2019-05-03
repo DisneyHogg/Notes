@@ -434,6 +434,21 @@ Cartan's equations provide a more streamlined route to finding the Riemann tenso
 \end{idea}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Conformal Transformations}
+
+\begin{definition}[Weyl Tensor]
+Define the \bam{Weyl tensor} $C_{abcd}$ by 
+\eq{
+R_{abcd} = C_{abcd} + \frac{1}{2}(g_{ac}R_{bd} + g_{bd}R_{ac} - g_{ad}R_{bc} - g_{bc}R_{ad}) - \frac{1}{6}R(g_{ac}g_{bd}-g_{ad}g_{bc})
+}
+It is designed to have the same symmetries as the Riemann tensor, but satisfy 
+\eq{
+C\indices{^c_a_c_b} = 0
+}
+\end{definition}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Geodesics}
 \begin{definition}[Proper Distance]
 Given an infinitesimal coordinate separation $dx^a$, the \bam{proper distance} is $ds$, where
@@ -604,7 +619,7 @@ The \bam{Poincare group} consists of Lorentz transformations and translations. I
 \begin{definition}[Einstein-Hilbert Action]
 The \bam{Einstein - Hilbert action} is 
 \eq{
-S_{EH} = \frac{1}{2}M_{pl}^2 \int (R-2\Lambda) g^{\frac{1}{2}} d^4 x
+S_{EH} = \frac{1}{16\pi G} \int (R-2\Lambda) g^{\frac{1}{2}} d^4 x
 }
 \end{definition}
 
@@ -616,6 +631,25 @@ The \bam{energy momentum tensor} $T$ is defined such that the variation of the m
 }
 \end{definition}
 
+\begin{example}
+In the case where 
+\eq{
+L_{Matter} = -\frac{1}{2} \del_a \phi \del^a \phi - V(\phi)
+}
+for some scalar field $\phi$, the energy momentum tensor is 
+\eq{
+T_{ab} = \del_a \phi \del_b \phi +g_{ab} \psquare{-\del_a \phi \del^a \phi -V(\phi)}
+}
+\end{example}
+
+\begin{definition}[Einstein Equations]
+The \bam{Einstein Equations} are a set of 10 non-linear PDEs for the metric in the presence of some energy momentum tensor, and they are 
+\eq{
+( R_{ab} - \frac{1}{2}R g_{ab} + \Lambda g_{ab}) = 8\pi G T_{ab}
+}
+$\Lambda$ is a cosmological constant, and is ignored typically in general relativity. 
+\end{definition}
+
 \begin{theorem}
 The Einstein equations are obtained from finding when the action 
 \eq{
@@ -624,28 +658,20 @@ S = S_{EH} + S_{Matter}
 is stationary, i.e. $\delta S = 0$ with respect to variations in the metric. 
 \end{theorem}
 
-\begin{definition}[Einstein Equations]
-The \bam{Einstein Equations} are a set of 10 non-linear PDEs for the metric in the presence of some energy momentum tensor, and they are 
-\eq{
-M_{pl}^2 ( R_{ab} - \frac{1}{2}R g_{ab} + \Lambda g_{ab}) = T_{ab}
-}
-$\Lambda$ is a cosmological constant, and is ignored typically in general relativity. 
-\end{definition}
-
 \begin{prop}[Trace Reversed Einstein Equations]
 In $D>2$ dimensions this can be written as 
 \eq{
-M_{pl}^2( R - \frac{D}{2}R + D\Lambda) = T
+( R - \frac{D}{2}R + D\Lambda) = 8\pi G T
 }
 with $T=T\indices{^a_a}$. Hence 
 \eq{
-R &= \frac{2}{D-2}\left[ D\Lambda - M_{pl}^{-2} T \right] \\
-\Rightarrow R_{ab} &=  \frac{1}{D-2}\left[ D\Lambda - M_{pl}^{-2} T \right] g_{ab} -\Lambda g_{ab} + M_{pl}^{-2}T_{ab} \\
-&= \frac{2\Lambda}{D-2}g_{ab} + M_{pl}^{-2}\left[ T_{ab} - \frac{1}{D-2} T g_{ab} \right]
+R &= \frac{2}{D-2}\left[ D\Lambda - 8 \pi G  T \right] \\
+\Rightarrow R_{ab} &=  \frac{1}{D-2}\left[ D\Lambda - 8 \pi G  T \right] g_{ab} -\Lambda g_{ab} + 8 \pi G T_{ab} \\
+&= \frac{2\Lambda}{D-2}g_{ab} + 8 \pi G \left[ T_{ab} - \frac{1}{D-2} T g_{ab} \right]
 }
 in $D=4$ this becomes 
 \eq{
-R_{ab} = \Lambda g_{ab} + M_{pl}^{-2} \left[ T_{ab} -\frac{1}{2}Tg_{ab} \right] 
+R_{ab} = \Lambda g_{ab} + 8 \pi G  \left[ T_{ab} -\frac{1}{2}Tg_{ab} \right] 
 }
 \end{prop}
 
