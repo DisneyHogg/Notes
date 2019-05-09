@@ -100,7 +100,7 @@ The \bam{centre} of a Lie algebra $\mf{g}$ is
 \end{definition}
 
 \begin{definition}[Simple Lie Algebra]
-A Lie Algebra is \bam{simple} if it contains no non-trivial ideals.
+A Lie Algebra is \bam{simple} if it non-abelian and contains no non-trivial ideals.
 \end{definition}
 
 \begin{idea}
@@ -484,7 +484,11 @@ is the \bam{Cartan-Weyl basis} for $\mf{g}$.
 
 \begin{definition}[Roots]
 The \bam{roots} of a Lie Algebra are $\alpha\in\Phi$.
-These are the weights corresponding to the adjoint representation. 
+These are the weights corresponding to the adjoint representation. The roots can be seen as elements of the dual space to the Cartan subalgebra $\mf{h}^\ast$ by 
+\eq{
+\alpha : \mf{h} \to \mbb{R} \\
+\alpha(H^i e_i) = \alpha^i e_i
+}
 \end{definition}
 
 \begin{fact}
@@ -512,10 +516,35 @@ The Killing form gives the dual space $\mf{h}^\ast$ a natural inner product $(\c
 (\alpha, \beta) = \left(\kappa^{-1}\right)_{ij} \alpha^i \beta^j = k^{ij} \alpha_i \beta_j
 \]
 Defining $\alpha_i=\left( \kappa^{-1} \right)_{ij} \alpha^j$. Note that it is immediate that the bracket is symmetric and bilinear. Positive definiteness follows from the fact
+\eq{
+(\alpha,\beta) = \sum_{\delta \in \Phi} (\alpha,\delta) (\beta,\delta)
+}
+(proven by noting the trace of an operator is the sum over its eigenvalues, so $k^{ij} = \sum_{\delta \in \Phi} \delta^i \delta^j$)
 \[
 (\alpha, \alpha)=\sum_{\delta\in\Phi} (\alpha, \delta)^2
 \]
 \end{definition}
+
+Note that the above definition shows that we actually have an inner product on the span of the roots. The following lemma closes that hole 
+\begin{lemma}
+\eq{
+\mf{h}^\ast = \spn_{\mbb{C}}\Phi
+}
+Hence $r$ roots may be chosen to form a basis $\{ \alpha_{(i)} : i=1,\dots,r \}$
+\end{lemma}
+\begin{proof}
+Suppose not. Then $\exists \lambda \in \mf{h}^\ast$ s.t. 
+\eq{
+\forall \alpha \in \Phi \quad (\lambda,\alpha) = 0
+}
+now let $H_\lambda = \lambda_i H^i $, where $\lambda^i = \lambda (H^i)$. Then 
+\eq{
+\forall H \in \mf{h} \quad \comm[H_\lambda]{H} &= 0 \\
+\forall \alpha \in \Phi \quad \comm[H_\lambda]{E^\alpha} &= (\lambda,\alpha) E^\alpha \\ 
+\Rightarrow \forall X \in \mf{g} \quad \comm[H_\lambda]{X} &= 0
+}
+Hence $\mf{g}$ has the non-trivial ideal $\spn_{\mbb{C}} \{H_{\lambda}\}$ and so $\mf{g}$ is not simple. Contradiction. 
+\end{proof}
 
 \begin{definition}[Coroots]
 Given a root $\alpha\in\Phi$ the \bam{coroot} is 
@@ -632,6 +661,7 @@ Noting
     \item $(w_\alpha)^2=id$
     \item $w_\alpha (\alpha) = -\alpha$
     \item $(\alpha,x)=0 \Rightarrow w_\alpha (x) = x$
+    \item $(w_\alpha(x),w_\alpha(y)) = (x,y)$
 \end{itemize}
 It can be seen $w_\alpha$ is indeed a reflection in the hyperplane orthogonal to $\alpha$, and hence is an isometry. The \bam{Weyl group} is 
 \[
@@ -640,26 +670,20 @@ W=\set{  w_\alpha : \alpha\in\Phi  }
 with composition as the group operation. Using the previous fact it can be seen $w_\alpha$ restricts to an isometry on $\Phi$. Hence $W$ acts via permutation on $\Phi$, and so $W\leq S_\Phi$
 \end{definition}
 
-\begin{fact}
-Under the assumption that $ad_{H^i}, ad_{H^j}$ are simultaneously diagonalisable $\forall i,j$ the Killing form, scaled by a factor $\frac{1}{N}$, is given by 
-\[
-\kappa^{ij}=\frac{1}{N} \sum_{\delta\in\Phi} \delta^i\delta^j
-\]
-Hence 
-\[
-(\alpha, \beta)= \frac{1}{N}\sum_{\delta\in\Phi} (\alpha, \delta) (\beta, \delta)
-\]
-\end{fact}
-
-\begin{fact}
+\begin{lemma}
 \[
 \forall \alpha, \beta\in\Phi \; (\alpha, \beta)\in\mbb{R}
 \]
-\end{fact}
-
-\begin{theorem}
-$\mf{h}^\ast=\spn_\mbb{C}\set{  \alpha\in\Phi  }$. Hence $r$ roots may be chosen to form a basis $\set{  \alpha_{(i)} : i=1,\dots,r  }$
-\end{theorem}
+\end{lemma}
+\begin{proof}
+Write 
+\eq{
+\frac{(\alpha,\alpha)}{2} R_{\alpha,\beta} &= \sum_{\delta \in \Phi} \psquare{\frac{(\alpha,\alpha)}{2} R_{\alpha,\delta}} \psquare{\frac{(\beta,\beta)}{2} R_{\beta,\delta}} \\ 
+\Rightarrow  \frac{2}{(\beta,\beta)} R_{\alpha,\beta} &= \sum_{\delta \in \Phi} R_{\alpha,\delta} R_{\beta,\delta} \in \mbb{R} \\
+\Rightarrow (\beta,\beta) & \in \mbb{R} \\ 
+\Rightarrow (\alpha,\beta) &= \frac{(\alpha,\alpha)}{2} R_{\alpha,\beta} \in \mbb{R}
+}
+\end{proof}
 
 \begin{definition}[$\mf{h}^\ast_\mbb{R}$]
 Given a basis of roots $\set{  \alpha_{(i)} : i=1,\dots,r  }$, $\mf{h}^\ast_\mbb{R}$ is defined as 
@@ -836,7 +860,7 @@ Hence all weights Lie in the weight lattice.
 \begin{definition}[Fundamental Weights]
 The dual to the coroot basis, i.e. the weights $\omega_{(i)}$ such that 
 \[
-(\alpha_{(i)}, \omega_{(j)})=\delta_{ij}
+(\alpha^\vee_{(i)}, \omega_{(j)})=\delta_{ij}
 \]
 are the \bam{fundamental weights}
 \end{definition}
@@ -854,7 +878,7 @@ Given a finite dimensional representation, the \bam{highest weight} is $\Lambda$
 \[
 \forall v_\Lambda\in V_\Lambda, \, \forall \alpha\in\Phi_+ \quad R(E^\alpha)v_\Lambda=0
 \]
-If the representation is irreducible, all other weight are generated as product of $R(E^{-\alpha})$ for $\alpha\in\Phi_+$. 
+Note that a highest weight must exist if the rep is f.d. If the representation is irreducible, all other weight are generated as product of $R(E^{-\alpha})$ for $\alpha\in\Phi_+$. 
 \end{definition}
 
 \begin{theorem}[Theorem of the Highest Weight]
@@ -868,7 +892,7 @@ Given a representation R, for $v\in V_\lambda$,
 \]
 Hence if $R=R_\Lambda$ all weights are of the form 
 \[
-\lambda=\Lambda=\mu
+\lambda=\Lambda-\mu
 \]
 for $\mu=\sum_{i=1}^r \mu_i \alpha_{(i)}$, $\mu_i\in\mbb{N}_0$. Hence writing 
 \[
@@ -880,13 +904,16 @@ gives that
 \]
 \end{fact}
 
+\begin{lemma}
+If $R_\Lambda, R_{\Lambda^\prime}$ are two representations with weights $\lambda,\lambda^\prime$ respectively, then $\lambda+\lambda^\prime$ is a weight of $R_\Lambda \otimes R_{\Lambda^\prime}$
+\end{lemma}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Symmetries in QM}
 
 Consider a Hamiltonian $\hat{H}$, and the associated Hilbert space corresponding to the sum of the energy eigenspaces 
 \eq{
 \mc{H} &= \bigoplus_{n \geq 0} \mc{H}_n \\
-\mc{H}_n &= \set{\ket{\psi} : \hat{H} \ket{\psi} = E_n \ket{\psi}}
+\mc{H}_n &= \{\ket{\psi} : \hat{H} \ket{\psi} = E_n \ket{\psi}\}
 }
 
 \begin{definition}[Symmetry Transformation]
@@ -912,6 +939,19 @@ For a symmetry transform $U= e^{i \del}$, where $\del$ is a Hermitian operator, 
 }
 and so $\del$ corresponds to a conserved quantity. 
 \end{prop}
+\begin{proof}
+The first two properties are immediate from the definition of a symmetry transformation. 
+Now we seek to evaluate 
+\eq{
+f(s) = e^{is \del} \hat{H} e^{-is\del}
+}
+Note 
+\eq{
+f^\prime(s) &= e^{is\del} i\comm[\del]{\hat{H}} e^{-is \del} \\
+f(0) &= \hat{H}
+}
+So in order to have $f(s) = \hat{H}$ we need $\comm[\del]{\hat{H}} = 0$.
+\end{proof}
 
 Given a Hamiltonian system it is natural to consider 
 \eq{
@@ -922,7 +962,7 @@ the \emph{maximal} set of conserved quantities, which leads to the lie algebra
 \mf{g}_\mbb{R} = \spn_\mbb{R} \set{i\del^a}
 }
 \begin{fact}
-The group $G = \exp \mc{g}_\mbb{R}$ will be unitary, so will have unitary representations. Hence the induced representations on $\mf{g}_\mbb{R}$ will be antihermitian. 
+The group $G = \exp \mf{g}_\mbb{R}$ will be unitary, so will have unitary representations. Hence the induced representations on $\mf{g}_\mbb{R}$ will be antihermitian. 
 \end{fact}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -942,7 +982,7 @@ where $g \in U(1)$\footnote{We need $U(1)$ here so that $g^\ast = g^{-1}$}. This
 \end{example}
 
 \begin{definition}[Gauge Symmetry]
-A \bam{gauge symmetry} is a symmetry whose action varies in spacetime. i.e. let $G$ be a Lie group with representation $D$ and representation space $V$ 
+A \bam{gauge symmetry} is a symmetry arising from a non-phsyical redundancy whose action varies in spacetime. i.e. let $G$ be a Lie group with representation $D$ and representation space $V$ 
 \eq{
 g &: \mbb{R}^{1,3} \to G \\
 g(x) &= \exp\pround{\eps X(x)} \\
@@ -956,7 +996,10 @@ by
 \eq{
 \phi(x) \to D(g(x)) \phi(x)
 }
-Recall $D$ induces a representation $R$ on $L(G)$. 
+Recall $D$ induces a representation $R$ on $L(G)$ by 
+\eq{
+D(g) = \exp(R(X))
+}
 \end{definition}
 
 We will take $D$ to have dimension $N$, so $V \cong \mbb{C}^N$, and take the standard inner product on $V$\footnote{Here $u,v \in V$ are vectors in our vector space and $\bm{u},\bm{v} \in \mbb{C}^N$ are their images under some isomorphism. }
@@ -965,7 +1008,11 @@ We will take $D$ to have dimension $N$, so $V \cong \mbb{C}^N$, and take the sta
 }. We will also take $D$ to be a unitary representation.
 
 \begin{idea}
-By taking $D$ to be a unitary representation we tie back in with the idea of symmetries in quantum mechanics, which is what we will be aiming for here.  
+By taking $D$ to be a unitary representation we tie back in with the idea of symmetries in quantum mechanics, which is what we will be aiming for here. Explicitly, by requiring $D$ to be a unitary representation gives that, under a gauge transform  
+\eq{
+(\phi,\phi) \to (D\phi,D\phi) = (\phi,\phi)
+}
+so the norm of the state is conserved. 
 \end{idea}
 
 \begin{example}[$U(1)$ gauge symmetry]
@@ -1028,6 +1075,14 @@ The term
 is gauge invariant. 
 \end{corollary}
 
+\begin{idea}
+The idea of the covariant derivative is to introduce a gauge field to cancel out the effect of the changing gauge, in order to make terms 
+\eq{
+(D_\mu \phi, D^\mu \phi) = (D_\mu \phi)^\dagger (D^\mu \phi)
+}
+gauge invariant. 
+\end{idea}
+
 \begin{definition}[Field Strength Tensor]
 Define the \bam{field strength tensor} 
 \eq{
@@ -1040,5 +1095,36 @@ F_{\mu\nu} = \del_\mu A_\nu - \del_\nu A_\mu + \comm[A_\mu]{A_\nu}
 \delta_X(F_{\mu\nu}) = \eps \comm[X]{F_{\mu\nu}}
 }
 \end{prop}
+\begin{proof}
+\eq{
+\delta_X (F_{\mu\nu}) =& \del_\mu (\delta_X A_\nu) - \del_\nu (\delta_X A_\mu) + \comm[\delta_X A_\mu ]{A_\nu} + \comm[A_\mu]{\delta_X A_\nu} \\
+=& \del_\mu ( - \eps \del_\nu X + \eps \comm[X]{A_\nu}) - \del_\nu ( - \eps \del_\mu X + \eps \comm[X]{A_\mu}) + [- \eps \del_\mu X + \eps [X,A_\mu], A_\nu] \\
+ & + \comm[A_\mu]{- \eps \del_\nu X + \eps \comm[X]{A_\nu}} \\
+ =& \eps \comm[\del_\mu X]{A_\nu} + \eps\comm[X]{\del_\mu A_\nu} - \eps \comm[\del_\nu X]{A_\mu} - \eps\comm[X]{\del_\nu A_\mu} - \eps\comm[\del_\mu X]{A_\nu} \\
+ & + \eps[\comm[X]{A_\mu}, A_\nu] - \eps\comm[A_\mu]{\del_\nu X} + \eps \comm[A_\mu]{\comm[X]{A_\nu}} \\
+ & = \eps\comm[X]{\del_\mu A_\nu - \del_\nu A_\mu} - \eps\comm[A_\nu]{\comm[X]{A_\mu}} - \eps\comm[A_\mu]{\comm[A_\nu]{X}} \\
+ &= \eps\comm[X]{\del_\mu A_\nu - \del_\nu A_\mu + \comm[A_\mu]{A_\nu}}
+}
+\end{proof}
+
+\begin{corollary}
+Letting $\kappa$ be the Killing form, 
+\eq{
+\kappa(F_{\mu\nu}, F^{\mu\nu})
+}
+is gauge invariant. 
+\end{corollary}
+
+\begin{idea}
+We introduced the gauge field to give us gauge invariant derivative terms. We now see that the field strength tensor allows us to construct gauge invariant terms from this gauge field, which can then be included in any Lagrangian for a theory. Note that for a simple, compact Lie group, $\kappa^{ab} = - \kappa \delta^{ab}$ and 
+\eq{
+\kappa(F_{\mu\nu}, F^{\mu\nu}) = -\kappa \sum F_{\mu\nu}^{(a)} F^{\mu\nu (a)}
+}
+\end{idea}
+
+A general gauge invariant Lagrangian thus looks like 
+\eq{
+\mc{L} = \frac{1}{g^2} \kappa(F_{\mu\nu},F^{\mu\nu}) + (D_\mu\phi , D^\mu\phi) - W((\phi,\phi))
+}
 
 \end{document}

@@ -107,6 +107,10 @@ To verify that this is the solution, not that because all the $x$ and $t$ depend
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Question 2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Question 3}
 Let $q:\mbb{R}_{>0} \times [0,T] \to \mbb{R}$ satisfy the IBVP 
 \eq{
 q_t &= -q_{xxx}-q_x \\
@@ -115,16 +119,16 @@ q |_{x=0} &= g_0
 }
 with compatibility and decay conditions. Preemptively defining 
 \eq{
-\omega(\lambda) = -(i\lambda)^3 - (i\lambda) = i\lambda(\lambda^2 - 1)
+\omega(\lambda) = (i\lambda)^3 + (i\lambda) = i\lambda(1 - \lambda^2)
 }
 we can derive the global relation 
 \eq{
-\del_t \hat{q}(\lambda,t) &= g_2(t) +i \lambda g_1(t) +(i\lambda)^2 g_0(t) + (i\lambda)^3 \hat{q}(\lambda,t) + g_0(t) + (i\lambda)\hat{q}(\lambda,t) \\
-\Rightarrow  e^{\omega(\lambda)t} \hat{q}(\lambda,t) &= \hat{q}_0(\lambda) + \psquare{\tilde{g}_2(\omega(\lambda),t) + i\lambda \tilde{g}_1(\omega(\lambda),t) + (1-\lambda^2)\tilde{g}_0(\omega(\lambda),t)}
+\del_t \hat{q}(\lambda,t) &= -g_2(t) -i \lambda g_1(t) -(i\lambda)^2 g_0(t) - (i\lambda)^3 \hat{q}(\lambda,t) - g_0(t) - (i\lambda)\hat{q}(\lambda,t) \\
+\Rightarrow  e^{\omega(\lambda)t} \hat{q}(\lambda,t) &= \hat{q}_0(\lambda) - \psquare{\tilde{g}_2(\omega(\lambda),t) + i\lambda \tilde{g}_1(\omega(\lambda),t) + (1-\lambda^2)\tilde{g}_0(\omega(\lambda),t)}
 }
 valid in the LHP. Again we may invert this to get 
 \eq{
-q(x,t) = \frac{1}{2\pi} \int_{\mbb{R}} e^{i\lambda x - \omega(\lambda)t} \hat{q}_0(\lambda) \, d\lambda + \frac{1}{2\pi} \int_{\mbb{R}} e^{i\lambda x - \omega(\lambda)t} \psquare{\tilde{g}_2(\omega(\lambda),t) + i\lambda \tilde{g}_1(\omega(\lambda),t) + (1-\lambda^2)\tilde{g}_0(\omega(\lambda),t)} \, d\lambda 
+q(x,t) = \frac{1}{2\pi} \int_{\mbb{R}} e^{i\lambda x - \omega(\lambda)t} \hat{q}_0(\lambda) \, d\lambda - \frac{1}{2\pi} \int_{\mbb{R}} e^{i\lambda x - \omega(\lambda)t} \psquare{\tilde{g}_2(\omega(\lambda),t) + i\lambda \tilde{g}_1(\omega(\lambda),t) + (1-\lambda^2)\tilde{g}_0(\omega(\lambda),t)} \, d\lambda 
 }
 If we define 
 \eq{
@@ -133,8 +137,32 @@ D^+ = \set{\lambda \in \mbb{C} : \Re \omega(\lambda) \leq 0 , \Im\lambda > 0}
 then we may deform the contour of the $\tilde{g}$ terms by the same argument as before onto $\del D^+$. We now seek solutions $\nu(\lambda)$ to the equation 
 \eq{
 \omega(\nu(\lambda)) &= \omega(\lambda) \\
-\Rightarrow \nu(\lambda)^3&=
-
+\Rightarrow \nu(\lambda)^3 - \nu(\lambda) &= \lambda^3 - \lambda \\
+\Rightarrow 0 &= (\nu(\lambda) - \lambda)(\nu(\lambda)^2+\lambda \nu(\lambda) + \lambda^2-1)
 }
-
+Note that $\nu(\lambda) = \lambda$ must always be a solution to this equation. Label the other two roots $\nu_1, \nu_2$, which can be seen to be distinct from the quadratic (i.e. look at $b^2 - 4ac = \lambda^2 - 4(\lambda^2-1) = 4-3\lambda^2$). Note we have the helpful relations 
+\eq{
+\nu_1 + \nu_2 &= -\lambda \\
+\nu_1 \nu_2 &= \lambda^2 - 1
+}As $\omega(\lambda)$ is cubic with 3 distinct roots, the condition $\Re\omega(\lambda) \leq 0$ must define three regions. Moreover, as $\lambda \in \mbb{R} \Rightarrow \omega(\lambda) \in \mbb{I}$. Further thinking/drawing shows that $D^+$ is one of these regions, so the maps $\lambda \to \nu_1, \lambda \to \nu_2$ must permute the regions. Hence we get two more GRs 
+\eq{
+e^{\omega(\lambda)t} \hat{q}(\nu_j,t) &= \hat{q}_0(\nu_j) - \psquare{\tilde{g}_2(\omega(\lambda),t) + i\nu_j \tilde{g}_1(\omega(\lambda),t) + (1-\nu_j^2)\tilde{g}_0(\omega(\lambda),t)} 
+}
+Both of these two equations must be valid on $\del D^+$ as $\nu(\lambda)$ must end up in the LHP under the transform. Moreover, as a result, the $\hat{q}$ terms will give 0 contribution over the integral region as $\Im \nu(\lambda) \leq 0$, so in the following algebra we may preemptively set the term to zero (note therefore the equalities do not hold exactly, but more precisely as an equivalence relation under the integral) Hence
+\eq{
+(\nu_1 - \nu_2)\tilde{g}_2 &= \psquare{\nu_1 \hat{q}_0(\nu_2) - \nu_2 \hat{q}_0(\nu_1)} - \psquare{\nu_1(1-\nu_2^2) - \nu_2(1-\nu_1^2)} \tilde{g}_0 \\
+&= \psquare{\nu_1 \hat{q}_0(\nu_2) - \nu_2 \hat{q}_0(\nu_1)} - \psquare{(\nu_1 - \nu_2)(1 + \nu_1 \nu_2) } \tilde{g}_0 \\
+\Rightarrow \tilde{g}_2 &= \frac{\nu_1 \hat{q}_0(\nu_2) - \nu_2 \hat{q}_0(\nu_1)}{\nu_1 - \nu_2} - \lambda^2 \tilde{g}_0
+}
+and 
+\eq{
+i(\nu_1 - \nu_2)\tilde{g}_1 &= \psquare{\hat{q}_0(\nu_1) - \hat{q}_0(\nu_2)} - (\nu_1^2 - \nu_2^2) \tilde{g}_0 \\ 
+\Rightarrow i \tilde{g}_1 &= \frac{\hat{q}_0(\nu_1) - \hat{q}_0(\nu_2)}{\nu_1 - \nu_2} - (\nu_1 + \nu_2) \tilde{g}_0 \\
+&= \frac{\hat{q}_0(\nu_1) - \hat{q}_0(\nu_2)}{\nu_1 - \nu_2} + \lambda \tilde{g}_0
+}
+Substituting yields 
+\eq{
+q(x,t) =&  \frac{1}{2\pi} \int_{\mbb{R}} e^{i\lambda x - \omega(\lambda)t} \hat{q}_0(\lambda) \, d\lambda \\
+& - \frac{1}{2\pi} \int_{\del D^+} e^{i\lambda x - \omega(\lambda)t} \psquare{\frac{(\lambda - \nu_2) \hat{q}_0(\nu_1) - (\lambda - \nu_1) \hat{q}_0(\nu_2)}{\nu_1 - \nu_2} + (1-\lambda^2)\tilde{g}_0(\omega(\lambda),t)} \, d\lambda
+}
 \end{document}
