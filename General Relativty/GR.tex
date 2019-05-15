@@ -22,6 +22,8 @@ A brief overview of some key ideas, concepts, and facts that I find useful in re
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Preliminaries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{General}
 
 \begin{definition}[Minkowski Metric]
 In these note the convention will be take that the Minkowski metric is 
@@ -36,6 +38,22 @@ We will take natural units in which
 c = 1
 }
 \end{definition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Green's Function Solution to Sourced Wave Equation}
+Consider the sourced wave equation 
+\eq{
+\pround{-\del_t^2 + \nabla^2}\phi(x) = C(\bm{x},t)
+}
+Taking the Fourier transform with respect to space and time \eq{
+f(\bm{x},t) &= \int e^{-i(\bm{k} \cdot \bm{x}-\omega t)} \hat{f}(\bm{k},\omega) \, \frac{d^3k \,d\omega}{(2\pi)^4} \\ 
+\Rightarrow f(x) &= 
+}
+gives 
+\eq{
+(\omega^2 - \abs{\bm{k}}^2) \hat{\phi}(\bm{k},\omega) &= \hat{C}(\bm{k},\omega) \\
+\Rightarrow \hat{\phi}(\bm{k},\omega) &= \frac{\hat{C}(\bm{k},\omega)}{(\omega^2 - \abs{\bm{k}}^2)}
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Differential Geometry}
@@ -669,10 +687,18 @@ g_{ab}(x) dx^a dx^b = g_{ab}(x+\zeta) d(x + \zeta)^a d(x+\zeta)^b
 }
 This condition can be expanded out to first order to give 
 \eq{
-\nabla_a \zeta_b + \nabla_b \zeta_a = 2\nabla_{(a}k_{b)} = 0
+\nabla_a \zeta_b + \nabla_b \zeta_a = 2\nabla_{(a}\zeta_{b)} = 0
 }
-This is \bam{Killing's equation} and it's solutions are called \bam{Killing vectors}
+This is \bam{Killing's equation} and it's solutions are called \bam{Killing vectors}.
 \end{definition}
+
+\begin{lemma}
+If $k$ is a Killing 
+\eq{
+\nabla_a \nabla_b k_c = R\indices{_a_b_c^d} k_d
+}
+Hence a Killing vector field is uniquely determined by $k$ and $\nabla k$ at a point. There are $D$ independent choices of $k$ and $\frac{1}{2}D(D-1)$ choices for $\nabla k$, so the total number of independent determinations of Killing vectors is $\frac{1}{2}D(D+1)$. 
+\end{lemma}
 
 \begin{lemma}
 Killing vectors form a Lie algebra with the bracket being the commutator, i.e. given $k,l$ Killing vectors
@@ -1026,6 +1052,165 @@ T \approx & 2\pround{\sqrt{r_1^2 - b^2} + \sqrt{r_2^2 - b^2}} + 4 M \left( \log 
 & + 2 M \left( \sqrt { \frac { r _ { 1 } - b } { r _ { 1 } + b } } + \sqrt { \frac { r _ { 2 } - b } { r _ { 2 } + b } } \right)
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cosmology}
+In general relativity of cosmology, the universe is approximated to be homogeneous and isotropic. Hence the spatial part of the metric must be have 6 Killing vectors (corresponding to translation, rotation\footnote{and one more?})
+\begin{definition}[FLRW metric]
+The FLRW metric is 
+\eq{
+ds^2 = -dt^2 + a(t)^2 d\sigma_k^2
+}
+where $a$ is some scale factor function of time and 
+\eq{
+d\sigma_k^2 = dr^2 + f_k(r)^2 \psquare{d\theta^2 + \sin^2\theta d\phi^2}
+}
+and 
+\eq{
+f_0(r) &= r \\
+f_1(r) &= \sin r \\
+f_{-1}(r) &= \sinh r
+}
+These spacetimes have constant curvature.
+\end{definition}
 
+\begin{definition}[Fluid Energy Momentum Tensor]
+In a fluid with density $\rho$, pressure $p$, and 4-velocity $u$, the energy-momentum tensor is 
+\eq{
+T^{ab} = (\rho + p) u^a u^b + p g^{ab}
+}
+\end{definition}
+
+\begin{lemma}
+For a fluid at rest $u^a = (1,0,0,0)$. Hence the conservation of the energy-momentum tensor gives 
+\eq{
+\dot{\rho} = -3(p + \rho) \frac{\dot{a}}{a}
+}
+\end{lemma}
+
+\begin{definition}[Equation of State]
+An \bam{equation of state} is a relation $p = p(\rho)$ for a fluid. Important examples are 
+\begin{itemize}
+    \item Dust: $p = 0$
+    \item Radiation: $p = \frac{1}{3}\rho$
+    \item Dark Energy: $p = - \rho$
+\end{itemize}
+In all these cases $p = \omega \rho$. 
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Gravitational Radiation}
+
+We may consider perturbations $h_{ab}$ around a background metric $g_{ab}^{(0)}$ to get a full metric 
+\eq{
+g_{ab} = g_{ab}^{(0)} + h_{ab}
+}
+where $h_{ab}$ is considered small. We typically take $g_{ab}^{(0)} = \eta_{ab}$. 
+
+\begin{lemma}
+The Einstein equation for the full metric with an energy momentum tensor $T_{ab}$ sourcing the perturbation reduces to 
+\eq{
+\delta R_{ab} -\frac{1}{2}\delta R g_{ab}^{(0)} -\frac{1}{2}R h_{ab} = 8\pi T_{ab}
+}
+Using 
+\eq{
+\delta R_{ab} = -\frac{1}{2} \Box h_{ab} + \frac{1}{2} \nabla_d \nabla_a h\indices{^d_b} + \frac{1}{2} \nabla_d \nabla_b h\indices{^d_a} - \frac{1}{2} \nabla_a \nabla_ b h
+}
+where $h = g_{ab}^{(0)} h^{ab}$ gives 
+\eq{
+-\Box h_{ab} + \del_d \del_a h\indices{^d_b} + \frac{1}{2} \del_d \del_b h\indices{^d_a} - \del_a \del_b h + \eta_{ab}\Box h - \eta_{ab} \del_c \del_d h^{cd} = 16\pi T_{ab} 
+}
+\end{lemma}
+
+\begin{lemma}
+The physical perturbation is invariant under the gauge transform 
+\eq{
+h_{ab} \to h_{ab} + \del_a V_b + \del_b V_a
+}
+for some vector $V$. 
+\end{lemma}
+
+\begin{definition}[Harmonic Gauge]
+The \bam{harmonic gauge} is chosen such that 
+\eq{
+\del_a \pround{h^{ab} - \frac{1}{2}\eta^{ab}h} = 0
+}
+This may always be chosen, as can be seen using the Green's function for the flat wave operator. 
+\end{definition}
+
+\begin{definition}[Transverse Tracefree Gauge]
+The \bam{transverse tracefree gauge} is the harmonic gauge with the additional conditions 
+\eq{
+\del_a h^{ab} &= 0 \\
+h &= 0 
+}
+\end{definition}
+
+\begin{definition}[Trace Reversed Perturbation]
+Given a metric perturbation $h_{ab}$, the \bam{trace reversed perturbation} is 
+\eq{
+\bar{h}_{ab} = h_{ab} -\frac{1}{2} \eta_{ab} h
+}
+\end{definition}
+
+\begin{lemma}
+In the harmonic gauge, the linearised Einstein equation reduces to 
+\eq{
+-\Box h_{ab} + \frac{1}{2} \eta_{ab} \Box h = 16\pi T_{ab}
+}
+which after tracing reduces to 
+\eq{
+-\Box h_{ab} = 16\pi \pround{T_{ab} - \frac{1}{2} \eta_{ab} T }
+}
+or equivalently 
+\eq{
+-\Box \bar{h}_{ab} = 16\pi T_{ab}
+}
+\end{lemma}
+
+\begin{lemma}
+The geodesic deviation equation for particles on adjacent geodesics at rest is 
+\eq{
+\frac{d^2 S^a}{dt^2} = \frac{1}{2} \eta^{ab} \pround{\del_0^2 h_{bc}} S^c
+}
+\end{lemma}
+
+\begin{definition}[Effective Energy Momentum Tensor]
+The Einstein equation may be expanded up to second order to have 
+\eq{
+\psquare{R_{ab} - \frac{1}{2}R g_{ab}}^{(1)} + \psquare{R_{ab} - \frac{1}{2}R g_{ab}}^{(2)} = 8\pi T_{ab}
+}
+where the upper index represents the order of $h$ in the term. Hence the \bam{effective energy momentum tensor} is defined as $t_{ab}$ where
+\eq{
+8\pi t_{ab} = - \psquare{R_{ab} - \frac{1}{2}R g_{ab}}^{(2)}
+}
+\end{definition}
+
+
+
+\begin{definition}[Time Average]
+The \bam{time average} of a tensor $X$ with period $T$ is 
+\eq{
+\left\langle X \right\rangle = \frac{1}{T} \int_0^T X(t) \, dt 
+}
+\end{definition}
+
+\begin{lemma}
+The time average obeys 
+\begin{itemize}
+    \item $\braket{\del_a (\dots)} = 0 $
+    \item $\braket{\del_a(\dots)\del_b(\dots)} = -\braket{(\dots)\del_a\del_b (\dots)}$
+\end{itemize}
+\end{lemma}
+
+\begin{lemma}
+In terms of the trace reversed perturbation the effective energy momentum tensor is 
+\eq{
+t_{ab} = \frac { 1 } { 32 \pi } \left\langle \partial _ { a } \overline { h } _ { c d } \partial _ { b } \overline { h } ^ { c d } - \frac { 1 } { 2 } \partial _ { a } \overline { h } \partial _ { b } \overline { h } - 2 \partial _ { c } \overline { h } _ { a } ^ { c } \partial _ { d } \overline { h } _ { b } ^ { d } \right\rangle
+}
+In the transverse tracefree gauge this becomes 
+\eq{
+t_{ab} = \frac { 1 } { 32 \pi } \left\langle \partial _ { a } \overline { h } _ { c d } \partial _ { b } \overline { h } ^ { c d }\right\rangle
+}
+\end{lemma}
 
 \end{document}

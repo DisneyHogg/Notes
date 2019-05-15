@@ -320,7 +320,7 @@ where $K = 0, \pm1$, and
 \eq{
 f(\chi) = \left\{ \begin{array}{lc} \sinh^2 \chi  & K = -1 \\
     \chi^2 & K=0 \\
-    0\sin^2 \chi & K=1
+    \sin^2 \chi & K=1
     \end{array} \right.
 }
 \end{definition}
@@ -473,8 +473,9 @@ which defines the $\bam{luminosity distance}$ $d_L$
  \end{prop}
 \begin{proof}
 \eq{
-l = \frac{L}{4\pi (\chi a_o)^2}\left(frac{a_e}{a_o}\right)^2
+l = \frac{L}{4\pi (\chi a_o)^2}\left(\frac{a_e}{a_o}\right)^2
 }
+with the factors coming from: the physical distance corresponding to the comoving distance at the observation time, the reduction in the energy of a photon due to redshift, and the reduced rate of photon arrival. 
 \end{proof}
 
 \begin{definition}[Angular Diameter Distance]
@@ -503,7 +504,7 @@ r_H = \frac{1}{H}
 \end{definition}
 
 \begin{definition}[e-folds]
-If, during expansion $a \to e^N a$, is it said that \bam{N e-fold of expansion have occurred}. $N$ can we written as a variable 
+If, during expansion $a \to e^N a$, is it said that \bam{N e-folds of expansion have occurred}. $N$ can we written as a variable 
 \eq{
 dN= Hdt = d(\log a) \Leftrightarrow N = \log a + \text{ constant}
 }
@@ -571,7 +572,7 @@ This suggests a very large fine tuning of the initial value of $\Omega_K$
 \begin{example}[Horizon Problem]\label{example:CSM:horizon problem}
 In a single component universe with $w\in(0,\frac{1}{3})$ we find 
 \eq{
-\chi(z) &= \frac{1}{H_0} \int_0^z (1+z)^{-\frac{3(1+w)}{2}} \\
+\chi(z) &= \frac{1}{H_0} \int_0^z (1+z)^{-\frac{3(1+w)}{2}} \, dz \\
 &= \frac{1}{H_0}\left[ -\frac{2}{1+3w} (1+z)^{-\frac{1+3w}{2}}\right]_0^z \\
 &= \frac{1}{H_0}\frac{2}{1+3w}\left[1-(1+z)^{-\frac{1+3w}{2}}\right]
 }
@@ -581,7 +582,7 @@ For $z\gg1$ we thus have
 }
 Alternatively we can calculated that particle horizon from the beginning of the universe to redshift $z$ as 
 \eq{
-x_{p.h.}(z) &= \frac{1}{H_0} \int_z^\infty (1+z)^{-\frac{3(1+w)}{2}} \\
+x_{p.h.}(z) &= \frac{1}{H_0} \int_z^\infty (1+z)^{-\frac{3(1+w)}{2}} \, dz\\
 &=  \frac{1}{H_0}\left[ -\frac{2}{1+3w} (1+z)^{-\frac{1+3w}{2}}\right]_z^\infty \\
 &= \frac{1}{H_0}\frac{2}{1+3w} (1+z)^{-\frac{1+3w}{2}} \\
 &= \frac{2}{1+3w} \frac{1+z}{H(z)}
@@ -634,7 +635,7 @@ TdS = V \frac{d\rho}{dT} dT + (\rho + p) dV
 \end{align}
 and from the symmetry of partial derivatives 
 \eq{
-\pd{v} \pd[S]{T} &= \pd{T} \pd[S]{V} \\
+\pd{V} \pd[S]{T} &= \pd{T} \pd[S]{V} \\
 \Rightarrow \pd{V} \left( \frac{V}{T} \frac{d\rho}{dT} \right) &= \pd{T} \left(\frac{\rho+p}{T} \right) \\
 \Rightarrow \frac{1}{T} \frac{d\rho}{dT} &= - \frac{\rho+p}{T^2} + \frac{1}{T} \left( \frac{d\rho}{dT} + \frac{dp}{dT} \right) \\
 \Rightarrow \frac{dp}{dT} = \frac{\rho+p}{T}
@@ -660,7 +661,7 @@ n_a ( \bm{x},t) &= \frac{2}{\sqrt{-g}} g_a \int \frac{d^3\bm{P
 where 
 \begin{itemize}
     \item $g_a$ is the degeneracy of the species, e.g. 2 for a photon
-    \item $E_{bm{P}} = \sqrt{m^2 + |\bm{P}|^2}$
+    \item $E_{\bm{P}} = \sqrt{m^2 + |\bm{P}|^2}$
 \end{itemize}
 and 
 \eq{
@@ -781,7 +782,7 @@ n_a &= g_a \left( \frac{mT}{2\pi} \right)^\frac{3}{2} e^\frac{\mu-m}{T} \\
 \rho_a &= g_a \left( \frac{mT}{2\pi} \right)^\frac{3}{2} e^\frac{\mu-m}{T} \left(m+\frac{3}{2}T \right) = n_a \left(m+\frac{3}{2}T \right)  \\
 p_a &= g_a \left( \frac{mT}{2\pi} \right)^\frac{3}{2} e^\frac{\mu-m}{T} T = n_a T 
 }
-Note that is relativistic and non relativistic particles are in thermal equilibrium and $\mu \ll T$ then 
+Note that if relativistic and non relativistic particles are in thermal equilibrium and $\mu \ll T$ then 
 \eq{
 \frac{\rho_{\text{non-rel}}}{\rho_\text{rel}} \propto e^{-\frac{m}{T}} \left(\frac{T}{m}\right)^\frac{5}{2} \ll 1
 }
@@ -802,7 +803,7 @@ such that the total energy density is
 A possible way to use this definition is to, during radiation domination, note 
 \eq{
 0 &= \dot{\rho} + 4H\rho \quad \text{from the continuity equation} \\
-&= \propto \dot{T} + HT \quad \text{using $\rho\propto T^3$}
+&\propto \dot{T} + HT \quad \text{using $\rho\propto T^4$}
 }
 In a flat universe the Friedmann equation gives 
 \begin{align}\label{eq:CSM:5}
@@ -824,7 +825,7 @@ The entropy
 \eq{
 S = \frac{(\rho + p)V}{T}
 }
-But $\rho,p \propto T^4$ and $T\propto a^{-1}$. Hence $S \propto a^0$ so constant. Instead, if it is assumed entropy is constant, then for constant $g_\ast$ $T\propto a^{-1}$. 
+But $\rho,p \propto T^4$, $T\propto a^{-1}$, and $V\propto a^3$. Hence $S \propto a^0$ so constant. Instead, if it is assumed entropy is constant, then for constant $g_\ast$, $T\propto a^{-1}$. 
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -879,7 +880,7 @@ Note that
     }
     \item $\Gamma \ll H \Rightarrow$ reaction is too slow for expansion of the universe, and solutions becomes 
     \eq{
-    a^{-3} \frac{d(a^3 n_1)}{dt} \Rightarrow n_i(t) \approx n_i(a_\ast) \left( \frac{a_\ast}{a(t)}\right)^{-3}
+    a^{-3} \frac{d(a^3 n_1)}{dt}=0 \Rightarrow n_i(t) \approx n_i(a_\ast) \left( \frac{a_\ast}{a(t)}\right)^{-3}
     }
     where $a_\ast$ is when last $\Gamma \approx H$. 
 \end{itemize}
@@ -915,17 +916,17 @@ a^{-3} \frac{d(a^3 X_n(n_n + n_p))}{dt} &= \lambda_{np} \left\{ (1-X_n)(n_n+n_p)
 }
 Let $x=\frac{Q}{T}$ so 
 \eq{
-\frac{dx}{dt}=-x\frac{\dot{T}}{T} = xH \quad \text{using } T \propto a^{-1}
+\frac{dx}{dt}=-x\frac{\dot{T}}{T} = xH \quad \text{using} \quad T \propto a^{-1}
 }
 then 
-\eq{
+\be\label{eq:CSM:16}
 \frac{dX_n}{dx} = \frac{\lambda_{np}(x)}{xH(x)}\left[ e^-x - X_n(1+e^{-x})\right]
-}
+\ee
 \hl{It is an exercise in quantum field theory to find that }
 \eq{
 \lambda_{np}(x) = \frac{255}{t_{life}x^5}(12+6x+x^2)
 }
-with $t_{life} \sim 887s\sim 15min$ the neutron lifetime. \\
+with $t_{\text{life}} \sim 887s\sim 15\text{min}$ the neutron lifetime. \\
 Finally at this time, 
 \eq{
 g_\ast = \underbrace{(1\times2)}_{1 \text{ photon}} + \frac{7}{8}[\underbrace{(3\times1)}_{3 \text{ neutrinos}} + \underbrace{(3\times 1)}_{3 \text{ antineutrinos}}+\underbrace{(1\times 2)}_{1 \text{ electron}} + \underbrace{(1\times2)}_{1 \text{ positron}}] = 10.75
@@ -936,10 +937,10 @@ H(x) &= \sqrt{\frac{g_\ast}{90}} \frac{T^2 \pi}{M_{pl}} \quad \text{from \ref{eq
 &= \frac{1}{x^2}\sqrt{\frac{g_\ast}{90}} \frac{Q^2 \pi}{M_{pl}} \\
 &= \frac{H(1)}{x^2} \approx \frac{1.1 s^{-1}}{x^2}
 }
-The solution may then be found numerically. 
+The solution to \ref{eq:CSM:16} may then be found numerically. 
 
 \begin{remark}
-When $T\sim 0.1 MeV$, neutron decay now becomes important (this correspond to when the interaction time is comparable to the decay time). At this point to take account for decay, multiply $n_n$ by $e^{-\frac{t}{t_{life}}}$
+When $T\sim 0.1 MeV$, neutron decay now becomes important (this corresponds to when the interaction time is comparable to the decay time). At this point to take account for decay, multiply $n_n$ by $e^{-\frac{t}{t_{\text{life}}}}$
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -967,7 +968,9 @@ Define the \bam{baryon-to-photon ratio}
 So assuming $n_n\sim n_p\sim n_b$ the \bam{\hl{baryon number density}} yields
 
 \eq{
-\frac{n_D}{n_b} \approx \eta_b \left( \frac{T}{m_p}\right)^\frac{3}{2} e^\frac{B_D}{T}
+\frac{n_D}{n_b} & \approx n_b \frac{3}{4}\left( \frac{4\pi}{m_p T} \right)^\frac{3}{2} e^{\frac{B_D}{T}}\\
+& \approx \eta_b \psquare{2 \frac{\zeta(3)}{\pi^2}T^3} \cdot \frac{3}{4}\left( \frac{4\pi}{m_p T} \right)^\frac{3}{2} e^{\frac{B_D}{T}} \\
+& \approx \eta_b \left( \frac{T}{m_p}\right)^\frac{3}{2} e^\frac{B_D}{T}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1013,7 +1016,7 @@ Inflation requires $\eps < 1 \Rightarrow w < -\frac{1}{3}$. It will be seen late
 \end{definition}
 
 \begin{prop}
-Approximately $50 e-$folds passed during inflation. 
+Approximately $50$ e-folds passed during inflation. 
 \end{prop}
 \begin{proof}
 In order to solve the Horizon problem (example \ref{example:CSM:horizon problem}) it is necessary that the particle horizon is greater than the Hubble radius. For approximately de Sitter expansion, $H$ is approximately constant, so $d_{p.h.}\approx \frac{1}{H}$, thus comparing the \hl{comoving distances}\footnote{why the comoving distances?} 
@@ -1030,7 +1033,7 @@ Hence using definition \ref{def:CSM:1} and the Friedmann equation in a flat univ
 }
 gives 
 \eq{
-\frac{a_{reh} H_{reh}}{a_0 H_0} &= (\frac{\frac{cst}{T_{CMB,0}}\sqrt{(g_\ast)_0 \frac{\pi^2}{90} } \frac{T_{CMB,0}^2}{M_{pl}}}{\frac{cst}{T_{reh}}\sqrt{(g_\ast)_{reh} \frac{\pi^2}{90} } \frac{T_{reh,0}^2}{M_{pl}}})^{-1} \\
+\frac{a_{reh} H_{reh}}{a_0 H_0} &= \pround{\frac{\frac{cst}{T_{CMB,0}}\sqrt{(g_\ast)_0 \frac{\pi^2}{90} } \frac{T_{CMB,0}^2}{M_{pl}}}{\frac{cst}{T_{reh}}\sqrt{(g_\ast)_{reh} \frac{\pi^2}{90} } \frac{T_{reh,0}^2}{M_{pl}}}}^{-1} \\
 &\approx \frac{T_{reh}}{T_{CMB,0}}
 }
 Now $T_{CMB,0} \approx 2.7K \approx 0.2 meV = 2 \times 10^{-13} Gev $
@@ -1052,11 +1055,11 @@ Taking the uncertainty in $T_{reh}$ to be s.t. that $T_{reh} \in (1,10^{15}) GeV
 \begin{prop}
 For slow roll inflation, it is sufficient that 
 \eq{
-\forall n  0 < \xi_n \ll 1
+\forall n, \quad  0 < \xi_n \ll 1
 }
 \end{prop}
 \begin{proof}
-For slow roll inflation it is required that $0 < \eps \ll 1$ as already discussed. No Taylor expanding $\eps(N)$ from the beginning of inflation $N=N_\ast$ gives \eq{
+For slow roll inflation it is required that $0 < \eps \ll 1$ as already discussed. Taylor expanding $\eps(N)$ from the beginning of inflation $N=N_\ast$ gives \eq{
 \eps(N) - \eps(N_\ast) &= \pd[\eps]{N}|_{N_\ast}(N-N_\ast) + \pds[\eps]{N}|_{N_\ast} + \mc{O}(\del_N^3 \eps) \\
 &= \eps\left[ \eta(N-N_\ast) + \eta \xi_2 \frac{(N-N_\ast)^2}{2} + \dots \right]
 }
