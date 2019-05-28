@@ -497,7 +497,11 @@ d_{p.h.}(t) = a(t) \chi(t,t_i) = a(t) \int_{t_i}^t \frac{dt^\prime}{a(t^\prime)}
 \end{definition}
 
 \begin{definition}[Hubble Radius]
-The \bam{Hubble radius} is 
+The \bam{comoving Hubble radius} is 
+\eq{
+r_H = \frac{1}{aH}
+}
+and so the physical Hubble radius is 
 \eq{
 r_H = \frac{1}{H}
 }
@@ -580,7 +584,7 @@ For $z\gg1$ we thus have
 \eq{
 \chi(z) \approx \frac{\mc{O}(1)}{H_0}
 }
-Alternatively we can calculated that particle horizon from the beginning of the universe to redshift $z$ as 
+Alternatively we can calculate the particle horizon from the beginning of the universe to redshift $z$ as 
 \eq{
 x_{p.h.}(z) &= \frac{1}{H_0} \int_z^\infty (1+z)^{-\frac{3(1+w)}{2}} \, dz\\
 &=  \frac{1}{H_0}\left[ -\frac{2}{1+3w} (1+z)^{-\frac{1+3w}{2}}\right]_z^\infty \\
@@ -595,6 +599,245 @@ Thus antipodal regions with large $z$ must be causally disconnected, as their co
 \end{example}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Inflation}
+
+\begin{definition}[Inflation]
+\bam{Inflation} is a period of time during which $\dot{a},\ddot{a} > 0$. 
+\end{definition}
+
+Such a period would provide a solution to the curvature problem (example \ref{example:CSM:curvature problem}) and the horizon problem (example \ref{example:CSM:horizon problem}). 
+
+\begin{definition}[Reheating]
+\bam{Reheating} is the period when evolution changes from inflation to the decelerating hot Big Bang. 
+\end{definition}
+
+\begin{prop}
+Approximately $50$ e-folds passed during inflation. 
+\end{prop}
+\begin{proof}
+In order to solve the Horizon problem (example \ref{example:CSM:horizon problem}) it is necessary that the particle horizon is greater than the Hubble radius. For approximately de Sitter expansion, $H$ is approximately constant, so $d_{p.h.}\approx \frac{1}{H}$, thus comparing the \hl{comoving distances}\footnote{why the comoving distances?} 
+\eq{
+\frac{1}{a_i H_i} > \frac{1}{a_0 H_0}
+}
+where $i$ indicates the beginning of inflation. Thus letting $reh$ represent when reheating occurs, 
+\eq{
+\frac{a_{reh} H_{reh}}{a_i H_i} > \frac{a_{reh} H_{reh}}{a_0 H_0}
+}
+Hence using definition \ref{def:CSM:1} and the Friedmann equation in a flat universe 
+\eq{
+3M_{pl}^2 H^2 = \rho
+}
+gives 
+\eq{
+\frac{a_{reh} H_{reh}}{a_0 H_0} &= \pround{\frac{\frac{cst}{T_{CMB,0}}\sqrt{(g_\ast)_0 \frac{\pi^2}{90} } \frac{T_{CMB,0}^2}{M_{pl}}}{\frac{cst}{T_{reh}}\sqrt{(g_\ast)_{reh} \frac{\pi^2}{90} } \frac{T_{reh,0}^2}{M_{pl}}}}^{-1} \\
+&\approx \frac{T_{reh}}{T_{CMB,0}}
+}
+Now $T_{CMB,0} \approx 2.7K \approx 0.2 meV = 2 \times 10^{-13} Gev $
+\eq{
+\Rightarrow \frac{a_{reh} H_{reh}}{a_0 H_0} \approx \highlight{5 \times 10^{23}}\footnote{value given in notes is $4\times 10^{21}$. Why?} \left( \frac{T_{reh}}{10^{10} GeV} \right)
+}
+\footnote{value given in notes is $4\times 10^{21}$. Why?}
+Hence the number of e-folds is 
+\eq{
+\Delta N_{infl} &= \log{\frac{a_{reh}}{a_i}} \gtrapprox 50 + \log \frac{T_{reh}}{10^{10}}
+}
+Taking the uncertainty in $T_{reh}$ to be s.t. that $T_{reh} \in (1,10^{15}) GeV$ gives $\Delta N_{infl} \in (25,60)$. It will be often be taken that $\Delta N_{infl} \approx 50$ hence. 
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Slow-Roll Inflation}
+
+\begin{definition}[Hubble Slow Roll Parameter]
+Define the \bam{first Hubble slow roll parameter} $\eps$ such that 
+\eq{
+\frac{\ddot{a}}{a} = \dot{H}+H^2 = H^2(1-\eps) \Leftrightarrow \eps = -\frac{\dot{H}}{H^2}
+}
+In a single fluid universe 
+\eq{
+\eps = \frac{3(1+w)}{2}
+}
+Note that this can be written as 
+\eq{
+\eps = - \del_N \log H 
+}
+Then define the \bam{second Hubble slow roll parameter} $\eta$ by 
+\eq{
+\eta = \del_N \log \eps = \frac{\dot{\eps}}{H\eps}
+}
+Then the \bam{n\textsuperscript{th} Hubble slow roll parameter} $\xi_n$ is given inductively by 
+\eq{
+\xi_n = \del_N \log \xi_{n-1}
+}
+with $\xi_1 = \eps$, $\xi_2 = \eta$. 
+\end{definition}
+
+Inflation requires $\eps < 1 \Rightarrow w < -\frac{1}{3}$. It will be seen later that scale invariance follows from a spacetime background that is approximately de Sitter, i.e. $H$ approximately constant. Hence consider the case $0< \eps \ll 1$. 
+
+\begin{definition}[Slow Roll Inflation]
+\bam{Slow roll inflation} is inflation during which $\dot{H}$ remains small throughout.
+\end{definition}
+
+\begin{prop}
+For slow roll inflation, it is sufficient that 
+\eq{
+\forall n, \quad  0 < \xi_n \ll 1
+}
+\end{prop}
+\begin{proof}
+For slow roll inflation it is required that $0 < \eps \ll 1$ as already discussed. Taylor expanding $\eps(N)$ from the beginning of inflation $N=N_\ast$ gives \eq{
+\eps(N) - \eps(N_\ast) &= \pd[\eps]{N}|_{N_\ast}(N-N_\ast) + \pds[\eps]{N}|_{N_\ast} + \mc{O}(\del_N^3 \eps) \\
+&= \eps\left[ \eta(N-N_\ast) + \eta \xi_2 \frac{(N-N_\ast)^2}{2} + \dots \right]
+}
+so to ensure that $\eps$ remains small it is required $\eta \Delta N_{infl}, \eta \xi_2 \Delta N_{infl}, \dots < 1$, so it is enough to have $0<\xi_n < \frac{1}{\Delta N_{infl}} \ll 1$ for all $n$. 
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Single Fields Inflation}
+
+Consider the action
+\eq{
+S = \frac{1}{2} M_{pl}^2 \int \left[ R + M_{pl}^{-2}\left( -\del_\mu \phi \del^\mu \phi - 2V(\phi) \right) \right] g^\frac{1}{2} d^4 x 
+}
+where $\phi$ is some scalar field. To ensure consistency with the symmetries of FLRW it must be that $\phi = \phi(t)$.  Note the similarity to the Einstein Hilbert action \ref{def:CSM:EinsteinHilbertAction} if 
+\eq{
+\Lambda = M_{pl}^{-2} \left( \frac{1}{2} \del_\mu \phi \del^\mu \phi + V(\phi) \right)
+}
+The energy momentum tensor of this action is 
+\eq{
+T_{\mu\nu} &= \del_\mu \phi \del_\nu \phi + g_{\mu\nu} \left[ -\frac{1}{2} \del_\sigma \phi \del^\sigma \phi - V(\phi) \right] \\
+&= (\rho + p) u_\mu u_\nu + g_{\mu\nu}p
+}
+making the identifications 
+\eq{
+\rho &= -\frac{1}{2}\del_\mu \phi \del^\mu \phi + V(\phi) \\
+p &= -\frac{1}{2}\del_\mu \phi \del^\mu \phi - V(\phi) \\
+u_\mu &= \frac{\del_\mu \phi}{\sqrt{-\del_\mu \phi \del^\mu \phi}}
+}
+These reduce to 
+\eq{
+\rho &= \frac{1}{2} \dot{\phi}^2 + V(\phi) \\
+p &=  \frac{1}{2} \dot{\phi}^2 - V(\phi) \\
+u_\mu &= (1,\bm{0})
+}
+as $\phi=\phi(t)$. 
+
+The Friedmann equations are then 
+\eq{
+\ddot{\phi} + 3H\dot{\phi} + V^\prime(\phi) = 0 \text{ (continuity equation)}\\
+3H^2 M_{pl}^2 = \frac{1}{2} \dot{\phi}^2 + V(\phi)  \text{ (evolution equations)}
+}
+
+\begin{prop}\label{prop:CSM:1}
+\eq{
+-\dot{H} M_{pl}^2 = \frac{1}{2}\dot{\phi}^2
+}
+\end{prop}
+\begin{proof}
+Differentiate the evolution equation and sub in the continuity equation. 
+\end{proof}
+
+\begin{definition}
+In scalar field inflation, the first three slow roll parameters are 
+\begin{align}\label{eq:CSM:13}
+\eps_V &= \frac{1}{2} M_{pl}^2 \left( \frac{V^\prime}{V} \right)^2 \\
+\eta_V &= M_{pl}^2 \frac{V^{\prime\prime}}{V} \\
+\xi_{3V} &= M_{pl}^4 \frac{V^\prime V^{\prime\prime}}{V^2}
+\end{align}
+\end{definition}
+
+\begin{prop}
+\eq{
+V = (3-\eps) H^2 M_{pl}^2
+}
+and hence 
+\eq{
+\eps_V &= \frac{\eps(\eta-2\eps+6)^2}{4(\eps-3)^2} \\
+\eta_V &= \frac{\eta(\eta+2\xi_3+6)-2\eps(5\eta+12)+8\eps^2}{4(\eps-3)}
+}
+\end{prop}
+\begin{proof}
+The evolution equation becomes 
+\eq{
+V = H^2 M_{pl}^2 (3-\eps)
+}
+through substitution.
+\end{proof}
+
+\begin{corollary}
+For $\eps,\eta \ll 1$
+\eq{
+\eps \approx \eps_V \\
+\eta \approx 4\eps_V - 2\eta_V
+}
+\end{corollary}
+
+\begin{definition}
+Write $X = -\frac{1}{2} \del_\mu \phi \del^\mu \phi = \frac{1}{2}\dot{\phi}^2$. Then 
+\eq{
+\rho = X+V \\
+p = X-V \\
+\dot{X}+6HX +V^\prime \dot{\phi} = 0 \\
+-\dot{H} M_{pl}^2 = X
+}
+\end{definition}
+
+Hence we can write 
+\eq{
+\eps = -\frac{\dot{H}}{H^2} = \frac{\frac{X}{M_{pl}^2}}{\frac{X+V}{3M_{pl}^2}} = \frac{3X}{X+V} \ll 1 \Rightarrow X \ll V
+}
+and so  
+\begin{align}\label{eq:CSM:14}
+3 M_{pl}^2 H^2 \approx V 
+\end{align}
+Hence 
+\eq{
+\eta = \frac{\dot{\eta}}{\eps H} = 2\eps + \frac{\dot{X}}{XH}
+}
+so 
+\eq{
+\eps,\eta \ll 1 \Rightarrow \dot{X} \ll XH \Rightarrow 2\ddot{\phi} \ll \dot{\phi}H
+}
+and so we can neglect the acceleration term giving 
+\eq{
+3 H \dot{\phi} &\approx -V^\prime \\
+\Rightarrow \dot{\phi} &\approx - \frac{V^\prime M_{pl}}{\sqrt{3V}} \\
+\Rightarrow t &\approx \int d\phi \, \frac{\sqrt{3V}}{V^\prime M_{pl}} + \text{const}
+}
+This equation can be inverted to give $\phi(t)$ a \bam{slow roll solution}, valid if $\eps,\eta \ll 1$
+
+\subsubsection*{End of Inflation}
+We shall \hl{assume that inflation ends at} $t_e$ where $\eps(t_e)\approx 1$. In addition, we \hl{assume that at the end of inflation} $\phi$ is at a minimum of V with 
+\eq{
+V(\phi_{min}) \approx (10^{-3} eV)^4 \approx 0 
+}
+Then the total of e-folds during inflation is 
+\eq{
+\Delta N &= \int_{N_i}^{N_e} dN \\
+&= \int_{t_i}^{t_e} H dt \\
+&= \int_{\phi_i}^{\phi_e} \frac{H}{\dot{\phi}} d\phi \\
+&\approx \int_{\phi_i}^{\phi_e} d\phi \, \sqrt{\frac{V}{3M_{pl}^2}} \left( - \frac{V^\prime M_{pl}}{\sqrt{3V}} \right)^{-1} \\
+&= \int_{\phi_e}^{\phi_i} d\phi \, \frac{V}{M_{pl}^2 V^\prime}
+}
+
+\begin{definition}
+Define a field to be a \bam{small field} if during inflation $\Delta \phi < M_{pl}$ and a \bam{large field} if $\Delta \phi > M_{pl}$
+\end{definition}
+
+\begin{definition}
+Let 
+\eq{
+\Lambda_\phi = \frac{V}{V^\prime}
+}
+\end{definition}
+\hl{assuming} that $V$ remains relatively flat, so $V,V^\prime$ are approximately constant. Then 
+\eq{
+\Delta N &\approx \frac{V}{M_{pl}^2 V^\prime}\Delta \phi \\
+\Rightarrow \frac{\Delta \phi}{M_{pl}} &\approx 50 \frac{M_{pl}}{\Lambda_\phi}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Constituents of the Universe}
 The five main components of the universe are 
 \begin{itemize}
@@ -609,46 +852,40 @@ For a particle species to have sizeable density on its own today, that species m
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Thermodynamics}
 \begin{definition}
-Neglecting the chemical potential, the 1st law of thermodynamics is 
+The 1st law of thermodynamics is 
 \eq{
-TdS = dE + pdV 
+TdS = dE + pdV - \mu dN
 }
-where $E$ is the energy of the system, $T$ the temperature, $p$ pressure and $V$ volume. 
+where $E$ is the energy of the system, $T$ the temperature, $p$ pressure, $V$ volume, $\mu$ the chemical potential, and $N$ the number of the particle. 
 \end{definition}
 
-\begin{prop}
-Letting $\rho$ be the energy density
+\subsubsection*{Equilibrium}
+\begin{definition}[Kinetic Equilibrium]
+A system of particles is in \bam{kinetic equilibrium} if the constituent particles exchange energy and momentum efficiently. They are thus in a maximum-entropy state with distributions given by 
 \eq{
-S = \frac{(\rho+p)V}{T} \Leftrightarrow s = \frac{\rho+p}{T}
+f_{BE/FD}(\bm{x},\bm{P},t) = \frac{1}{e^{\frac{E_{\bm{P}}-\mu}{T}}\mp1}
 }
-where $s=\frac{S}{V}$ is the \bam{entropy density}.
-\end{prop}
-\begin{proof}
-From the first law
+the phase space density for bosons (\bam{Bose-Einstein statistics}) and fermions (\bam{Fermi-Dirac statistics}) respectively. 
+\end{definition}
+
+\begin{definition}[Chemical Equilibrium]
+An interaction is in \bam{chemical equilibrium} if the chemical potentials of the interacting species balance out, i.e in a reaction $1 + 2 \leftrightarrow 3 + 4$
 \eq{
-T dS &= d(\rho V) + pdV \\
-&= V d\rho + (\rho + p) dV
+\mu_1 + \mu_2 = \mu_3 + \mu_4
 }
-If the situation is in equilibrium, $\rho=\rho(T), p=p(T)$, so 
-\begin{align} \label{eq:CSM:3}
-TdS = V \frac{d\rho}{dT} dT + (\rho + p) dV
-\end{align}
-and from the symmetry of partial derivatives 
-\eq{
-\pd{V} \pd[S]{T} &= \pd{T} \pd[S]{V} \\
-\Rightarrow \pd{V} \left( \frac{V}{T} \frac{d\rho}{dT} \right) &= \pd{T} \left(\frac{\rho+p}{T} \right) \\
-\Rightarrow \frac{1}{T} \frac{d\rho}{dT} &= - \frac{\rho+p}{T^2} + \frac{1}{T} \left( \frac{d\rho}{dT} + \frac{dp}{dT} \right) \\
-\Rightarrow \frac{dp}{dT} = \frac{\rho+p}{T}
-}
-Now using \ref{eq:CSM:3} 
-\eq{
-dS &= \frac{1}{T} d[(\rho+p)V] - \frac{V}{T} dp \\
-&= \frac{1}{T} d[(\rho+p)V] - \frac{\rho+p}{T^2}dT \\
-&= d\left[ \frac{(\rho+p)V}{T} \right] \\
-\Rightarrow S = \frac{(\rho+p)V}{T} \\
-\Rightarrow s = \frac{S}{V} = \frac{\rho+p}{T}
-}
-\end{proof}
+\end{definition}
+
+\begin{lemma}
+From chemical equilibrium we can say 
+\begin{itemize}
+    \item $\mu_\gamma = 0$ (as photon number is not conserved)
+    \item $\mu_X = -\mu_{\bar{X}}$ (as a particle and its antiparticle can annihilate to make photons)
+\end{itemize}
+\end{lemma}
+
+\begin{definition}[Thermal Equilibrium]
+An interaction is in \bam{thermal equilibrium} if it is in both kinetic and chemical potential. This forces all species to have the same temperature $T$. 
+\end{definition}
 
 \begin{definition}[Bose-Einstein/Fermi-Dirac statistics]
 For a species of particles $a$ with comoving momentum $P$, then the energy momentum tensor and number density are 
@@ -663,11 +900,6 @@ where
     \item $g_a$ is the degeneracy of the species, e.g. 2 for a photon
     \item $E_{\bm{P}} = \sqrt{m^2 + |\bm{P}|^2}$
 \end{itemize}
-and 
-\eq{
-f_{BE/FD}(\bm{x},\bm{P},t) = \frac{1}{e^{\frac{E_{\bm{P}}-\mu}{T}}\mp1}
-}
-is the phase space density for bosons (\bam{Bose-Einstein statistics}) and fermions (\bam{Fermi-Dirac statistics}) respectively. 
 \end{definition}
 
 \begin{prop}
@@ -684,7 +916,7 @@ In flat FLRW $\sqrt{-g} = a^3$ and $d^3\bm{P} = a^3 d^3\bm{q}$ for physical mome
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Suppose $T \ll E - \mu $, then 
 \begin{align}\label{eq:CSM:4}
-q \frac{1}{e^\frac{E(q)-\mu}{T}\mp1} \approx  e^{-\frac{E(q)}{T}}e^{\frac{\mu}{T}} \ll 1 
+\frac{1}{e^\frac{E(q)-\mu}{T}\mp1} \approx  e^{-\frac{E(q)}{T}}e^{\frac{\mu}{T}} \ll 1 
 \end{align}
 So the integrals will be supported mainly where 
 \eq{
@@ -759,9 +991,10 @@ Now
 
 Hence 
 \eq{
-\rho_a = 3p_a&= g_a \frac{\pi^2}{30}T^4 \left\{ \begin{array}{cc} 1 & \text{bosons} \\ \frac{7}{8} & \text{fermions}\footnote{Note that fermions should have the lower density due to the Pauli exclusion principle. } \end{array}\right. \\
+\rho_a = 3p_a&= g_a \frac{\pi^2}{30}T^4 \left\{ \begin{array}{cc} 1 & \text{bosons} \\ \frac{7}{8} & \text{fermions} \end{array}\right. \\
 n_a &= g_a \frac{\zeta(3)}{\pi^2} T^3  \left\{ \begin{array}{cc} 1 & \text{bosons} \\ \frac{7}{8} & \text{fermions} \end{array}\right.
 }
+\footnote{Note that fermions should have the lower density due to the Pauli exclusion principle.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{Non-Relativistic Particles}
 For non-relativistic particles the expressions thus are 
@@ -772,7 +1005,7 @@ n_a &\approx \frac{g_a}{2\pi^2}e^\frac{\mu-m}{T} \int_0^\infty dq \, q^2 e^{-\fr
 }
 and then the integrals can be done analytically integrating by parts, e.g.
 \eq{
-n_a &= \frac{g_a}{2\pi^2}e^\frac{\mu-m}{T} \int_0^\infty \sqrt{2mT} du \, 2mT u^2 e^{-u^2} \\
+n_a &= \frac{g_a}{2\pi^2}e^\frac{\mu-m}{T} \int_0^\infty \sqrt{2mT} \cdot du \cdot 2mT u^2 e^{-u^2} \\
 &= \frac{g_a}{2\pi^2}e^\frac{\mu-m}{T} (2mT)^\frac{3}{2} \left\{ \left[-\frac{1}{2}u e^{-u^2}\right]_0^\infty + \int_0^\infty \frac{1}{2}e^{-u^2} \, du \right\} \\
 &= g_a \left(\frac{mT}{2\pi}\right)^\frac{3}{2} e^\frac{\mu-m}{T} \quad \text{using } \int_0^\infty e^{-u^2} \, du = \frac{\sqrt{\pi}}{2} 
 }
@@ -788,14 +1021,18 @@ Note that if relativistic and non relativistic particles are in thermal equilibr
 }
 hence it is sensible to neglect non-relativistic particles' contribution to energy density, pressure, and entropy density in thermal equilibrium. 
 
-\begin{definition}[Effective Bosonic Degrees of Freedom]\label{def:CSM:1}
-Define the \bam{effective number of bosonic degrees of freedom} $g_\ast$ by 
+\begin{definition}[Effective Number of Relativistic Degrees of Freedom]\label{def:CSM:1}
+Define the \bam{effective number of relativistic degrees of freedom} $g_\ast = g_\ast(T)$ such that the total energy density is
+\eq{
+\rho = g_\ast(T) \frac{\pi^2}{30} T^4
+}
+In thermal equilibrium, this is just
 \eq{
 g_\ast = \sum_{\text{bosons}} g_a + \frac{7}{8} \sum_{\text{fermions}} g_a
 }
-such that the total energy density is
+Out of thermal equilibrium, we must allow for the fact that the species may be at different temperatures, so 
 \eq{
-\rho = g_\ast \frac{\pi^2}{30} T^4
+g_\ast(T) = \sum_{\text{bosons}} g_a\pround{\frac{T_i}{T}}^4 + \frac{7}{8} \sum_{\text{fermions}} g_a \pround{\frac{T_i}{T}}^4
 }
 \end{definition}
 
@@ -818,7 +1055,42 @@ Hence the continuity can be rewritten as
 \end{example}
 
 \begin{prop}
-Entropy is conserved
+In equilibrium
+\eq{
+S = \frac{(\rho+p)V}{T} \Leftrightarrow s = \frac{\rho+p}{T}
+}
+where $s=\frac{S}{V}$ is the \bam{entropy density}.
+\end{prop}
+\begin{proof}
+From the first law
+\eq{
+T dS &= d(\rho V) + pdV \\
+&= V d\rho + (\rho + p) dV
+}
+As the situation is in equilibrium, $\rho=\rho(T), p=p(T)$, so 
+\begin{align} \label{eq:CSM:3}
+TdS = V \frac{d\rho}{dT} dT + (\rho + p) dV
+\end{align}
+and from the symmetry of partial derivatives 
+\eq{
+\pd{V} \pd[S]{T} &= \pd{T} \pd[S]{V} \\
+\Rightarrow \pd{V} \left( \frac{V}{T} \frac{d\rho}{dT} \right) &= \pd{T} \left(\frac{\rho+p}{T} \right) \\
+\Rightarrow \frac{1}{T} \frac{d\rho}{dT} &= - \frac{\rho+p}{T^2} + \frac{1}{T} \left( \frac{d\rho}{dT} + \frac{dp}{dT} \right) \\
+\Rightarrow \frac{dp}{dT} &= \frac{\rho+p}{T}
+}
+Now using \ref{eq:CSM:3} 
+\eq{
+dS &= \frac{1}{T} d[(\rho+p)V] - \frac{V}{T} dp \\
+&= \frac{1}{T} d[(\rho+p)V] - \frac{\rho+p}{T^2}dT \\
+&= d\left[ \frac{(\rho+p)V}{T} \right] \\
+\Rightarrow S &= \frac{(\rho+p)V}{T} \\
+\Rightarrow s &= \frac{S}{V} = \frac{\rho+p}{T}
+}
+(up to a constant)
+\end{proof}
+
+\begin{prop}
+Entropy is conserved in equilibrium.
 \end{prop}
 \begin{proof}
 The entropy 
@@ -876,7 +1148,7 @@ Note that
 \begin{itemize}
     \item $\Gamma \gg H \Rightarrow$ reaction is fast and efficient, and so quickly reaches the chemical equilibrium 
     \eq{
-    \frac{n_3 n_4}{n_3^{(0)} n_4^{(0)}} = \frac{n_1 n_2}{n_1^{(0)} n_2^{(0)}} \Leftrightarrow \mu_1 + \mu_2 = \mu_3 + \mu_4 \quad \text{(Saha equation)}
+    \frac{n_3 n_4}{n_3^{(0)} n_4^{(0)}} = \frac{n_1 n_2}{n_1^{(0)} n_2^{(0)}} \Leftrightarrow \mu_1 + \mu_2 = \mu_3 + \mu_4 \quad \text{(\bam{Saha equation})}
     }
     \item $\Gamma \ll H \Rightarrow$ reaction is too slow for expansion of the universe, and solutions becomes 
     \eq{
@@ -884,8 +1156,8 @@ Note that
     }
     where $a_\ast$ is when last $\Gamma \approx H$. 
 \end{itemize}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Thermal History}
+
+Dimensional analysis finds $\Gamma \propto T$ at high temperatures, and so $\frac{\Gamma}{H}\propto\frac{1}{T}$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Big Bang Nucleosynthesis (BBN)}
@@ -974,237 +1246,7 @@ So assuming $n_n\sim n_p\sim n_b$ the \bam{\hl{baryon number density}} yields
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Inflation}
 
-\begin{definition}[Inflation]
-\bam{Inflation} is a period of time during which $\dot{a},\ddot{a} > 0$. 
-\end{definition}
-
-Such a period would provide a solution to the curvature problem (example \ref{example:CSM:curvature problem}) and the horizon problem (example \ref{example:CSM:horizon problem}). 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Slow-Roll Inflation}
-
-\begin{definition}[Hubble Slow Roll Parameter]
-Define the \bam{first Hubble slow roll parameter} $\eps$ such that 
-\eq{
-\frac{\ddot{a}}{a} = \dot{H}+H^2 = H^2(1-\eps) \Leftrightarrow \eps = -\frac{\dot{H}}{H^2}
-}
-In a single fluid universe 
-\eq{
-\eps = \frac{3(1+w)}{2}
-}
-Note that this can be written as 
-\eq{
-\eps = - \del_N \log H 
-}
-Then define the \bam{second Hubble slow roll parameter} $\eta$ by 
-\eq{
-\eta = \del_N \log \eps = \frac{\dot{\eps}}{H\eps}
-}
-Then the \bam{n\textsuperscript{th} Hubble slow roll parameter} $\xi_n$ is given inductively by 
-\eq{
-\xi_n = \del_N \log \xi_{n-1}
-}
-with $\xi_1 = \eps$, $\xi_2 = \eta$. 
-\end{definition}
-
-Inflation requires $\eps < 1 \Rightarrow w < -\frac{1}{3}$. It will be seen later that scale invariance follows from a spacetime background that is approximately de Sitter, i.e. $H$ approximately constant. Hence consider the case $0< \eps \ll 1$. 
-
-\begin{definition}[Reheating]
-\bam{Reheating} is the period when evolution changes from inflation to the decelerating hot Big Bang. 
-\end{definition}
-
-\begin{prop}
-Approximately $50$ e-folds passed during inflation. 
-\end{prop}
-\begin{proof}
-In order to solve the Horizon problem (example \ref{example:CSM:horizon problem}) it is necessary that the particle horizon is greater than the Hubble radius. For approximately de Sitter expansion, $H$ is approximately constant, so $d_{p.h.}\approx \frac{1}{H}$, thus comparing the \hl{comoving distances}\footnote{why the comoving distances?} 
-\eq{
-\frac{1}{a_i H_i} > \frac{1}{a_0 H_0}
-}
-where $i$ indicates the beginning of inflation. Thus letting $reh$ represent when reheating occurs, 
-\eq{
-\frac{a_{reh} H_{reh}}{a_i H_i} > \frac{a_{reh} H_{reh}}{a_0 H_0}
-}
-Hence using definition \ref{def:CSM:1} and the Friedmann equation in a flat universe 
-\eq{
-3M_{pl}^2 H^2 = \rho
-}
-gives 
-\eq{
-\frac{a_{reh} H_{reh}}{a_0 H_0} &= \pround{\frac{\frac{cst}{T_{CMB,0}}\sqrt{(g_\ast)_0 \frac{\pi^2}{90} } \frac{T_{CMB,0}^2}{M_{pl}}}{\frac{cst}{T_{reh}}\sqrt{(g_\ast)_{reh} \frac{\pi^2}{90} } \frac{T_{reh,0}^2}{M_{pl}}}}^{-1} \\
-&\approx \frac{T_{reh}}{T_{CMB,0}}
-}
-Now $T_{CMB,0} \approx 2.7K \approx 0.2 meV = 2 \times 10^{-13} Gev $
-\eq{
-\Rightarrow \frac{a_{reh} H_{reh}}{a_0 H_0} \approx \highlight{5 \times 10^{23}}\footnote{value given in notes is $4\times 10^{21}$. Why?} \left( \frac{T_{reh}}{10^{10} GeV} \right)
-}
-\footnote{value given in notes is $4\times 10^{21}$. Why?}
-Hence the number of e-folds is 
-\eq{
-\Delta N_{infl} &= \log{\frac{a_{reh}}{a_i}} \gtrapprox 50 + \log \frac{T_{reh}}{10^{10}}
-}
-Taking the uncertainty in $T_{reh}$ to be s.t. that $T_{reh} \in (1,10^{15}) GeV$ gives $\Delta N_{infl} \in (25,60)$. It will be often be taken that $\Delta N_{infl} \approx 50$ hence. 
-\end{proof}
-
-\begin{definition}[Slow Roll Inflation]
-\bam{Slow roll inflation} is inflation during which $\dot{H}$ remains small throughout.
-\end{definition}
-
-\begin{prop}
-For slow roll inflation, it is sufficient that 
-\eq{
-\forall n, \quad  0 < \xi_n \ll 1
-}
-\end{prop}
-\begin{proof}
-For slow roll inflation it is required that $0 < \eps \ll 1$ as already discussed. Taylor expanding $\eps(N)$ from the beginning of inflation $N=N_\ast$ gives \eq{
-\eps(N) - \eps(N_\ast) &= \pd[\eps]{N}|_{N_\ast}(N-N_\ast) + \pds[\eps]{N}|_{N_\ast} + \mc{O}(\del_N^3 \eps) \\
-&= \eps\left[ \eta(N-N_\ast) + \eta \xi_2 \frac{(N-N_\ast)^2}{2} + \dots \right]
-}
-so to ensure that $\eps$ remains small it is required $\eta \Delta N_{infl}, \eta \xi_2 \Delta N_{infl}, \dots < 1$, so it is enough to have $0<\xi_n < \frac{1}{\Delta N_{infl}} \ll 1$ for all $n$. 
-\end{proof}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Single Fields Inflation}
-
-Consider the action
-\eq{
-S = \frac{1}{2} M_{pl}^2 \int \left[ R + M_{pl}^{-2}\left( -\del_\mu \phi \del^\mu \phi - 2V(\phi) \right) \right] g^\frac{1}{2} d^4 x 
-}
-where $\phi$ is some scalar field. To ensure consistency with the symmetries of FLRW it must be that $\phi = \phi(t)$.  Note the similarity to the Einstein Hilbert action \ref{def:CSM:EinsteinHilbertAction} if 
-\eq{
-\Lambda = M_{pl}^{-2} \left( \frac{1}{2} \del_\mu \phi \del^\mu \phi + V(\phi) \right)
-}
-The energy momentum tensor of this action is 
-\eq{
-T_{\mu\nu} &= \del_\mu \phi \del_\nu \phi + g_{\mu\nu} \left[ -\frac{1}{2} \del_\sigma \phi \del^\sigma \phi - V(\phi) \right] \\
-&= (\rho + p) u_\mu u_\nu + g_{\mu\nu}p
-}
-making the identifications 
-\eq{
-\rho &= -\frac{1}{2}\del_\mu \phi \del^\mu \phi + V(\phi) \\
-p &= -\frac{1}{2}\del_\mu \phi \del^\mu \phi - V(\phi) \\
-u_\mu &= \frac{\del_\mu \phi}{\sqrt{-\del_\mu \phi \del^\mu \phi}}
-}
-These reduce to 
-\eq{
-\rho &= \frac{1}{2} \dot{\phi}^2 + V(\phi) \\
-p &=  \frac{1}{2} \dot{\phi}^2 - V(\phi) \\
-u_\mu &= (1,\bm{0})
-}
-as $\phi=\phi(t)$. 
-
-The Friedmann equations are then 
-\eq{
-\ddot{\phi} + 3H\dot{\phi} + V^\prime(\phi) = 0 \text{ (continuity equation)}\\
-3H^2 M_{pl}^2 = \frac{1}{2} \dot{\phi}^2 + V(\phi)  \text{ (evolution equations)}
-}
-
-\begin{prop}\label{prop:CSM:1}
-\eq{
--\dot{H} M_{pl}^2 = \frac{1}{2}\dot{\phi}^2
-}
-\end{prop}
-\begin{proof}
-Differentiate the evolution equation and sub in the continuity equation. 
-\end{proof}
-
-\begin{definition}
-In scalar field inflation, the first three slow roll parameters are 
-\begin{align}\label{eq:CSM:13}
-\eps_V &= \frac{1}{2} M_{pl}^2 \left( \frac{V^\prime}{V} \right)^2 \\
-\eta_V &= M_{pl}^2 \frac{V^{\prime\prime}}{V} \\
-\xi_{3V} &= M_{pl}^4 \frac{V^\prime V^{\prime\prime}}{V^2}
-\end{align}
-\end{definition}
-
-\begin{prop}
-\eq{
-V = (3-\eps) H^2 M_{pl}^2
-}
-and hence 
-\eq{
-\eps_V &= \frac{\eps(\eta-2\eps+6)^2}{4(\eps-3)^2} \\
-\eta_V &= \frac{\eta(\eta+2\xi_3+6)-2\eps(5\eta+12)+8\eps^2}{4(\eps-3)}
-}
-\end{prop}
-\begin{proof}
-\hl{DO THIS}
-\end{proof}
-
-\begin{corollary}
-For $\eps,\eta \ll 1$
-\eq{
-\eps \approx \eps_V \\
-\eta \approx 4\eps_V - 2\eta_V
-}
-\end{corollary}
-
-\begin{definition}
-Write $X = -\frac{1}{2} \del_\mu \phi \del^\mu \phi = \frac{1}{2}\dot{\phi}^2$. Then 
-\eq{
-\rho = X+V \\
-p = X-V \\
-\dot{X}+6HX +V^\prime \dot{\phi} = 0 \\
--\dot{H} M_{pl}^2 = X
-}
-\end{definition}
-
-Hence we can write 
-\eq{
-\eps = -\frac{\dot{H}}{H^2} = \frac{\frac{X}{M_{pl}^2}}{\frac{X+V}{3M_{pl}^2}} = \frac{3X}{X+V} \ll 1 \Rightarrow X \ll V
-}
-and so  
-\begin{align}\label{eq:CSM:14}
-3 M_{pl}^2 H^2 \approx V 
-\end{align}
-Hence 
-\eq{
-\eta = \frac{\dot{\eta}}{\eps H} = 2\eps + \frac{\dot{X}}{XH}
-}
-so 
-\eq{
-\eps,\eta \ll 1 \Rightarrow \dot{X} \ll XH \Rightarrow 2\ddot{\phi} \ll \dot{\phi}H
-}
-and so we can neglect the acceleration term giving 
-\eq{
-3 H \dot{\phi} &\approx -V^\prime \\
-\Rightarrow \dot{\phi} &\approx - \frac{V^\prime M_{pl}}{\sqrt{3V}} \\
-\Rightarrow t &\approx \int d\phi \, \frac{\sqrt{3V}}{V^\prime M_{pl}} + \text{const}
-}
-This equation can be inverted to give $\phi(t)$ a \bam{slow roll solution}, valid if $\eps,\eta \ll 1$
-
-\subsubsection*{End of Inflation}
-We shall \hl{assume that inflation ends at} $t_e$ where $\eps(t_e)\approx 1$. In addition we \hl{assume that at the end of inflation} $\phi$ is at a minimum of V with 
-\eq{
-V(\phi_{min}) \approx (10^{-3} eV)^4 \approx 0 
-}
-Then the total of e-folds during inflation is 
-\eq{
-\Delta N &= \int_{N_i}^{N_e} dN \\
-&= \int_{t_i}^{t_e} H dt \\
-&= \int_{\phi_i}^{\phi_e} \frac{H}{\dot{\phi}} d\phi \\
-&\approx \int_{\phi_i}^{\phi_e} d\phi \, \sqrt{\frac{V}{3M_{pl}^2}} \left( - \frac{V^\prime M_{pl}}{\sqrt{3V}} \right)^{-1} \\
-&= \int_{\phi_e}^{\phi_i} d\phi \, \frac{V}{M_{pl}^2 V^\prime}
-}
-
-\begin{definition}
-Define a field to be a \bam{small field} is during inflation $\Delta \phi < M_{pl}$ and a \bam{large field} if $\Delta \phi > M_{pl}$
-\end{definition}
-
-\begin{definition}
-Let 
-\eq{
-\Lambda_\phi = \frac{V}{V^\prime}
-}
-\end{definition}
-\hl{assuming} that $V$ remains relatively flat, so $V,V^\prime$ are approximately constant. Then 
-\eq{
-\Delta N &\approx \frac{V}{M_{pl}^2 V^\prime}\Delta \phi \\
-\Rightarrow \frac{\Delta \phi}{M_{pl}} &\approx 50 \frac{M_{pl}}{\Lambda_\phi}
-}
 
 \part{Cosmological Perturbation Theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1218,7 +1260,7 @@ Let $n_g$ be the galaxy number density. Then define the \bam{fractional overdens
 \[
 \delta_g(\bm{x}) = \frac{n_g(\bm{x})-\bar{n}_g}{\bar{n}_g}
 \]
-where $\bar{n}_g$. 
+where $\bar{n}_g$ is the average value. 
 \end{definition}
 
 It is typical to assume a linear relation ship between the galaxy density and matter density 
@@ -1231,7 +1273,7 @@ where b is the \bam{linear galaxy bias}. This gives the \bam{matter density pert
 \]
 
 \begin{definition}[Two point correlation function]
-Given a general field $f$ and some probability of having the field configuration $Pr[f]$ the \bam{two point correlation function} is 
+Given a general field $f$ and some probability of having the field configuration $Pr[f]$, the \bam{two point correlation function} is 
 \eq{
 \xi^f(\bm{x},\bm{y}) = \braket{f(\bm{x})f(\bm{y})} = \int \mc{D}f f(\bm{x})f(\bm{y}) Pr[f]
 }
@@ -1276,7 +1318,7 @@ The CMB temperature $T=T(\hat{\bm{n}})$ is defined on a sphere. However, on a su
 \subsection{Assumptions}
 It will be assumed throughout subsequent sections that all observational predictions are generated by "well known" physics if the initial density fluctuation are 
 \begin{itemize}
-    \item Scale invariant : $P \propto k^{-4 + n_s}$ with $n_s \approx 1$. 
+    \item Scale invariant : $P^f \propto k^{-4 + n_s}$ with $n_s \approx 1 \Rightarrow \Delta^f \propto k^{-1+n_s}$. 
     \item Adiabatic. 
     \item Gaussian.
 \end{itemize}
@@ -1332,7 +1374,7 @@ hence when the Fourier transform of the e.o.m is taken we get
 where 
 \eq{
 \tilde{\mc{O}}_A &= \mc{O}_A(\del_t,ik_j) \\
-\tilde{Pert}_A(\bm{k},t) &= \int d^3 \bm{x} \, e^{i\bm{k}\cdot\bm{x}} 
+\tilde{Pert}_A(\bm{k},t) &= \int d^3 \bm{x} \, e^{i\bm{k}\cdot\bm{x}} Pert_A(\bm{x},t)
 }
 This has change the e.o.m from 1 PDE to infinitely many ODEs, on for each $\bm{k}$, that are not coupled together. 
 \end{proof}
@@ -1554,7 +1596,7 @@ Note $\zeta-\mc{R} \propto \left(\frac{k}{aH}\right)^2$, so on super Hubble scal
 \begin{theorem}
 Outside the Hubble radius $\exists k_1, k_2, k_3$ s.t. 
 \begin{itemize}
-    \item $\dot{\mc{R}}(k_1,t) = 0 \dot{\mc{R}}(k_2,t)$ (adiabatic modes) 
+    \item $\dot{\mc{R}}(k_1,t) = 0 = \dot{\mc{R}}(k_2,t)$ (adiabatic modes) 
     \item $\mc{R}(k_1,t) \neq 0$
     \item $\dot{\tilde{D}}_{ij}(k_3) = 0$ and $\tilde{D}_{ij}(k_3) \neq 0$
 \end{itemize}
@@ -1609,7 +1651,7 @@ For a comoving observer the physical coordinate $\bm{r}$ is related to the comov
 }
 Hence 
 \eq{
-(\pd{t})_{\bm{r}} = (\pd{t})_{\bm{x}} - H\bm{x} \cdot \grad \\
+\pround{\pd{t}}_{\bm{r}} = \pround{\pd{t}}_{\bm{x}} - H\bm{x} \cdot \grad \\
 \grad_{\bm{r}} = \frac{1}{a} \grad
 }
 letting $\grad = \grad_{\bm{x}}$. \\
@@ -1625,7 +1667,7 @@ and substituting in gives, to zeroth and first order
 \pd[\bar{\rho}]{t}+3H\bar{\rho} = 0 \quad \text{(continuity for matter)}\\
 \dot{\delta} = -\frac{1}{a}\grad\cdot\bm{v} \quad \text{(continuity equation)} \\
 \dot{\bm{v}} + H\bm{v} = -\frac{1}{a\bar{\rho}}\grad \delta P -\frac{\grad \Phi}{a} \quad \text{(Euler equation)} \\
-\nabla^2 \Phi = 4\pi G a^1 \bar{\rho} \delta \quad \text{(Poisson's equation)}
+\nabla^2 \Phi = 4\pi G a^2 \bar{\rho} \delta \quad \text{(Poisson's equation)}
 }
 Combining these gives 
 \begin{align} \label{eq:CSM:1}
@@ -1651,12 +1693,12 @@ and so Fourier transforming
 \begin{definition}[Jean's wavenumber]
 The \bam{Jean's wavenumber and scale} are
 \eq{
-k_J - \frac{\sqrt{4\pi G \bar{\rho}a^2}}{c_s} \\
-\lambda_J = \frac{2\pi a }{k_J} = c_s \sqrt{\frac{\pi}{G\bar{\rho}}}
+k_J &= \frac{\sqrt{4\pi G \bar{\rho}a^2}}{c_s} = \frac{2a\sqrt{\pi G\bar{\rho}}}{c_s}  \\
+\lambda_J &= \frac{2\pi a }{k_J} = c_s \sqrt{\frac{\pi}{G\bar{\rho}}}
 }
 \end{definition}
 
-Perturbations on a scale smaller than the Jean's scale, i.e. $k>k_J$ the equation is essentially damped oscillation, whereas for large perturbations $k<k_J$ tge perturbation grows as a power law. 
+Perturbations on a scale smaller than the Jean's scale, i.e. $k>k_J$ the equation is essentially damped oscillation, whereas for large perturbations $k<k_J$ the perturbation grows as a power law. 
 
 \begin{idea}
 This power law growth should be seen as the case where there is insufficient pressure support to stop the gravitational collapse of a perturbation, as the speed of such a wave is too slow to respond in sufficient collapse time. This can be seen by estimating the collapse time as 
@@ -1674,12 +1716,12 @@ t_{sc} < t_f  \\
 }
 \end{idea}
 
-\begin{example}[Dark matter evolution]
-Take $\delta=\delta_m$. Assume that $c_s=0$ in dark matter. 
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Dark matter domination}
-In dark matter domination, the Hubble rate is determined only by dark matter. Then as seen before $a\propto t^{\frac{2}{3}}$,  $H=\frac{2}{3t}$ and $H^2=\frac{8\pi G\bar{\rho}}{3}$
+In dark matter domination, the Hubble rate is determined only by dark matter. Then as seen before $a\propto t^{\frac{2}{3}}$,  $H=\frac{2}{3t}$ and $H^2=\frac{8\pi G\bar{\rho}_m}{3}$. Then assuming that $c_s=0$ in dark matter
 \eq{
 \ddot{\delta}_m + \frac{4}{3t} \dot{\delta}_m - \frac{2}{3t^2}\delta_m = 0
 }
@@ -1715,7 +1757,6 @@ In dark energy domination, as $\Lambda$ is constant, and $H\gg 4\pi G\bar{\rho}_
 \ddot{\delta}_m + 2H \dot{\delta}_m = 0 
 }
 and so $\delta_m \propto 1, e^{-2Ht}$ so in dark energy domination perturbations stop growing. 
-\end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Relativistic Perturbation}
@@ -1786,7 +1827,7 @@ It can be shown
 }
 Hence 
 \eq{
-\frac{d \log \mc{R}}{d\log a} \sim (\frac{k}{\mc{H}})^2
+\frac{d \log \mc{R}}{d\log a} \sim \pround{\frac{k}{\mc{H}}}^2
 }
 small on superhorizon scales. 
 \end{proof}
@@ -1839,7 +1880,7 @@ Taking $w=\frac{1}{3}$ in \ref{eq:CSM:7} gives
 
 The solution is 
 \begin{align}\label{eq:CSM:11}
-\Phi_k = A_k \frac{j_1(\frac{k\tau}{\sqrt{3}})}{\frac{k\tau}{\sqrt{3}}} + B_k \frac{n_1(\frac{k\tau}{\sqrt{3}})}{\frac{k\tau}{\sqrt{3}}}
+\Phi_k = A_k \frac{j_1\pround{\frac{k\tau}{\sqrt{3}}}}{\frac{k\tau}{\sqrt{3}}} + B_k \frac{n_1\pround{\frac{k\tau}{\sqrt{3}}}}{\frac{k\tau}{\sqrt{3}}}
 \end{align}
 defined as 
 \eq{
@@ -1848,11 +1889,11 @@ n_1(x) &= - \frac{\cos{x}}{x^2} - \frac{\sin x}{x} \quad \text{(Neumann function
 }
 In the $x \to 0$ limit, $n_1(x)$ is singular and so $B_k = 0$ in order to match inflationary perturbations \footnote{\hl{why could it not just be very small? Or is this just effectively zero?}}. As $j_1(x) \sim \frac{x}{3}$ for small $x$, we find $A_k = -2\mc{R}_k(\tau=0) $
 \eq{
-\Rightarrow \Phi_k = -2\mc{R}_k(0) \frac{\sin(\frac{k\tau}{\sqrt{3}}) -\frac{k\tau}{\sqrt{3}} \cos(\frac{k\tau}{\sqrt{3}})}{(\frac{k\tau}{\sqrt{3}})^3}
+\Rightarrow \Phi_k = -2\mc{R}_k(0) \frac{\sin\pround{\frac{k\tau}{\sqrt{3}}} -\frac{k\tau}{\sqrt{3}} \cos\pround{\frac{k\tau}{\sqrt{3}}}}{\pround{\frac{k\tau}{\sqrt{3}}}^3}
 }
 Recalling that during radiation domination $\tau = \frac{1}{\mc{H}}$, on subhorizon scales $k\tau = \frac{k}{\mc{H}} \gg 1$ so 
 \eq{
-\Phi_k \approx 6 \mc{R}_k(0) \frac{\cos(\frac{k\tau}{\sqrt{3}})}{(k\tau)^2}
+\Phi_k \approx 6 \mc{R}_k(0) \frac{\cos\pround{\frac{k\tau}{\sqrt{3}}}}{(k\tau)^2}
 }
 
 \subsubsection*{Matter Domination}
@@ -1899,7 +1940,7 @@ gives
 }
 Writing this as 
 \eq{
-\left[ \delta_r(k,\tau) + 4\Phi_MD(k) \right]^{\prime \prime} + \frac{1}{3} k^2 \left[ \delta_r(k,\tau) + 4\Phi_{MD}(k) \right] = 0
+\left[ \delta_r(k,\tau) + 4\Phi_{MD}(k) \right]^{\prime \prime} + \frac{1}{3} k^2 \left[ \delta_r(k,\tau) + 4\Phi_{MD}(k) \right] = 0
 }
 we can see that $\delta_r$ exhibits oscillations about $\delta_r = -4\Phi_{MD}$. 
 
@@ -2035,8 +2076,8 @@ Then using
 \end{itemize}
 this can we rewritten as  
 \eq{
-\frac{d[aE(1+\Phi)]}{d\lambda} = 2E^2 \Phi^\prime \\
-\Rightarrow \frac{ d\log (aE)}{d\tau } - \frac{d\Phi}{d\tau} + 2\Phi^\prime
+\frac{d[aE(1+\Phi)]}{d\lambda} &= 2E^2 \Phi^\prime \\
+\Rightarrow \frac{ d\log (aE)}{d\tau } - \frac{d\Phi}{d\tau} + 2\Phi^\prime &= 0
 }
 Hence for a photon emitted at $\tau = \tau_e$ and observed at $\tau = \tau_0$ 
 \eq{
@@ -2230,7 +2271,7 @@ S = \int d^4 x  \, g^{\frac{1}{2}} \left( \frac{1}{2}\del_\mu \phi \del^\mu \phi
 }
 and taking the conformally flat FLRW metrix $ds^2 = a(\tau)^2 [d\tau^2 + d\bm{x}^2]$ gives 
 \eq{
-S = \int d\tau \, d^3 x \, a^4 \left( \frac{1}{2} \frac{1}{a^2} [(\del_\tau \phi)^2  + |\grad \phi|^2 ] - V \right)
+S = \int d\tau \, d^3 x \, a^4 \left( \frac{1}{2} \frac{1}{a^2} \psquare{(\del_\tau \phi)^2  + |\grad \phi|^2 } - V \right)
 }
 Substituting in $\phi = \bar{\phi} + \frac{f}{a}$ and collecting the terms of order 2 in $f$ gives 
 \eq{
@@ -2286,10 +2327,11 @@ To understand perturbations resulting from inflation, we want to calculate the t
 Now from \ref{eq:CSM:15} we know 
 \eq{
 \highlight{\Delta_{\delta \phi}}  &= \frac{k^3}{2\pi^2} P(k) \\
-&= \frac{k^3}{2\pi^2} |f_k(\tau)|^2 \\
-&= \frac{k^3}{2\pi^2} \frac{1}{4k} \left( 1 + \frac{1}{k^2 \tau^2} \right) \\
+&= \frac{k^3}{2\pi^2} \frac{|f_k(\tau)|^2}{a^2} \\
+&= \frac{k^3}{2\pi^2} \frac{1}{2ka^2} \left( 1 + \frac{1}{k^2 \tau^2} \right) \\
 &= \left( \frac{H}{2\pi}\right)^2 \left( 1 + \frac{k^2}{a^2 H^2} \right)
 }
+using $\tau = - \frac{1}{aH}$ in inflation. 
 \begin{remark}
 For $k < aH$, i.e. just after horizon exit, 
 \eq{
