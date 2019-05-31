@@ -1158,7 +1158,7 @@ Given an operator $O_H(t)$ in the Heisenberg picture
 \end{theorem}
 
 \begin{theorem}
-For any creation/annihilation operators with $\comm[H]{a_{\bm{p}}}$
+For any creation/annihilation operators with $\comm[H]{a_{\bm{p}}^\dagger} =  E_{\bm{p}} a_{\bm{p}}^\dagger$, $\comm[H]{a_{\bm{p}}} = - E_{\bm{p}} a_{\bm{p}}$
 \begin{align*}
 e^{iHt} a_{\bm{p}}  e^{-iHt} &= e^{-iE_{\bm{p}}t} a_{\bm{p}} \\
 e^{iHt} a_{\bm{p}}^\dagger  e^{-iHt} &= e^{iE_{\bm{p}}t} a_{\bm{p}}^\dagger
@@ -1169,9 +1169,9 @@ Define
 \eq{
 f(t) &= e^{iHt} a_{\bm{p}} e^{-iHt} \\
 \Rightarrow f^\prime(t) &= e^{iHt} i\comm[H]{a_{\bm{p}}} e^{-iHt} \\
-&= -iE_{\bm{p}} a_{\bm{p}}
+&= -iE_{\bm{p}} f(t)
 }
-so $f$ obeys an ode and has $f(0) = a_{\bm{p}}$. 
+so $f$ obeys an ode and has $f(0) = a_{\bm{p}}$. Likewise for the case of $a_{\bm{p}}^\dagger$. 
 \end{proof}
 
 \begin{theorem}
@@ -1222,7 +1222,7 @@ O_H(t) &= e^{iHt} e^{-iH_0t} O_I(t) e^{iH_0t}e^{-iHt} \\
 \end{align*}
 defining 
 \[
-U(t,t_0) = e^{iH_0 t}e^{-iH (t-t_0)} e^{-iH_0 t}
+U(t,t_0) = e^{iH_0 t}e^{-iH (t-t_0)} e^{-iH_0 t_0}
 \]
 \end{definition}
 
@@ -1263,50 +1263,6 @@ U(t,t_0) \approx I -i\int_{t_0}^t H_I(t^\prime) \, dt^\prime + \frac{(-i)^2}{2!}
 \]
 is to be accurate then it is necessary that $\frac{\lambda}{E^n} \ll 1$. At high energies, this is only possible if $n\geq0$.
 \end{idea}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Examples of Interacting Theories}
-
-
-\begin{definition}[$\phi^4$ Theory]
-The Lagrangian for \bam{$\phi^4$ theory} is 
-\[
-\mc{L} = \frac{1}{2}\eta^{\mu\nu} \del_\mu\phi \del_\nu\phi-\frac{1}{2}m^2\phi^2 - \frac{\lambda}{4!}\phi^4
-\]
-The corresponding interaction Hamiltonian is 
-\[
-H_{int} = \frac{\lambda}{4!} \int d^3x \, {\phi(x)}^4
-\]
-Note $[\lambda]=0$
-\end{definition}
-
-\begin{definition}[Scalar Yukawa Theory]
-The Lagrangian for \bam{scalar Yukawa theory} is 
-\[
-\mc{L} = \del_\mu\psi^\dagger \del^\mu\psi+\frac{1}{2}\del_\mu\phi \partial^\mu\phi-\mu^2\psi^\dagger\psi-\frac{1}{2}m^2 \phi^2-g\psi^\dagger\psi\phi
-\]
-Note $[g]=1$. Note $\phi$ can represent a meson, $\psi$ a nucleon. 
-\end{definition}
-
-\begin{definition}[Fermionic Yukawa Theory]
-The Lagrangian for \bam{fermionic Yukawa theory} is
-\[
-\mc{L} = \frac{1}{2}\del_\mu\phi \partial^\mu\phi-\frac{1}{2}m^2 \phi^2 + \bar{\psi}(i\slashed{\del}-m)\psi - \lambda\phi\bar{\psi}\psi
-\]
-Note $[\lambda] = 0$
-\end{definition}
-
-\begin{definition}[Quantum ElectroDynamics (QED)]
-The Lagrangian density for \bam{quantum electrodynamics} is 
-\eq{
-\mc{L} = - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} - \bar{\psi}(i\slashed{\del}-m)\psi - e \bar{\psi}_\alpha \gamma^\mu_{\alpha\beta} A_\mu \psi_\beta
-}
-The final term couples the electromagnetic field to a current $j^\mu = e \bar{\psi} \gamma^\mu \psi$. The field equations for the EM field becomes 
-\eq{
-\del_\mu F^{\mu\nu} = j^\nu
-}
-Here we are simulating the coupling of photons to electrons. 
-\end{definition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Propagators}
@@ -1477,23 +1433,6 @@ Therefore
 The above theorem allows the calculation of the correlation function in terms of powers of the interaction Hamiltonian. This will turn out to be an easier calculation (up to a certain order) via Feynman diagrams. 
 \end{idea}
 
-\begin{definition}[Mandelstam Variables]
-Given $2$-$2$ scattering, with initial momenta $p_1,p_2$ and final momenta $p_1^\prime, p_2^\prime$, the \bam{Mandelstam variables} are defined as 
-\begin{align*}
-    s &= (p_1 + p_2)^2 \\ 
-    t &= (p_1 - p_1^\prime)^2 \\
-    u &= (p_1 - p_2^\prime)^2 
-\end{align*}
-\end{definition}
-
-\begin{theorem}
-The Mandelstam variables are not all independent, as 
-\[
-s+t+u = m_1^2 + m_2^2 + {m_1^\prime}^2 +{m_2^\prime}^2
-\]
-Moreover, in the centre of mas frame, $\bm{p}_1 = -\bm{p}_2$ so $s=(E_1+E_2)^2$. If $m_1 = m_2$, $E_1=E_2 = \frac{\sqrt{s}}{2}$
-\end{theorem}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Feynman Diagrams}
 
@@ -1526,7 +1465,134 @@ In momentum space the Feynmann rules are
 \end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Examples of Interacting Theories}
+
+
+\begin{definition}[$\phi^4$ Theory]
+The Lagrangian for \bam{$\phi^4$ theory} is 
+\[
+\mc{L} = \frac{1}{2}\eta^{\mu\nu} \del_\mu\phi \del_\nu\phi-\frac{1}{2}m^2\phi^2 - \frac{\lambda}{4!}\phi^4
+\]
+The corresponding interaction Hamiltonian is 
+\[
+H_{int} = \frac{\lambda}{4!} \int d^3x \, {\phi(x)}^4
+\]
+Note $[\lambda]=0$. The Feynmann rules are 
+\begin{itemize}
+    \item Vertex gets a factor of $-i\lambda$
+    \item Propagators get a factor of $\frac{i}{p^2 - m^2 + i\eps}$
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Scalar Yukawa Theory]
+The Lagrangian for \bam{scalar Yukawa theory} is 
+\[
+\mc{L} = \del_\mu\psi^\dagger \del^\mu\psi+\frac{1}{2}\del_\mu\phi \partial^\mu\phi-\mu^2\psi^\dagger\psi-\frac{1}{2}m^2 \phi^2-g\psi^\dagger\psi\phi
+\]
+Note $[g]=1$. Note $\phi$ can represent a meson, $\psi$ a nucleon. The Feynmann rules are 
+\begin{itemize}
+    \item Vertex gets a factor of $-ig$
+    \item $\phi$ propagators get a factor of $\frac{i}{p^2 - m^2 + i\eps}$
+    \item  $\psi$ propagators get a factor of $\frac{i}{p^2 - \mu^2 + i\eps}$
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Fermionic Yukawa Theory]
+The Lagrangian for \bam{fermionic Yukawa theory} is
+\[
+\mc{L} = \frac{1}{2}\del_\mu\phi \partial^\mu\phi-\frac{1}{2}\mu^2 \phi^2 + \bar{\psi}(i\slashed{\del}-m)\psi - \lambda\phi\bar{\psi}\psi
+\]
+Note $[\lambda] = 0$. The Feynmann rules are 
+\begin{itemize}
+    \item Vertex gets a factor of $-i\lambda$
+    \item $\phi$ propagators get a factor of $\frac{i}{p^2 - \mu^2 + i\eps}$
+    \item  $\psi$ propagators get a factor of $\frac{i(\slashed{p}+m)}{p^2 - \mu^2 + i\eps}$
+    \item Ingoing fermions ($\psi$) get a $u$
+    \item Ingoing antifermions ($\bar{\psi}$) get a $\bar{v}$
+    \item Outgoing fermions ($\psi$) get a $\bar{u}$
+    \item Outgoing antifermions ($\bar{\psi}$) get a $v$
+    \item Contract terms backward along the direction of charge propagation
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Quantum Electrodynamics (QED)]
+The Lagrangian density for \bam{quantum electrodynamics} is 
+\eq{
+\mc{L} = - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + \bar{\psi}(i\slashed{\del}-m)\psi - e \bar{\psi}_\alpha \gamma^\mu_{\alpha\beta} A_\mu \psi_\beta
+}
+The final term couples the electromagnetic field to a current $j^\mu = e \bar{\psi} \gamma^\mu \psi$. The field equations for the EM field becomes 
+\eq{
+\del_\mu F^{\mu\nu} = j^\nu
+}
+Here we are simulating the coupling of photons to electrons. The Feynmann rules are 
+\begin{itemize}
+    \item Vertex gets a factor of $-ie\gamma^\mu$
+    \item  $\psi$ propagators get a factor of $\frac{i(\slashed{p}+m)}{p^2 - \mu^2 + i\eps}$
+    \item $A_\mu$ propagators get a factor of $\frac{-i}{p^2}\psquare{\eta_{\mu\nu} + \frac{p_\mu p_\nu}{p^2}}$
+    \item Ingoing fermions ($\psi$) get a $u$
+    \item Ingoing antifermions ($\bar{\psi}$) get a $\bar{v}$
+    \item Outgoing fermions ($\psi$) get a $\bar{u}$
+    \item Outgoing antifermions ($\bar{\psi}$) get a $v$
+    \item In/Outgoing photons get a polarisation $\eps_\mu$. 
+    \item Contract terms backwards along the direction of charge propagation
+\end{itemize}
+\end{definition}
+
+\begin{idea}
+If we had the standard Dirac Lagrangian $\mc{L}_D = \bar{\psi}(i\slashed{\del}-m)\psi$, but we wanted it to be invariant under a $U(1)$ gauge transform of $\psi \to e^{i\alpha}\psi$, we would need to introduce a gauge field that transforms as $A_\mu \to A_\mu + \del_\mu \alpha$ and use the covariant derivative $D_\mu = \del_\mu + ieA_\mu$, where $e$ is some coupling strength. Then 
+\eq{
+\bar{\psi} ( i \slashed{D} - m) \psi &= \bar{\psi} ( i\gamma^\mu[\del_\mu + ieA_\mu] - m) \psi \\
+&= \bar{\psi} ( i \slashed{\del} - m) \psi - e \bar{\psi}_\alpha \gamma^\mu_{\alpha\beta} A_\mu \psi_\beta
+}
+For full generality of the Lagrangian, we would then include a term of the field strength tensor. 
+\end{idea}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Cross Sections}
+
+\begin{definition}[Cross Section]
+The \bam{scattering cross section} for a $2\to n$ scattering from momenta $p_1, p_2$ to $q_i$ is 
+\eq{
+\sigma = \int \prod _ { i = 1 } ^ { n } \left( \frac { d ^ { 3 } q _ { i } } { ( 2 \pi ) ^ { 3 } 2 E _ { q _ { i } } } \right) \frac { | \mathcal { M } | ^ { 2 } } { \mathcal { F } } ( 2 \pi ) ^ { 4 } \delta ^ { 4 } \left( p _ { 1 } + p _ { 2 } - \sum _ { i = 1 } ^ { n } q _ { i } \right)
+}
+where $\mc{F}$ is the \bam{flux factor} and $\mc{M}$ is the scattering amplitude. 
+\end{definition}
+
+\begin{definition}[Decay Rate]
+The decay rate of a particle, momentum $p$, into a collection of particles with momenta $q_i$ is 
+\eq{
+\Gamma = \frac { 1 } { 2 E _ { p } } \int \prod _ { i = 1 } ^ { n } \left( \frac { d ^ { 3 } q _ { i } } { ( 2 \pi ) ^ { 3 } 2 E _ { q _ { i } } } \right) | \mathcal { M } | ^ { 2 } ( 2 \pi ) ^ { 4 } \delta ^ { 4 } \left( p - \sum _ { i = 1 } ^ { n } q _ { i } \right)
+}
+defined in the rest frame of the decaying particle. 
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\secmath{2 \to 2} Scattering}
+
+\begin{definition}[Mandelstam Variables]
+Given $2$-$2$ scattering, with initial momenta $p_1,p_2$ and final momenta $p_1^\prime, p_2^\prime$, the \bam{Mandelstam variables} are defined as 
+\begin{align*}
+    s &= (p_1 + p_2)^2 \\ 
+    t &= (p_1 - p_1^\prime)^2 \\
+    u &= (p_1 - p_2^\prime)^2 
+\end{align*}
+\end{definition}
+
+\begin{theorem}
+The Mandelstam variables are not all independent, as 
+\[
+s+t+u = m_1^2 + m_2^2 + {m_1^\prime}^2 +{m_2^\prime}^2
+\]
+Moreover, in the centre of mas frame, $\bm{p}_1 = -\bm{p}_2$ so $s=(E_1+E_2)^2$. If $m_1 = m_2$, $E_1=E_2 = \frac{\sqrt{s}}{2}$
+\end{theorem}
+
+\begin{prop}
+The differential cross section in the centre of momentum frame for $2\to2$ scattering is 
+\eq{
+\pround{\frac{d\sigma}{dt}}_{\text{c.o.m}} = \frac{\abs{\mc{M}}^2}{16\pi \lambda(s,m_1^2,m_2^2)}
+}
+where $m_1,m_2$ are the initial particle masses and 
+\end{prop}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

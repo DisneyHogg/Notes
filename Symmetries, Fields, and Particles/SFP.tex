@@ -88,7 +88,7 @@ An \bam{ideal} is a subalgebra $\mf{h} \leq \mf{g}$ s.t.
 \begin{definition}[Derived Algebra]
 The \bam{derived algebra} of a Lie algebra $\mf{g}$ is 
 \[
-i(\mf{g})=\set{\comm[X]{Y} : X,Y\in\mf{g}}
+i(\mf{g})=\spn\set{\comm[X]{Y} : X,Y\in\mf{g}}
 \]
 \end{definition}
 
@@ -126,6 +126,9 @@ ad_{X}\left(Y\right)=\comm[X]{Y}
 \comm[ad_X]{ad_Y} = ad_{\comm[X]{Y}}
 }
 \end{lemma}
+\begin{proof}
+Act on an element $Z \in \mf{g}$ and apply the Jacobi identity.
+\end{proof}
 
 \begin{definition}[ad-diagonalisable]
 An element $X\in\mf{g}$ is \bam{ad-diagonalisable} if the linear map $ad_X$ is diagonalisable. 
@@ -150,6 +153,9 @@ Let $\mf{g}$ be a Lie algebra and $\kappa$ the Killing form. Then
 \forall X,Y,Z\in\mf{g} \quad \kappa\left(\comm[Z]{X},Y\right)+\kappa\left(X,\comm[Z]{Y}\right)=0
 \]
 \end{theorem}
+\begin{proof}
+Expand out using $ad_{\comm[X]{Y}} = \comm[ad_X]{ad_Y}$. 
+\end{proof}
 
 \begin{theorem}[Cartan]
 Let $\mf{g}$ be a Lie algebra with Killing form $\kappa$. Then 
@@ -157,6 +163,20 @@ Let $\mf{g}$ be a Lie algebra with Killing form $\kappa$. Then
 \kappa \, \text{non-degenerate} \Leftrightarrow \mf{g} \, \text{semi-simple}
 \]
 \end{theorem}
+\begin{proof}
+The direction non-degenerate $\Rightarrow$ semi-simple is as follows. Assume $\mf{g}$ not semi-simple. Let $\pbrace{T^a}$ be a basis of a abelian ideal of $\mf{g}$, and extend with $\pbrace{T^i}$ to a basis of the full algebra. Then
+\eq{
+\comm[T^a]{T^b} = 0 &\Rightarrow f^{ab}_\alpha = 0 \\
+\comm[T^a]{T^\alpha} \in \spn\pbrace{T^b} &\Rightarrow f^{a\alpha}_i = 0
+}
+so
+\eq{
+\kappa^{ab} &= f^{a\alpha}_\beta f^{b\beta}_\alpha \\
+&= f^{ai}_\beta f^{b\beta}_i \\
+&= f^{ai}_j f^{bj}_i = 0
+}
+so $\kappa$ degenerate. 
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Cartan Subalgebras}
@@ -345,6 +365,13 @@ For $X,Y\in\mf{g}$, a Lie algebra
 e^{X+Y}=\lim_{N\to\infty}\left( e^{\frac{X}{N}} e^{\frac{Y}{N}} \right)^N
 \]
 \end{corollary}
+
+\begin{fact}
+Rotation matrices corresponding to a rotation $\theta$ degrees about an axis $n$ have the form 
+\eq{
+R_{ij} = \cos\theta \delta_{ij} + (1-\cos\theta)n_i n_j - \sin\theta \eps_{ijk} n_k
+}
+\end{fact}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Pauli Matrices}
 

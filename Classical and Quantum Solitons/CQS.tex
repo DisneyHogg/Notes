@@ -61,6 +61,101 @@ Topological solitons come with an associated charge conserved topologically by t
 \end{definition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Degree of a Map}
+Let $M,N$ be closed, connected, oriented manifolds of the same dimension $d$.
+
+\begin{definition}[Volume Form]
+A d-form $\omega$ on $N$ satisfying $\int_N \omega = 1$ is a \bam{normalised volume form} on $N$.
+\end{definition}
+
+\begin{definition}[Degree]
+Let $\omega$ be a normalised volume form on $N$ and $f:M \to N$. The \bam{degree} of $f$ is 
+\eq{
+\deg f = \int_M f^\ast \omega
+}
+where $f^\ast \omega$ is the pullback of $\omega$ under $f$. 
+\end{definition}
+
+\begin{prop}
+$\deg f$ is independent of the volume form used in the definition. 
+\end{prop}
+\begin{proof}
+Suppose 
+\eq{
+\int_N \omega = 1 = \int_N \tilde{\omega}
+}
+Then 
+\eq{\int_N \omega - \tilde{\omega} = 0 \; \Rightarrow \; \omega - \tilde{\omega} = d\alpha
+}
+As a result 
+\eq{
+f^\ast \omega - f^\ast \tilde{\omega} = d(f^\ast \omega) \; \Rightarrow \int_M f^\ast \omega = \int_M f^\ast \tilde{\omega}
+}
+\end{proof}
+
+\begin{prop}
+$\deg f$ generically counts the preimages of a point $p\in N$
+\end{prop}
+\begin{proof}
+Choose $p\in N$ with an neighbourhood $\Sigma$ such that $\forall x \in f^{-1}(p), \, \exists U_x \subset N$ a neighbourhood of $x$ such that $f\rvert_{U_x} : U_x \to \Sigma$ is a diffeomorphism. Pick $\omega$ a volume form on $N$ with support $\Sigma$. Then 
+\eq{
+\int_{U_x} f^\ast \tilde{\omega} &= \pm \int_\Sigma \omega = \pm 1 \\
+\Rightarrow \deg f &= \sum_{x \in f^{-1}(p)} (\pm1) \in \mbb{Z}
+}
+\end{proof}
+
+\begin{prop}
+$\deg f$ is a topological invariant. 
+\end{prop}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Rational Maps}
+
+\begin{definition}[Rational Map]
+A \bam{rational map} is 
+\eq{
+R = \frac{p}{q}
+}
+where $p,q$ are polynomials with distinct roots and generically the same degree
+\end{definition}
+
+\begin{definition}[Algebraic Degree]
+The \bam{algebraic degree} of a rational map is 
+\eq{
+\deg_{alg} R = \max\pbrace{\deg p , \deg q}
+}
+\end{definition}
+
+\begin{prop}
+The algebraic and topological degree of $R$ are the same. 
+\end{prop}
+\begin{proof}
+Pick $c \in \mbb{C}$. Then 
+\eq{
+R(z) = c \; \Rightarrow p(z) - cq(z) = 0
+}
+This polynomial generically has $\deg_{alg} R$ roots, so by the counting of preimages $\deg_{alg} R = \deg R$. 
+\end{proof}
+
+\begin{definition}[Wronskian]
+The \bam{Wronskian} of two polynomials $p,q$ is 
+\eq{
+W = p^\prime q - p q^\prime
+}
+The \bam{Wronskian points} are the zeros of $W$. 
+\end{definition}
+
+\begin{prop}[Properties of the Wronskian]
+The following are properties of the Wronskian:
+\begin{itemize}
+    \item $R^\prime = 0$ at Wronskian points 
+    \item Generically $\deg W = 2\deg R - 2$. 
+    \item Symmetries of $R \, \Rightarrow$ symmetries of $W$. 
+    \item If $W$ has degree less than $2\deg R - 2$, then $W$ has zeros at $z = \infty$. 
+\end{itemize}
+\end{prop}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Kinks}
 
@@ -102,7 +197,7 @@ is a conserved topological charge.
 \end{definition}
 
 \begin{prop}
-When the target space of $\phi$,$\mc{M}$, is taken to be a manifold of finite volume, the winding number is found as the integral of the pullback of the normalised volume form $\omega$ on $\mc{M}$ under $\phi$. 
+When the target space of $\phi$, $\mc{M}$, is taken to be a manifold of finite volume, the winding number is found as the integral of the pullback of the normalised volume form $\omega$ on $\mc{M}$ under $\phi$. i.e the winding number is the degree of the map $\phi$. 
 \end{prop}
 
 \begin{example}
@@ -237,6 +332,16 @@ The Euler-Lagrange field equations for the abelian Higgs model are
 D_\mu D^\mu \phi &= \frac{\lambda}{2} (1-\phi^\ast \phi) \phi
 }
 \end{prop}
+\begin{proof}
+Note 
+\eq{
+\pd[\mc{L}]{\pround{\del_\mu a_\nu}} &= - f^{\mu\nu} \\
+\pd[\mc{L}]{a_\nu} &= \frac{i}{2} \psquare{\phi^\ast \pround{D^\nu \phi} - \pround{D^\nu \phi}^\ast \phi} \\
+\pd[\mc{L}]{\pround{\del_\mu \phi^\ast}} &= \frac{1}{2} \pround{D^\mu \phi} \\
+\pd[\mc{L}]{\phi^\ast} &= \frac{\lambda}{4}\pround{1 - \phi^\ast \phi} \phi + \frac{i}{2}\pround{D^\mu \phi}
+}
+The result then follows from the Euler-Lagrange equations. 
+\end{proof}
 
 \begin{prop}[Ginzburg Landau Energy]
 The energy functional in the abelian Higgs model is the \bam{Ginzburg Landau energy}
@@ -477,7 +582,7 @@ where $\tilde{\Omega} = \Omega \abs{\phi}^2 = \Omega e^u$. Then
 }
 i.e. 
 \eq{
-\pround{\tilde{K} + \frac{1}{2}} d\tilde{s}^2 = \pround{K + \frac{1}{2}} ds^2 
+\pround{\tilde{K} + \frac{1}{2}} d\tilde{s}^2 = \pround{K + \frac{1}{2}} ds^2 \quad \text{(\bam{Baptista Equation})}
 }
 where $K,\tilde{K}$ are the corresponding Gaussian curvatures of the metrics on $\Sigma$. 
 \end{prop}
@@ -499,8 +604,123 @@ Then
 }
 \end{proof}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\secmath{K = -\frac{1}{2}} (Hyperbolic Plane)}
+Choosing $K = -\frac{1}{2}$ ensures $\tilde{K}=-\frac{1}{2}$. The Hyperbolic plane in the Poincare disk model with curvature $K = -\frac{1}{2}$ has the metric 
+\eq{
+ds^2 = \frac{8}{\pround{1 - y_1^2 - y_2^2}^2} \psquare{(dy^1)^2 + (dy^2)^2} = \frac{8}{\pround{1-\abs{z}^2}^2} dz \, d\bar{z}
+}
+Using a conformal map $f : \mbb{H}^2 \to \mbb{H}^2$, $f(z) = w$, and pulling back the standard metric on the image, gives 
+\eq{
+d\tilde{s}^2 = \frac{8}{\pround{1-\abs{f(z)}^2}^2} \abs{\frac{df}{dz}}^2 dz \, d\bar{z}
+}
+Hence 
+\eq{
+\Omega &= \frac{8}{\pround{1-\abs{z}^2}^2} \\
+\tilde{\Omega} &= \frac{8}{\pround{1-\abs{f(z)}^2}^2} \abs{\frac{df}{dz}}^2 \\
+\Rightarrow \abs{\phi}^2 = \frac{\tilde{\Omega}}{\Omega} &= \pround{\frac{1-\abs{z}^2}{1-\abs{f(z)}^2}}^2 \abs{\frac{df}{dz}}^2
+}
+By choosing the we can get 
+\eq{
+\phi = \frac{1-\abs{z}^2}{1-\abs{f(z)}^2}\abs{\frac{df}{dz}}
+}
+
+\begin{prop}[Blaschke Product]
+The most general allowed function is a (finite) \bam{Blaschke product}
+\eq{
+f(z) = \prod_{i=1}^n \pround{\frac{z-c_i}{1-\bar{c}_i z}}
+}
+for $\abs{c_i}<1$. This corresponds to an $N=n-1$ vortex solution with vortex centres where $\frac{df}{dz}=0$
+\end{prop}
+
+\begin{definition}[Conic Singularity]
+A conic singularity occurs in a metric of the form 
+\eq{
+ds^2 = dr^2 + r^2 d\theta^2
+}
+at $r=0$. The metric is said to have a cone angle $\Theta$ if the range of $\theta$ is $[0,\Theta)$. 
+\end{definition}
+
+\begin{prop}
+The metric 
+\eq{
+d\tilde{s}^2 = \Omega \abs{\phi}^2 \psquare{(dy^1)^2 + (dy^2)^2}
+}
+generically has $N$ cone singularities with cone angle $4\pi$. 
+\end{prop}
+\begin{proof}
+Near a point where $\frac{df}{dz} = 0$ the metric looks like 
+\eq{
+d\tilde{s}^2 \approx\propto r^2(dr^2 + r^2 \theta^2)
+}
+for $\theta \in [0,2\pi)$. Letting $v = \frac{1}{2}r^2$ and $\beta = 2\theta$ gives 
+\eq{
+d\tilde{s}^2 \approx \propto dv^2 + v^2 d\beta^2
+}
+for $\beta\in[0,4\pi)$. 
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Popov Vortices}
+By changing the sign of the covariant derivative term we get the modified Bogomolny equations 
+\eq{
+D_1 \phi + i D_2 \phi &= 0 \\
+B + \frac{1}{2} \Omega \pround{1-\abs{\phi}^2} &= 0 
+}
+This gives a corresponding variant of the Baptista equation 
+\eq{
+\pround{\tilde{K} - \frac{1}{2}} d\tilde{s}^2 = \pround{K - \frac{1}{2}} ds^2 \quad 
+}
+We thus construct solutions on the sphere radius $\sqrt{2}$, so $K = \frac{1}{2}$ where the metric is 
+\eq{
+ds^2 = \frac{8}{\pround{1+\abs{z}^2}^2} dz \, d\bar{z}
+}. Then 
+\eq{
+\phi = \frac{1+\abs{z}^2}{1+\abs{f(z)}^2}\abs{\frac{df}{dz}}
+}
+for $f : S^2 \to S^2$. 
+
+\begin{prop}
+The most general allowed function is a rational map .
+\end{prop}
+
+\begin{prop}
+Vortex centres correspond to Wronskian points of the rational map.
+\end{prop}
+
+\begin{prop}
+The degree of the Wronksian is the \bam{Popov vortex number}. 
+\end{prop}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Skyrmions}
+
+\begin{definition}[Skyrme Field]
+The \bam{Skyrme field} is a map $U : \mbb{R}^{3+1} \to S^3$. Using $S^3 \equiv SU(2)$ we can write 
+\eq{
+U = \sigma I + i \bm{\pi} \cdot \bm{\tau}
+}
+where $\bm{\tau}$ are the Pauli matrices, and we have the constraint 
+\eq{
+\sigma^2 + \abs{\bm{\pi}}^2 = 1
+}. 
+\end{definition}
+
+\begin{fact}
+$\bm{\pi}$ represents the pion field from quantum field theory. 
+\end{fact}
+
+\begin{idea}
+Skyrme though that a non-linear theory of pions can have soliton solutions representing baryons, where the baryon number $B$ is the topological degree. 
+\end{idea}
+
+\begin{definition}[Skyrme Lagrangian]
+The Lagrangian for the Skyrme field is 
+\eq{
+L = \int d^3 x \, \pbrace{ - \frac{F_\pi^2}{16}\Tr\pround{R_\mu R_\nu}
+}
+}
+\end{definition}
 
 \end{document}
