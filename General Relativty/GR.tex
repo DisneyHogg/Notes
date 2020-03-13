@@ -42,18 +42,63 @@ c = 1
 \subsection{Green's Function Solution to Sourced Wave Equation}
 Consider the sourced wave equation 
 \eq{
-\pround{-\del_t^2 + \nabla^2}\phi(x) = C(\bm{x},t)
+\del_a \del^a \phi(x) = C(x)
 }
 Taking the Fourier transform with respect to space and time \eq{
-f(\bm{x},t) &= \int e^{-i(\bm{k} \cdot \bm{x}-\omega t)} \hat{f}(\bm{k},\omega) \, \frac{d^3k \,d\omega}{(2\pi)^4} \\ 
-\Rightarrow f(x) &= 
+f(x) &= \int e^{ik\cdot x} \hat{f}(k) \frac{d^4k}{(2\pi)^4} \\
+\Rightarrow \hat{f}(k) &= \int e^{-ik\cdot x} f(x) \, d^4x
 }
-gives 
+in 4-momentum notation. This gives 
 \eq{
-(\omega^2 - \abs{\bm{k}}^2) \hat{\phi}(\bm{k},\omega) &= \hat{C}(\bm{k},\omega) \\
-\Rightarrow \hat{\phi}(\bm{k},\omega) &= \frac{\hat{C}(\bm{k},\omega)}{(\omega^2 - \abs{\bm{k}}^2)}
+-k_a k^a  \hat{\phi}(k) &= \hat{C}(k) \\
+\Rightarrow \hat{\phi}(k) &= \frac{-\hat{C}(k)}{k^2}
 }
-
+and so 
+\eq{
+\phi(x) = \int e^{ik \cdot x} \frac{-\hat{C}(k)}{k^2} \frac{d^4 k}{(2\pi)^4 }
+}
+We now define the Greens' function $G(x;x^\prime)$ such that 
+\eq{
+\del_a \del^a G(x;x^\prime) = \delta^{(4)}(x-x^\prime)
+}
+Then 
+\eq{
+\del_a \del^a \int G(x;x^\prime) C(x^\prime) \, d^4x^\prime &= \int \delta^{(4)}(x-x^\prime) C(x^\prime) \, d^4x^\prime) \\
+&= C(x)
+}
+so $\int G(x;x^\prime) C(x^\prime) \, d^4x^\prime$ is a solution for $\phi(x)$. The Fourier transform of the delta function is 
+\eq{
+\hat{\delta}(k) = \int e^{-ik \cdot x} \delta^{(4)}(x-x^\prime) \, d^4x = e^{-ik \cdot x^\prime}
+}
+so 
+\eq{
+G(x;x^\prime) = \int e^{ik \cdot x} \frac{-e^{-ik \cdot x^\prime}}{k^2} \, \frac{d^4k}{(2\pi)^4}
+}
+Writing explicitly in terms of components, let $k = (\omega,\bm{k})$, and let $(\tau,\bm{r}) = x-x^\prime$. Choosing spherical coordinates such that $\bm{r}$ aligns with the vertical, we have 
+\eq{
+G(x;x^\prime) &= -\frac{1}{(2\pi)^4} \int_0^{2\pi} d\phi \int_0^\pi \sin\theta \, d\theta \int_0^\infty k^2 \, dk \int_{-\infty}^\infty d\omega \, \frac{e^{-i\omega \tau + ikr\cos\theta}}{-\omega^2+k^2} \\
+&= \frac{1}{4\pi^3}\int_0^\infty dk \, k^2 \frac{\sin kr}{kr} \int_{-\infty}^\infty \frac{e^{-i\omega\tau}}{(\omega-k)(\omega+k)}
+}
+We may then consider the \bam{retarded Green's function} where we shift the poles at $\omega=\pm k$ down such that when $\tau < 0$, we close in the UHP by Jordan's lemma, and get no contribution from the residues. Contrastingly, when $\tau > 0$, we close in the LHP, and get a contribution 
+\eq{
+-2\pi i \psquare{\frac{e^{-ik\tau}}{2k} + \frac{e^{ik\tau}}{-2k}} = \frac{-2\pi}{k} \sin k\tau
+}
+so 
+\eq{
+G(x;x^\prime) = \frac{-1}{2\pi^2r} \Theta(\tau) \int_0^\infty dk \sin kr \sin k\tau 
+}
+which, after expanding in terms of exponentials, gives 
+\eq{
+G(x;x^\prime) = -\frac{1}{4\pi r} \Theta(t-t^\prime) \delta(t-t^\prime - \abs{\bm{x}-\bm{x}^\prime})
+}
+Note that, as $\abs{\bm{x} - \bm{x}^\prime} > 0$, and the Green's function is only supported on $t-t^\prime > 0$, the functions $t-t^\prime - \abs{\bm{x}-\bm{x}^\prime}$ and $\pround{t-t^\prime - \abs{\bm{x}-\bm{x}^\prime}}\pround{t-t^\prime + \abs{\bm{x}-\bm{x}^\prime}} = -(x-x^\prime)^2 $ have the same zeros. Hence we can write 
+\eq{
+\frac{\delta(t-t^\prime - \abs{\bm{x}-\bm{x}^\prime})}{2\abs{\bm{x}-\bm{x}^\prime}} = \frac{\delta(t-t^\prime - \abs{\bm{x}-\bm{x}^\prime})}{(t-t^\prime + \abs{\bm{x}-\bm{x}^\prime})} = \delta\psquare{(x-x^\prime)^2}
+}
+and restore covariance of the Green's function giving 
+\eq{
+G(x;x^\prime) = -\frac{1}{2\pi}\Theta(t-t^\prime) \delta\psquare{(x-x^\prime)^2}
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Differential Geometry}
@@ -77,7 +122,7 @@ Given two sets of coordinates on the manifold $x^a$ and $\tilde{x}^a$, the compo
 \begin{definition}[Commutator]
 The \bam{commutator} of two vectors $V,W$ is a vector $\comm[V]{W}$ with components 
 \eq{
-\comm[V]{W}^a = V^b \del_b W^a - W^b \del_B V^a
+\comm[V]{W}^a = V^b \del_b W^a - W^b \del_b V^a
 }
 \end{definition}
 
@@ -336,7 +381,16 @@ In this basis
 \[
 ds^2 = g_{ab} dx^a dx^b = \eta_{\mu\nu} E^{\mu} E^{\nu}
 \]
-\end{definition}
+We get the corresponding basis of vectors $\pbrace{ E_\nu}$ defined such that 
+\eq{
+E^\mu(E_\nu) = \delta^\mu_\nu
+}
+Writing $E_\nu = c_\nu^a \del_a$ we find 
+\eq{
+\delta^\mu_\nu = e^\mu_a c^b_\nu \delta^a_b 
+}
+Thus $c^a_\nu = e^a_\nu$. 
+\end{definition} 
 
 
 \begin{definition}[Spin Connection]
@@ -348,19 +402,36 @@ subject to the \bam{vierbein constraint}
 \[
 \nabla_a e^b_\nu = 0
 \]
-which gives
-\[
-\omega_{\lambda\tau\nu} =e_\lambda^a e_{b\tau}\left(\partial_a e_\nu^b+\Gamma_{ac}^b e_\nu^c \right)
-\]
-It is also required to have a vanishing torsion tensor 
+and the requirement to have a vanishing torsion tensor 
 \[
 \nabla_\mu e^a_\nu - \nabla_\nu e^a_\mu = T\indices{^\rho_\mu_\nu} e^a_\rho
 \]
-which gives 
-\[
-\omega_{\mu\rho\sigma} = -\omega_{\mu\sigma\rho}
-\]
 \end{definition}
+
+\begin{prop}
+\eq{
+\omega_{\lambda\tau\nu} =e_\lambda^a e_{b\tau}\left(\partial_a e_\nu^b+\Gamma_{ac}^b e_\nu^c \right)
+}
+and 
+\eq{
+\omega_{\mu\rho\sigma} = -\omega_{\mu\sigma\rho}
+}
+\end{prop}
+\begin{proof}
+\eq{
+\nabla V = \pround{ \del_a V^b + \Gamma^b_{ac} V^c} \, dx^a \otimes \del_b
+}
+Similarly 
+\eq{
+\nabla V &= \pround{\del_\mu V^\nu + \omega\indices{_\mu^\nu_\rho} V^\rho} \, E^\mu \otimes E_\nu \\
+&= \pround{ e^a_\mu \del_a \psquare{e^\nu_b V^b} + \omega\indices{_\mu^\nu_\rho} e^\rho_c V^c } \pround{e^\mu_d dx^d} \otimes \pround{e_\nu^f \del_f} \\
+&= \pround{e^a_\mu e^\mu_d e^f_\nu \psquare{e^\nu_b \del_a V^b + V^b \del_a e^\nu_b } + \omega\indices{_\mu^\nu_\rho} e^\rho_c e^\mu_d e^f_\nu V^c } \, dx^d \otimes \del_f \\
+\Rightarrow \del_d V^f + \Gamma^f_{dc}V^c &= \del_d V^f + e^f_\nu V^c \del_d e^\nu_c + \omega\indices{_\mu^\nu_\rho} e^\rho_c e^\mu_d e^f_\nu V^c \\ 
+\Rightarrow \Gamma^f_{dc} + e^\nu_c \del_d e^f_\nu &= \omega\indices{_\mu^\nu_\rho} e^\rho_c e^\mu_d e^f_\nu
+}
+Multiplying through gives the first result. 
+\end{proof}
+
 
 \begin{definition}[Normal Coordinates]
 Given a point $x_0$, \bam{normal coordinates} at $x_0$ are coordinates such that 
@@ -437,12 +508,6 @@ Define the Riemann tensor in terms of $\omega$ as
 \]
 \end{definition}
 
-\begin{theorem}
-\[
-R_{abcd}(\Gamma) = e^\mu_a e^\mu_b e^\rho_c e^\sigma_d R_{\mu\nu\rho\sigma}(\omega)
-\]
-\end{theorem}
-
 \begin{definition}[Ricci Rotation Coefficients]
 Define the \bam{Ricci rotation coefficients} $c\indices{^\mu_\rho_\sigma}$ by 
 \[
@@ -455,6 +520,27 @@ dE^\mu = \frac{1}{2} c\indices{^\mu_\rho_\sigma} E^\rho \wedge E^\sigma
 \omega_{\mu\nu\rho} = \frac{1}{2}\pround{c_{\mu\nu\rho} + c_{\rho\mu\nu} - c_{\nu\mu\rho}}
 }
 \end{lemma}
+\begin{proof}
+\eq{
+dE^\mu &= d(e^\mu_a dx^a) \\
+&= de^\mu_a \wedge dx^a \\
+&= \del_b e^\mu_a \,  dx^b \wedge dx^a \\
+&= \pround{e^\mu_f\Gamma^f_{ba} - \omega\indices{_\lambda^\mu_\rho} e^\rho_a e^\lambda_b  } dx^b \wedge dx^a \\
+&= \omega\indices{_\lambda^\mu_\rho} E^\rho \wedge E^\lambda \quad \text{by antisymmetry} \\
+&= \frac{1}{2}\pround{\omega\indices{_\lambda^\mu_\rho} - \omega\indices{_\rho^\mu_\lambda}} E^\rho \wedge E^\lambda
+}
+Hence 
+\eq{
+\omega_{\sigma\mu\rho} - \omega_{\rho\mu\sigma} &= c_{\mu\rho\sigma} \\
+\omega_{\rho\sigma\mu} - \omega_{\mu\sigma\rho} &= c_{\sigma\mu\rho} \\
+\omega_{\sigma\rho\mu} - \omega_{\mu\rho\sigma} &= c_{\rho\mu\sigma}
+}
+so 
+\eq{
+-c_{\mu\rho\sigma} + c_{\sigma\mu\rho} - c_{\rho\mu\sigma} &= -\omega_{\sigma\mu\rho} + \omega_{\rho\mu\sigma} + \omega_{\rho\sigma\mu} - \omega_{\mu\sigma\rho} - \omega_{\sigma\rho\mu} + \omega_{\mu\rho\sigma} \\
+&= 2 \omega_{\mu\rho\sigma}
+}
+\end{proof}
 
 \begin{definition}[Connection 1-form]
 Define the \bam{connection 1-form} by 
@@ -480,10 +566,31 @@ Define the \bam{curvature 2-form} by
 \begin{theorem}[Cartan's Equations of Structure]
 Cartan's first and second equations of structure are 
 \begin{itemize}
-    \item $dE^\mu +  \omega\indices{^\mu_\nu} E^\nu = \Theta^\mu = 0 $ 
+    \item $dE^\mu +  \omega\indices{^\mu_\nu} \wedge E^\nu = \Theta^\mu = 0 $ 
     \item $\Omega\indices{^\mu_\nu} = d\omega\indices{^\mu_\nu} +  \omega\indices{^\mu_\rho} \wedge  \omega\indices{^\rho_\nu}$
 \end{itemize}
 \end{theorem}
+
+\begin{theorem}
+\[
+R_{abcd}(\Gamma) = e^\mu_a e^\mu_b e^\rho_c e^\sigma_d R_{\mu\nu\rho\sigma}(\omega)
+\]
+\end{theorem}
+\begin{proof}
+$\Omega\indices{^\mu_\nu}$ has components $\Omega\indices{^\mu_\nu_a_b}$ such that 
+\eq{
+\Omega\indices{^\mu_\nu} = \frac{1}{2} \Omega\indices{^\mu_\nu_a_b}  dx^a \wedge dx^b
+}
+By converting to the bases of $E^\rho,E^\sigma$ we see 
+\eq{
+R\indices{^a_b_c_d}(\omega) = \Omega\indices{^\mu_\nu_c_d}e^a_\mu e_b^\nu
+}
+Now 
+\eq{
+\omega\indices{^\mu_\nu} &= \omega\indices{^\mu_\nu_\rho} E^\rho \\
+&= 
+}
+\end{proof}
 
 \begin{idea}
 Cartan's equations provide a more streamlined route to finding the Riemann tensor than computation using the Christoffel symbols. 
@@ -1134,8 +1241,20 @@ The \bam{harmonic gauge} is chosen such that
 \eq{
 \del_a \pround{h^{ab} - \frac{1}{2}\eta^{ab}h} = 0
 }
-This may always be chosen, as can be seen using the Green's function for the flat wave operator. 
 \end{definition}
+
+\begin{prop}
+The harmonic may always be chosen.
+\end{prop}
+\begin{proof}
+Given metric $h_{ab}$ not necessarily in the harmonic gauge, and gauge transformed metric $h^\prime_{ab}$. Then the condition for $h^\prime$ to be in the harmonic gauge is 
+\eq{
+0 &= \del^a \pround{h_{ab}^\prime - \frac{1}{2} \eta_{ab} h^\prime} \\
+&= \del^a \pround{h_{ab} + \del_a V_b + \del_b V_a - \frac{1}{2}\eta_{ab} \psquare{h + 2 \del^c V_c}} \\
+&= \del^a \pround{h_{ab} - \frac{1}{2}\eta_{ab}h} + \del^a \del_a V_b 
+}
+This is equivalent to solving a sourced wave equation, which is always possible. 
+\end{proof}
 
 \begin{definition}[Transverse Tracefree Gauge]
 The \bam{transverse tracefree gauge} is the harmonic gauge with the additional conditions 

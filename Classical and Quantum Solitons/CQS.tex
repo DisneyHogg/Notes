@@ -21,7 +21,7 @@ A brief overview of some key ideas, concepts, and facts that I find useful in re
 \subsection{Preliminaries}
 
 \begin{definition}[Minkowski Metric]
-In these notes the convention for the Mkinowski metric will be 
+In these notes the convention for the Minkowski metric will be 
 \eq{
 \eta_{\mu\nu} = \diag(1,-1,\dots,-1)
 }
@@ -109,6 +109,74 @@ $\deg f$ is a topological invariant.
 \end{prop}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Stereographic Projection}
+
+\begin{definition}[Stereographic Projection]
+The \bam{stereographic projection} is a map from the unit sphere $S^2 \to \mbb{C}\cup\pbrace{\infty}$ given by 
+\eq{
+(\theta,\phi) \mapsto z = \tan\frac{1}{2}\theta \, e^{i\phi}
+}
+In Cartesian coordinates this is 
+\eq{
+(x_1,x_2,x_3) \mapsto z = \frac{x_1 + ix_2}{1 + x_3}
+}
+which can be inverted to 
+\eq{
+\hat{\bm{n}}_z = \frac{1}{1+\abs{z}^2}(z+ \bar{z},-i(z-\bar{z}), 1-\abs{z}^2)
+}
+\end{definition}
+
+\begin{definition}[Standard Forms on the Sphere]
+The standard metric and area form on the sphere $S^2$ are 
+\eq{
+ds^2 = d\theta^2 + \sin^2\theta d\phi^2 
+}
+and 
+\eq{
+dA = \sin\theta \, d\theta \wedge d\phi
+}
+\end{definition}
+
+\begin{prop}
+The standard forms on the sphere become, under stereographic projection 
+\eq{
+ds^2 = \frac{4 \, dz d\bar{z}}{\pround{1+\abs{z}^2}^2} \,
+}
+and 
+\eq{
+dA = \frac{2i \, dz \wedge d\bar{z} }{\pround{1+\abs{z}^2}^2} \,
+}
+\end{prop}
+\begin{proof}
+Note $\tan^2 \frac{\theta}{2} = z\bar{z}$. Then 
+\eq{
+\sec^2 \frac{\theta}{2} &= 1+ \tan^2 \frac{\theta}{2} = 1+ \abs{z}^2 \\
+\sin^2\theta &= \pround{2\sin\frac{\theta}{2}\cos\frac{\theta}{2}}^2 = \frac{4 \tan^2\frac{\theta}{2}}{\sec^4 \frac{\theta}{2}} = \frac{4\abs{z}^2}{\pround{1+ \abs{z}^2}^2}
+}
+Further, $e^{2i\phi} = \frac{z}{\bar{z}} \Rightarrow 2i\phi = \log z - \log\bar{z}$ so 
+\eq{
+\tan\frac{\theta}{2} \sec^2\frac{\theta}{2} &= zd\bar{z} + \bar{z} dz \\
+2i d\phi &= \frac{dz}{z} - \frac{d\bar{z}}{\bar{z}}
+}
+This gives 
+\eq{
+ds^2 = \psquare{\frac{zd\bar{z}+\bar{z}dz}{\abs{z}\pround{1+\abs{z}^2}}}^2 + \frac{4\abs{z}^2}{\pround{1+ \abs{z}^2}^2} \pround{\frac{1}{2i}\frac{\bar{z}dz - zd\bar{z}}{\abs{z}^2}}^2 =\frac{4 \, dz d\bar{z}}{\pround{1+\abs{z}^2}^2} 
+}
+and 
+\eq{
+dA = \frac{2\abs{z}}{1+ \abs{z}^2}\psquare{\frac{zd\bar{z}+\bar{z}dz}{\abs{z}\pround{1+\abs{z}^2}}} \wedge \pround{\frac{1}{2i}\frac{\bar{z}dz - zd\bar{z}}{\abs{z}^2}} = \frac{2i \, dz\wedge d\bar{z}}{\pround{1+\abs{z}^2}^2}
+}
+\end{proof}
+
+\begin{fact}
+Rotations $k \in SO(3)$, acting on $S^2$, correspond to elements of $SU(2)$ acting on $\mbb{C} \cup \pbrace{\infty}$ by 
+\eq{
+z \mapsto k(z) = \frac{\gamma z + \delta}{-\bar{\delta}z + \bar{\gamma}}
+}
+where $\abs{\gamma}^2 + \abs{\delta}^2 = 1$. 
+\end{fact}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Rational Maps}
 
 \begin{definition}[Rational Map]
@@ -116,7 +184,7 @@ A \bam{rational map} is
 \eq{
 R = \frac{p}{q}
 }
-where $p,q$ are polynomials with distinct roots and generically the same degree
+where $p,q$ are complex polynomials with distinct roots and generically the same degree
 \end{definition}
 
 \begin{definition}[Algebraic Degree]
@@ -155,7 +223,16 @@ The following are properties of the Wronskian:
 \end{itemize}
 \end{prop}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{definition}[Symmetries of Rational Maps]
+A rational map has symmetry group $K$ if $\forall \, k \in K, \exists \, M_k$ such that 
+\eq{
+R \circ k = M_k \circ R
+}
+and the map $k \to M_k$
+\end{definition}
+
+
+%%%%%%%%%%%%%%% is a %%%%%%homomorphism. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Kinks}
 
@@ -218,7 +295,7 @@ For a static solution, the field equations become
 \begin{theorem}[Derrick's Theorem for Kinks]
 For a static kink solutions, 
 \eq{
-\int \frac{1}{2} {\phi^\prime}^2 \, dx = \int U(\phi) \, dx
+\int \frac{1}{2} {\phi^\prime}^2 \, dx = \frac{1}{2}E =  \int U(\phi) \, dx
 }
 \end{theorem}
 
@@ -259,7 +336,12 @@ The Bogomolny equation is a first order differential equation, and so comes with
 \end{prop}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Dynamic Kinks}
-Sometimes exact solutions for non-static kinks can be obtained. Approximations can be obtained through an adiabatic point of view for low velocities $v \ll 1$ of the form 
+Note that the theory is Lorentz invariant. Solutions for dynamic kinks can thus be obtained by Lorentz boosting a static kink
+\eq{
+\phi(x,t) = \phi_0(\gamma(x-vt))
+}
+where $\gamma = (1-v^2)^{-\frac{1}{2}}$. \\
+Approximations can be obtained through an adiabatic point of view for low velocities $v \ll 1$ of the form 
 \eq{
 \phi(x,t) = \phi_0(x-a(t))
 }
@@ -272,6 +354,7 @@ The Euler-Lagrange equation for this reduced Lagrangian give
 M \ddot{a} &= 0 \\
 \Rightarrow a(t) &= vt + \text{const}
 }
+Observe that this reproduces the low $v$ limit of the Lorentz boosted solution. \\
 From Noether's theorem, the momentum is 
 \eq{
 P = - \int \dot{\phi} \phi^\prime \, dx 
@@ -348,7 +431,7 @@ The energy functional in the abelian Higgs model is the \bam{Ginzburg Landau ene
 \eq{
 E = \int d^2x \, \pbrace{\frac{1}{2}B^2 + \frac{1}{2} (D_1 \phi)^\ast(D_1 \phi) + \frac{1}{2} (D_2 \phi)^\ast(D_2 \phi) +\frac{\lambda}{8} (1 - \phi^\ast \phi)^2 }
 }
-where $B = \del_1 a_2 - \del_2 a_1$ is the \bam{magnetic field}. Note that the vacuum manifold is $\mc{V} = \pbrace{\abs{\phi} = 1} = S^1$. Hence a finite energy field configuration requires that as $\abs{\bm{x}}\to\infty$, $B\to 0$, $\abs{\phi}\to 0$, and $D\phi \to 0$. 
+where $B = \del_1 a_2 - \del_2 a_1$ is the \bam{magnetic field}. Note that the vacuum manifold is $\mc{V} = \pbrace{\abs{\phi} = 1} = S^1$. Hence a finite energy field configuration requires that as $\abs{\bm{x}}\to\infty$, $B\to 0$, $\abs{\phi}\to 1$, and $D\phi \to 0$. 
 \end{prop}
 
 \begin{definition}[Critical Coupling]
@@ -454,6 +537,39 @@ The lemmas give that the second integral can be written as
 \frac{1}{2} \int_{\mbb{R}^2} B \, d^2x + \frac{i}{2} \int_{\mbb{R}^2} \pbrace{ \del_2 (\phi^\ast D_1 \phi) - \del_1 (\phi^\ast D_2 \phi)} = \pi N
 }
 as the first integral is half of the flux, and the second term is 0 by stokes theorem. 
+\end{proof}
+
+\begin{prop}
+Solutions of the Bogomolny equations are solutions to the full field equations at critical coupling
+\end{prop}
+\begin{proof}
+For static field configurations at critical coupling the field equations are 
+\eq{
+-\del_i f_{ij} &= \frac{i}{2} \psquare{(D_j \phi)^\ast \phi - \phi^\ast (D_j \phi)} \\
+-D_i D_i \phi &= \frac{1}{2} (1-\phi^\ast \phi) \phi
+}
+Taking the $\del_1$ derivative of the first Bogomolny equation gives 
+\eq{
+-\del_i f_{i2} = \frac{1}{2}\psquare{\phi^\ast \del_1 \phi + (\del_1 \phi)^\ast \phi}
+}
+From the second Bogomoly equation and its conjugate we have 
+\eq{
+\del_1 \phi &= ia_1 \phi -i\del_2 \phi -a_2 \phi \\
+\del_1 \phi^\ast &= -ia_1 \phi^\ast + i\del_2 \phi^\ast -a_2 \phi^\ast
+}
+so 
+\eq{
+-\del_i f_{i2} &= \frac{1}{2} \psquare{\phi^\ast (ia_1 \phi -i\del_2 \phi -a_2 \phi) + (-ia_1 \phi^\ast + i\del_2 \phi^\ast -a_2 \phi^\ast) \phi} \\
+&= \frac{i}{2}\psquare{(D_2 \phi)^\ast \phi - \phi^\ast (D_2 \phi)}
+}
+By the antisymmetry of $f_{12}$ we can get the other equation for $\del f$ likewise. 
+Applying $D_1$ to the second Bogomoly equation gives 
+\eq{
+D_1 D_1 \phi &= -i D_1 D_2 \phi \\
+&= -i \pround{\comm[D_1]{D_2} + D_2 D_1} \phi \\
+&= -i \pround{-if_{12} \phi - i D_2 D_2 \phi} \\
+\Rightarrow -D_i D_i \phi &= \frac{1}{2}(1 - \phi^\ast \phi) \phi
+}
 \end{proof}
 
 \begin{theorem}[Taubes' Theorem]
@@ -718,9 +834,299 @@ Skyrme though that a non-linear theory of pions can have soliton solutions repre
 \begin{definition}[Skyrme Lagrangian]
 The Lagrangian for the Skyrme field is 
 \eq{
-L = \int d^3 x \, \pbrace{ - \frac{F_\pi^2}{16}\Tr\pround{R_\mu R_\nu}
+L = \int d^3 x \, \pbrace{ - \frac{F_\pi^2}{16}\tr\pround{R_\mu R^\mu} + \frac{1}{32e^2} \tr\pround{\comm[R_\mu]{R_\nu}\comm[R^\mu]{R^\nu}} - \frac{1}{8}F_\pi^2 m_\pi^2 \tr(I-U)
 }
+}
+where $R_\mu = \pround{\del_\mu U} U^{-1}$. Removing dimensions this becomes 
+\eq{
+L = \int d^3 x \, \pbrace{ - \frac{1}{2}\tr\pround{R_\mu R^\mu} + \frac{1}{16} \tr\pround{\comm[R_\mu]{R_\nu}\comm[R^\mu]{R^\nu}} -m^2 \tr(I-U)}
 }
 \end{definition}
+
+The first two terms of $L$ are invariant under the global $SO(4)$ symmetry\footnote{Note that this symmetry is $SO(4)$ not $SU(2) \times SU(2)$ as the centre contains $O_1 = -I = O_2$. } $U \mapsto O_1 U O_2$ for $O_1, O_2 \in SU(2)$. The third term corresponds to picking the vacuum to be $U=I$, and then imposing $U\to I$ as $\abs{\bm{x}} \to \infty$. This \emph{breaks} the symmetry down to the $SO(3)$ symmetry $U \mapsto O U O^{-1}$ for $O \in SU(2)$\footnote{Again note this symmetry is $SO(3)$ not $SU(2)$ due to the non-trivial element of the centre $O = -I$.}.
+
+\begin{definition}[Baryon Number]
+The \bam{Baryon number} $B$ of the field is the degree of the map $U$. 
+\end{definition}
+
+\begin{prop}
+The energy of a static field configuration is 
+\eq{
+E = \int d^3x \, \pbrace{ - \frac{1}{2}\tr\pround{R_i R_i} - \frac{1}{16} \tr\pround{\comm[R_i]{R_j}\comm[R_i]{R_j}} + m^2 \tr(I-U)}
+}
+\end{prop}
+
+\begin{prop}[Derrick's Theorem for Skyrmions]
+For a static Skyrme field configuration
+\eq{
+\int \frac{1}{2} \tr(R_i R_i) \, d^3x - \int \frac{1}{16} \tr\pround{\comm[R_i]{R_j}\comm[R_i]{R_j}} \, d^3x + 3 \int m^2 \tr(I-U) \, d^3x = 0
+}
+\end{prop}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Massless Pion Approximation}
+In the subsequent section assume that we have taken the $m=0$ limit. 
+
+\begin{prop}
+The field equation for the massless Lagrangian is 
+\eq{
+\del_\mu \pround{R^\mu + \frac{1}{4} \comm[R_\nu]{\comm[R^\nu]{R^\mu}}} = 0
+}
+or, linearising about the vacuum $U = I$, 
+\eq{
+\del_\mu \del^\mu \bm{\pi} = 0
+}
+\end{prop}
+
+\begin{definition}[Strain Eigenvalues]
+The \bam{strain eigenvalues} of a map correspond to the local stretching of the principal axes of the derivative of the map. They satisfy the property that $\prod \lambda_i > 0$ if the map is locally orientation preserving, and $\prod \lambda_i < 0$ if the map is locally orientation reversing. 
+\end{definition}
+
+\begin{prop}[Geometric Interpretation of Energy]\label{prop:CQS:GeometricInterpretationOfEnergy}
+Let $\lambda_i$ be the strain eigenvalues of static $U$. Then 
+\eq{
+E = \int \pround{\lambda_1^2 + \lambda_2^2 + \lambda_3^3 + \lambda_1^2\lambda_2^2 + \lambda_2^2 \lambda_3^2 + \lambda_3^2 \lambda_1^2} \, d^3x
+}
+\end{prop}
+\begin{proof}
+As we may arbitrarily rotate the $U$ field, assume that $U(\bm{0}) = I$. Then 
+\eq{
+U  = \sqrt{1-\pi^2}I + i \bm{\pi} \cdot \bm{\tau}
+}
+where $\bm{\pi}(\bm{0}) = \bm{0}$. Then 
+\eq{
+\del_i U \rvert_{\bm{x} = \bm{0}} = i \pround{\del_i \bm{\pi}\rvert_{\bm{x} = \bm{0}}} \cdot \bm{\tau}
+}
+We can thus say $R_j = i (\del_j \pi_k) \tau_k$ (implicitly evaluating at $\bm{0}$). Then 
+\eq{
+-\frac{1}{2} \tr (R_i R_i) &= \frac{1}{2} \tr\psquare{\pround{\del_i \pi_j} \pround{\del_i \pi_k}(\tau_j \tau_k)} \\
+&= \frac{1}{2} \tr\psquare{\pround{\del_i \pi_j} \pround{\del_i \pi_k} (\delta_{jk}I + i \eps_{jkl}\tau_l)} \\
+&= \pround{\del_i \pi_j} \pround{\del_i \pi_j}
+}
+as Pauli matrices are traceless and $\tr I = 2$. Then letting 
+\eq{
+\bm{\nabla}\bm{\pi} = \begin{pmatrix} \lambda_1 & 0 & 0 \\ 0 & \lambda_2 & 0 \\ 0 & 0 & \lambda_3 \end{pmatrix}
+}
+we can see 
+\eq{
+-\frac{1}{2} \tr (R_i R_i) = \lambda_1^2 + \lambda_2^2 + \lambda_3^3
+}
+Now note 
+\eq{
+\comm[R_i]{R_j} &= - (\del_i \pi_k)(\del_j \pi_l) \comm[\tau_k]{\tau_l} \\
+&= -2i(\del_i \pi_k)(\del_j \pi_l) \eps_{klm} \tau_m \\
+\Rightarrow \comm[R_i]{R_j}\comm[R_i]{R_j} &= -4(\del_i \pi_k)(\del_j \pi_l) \eps_{klm} \tau_m (\del_i \pi_a)(\del_j \pi_b) \eps_{abc} \tau_c \\
+&= -4(\del_i \pi_k)(\del_j \pi_l) \eps_{klm}\eps_{abc} (\delta_{mc}I + i \eps_{mcd} \tau_d)
+}
+so similarly 
+\eq{
+-\frac{1}{16} \tr\pround{\comm[R_i]{R_j}\comm[R_i]{R_j}} &= \frac{1}{2} (\del_i \pi_k)(\del_j \pi_l)(\del_i \pi_a)(\del_j \pi_b) \eps_{klm}\eps_{abm} \\
+&= \frac{1}{2} (\del_i \pi_k)(\del_j \pi_l)(\del_i \pi_a)(\del_j \pi_b) (\delta_{ka}\delta_{lb} - \delta_{kb}\delta_{la}) \\
+&= \frac{1}{2} \psquare{(\del_i \pi_a)(\del_j \pi_b)(\del_i \pi_a)(\del_j \pi_b) - (\del_i \pi_b)(\del_j \pi_a)(\del_i \pi_a)(\del_j \pi_b)}
+}
+Explicitly expanding 
+\eq{
+(\del_i \pi_a)(\del_i \pi_b) &= \lambda_1^2 \delta_{a1}\delta_{b1} + \lambda_2^2 \delta_{a2}\delta_{b2} + \lambda_3^2 \delta_{a3}\delta_{b3} \\
+\Rightarrow (\del_i \pi_a)(\del_i \pi_b)(\del_j \pi_a)(\del_j \pi_b) &= \lambda_1^4 + \lambda_2^4 + \lambda_3^4
+}
+so 
+\eq{
+-\frac{1}{16} \tr\pround{\comm[R_i]{R_j}\comm[R_i]{R_j}} &= \frac{1}{2} \psquare{\pround{\lambda_1^2 + \lambda_2^2 + \lambda_3^3}^2 + \pround{\lambda_1^4 + \lambda_2^4 + \lambda_3^4}} \\
+&= \lambda_1^2\lambda_2^2 + \lambda_2^2 \lambda_3^2 + \lambda_3^2 \lambda_1^2
+}
+Hence we are done. 
+\end{proof}
+
+\begin{prop}[Faddeev-Bogomolny Energy Bound]
+For any Skyrmion, $E > 12\pi^2 B$.
+\end{prop}
+\begin{proof}
+Complete the square on the energy to write 
+\eq{
+E = \int \psquare{(\lambda_1 - \lambda_2 \lambda_3)^2 + (\lambda_2 - \lambda_3\lambda_1)^2 + (\lambda_3 - \lambda_1 \lambda_2)^2} \, d^3x + 6 \int \lambda_1 \lambda_2 \lambda_3 \, d^3x
+}
+We now need the following lemma:
+\begin{lemma}
+\eq{
+\int \lambda_1 \lambda_2 \lambda_2 \, d^3x = 2 \pi^2 B
+}
+\end{lemma}
+\begin{proof}
+$\lambda_1 \lambda_2 \lambda_2 \, d^3x$ is the pullback under $U$ of the standard volume on $S^3$. Hence 
+\eq{
+\int \lambda_1 \lambda_2 \lambda_2 \, d^3x = B \cdot (\text{Volume of $S^3$}) = 2\pi^2 B
+}
+\end{proof}
+Thus we have the energy bound $E \geq 12\pi^2 B$ with equality if 
+\eq{
+\left\lbrace \begin{array}{c} \lambda_1 = \lambda_2 \lambda_3 \\ \lambda_2 = \lambda_3 \lambda_1 \\ \lambda_3 = \lambda_1 \lambda_2 \end{array} \right.
+}
+There are two possible solutions. $\lambda_1 = \lambda_2 = \lambda_3 = 0$ (vacuum) or $\lambda_1 = \lambda_2 = \lambda_3 = 1$ (no strain). It is impossible to have a solution with no strain everywhere as $\mbb{R}^3$ and $S^3$ are note isometric. Hence for any Skyrmion $E > 12\pi^2 B$. \\
+\newline
+There is also an alternate rearrangement that comes from the following lemma 
+\begin{lemma}
+\eq{
+B = \frac{-1}{24\pi^2} \int \eps_{ijk} \tr(R_i R_j R_k) \, d^3x
+}
+\end{lemma}
+\begin{proof}
+Using the conventions from \ref{prop:CQS:GeometricInterpretationOfEnergy} we see 
+\eq{
+R_i R_j R_k &= -i (\del_i \pi_a) (\del_j \pi_b)(\del_k \pi_c)(\tau_a\tau_b\tau_c) \\
+&= -i (\del_i \pi_a) (\del_j \pi_b)(\del_k \pi_c) \tau_a (\delta_{bc} I + i\eps_{bcd} \tau_d) \\
+&= (\del_i \pi_a) (\del_j \pi_b)(\del_k \pi_c)\psquare{\eps_{bcd}(\delta_{ad}I + i\eps_{ade}\tau_e) -i \delta_{bc}\tau_a} \\
+\Rightarrow -\frac{1}{24\pi^2} \eps_{ijk} \tr(R_i R_j R_k) &= -\frac{1}{12\pi^2} \eps_{ijk} \eps_{abc} (\del_i \pi_a) (\del_j \pi_b)(\del_k \pi_c) \\
+&= -\frac{1}{2\pi^2} \lambda_1 \lambda_2 \lambda_3
+}
+Results follows \hl{up to a minus sign error}
+\end{proof}
+Now note 
+\eq{
+-\frac{1}{2} \tr\psquare{\pround{R_i \pm \frac{1}{4} \eps_{ijk} \comm[R_j]{R_k}}^2} &= -\frac{1}{2} \tr\psquare{R_i R_i \pm \eps_{ijk}R_i R_j R_k + \frac{1}{8} \comm[R_j]{R_k}\comm[R_j]{R_k}}
+}
+so 
+\eq{
+E = \int -\frac{1}{2} \tr\psquare{\pround{R_i \pm \frac{1}{4} \eps_{ijk} \comm[R_j]{R_k}}^2} \,d^3 x \mp \frac{1}{2}\int \eps_{ijk} \tr(R_i R_j R_k) \, d^3x 
+}
+i.e $E \geq 12 \pi^2 B$ (for $B>0$) with equality when 
+\eq{
+R_i + \frac{1}{4} \eps_{ijk} \comm[R_j]{R_k} = 0
+}
+This equation turns out to have no non-trivial solutions. 
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Rational Map Approximation}
+
+\begin{definition}[Rational Map Approximation]
+The \bam{rational map approximation} looks for solutions for $U$ of the form 
+\eq{
+U(r,\theta,\phi) = \cos f(r)  + i\sin f(r) \,  \hat{\bm{n}}_{R(z)} \cdot \bm{\tau}
+}
+where $R$ is a rational map, $z=z(\theta,\phi)$ under the stereographic projection.
+\end{definition}
+
+Note that the boundary conditions required on $f$ are 
+\begin{itemize}
+    \item $\lim_{r \to \infty} f(r) = 0$
+    \item $f(0) = \pi$
+\end{itemize}
+The first condition ensure that $U\to I$ as is necessary for finite energy, while the second condition means that $\sin(f(0)) = 0$, so the field is single valued at the origin\footnote{This could also be ensured by having $f(0) = 0$, but this condition would impose the vacuum as the only solution, see the calculation of the baryon number}. 
+\begin{prop}
+The energy in the rational map approximation is 
+\eq{
+E = \int_0^\infty \pbrace{f^\prime(r)^2 + 2B \frac{\sin^2 f(r)}{r}\psquare{1+f^\prime(r)^2} + \mc{I} \frac{\sin^4 f(r)}{r}} \, 4\pi r^2 dr
+}
+where $B$ is the baryon number and 
+\eq{
+\mathcal { I } = \frac { 1 } { 4 \pi } \int \frac { 2 i d z d \overline { z } } { \left( 1 + | z | ^ { 2 } \right) ^ { 2 } } \left( \frac { 1 + | z | ^ { 2 } } { 1 + | R | ^ { 2 } } \left| \frac { d R } { d z } \right| \right) ^ { 4 }
+}
+\end{prop}
+\begin{proof}
+We will need the following lemma:
+\begin{lemma}
+In the rational map approximation, in coordinates $(r,z,\bar{z})$, the strain eigenvalues are 
+\eq{
+\lambda_r^2 &= \psquare{f^\prime}^2 \\
+\lambda_z^2 &= \psquare{\frac{\sin f}{r} \frac{1+\abs{z}^2}{1+\abs{R}^2} \abs{\frac{dR}{dz}}}^2 = \lambda_{\bar{z}}^2
+}
+\end{lemma}
+\begin{proof}
+The metric on the image is 
+\eq{
+ds^2 &= df^2 + \sin^2 f(r) \frac{4 \, dR \, d\bar{R}}{\pround{1 + \abs{R}^2}^2} \\
+&= \psquare{f^\prime \, dr}^2 + \psquare{\frac{\sin f}{r} \frac{1+\abs{z}^2}{1+\abs{R}^2} \abs{\frac{dR}{dz}}}^2 \cdot r^2 \frac{4 \, dz d\bar{z}}{\pround{1+ \abs{z}^2}^2}
+}
+\end{proof}
+Then we have, noting that the area form on the target space is $dA = \frac{2i r^2 dr \wedge dz \wedge d\bar{z}}{\pround{1+\abs{z}^2}^2}$,
+\eq{
+E = \int \pbrace{ f^\prime(r)^2 + 2\frac{\sin^2 f}{r^2} \psquare{\frac{1+\abs{z}^2}{1+\abs{R}^2} \abs{\frac{dR}{dz}}}^2 \psquare{1+ f^\prime(r)^2} + \frac{\sin^4 f}{r^4 } \psquare{\frac{1+\abs{z}^2}{1+\abs{R}^2} \abs{\frac{dR}{dz}}}^4} \frac{2i r^2 dr dz  d\bar{z}}{\pround{1+\abs{z}^2}^2} 
+}
+We see we can separate out the integrals over $z,\bar{z}$ and $r$. Noting that $U$ is locally orientation preserving, we may choose $\lambda_z,\lambda_{\bar{z}}$ to have the same sign, and then as $f^\prime < 0, \lambda_r = -f^\prime$. Thus evaluating 
+\eq{
+B &= \frac{1}{2\pi^2} \int -f^\prime(r)  \psquare{\frac{\sin f}{r} \frac{1+\abs{z}^2}{1+\abs{R}^2} \abs{\frac{dR}{dz}}}^2 \frac{2i r^2 dr dz  d\bar{z}}{\pround{1+\abs{z}^2}^2} \\
+&= \frac{1}{2\pi^2} \psquare{\int_0^\infty -f^\prime(r) \sin^2 f(r) \, dr } \int \psquare{\frac{1+\abs{z}^2}{1+\abs{R}^2} \abs{\frac{dR}{dz}}}^2 \frac{2i dz  d\bar{z}}{\pround{1+\abs{z}^2}^2} \\
+&= \frac{1}{2\pi} \psquare{\int_0^\pi \sin^2 f \, df} \int \psquare{\frac{1+\abs{z}^2}{1+\abs{R}^2} \abs{\frac{dR}{dz}}}^2 \frac{2i dz  d\bar{z}}{\pround{1+\abs{z}^2}^2} \\
+&= \frac{1}{4\pi} \int \psquare{\frac{1+\abs{z}^2}{1+\abs{R}^2} \abs{\frac{dR}{dz}}}^2 \frac{2i dz  d\bar{z}}{\pround{1+\abs{z}^2}^2}
+}
+Thus we have 
+\eq{
+E = \int_0^\infty \pbrace{{f^\prime}^2 + 2B \frac{\sin^2 f}{r^2} + \mc{I} \frac{\sin^4f}{r^4}}\psquare{1 + {f^\prime}^2} 4\pi r^2 dr
+}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Symmetries of Skyrmions}
+
+Skyrmions has point symmetry groups 
+\eq{
+K \leq SO(3) \times SO(3)
+}
+corresponding to rotations in the domain and rotations in the target (isorotations). In the rational map approximation these are realised by symmetries of the rational map $R$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Quantisation}
+
+The field configuration space of fixed baryon number maps is \eq{
+\mc{C}_B = \Maps_B(\mbb{R}^3 \to SU(2))
+}
+where $\Maps_B$ is the space of maps degree $B$. We may compactify $\mbb{R}^3$ as $U$ is well defined at $\abs{\bm{x}} = \infty$, and as such write 
+\eq{
+\mc{C}_B = \Maps_B(S_\infty^3 \to S_1^3)
+}
+Because of the group structure of $S^3$, we can combine maps, and so we get an isomorphism 
+\eq{
+\mc{C}_B \cong \Maps_0 ( S_\infty^3 \to S_1^3)
+}
+We then have the property that 
+\eq{
+\pi_1\pround{\Maps_0 ( S_\infty^3 \to S_1^3)} = \pi_4(S^1) = \mbb{Z}_2
+}
+Hence we know $\mc{C}_B$ is connected, but not simply connected. We note that it is a good principle of quantisation that the wavefunction $\Psi$ is single valued on the universal cover of $\mc{C}_B$, in this case the double cover. 
+
+\begin{idea}
+Skyrme proposed that $\Psi$ changes sign going round a non-contractible loop in $\mc{C}_B$. 
+\end{idea}
+
+This has two consequences for the $B=1$ skyrmion:
+\begin{itemize}
+    \item $\Psi$ changes sign when the Skyrmion is rotated by $2\pi$, so spin is half integer. 
+    \item $\Psi$ changes sign when two $B=1$ Skyrmions are exchanged in space. 
+\end{itemize}
+This imposes that $B=1$ Skyrmions are fermions. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Rigid Body Quantisation}
+
+\begin{definition}[Rigid Body Quantisation]
+In \bam{rigid body quantisation} of Skyrmions, the Skyrmion is taken to have collective coordinates of translation, rotation, and isorotation. 
+\end{definition}
+Quantising translation gives momentum eigenstates, which will turn out to be uninteresting, as there are no constraints gained from symmetry. \\
+Quantising rotations and isorotations gives angular momentum and isospin. States are thus 
+\eq{
+\ket{\Psi} = \ket{J, L_3, J_3} \otimes \ket{I, K_3, I_3}
+}
+where the respective quantum numbers are 
+\begin{itemize}
+    \item $J$: total angular momentum 
+    \item $L_3$: 3\textsuperscript{rd} component of angular momentum in the body fixed axis
+    \item $J_3$: 3\textsuperscript{rd} component of angular momentum in the space fixed axis 
+    \item $I$: total isospin 
+    \item $K_3$: 3\textsuperscript{rd} component of isospin in the body fixed axis
+    \item $I_3$: 3\textsuperscript{rd} component of isospin in the space fixed axis 
+\end{itemize}
+$L_3, K_3$ get restricted by symmetry of Skyrmions, which in turn limit $J,I$. $J_3,I_3$ remain unconstrained, and so the labels are ignored. 
+
+\begin{prop}
+Suppose a symmetry of a Skyrmion gives a constraint 
+\eq{
+e^{i\theta_2 \hat{\bm{n}}_2 \cdot \bm{L}} e^{i\theta_1 \hat{\bm{n}}_1 \cdot \bm{K}} \ket{\Psi} = \chi_{FR} \ket{\Psi}
+}
+Then 
+\eq{
+\chi_{FR} = (-1)^{\frac{B}{2\pi}(B\theta_2 - \theta_1)}
+}
+\end{prop}
+
 
 \end{document}

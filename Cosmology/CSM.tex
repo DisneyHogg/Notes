@@ -132,7 +132,7 @@ The most important example is for $g_{\mu\nu}$ the metric tensor where
 \begin{definition}[Isometry]
 A transform $x \to x^\prime$ is an \bam{isometry} if under the transform 
 \eq{
-g_{\mu\nu} \to g^\prime_{\mu\nu} \; g^\prime_{\mu\nu}(x) = g_{\mu\nu}(x)
+g_{\mu\nu} \to g^\prime_{\mu\nu}, \; g^\prime_{\mu\nu}(x) = g_{\mu\nu}(x)
 }
 \end{definition}
 
@@ -388,7 +388,7 @@ $\end{center}
 \begin{definition}[Friedmann equation]
 In the FLRW metric the Einstein equations reduce to 
 \eq{
-3M_{pl}^2 ( H^2 + \frac{K}{a^2} ) = \sum_i \rho_i
+3M_{pl}^2 \pround{ H^2 + \frac{K}{a^2} } = \sum_i \rho_i
 }
 this is the \bam{Friedmann equation}. 
 \end{definition}
@@ -455,6 +455,13 @@ Writing this then in terms of the redshift, then the distance from the earth to 
 
 \begin{definition}[Luminosity]
 The \bam{intrinsic luminosity} $L$ of an object is the amount of energy radiated per unit time. The \bam{observed luminosity} $l$ is the amount of energy radiated per unit time per unit surface arriving at an observer some distance from the object.
+\end{definition}
+
+\begin{definition}[Magnitude]
+The \bam{magnitude} of the luminosity of an object is 
+\eq{
+m = -2.5 \log_{10}l + \text{const}
+}
 \end{definition}
 
 \begin{definition}[Luminosity Distance]
@@ -761,7 +768,14 @@ The evolution equation becomes
 \eq{
 V = H^2 M_{pl}^2 (3-\eps)
 }
-through substitution.
+through substitution for $\frac{1}{2}\dot{\phi}^2$. Then 
+\eq{
+V^\prime \dot{\phi} &= 2H \dot{H} M_{pl}^2 (3-\eps) - \dot{\eps} H^2 M_{pl}^2 \\
+&= M_{pl}^2 H^3 \eps (2\eps-6 - \eta) \\
+\Rightarrow {V^\prime}^2 \dot{\phi}^2 &= M_{pl}^4 H^6 \eps^2 (\eta - 2\eps + 6)^2  \\
+\Rightarrow {V^\prime}^2 &= 2M_{pl}^2 H^4 \eps (\eta - 2\eps + 6)^2 \\
+\frac{1}{2} M_{pl}^2 \pround{\frac{V^\prime}{V}}^2 &= \frac{\eps(\eta - 2\eps + 6)^2}{(\eps-3)^2 }
+}
 \end{proof}
 
 \begin{corollary}
@@ -792,7 +806,7 @@ and so
 \end{align}
 Hence 
 \eq{
-\eta = \frac{\dot{\eta}}{\eps H} = 2\eps + \frac{\dot{X}}{XH}
+\eta = \frac{\dot{\eps}}{\eps H} = 2\eps + \frac{\dot{X}}{XH}
 }
 so 
 \eq{
@@ -923,7 +937,8 @@ So the integrals will be supported mainly where
 & 0= \frac{d}{dq} q^2 e^{-\frac{\sqrt{m^2 + q^2}}{T}} = 2q e^{-\frac{\sqrt{m^2 + q^2}}{T}} - \frac{q^3}{T\sqrt{m^2+q^2}}e^{-\frac{\sqrt{m^2 + q^2}}{T}}\\
  \Rightarrow & 2-\frac{q^2}{T\sqrt{m^2+q^2}} = 0 \\
   \Rightarrow & q^4 -4T^2q^2-4T^2m^2 = 0 \\
- \Rightarrow & \left\{ \begin{array}{cc} \left(\frac{q^2}{4T^2}\right)^2 - \frac{q^2}{4T^2} \approx 0 \Rightarrow q\approx 2T & m \ll T \\ \left( \frac{q^2}{m} \right)^2 - 4T^2 \approx 0 \Rightarrow q\approx \sqrt{2mT} & m\gg T \end{array} \right.
+  \Rightarrow & q^2 = 2T^2 \pround{1 + \sqrt{1 + \pround{\frac{m}{T}}^2}} \\
+ \Rightarrow & \left\{ \begin{array}{cc}  q\approx 2T & m \ll T \\  q\approx \sqrt{2mT} & m\gg T \end{array} \right.
 }
 
 Hence 
@@ -972,7 +987,7 @@ Hence for $Re{z} > 1$
 }
 Now 
 \eq{
-\frac{1}{e^y+1} 7= \frac{e^y-1}{(e^y+1)(e^y-1)} \\
+\frac{1}{e^y+1} &= \frac{e^y-1}{(e^y+1)(e^y-1)} \\
 &= \frac{(e^y+1)-2}{(e^y+1)(e^y-1)} \\
 &= \frac{1}{e^y-1} - \frac{2}{e^{2y}-1} \\
 \Rightarrow \int_0^\infty dy \, \frac{y^n}{e^y+1} &= \int_0^\infty dy \, \frac{y^n}{e^y-1} - 2\int_0^\infty dy \, \frac{y^n}{e^{2y}-1} \\
@@ -1183,7 +1198,7 @@ a^{-3} \frac{d(a^3 n_n)}{dt} = n_l^{(0)} \braket{\sigma v} \left\{ \frac{n_p n_n
 }
 Now substitute for $X_n$, using that $(n_p + n_n)a^3$ is conserved and letting $\lambda_{np}=n_l^{(0)} \braket{\sigma v}$
 \eq{
-a^{-3} \frac{d(a^3 X_n(n_n + n_p))}{dt} &= \lambda_{np} \left\{ (1-X_n)(n_n+n_p)\frac{\left(\frac{-m_n T}{2\pi}\right)^\frac{3}{2} e^\frac{m_n}{T}}{\left(\frac{-m_p T}{2\pi}\right)^\frac{3}{2} e^\frac{m_p}{T}}-X_n(n_n+n_p) \right\} \\
+a^{-3} \frac{d(a^3 X_n(n_n + n_p))}{dt} &= \lambda_{np} \left\{ (1-X_n)(n_n+n_p)\frac{\left(\frac{m_n T}{2\pi}\right)^\frac{3}{2} e^\frac{m_n}{T}}{\left(\frac{m_p T}{2\pi}\right)^\frac{3}{2} e^\frac{m_p}{T}}-X_n(n_n+n_p) \right\} \\
 \Rightarrow \frac{dX_n}{dt} &\approx \lambda_{np} \left[ (1-X_n) e^{-\frac{Q}{T}} - X_n \right] \quad \text{letting } Q=m_n-m_p
 }
 Let $x=\frac{Q}{T}$ so 
@@ -2347,7 +2362,7 @@ so perturbations are approximately scale invariant, as during inflation $H$ is c
 }
 and so in the spatially flat gauge, where $C = 0 =E$
 \eq{
-\mc{R}(\bm{x}) = - \mc{H} \frac{\delta \delta(\bm{x})}{\bar{\phi}^\prime} \\
+\mc{R}(\bm{x}) = - \mc{H} \frac{\delta \phi(\bm{x})}{\bar{\phi}^\prime} \\
 \Rightarrow \Delta_\mc{R}^2 = \left( \frac{\mc{H}}{\bar{\phi}^\prime} \right)^2 \Delta_{\delta\phi}^2 
 }
 \end{fact}
